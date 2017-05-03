@@ -24,7 +24,7 @@ if (!is_null($events['events'])) {
 
 			// Make a POST Request to Messaging API to reply to sender
 			// $url = 'https://api.line.me/v2/bot/message/reply';
-			$url = 'http://Administrator:8070/VoxeoCXP/DialogMapping?VSN';
+			$url = 'https://api.line.me/v2/bot/message/reply';
 			
 			$data = [
 				'replyToken' => $replyToken,
