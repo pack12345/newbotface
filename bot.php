@@ -18,14 +18,25 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
-			
-			$cxpUrl = 'http://58.82.133.74:8099/VoxeoCXP/DialogMapping?VSN=Line&phone=0847685368&message=Test&User-Agent=MessageMedia';
+			$para = [
+				'VSN'=>'Line',
+				'type' => $event['type'],
+				'value' => $event['message']['type']
+			];
+			$postCXP = json_encode($para);
+			$cxpUrl = 'http://58.82.133.74:8099/VoxeoCXP/DialogMapping';
 			$chcxp = curl_init($cxpUrl);
-					curl_setopt($chcxp, CURLOPT_CUSTOMREQUEST, "GET");
+			$headersCXP = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+			curl_setopt($chcxp, CURLOPT_CUSTOMREQUEST, "POST");
 			curl_setopt($chcxp, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($chcxp, CURLOPT_POSTFIELDS, $postCXP);
+			curl_setopt($chcxp, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($chcxp, CURLOPT_FOLLOWLOCATION, 1);
 			$xcpResult = curl_exec($chcxp);
-			error_log('xxxxxx '.$xcpResult);
 			curl_close($chcxp);
+			error_log($xcpResult);			
+			
 			$messages = [
 				'type' => 'text',
 				'text' => $xcpResult
