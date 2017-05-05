@@ -26,7 +26,7 @@ if (!is_null($events['events'])) {
 			curl_close($chcxp);
 			$messages = [
 				'type' => 'text',
-				'text' => $xcpResult
+				'text' => 'tttt'
 			];
 			
 			// Make a POST Request to Messaging API to reply to sender
