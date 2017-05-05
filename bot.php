@@ -23,6 +23,7 @@ if (!is_null($events['events'])) {
 			$chcxp = curl_init($cxpUrl);
 			$xcpResult = curl_exec($chcxp);
 			curl_close($chcxp);
+			echo $xcpResult;
 			$messages = [
 				'type' => 'text',
 				'text' => $xcpResult
