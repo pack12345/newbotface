@@ -26,12 +26,10 @@ if (!is_null($events['events'])) {
 			$postCXP = json_encode($para);
 			$cxpUrl = 'http://58.82.133.74:8099/VoxeoCXP/DialogMapping';
 			$chcxp = curl_init($cxpUrl);
-			$headersCXP = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
+			
 			curl_setopt($chcxp, CURLOPT_CUSTOMREQUEST, "POST");
 			curl_setopt($chcxp, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($chcxp, CURLOPT_POSTFIELDS, $postCXP);
-			curl_setopt($chcxp, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($chcxp, CURLOPT_POSTFIELDS, $para);
 			curl_setopt($chcxp, CURLOPT_FOLLOWLOCATION, 1);
 			$xcpResult = curl_exec($chcxp);
 			curl_close($chcxp);
