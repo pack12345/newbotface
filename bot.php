@@ -26,7 +26,7 @@ if (!is_null($events['events'])) {
 			// Make a POST Request to Messaging API to reply to sender
 			// $url = 'https://api.line.me/v2/bot/message/reply';
 			$url = 'http://58.82.133.74:8099/VoxeoCXP/DialogMapping?VSN=MessageProxy&phone=0847685368&message=Test&User-Agent=MessageMedia';
-			$cxpMsg = http_get($url);
+			$cxpMsg = $_GET($url);
 			$data = [
 				'replyToken' => $replyToken,
 				'messages' => [$cxpMsg],
