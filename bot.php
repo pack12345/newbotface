@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 		// make GET
 			$postCXP = json_encode($para);
-			$cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&phone=0847685368&message='.$text.'&User-Agent=MessageMedia';
+			$cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$text.'&vsDriver=164';
 			error_log($cxpUrl);
 			$chcxp = curl_init($cxpUrl);
 			
