@@ -1,16 +1,6 @@
 <?php
 $access_token = 'Mb1MfpF5t/adwXJenkK5jMkKvZOcGCOaiLIZzFI2ZcV059EKV4eC0FV4Euf8FPg4XqQcDwoB+7bTMVxxtoeJgAlqAxJfbXcnpzxLX8eiHTIaA6snZz8ZU6i8q9drPExofgFrjUrDH/TuDT/OYenjDgdB04t89/1O/w1cDnyilFU=';
-<script>
-LCS.Interface.getProfile(function(data) {
-  var mid = data.id;
-  var displayName = data.displayName;
-  var statusMessage = data.statusMessage;
-  var pictureUrl = data.pictureUrl;
-	console.log(data); 
-}, function() {
-  // Do something for this error...
-});
-</script>
+
 
 // Get POST body content
 $content = file_get_contents('php://input');
