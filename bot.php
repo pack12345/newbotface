@@ -42,11 +42,11 @@ if (!is_null($events['events'])) {
 				'text' => $xcpResult
 		
 			];
-			$image = [
-				'type' => 'image',
-				'originalContentUrl' => 'https://www.mx7.com/t/b27/nXx5mD.jpg',
-				'previewImageUrl' => 'https://www.mx7.com/t/b27/nXx5mD.jpg'
-			];
+// 			$image = [
+// 				'type' => 'image',
+// 				'originalContentUrl' => 'https://www.mx7.com/t/b27/nXx5mD.jpg',
+// 				'previewImageUrl' => 'https://www.mx7.com/t/b27/nXx5mD.jpg'
+// 			];
 			
 			// Make a POST Request to Messaging API to reply to sender
 			 $url = 'https://api.line.me/v2/bot/message/reply';
@@ -57,7 +57,7 @@ if (!is_null($events['events'])) {
 			//echo $cxpMsg;
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => [$messages,$image],
+				'messages' => [$messages],
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
