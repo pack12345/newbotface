@@ -40,6 +40,12 @@ if (!is_null($events['events'])) {
 			$messages = [
 				'type' => 'text',
 				'text' => $xcpResult
+		
+			];
+			$image = [
+				'type' => 'image',
+				'originalContentUrl' => 'https://www.mx7.com/t/b27/nXx5mD.jpg',
+				'previewImageUrl' => 'https://www.mx7.com/t/b27/nXx5mD.jpg'
 			];
 			
 			// Make a POST Request to Messaging API to reply to sender
@@ -51,7 +57,7 @@ if (!is_null($events['events'])) {
 			//echo $cxpMsg;
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => [$messages],
+				'messages' => [$messages,$image],
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
