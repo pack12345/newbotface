@@ -44,8 +44,8 @@ if (!is_null($events['events'])) {
 			];
 			$image = [
 				'type' => 'image',
-				'originalContentUrl' => $xcpResult,
-				'previewImageUrl' => $xcpResult
+				'originalContentUrl' => 'https://www.mx7.com/t/b27/nXx5mD.jpg',
+				'previewImageUrl' => 'https://www.mx7.com/t/b27/nXx5mD.jpg'
 			];
 			
 			// Make a POST Request to Messaging API to reply to sender
