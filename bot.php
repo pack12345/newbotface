@@ -47,7 +47,7 @@ if (!is_null($events['events'])) {
 					'originalContentUrl' => $xcpResult,
 					'previewImageUrl' =>  $xcpResult
 				];*/
-				$messagaes={
+				$messages={
   					"type": "template",
   					"altText": "this is a buttons template",
  					"template": {
