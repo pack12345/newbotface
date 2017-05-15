@@ -38,9 +38,9 @@ if (!is_null($events['events'])) {
 			$xcpResult = curl_exec($chcxp);
 			curl_close($chcxp);
 			error_log($xcpResult);	
-			error_log(substr($xcpResult,0,6));
+			error_log(':'.substr($xcpResult,0,6).':');
 			$messages = '';
-			if(substr($xcpResult,0,6)!="  http"){
+			if(substr($xcpResult,0,6)=="http"){
 				$messages = [
 					'type' => 'image',
 					'originalContentUrl' => $xcpResult,
