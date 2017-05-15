@@ -27,6 +27,8 @@ if (!is_null($events['events'])) {
 			error_log('session '.$sessionID);
 			$postCXP = json_encode($para);
 			$cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$text.'&vsDriver=164&channel=line&sessionID=1234567890';
+			
+			
 			error_log($cxpUrl);
 			$chcxp = curl_init($cxpUrl);
 			
@@ -37,24 +39,22 @@ if (!is_null($events['events'])) {
 			curl_close($chcxp);
 			error_log($xcpResult);			
 			
-			$messages = [
-				'type' => 'text',
-				'text' => $xcpResult
-		
-			];
-// 			$image = [
-// 				'type' => 'image',
-// 				'originalContentUrl' => 'https://www.mx7.com/t/b27/nXx5mD.jpg',
-// 				'previewImageUrl' => 'https://www.mx7.com/t/b27/nXx5mD.jpg'
-// 			];
+			if(substr($xcpResult,0,4)!="http"){
+				$messages = [
+					'type' => 'text',
+					'text' => $xcpResult
+				];
+			}else{
+				$messages = [
+					'type' => 'image',
+					'originalContentUrl' => $xcpResult,
+					'previewImageUrl' =>  $xcpResult
+				];
+			}
 			
 			// Make a POST Request to Messaging API to reply to sender
 			 $url = 'https://api.line.me/v2/bot/message/reply';
 			
-			//
-			//echo $url;
-			//$cxpMsg = $_GET($url);
-			//echo $cxpMsg;
 			$data = [
 				'replyToken' => $replyToken,
 				'messages' => [$messages],
