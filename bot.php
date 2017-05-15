@@ -77,7 +77,8 @@ if (!is_null($events['events'])) {
 						'type'=> 'buttons',
 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/ba0/NLFwtM.jpg',
 						'title' => 'Shori Sushi House',
-						'text' => 'Address: 299, soi Sukhumvit 21, North Klongtoey, Wattana, Bangkok 10110',
+						'text' => 'Tel: 02-169-1532
+								Opening Hours: 11:00 – 23:00',
 						'actions' => [
 							
 							  [
@@ -100,7 +101,8 @@ if (!is_null($events['events'])) {
 						'type'=> 'buttons',
 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/177/wfu2Vl.jpg',
 						'title' => 'Hakone Bangkok',
-						'text' => 'Tel: 02-108-2790',
+						'text' => 'Tel: 02-108-2790
+								Opening Hours: 10:00 – 22:00',
 						'actions' => [
 							
 							  [
@@ -123,7 +125,8 @@ if (!is_null($events['events'])) {
 						'type'=> 'buttons',
 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/195/k8rDeL.jpg',
 						'title' => 'Yoshino Yama',
-						'text' => 'Opening Hours: 17:00 – 01:00',
+						'text' => 'Tel: 02-259-2582
+								Opening Hours: 17:00 – 01:00',
 						'actions' => [
 							
 							  [
