@@ -38,20 +38,20 @@ if (!is_null($events['events'])) {
 			$xcpResult = curl_exec($chcxp);
 			curl_close($chcxp);
 			error_log($xcpResult);	
-			error_log(substr($xcpResult,0,4));
+			error_log(substr($xcpResult,0,6));
+			error_log(substr($xcpResult,0,6)!="  http");
 			$messages = '';
-			if(substr($xcpResult,0,4)!="http"){
-				
-				$messages = [
-					'type' => 'text',
-					'text' => $xcpResult
-				];
-			}else{
-				error_log('pic');	
+			if(substr($xcpResult,0,6)!="  http"){
 				$messages = [
 					'type' => 'image',
 					'originalContentUrl' => $xcpResult,
 					'previewImageUrl' =>  $xcpResult
+				];
+				
+			}else{	
+				$messages = [
+					'type' => 'text',
+					'text' => $xcpResult
 				];
 			}
 			error_log('message : '.$messages);	
