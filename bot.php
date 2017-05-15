@@ -52,24 +52,19 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://example.com/bot/images/image.jpg',
-						'title' => 'Menu',
-						'text' => 'Please select',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b7e/HdD0Yj.jpg',
+						'title' => 'Today - 30 Jun 17',
+						'text' => '
+							Everyday Special, Get Cash Back Up to 17%
+							Get Cash Back up to 7%* when spending at 1,500 Baht or more / sales slip 
+							7% cash back for THE WISDOM card
+							4% cash back for other K-Credit Cards',
 						'actions'=> [
-							  [
-							    'type' => 'postback',
-							    'label'=> 'Buy',
-							    'data'=> 'action=buy&itemid=123'
-							  ],
-							  [
-							    'type'=> 'postback',
-							    'label'=> 'Add to cart',
-							    'data' => 'action=add&itemid=123'
-							  ],
+							 
 							  [
 							    'type' => 'uri',
-							    'label' => 'View detail',
-							    'uri'=> 'http://example.com/page/123'
+							    'label' => 'More information',
+							    'uri'=> 'https://www.kasikornbank.com/EN/promotion/Pages/Supermarket.aspx'
 							  ]
 							]
 				  		]
