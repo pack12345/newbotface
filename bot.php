@@ -39,7 +39,6 @@ if (!is_null($events['events'])) {
 			curl_close($chcxp);
 			error_log($xcpResult);	
 			error_log(substr($xcpResult,0,6));
-			error_log(substr($xcpResult,0,6)!="  http");
 			$messages = '';
 			if(substr($xcpResult,0,6)!="  http"){
 				$messages = [
