@@ -37,7 +37,8 @@ if (!is_null($events['events'])) {
 			curl_setopt($chcxp, CURLOPT_FOLLOWLOCATION, 1);
 			$xcpResult = curl_exec($chcxp);
 			curl_close($chcxp);
-			error_log($xcpResult);			
+			error_log($xcpResult);	
+			error_log(substr($xcpResult,0,4));
 			$messages = '';
 			if(substr($xcpResult,0,4)!="http"){
 				
