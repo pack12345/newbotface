@@ -60,13 +60,10 @@ if (!is_null($events['events'])) {
 							7% cash back for THE WISDOM card
 							4% cash back for other K-Credit Cards',
 						'actions'=> [
-							 
-							  [
 							    'type' => 'uri',
 							    'label' => 'More information',
 							    'uri'=> 'https://www.kasikornbank.com/EN/promotion/Pages/Supermarket.aspx'
-							  ]
-							]
+							    ]
 				  		]
 					];
 				
