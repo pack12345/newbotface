@@ -66,6 +66,81 @@ if (!is_null($events['events'])) {
 
 				  		]
 					];
+			}	
+			else if(substr($xcpResult,0,26)=="  https://www.mx7.com/i/1aa"){
+				error_log('pic');
+		
+				$messages=[
+  					'type'=> 'template',
+  					'altText' => 'this is a buttons template',
+ 					'template' => [
+						'type'=> 'buttons',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/1aa/oY49f2.jpg',
+						'title' => 'Shori Sushi House',
+						'text' => 'Address: 299, soi Sukhumvit 21, North Klongtoey, Wattana, Bangkok 10110
+								Tel: 02-169-1532
+								Opening Hours: 11:00 – 23:00',
+						'actions' => [
+							
+							  [
+							    'type' => 'uri',
+							    'label' => 'Location',
+							    'uri' => 'https://goo.gl/maps/jxgfN1aXYzR2'
+							  ]
+						      ]
+
+				  		]
+					];
+			}	
+			else if(substr($xcpResult,0,26)=="  https://www.mx7.com/i/150"){
+				error_log('pic');
+		
+				$messages=[
+  					'type'=> 'template',
+  					'altText' => 'this is a buttons template',
+ 					'template' => [
+						'type'=> 'buttons',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/150/SrcaGY.jpg',
+						'title' => 'Hakone Bangkok',
+						'text' => 'Address: M112,Gateway Ekamai Building,soi Sukhumvit,Klongtoey,Bangkok 10110
+								Tel: 02-108-2790
+								Opening Hours: 10:00 – 22:00',
+						'actions' => [
+							
+							  [
+							    'type' => 'uri',
+							    'label' => 'Location',
+							    'uri' => 'https://goo.gl/maps/EJQUDLLtugE2'
+							  ]
+						      ]
+
+				  		]
+					];	
+			}	
+			else if(substr($xcpResult,0,26)=="  https://www.mx7.com/i/1ba"){
+				error_log('pic');
+		
+				$messages=[
+  					'type'=> 'template',
+  					'altText' => 'this is a buttons template',
+ 					'template' => [
+						'type'=> 'buttons',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/1ba/NtzC8a.jpg',
+						'title' => 'Yoshino Yama',
+						'text' => 'Address: soi Sukhumvit 26, Klongton, Klongtoey, Bangkok 10110
+								Tel: 02-259-2582
+								Opening Hours: 17:00 – 01:00',
+						'actions' => [
+							
+							  [
+							    'type' => 'uri',
+							    'label' => 'Location',
+							    'uri' => 'https://goo.gl/maps/FgVPc8yddDo'
+							  ]
+						      ]
+
+				  		]
+					];	
 				
 			}else{	
 				$messages = [
