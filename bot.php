@@ -38,37 +38,11 @@ if (!is_null($events['events'])) {
 			$xcpResult = curl_exec($chcxp);
 			curl_close($chcxp);
 			error_log($xcpResult);	
-			error_log(':'.substr($xcpResult,0,6).':');
+			//error_log(':'.substr($xcpResult,0,6).':');
 			error_log(':'.substr($xcpResult,0,26).':');
 			$messages = '';
-			if(substr($xcpResult,0,6)=="  http"){
-				error_log('pic');
-			/*	$messages = [
-					'type' => 'image',
-					'originalContentUrl' => $xcpResult,
-					'previewImageUrl' =>  $xcpResult
-				];*/
-				$messages=[
-  					'type'=> 'template',
-  					'altText' => 'this is a buttons template',
- 					'template' => [
-						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b7e/HdD0Yj.jpg',
-						'title' => 'Today - 30 Jun 17',
-						'text' => 'Everyday Special, Get Cash Back Up to 17 precentage',
-						'actions' => [
-							
-							  [
-							    'type' => 'uri',
-							    'label' => 'More information',
-							    'uri' => 'https://www.kasikornbank.com/EN/promotion/Pages/Supermarket.aspx'
-							  ]
-						      ]
-
-				  		]
-					];
-			}	
-			else if(substr($xcpResult,0,26)=="  https://www.mx7.com/i/1aa"){
+				
+			 if(substr($xcpResult,0,26)=="  https://www.mx7.com/i/1aa"){
 				error_log('pic');
 		
 				$messages=[
