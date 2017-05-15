@@ -67,7 +67,7 @@ if (!is_null($events['events'])) {
 							  [
 							    'type' => 'uri',
 							    'label' => 'More information',
-							    'uri' => 'https://www.kasikornbank.com/EN/promotion/Pages/Supermarket.aspx'
+							    'uri' => 'http://example.com/page/123'
 							  ]
 						      ]
 
