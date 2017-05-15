@@ -67,7 +67,7 @@ if (!is_null($events['events'])) {
 							]
 				];
 			}	
-			 else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/1aa"){
+			 else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/ba0"){
 				error_log('pic');
 		
 				$messages=[
@@ -75,7 +75,7 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/1aa/oY49f2.jpg',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/ba0/NLFwtM.jpg',
 						'title' => 'Shori Sushi House',
 						'text' => 'Address: 299, soi Sukhumvit 21, North Klongtoey, Wattana, Bangkok 10110',
 						'actions' => [
@@ -90,7 +90,7 @@ if (!is_null($events['events'])) {
 				  		]
 					];
 			}	
-			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/150"){
+			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/177"){
 				error_log('pic');
 		
 				$messages=[
@@ -98,7 +98,7 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/150/SrcaGY.jpg',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/177/wfu2Vl.jpg',
 						'title' => 'Hakone Bangkok',
 						'text' => 'Tel: 02-108-2790',
 						'actions' => [
@@ -113,7 +113,7 @@ if (!is_null($events['events'])) {
 				  		]
 					];	
 			}	
-			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/1ba"){
+			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/195"){
 				error_log('pic');
 		
 				$messages=[
@@ -121,7 +121,7 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/1ba/NtzC8a.jpg',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/195/k8rDeL.jpg',
 						'title' => 'Yoshino Yama',
 						'text' => 'Opening Hours: 17:00 – 01:00',
 						'actions' => [
