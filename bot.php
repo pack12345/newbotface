@@ -54,13 +54,9 @@ if (!is_null($events['events'])) {
 						'type'=> 'buttons',
 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b7e/HdD0Yj.jpg',
 						'title' => 'Today - 30 Jun 17',
-						'text' => 'Everyday Special Get Cash Back Up to 17.Wen spending at 1,500 Baht or more / sales slip',
+						'text' => 'Everyday Special Get Cash Back Up to 17.Wen spending at 1,500 Baht or more sales slip',
 						'actions' => [
-							[
-							    'type' => 'postback',
-							    'label' => 'Buy',
-							    'data' => 'action=buy&itemid=123'
-							  ],
+							
 							  [
 							    'type' => 'uri',
 							    'label' => 'More information',
