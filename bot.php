@@ -54,7 +54,7 @@ if (!is_null($events['events'])) {
 						'type'=> 'buttons',
 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b7e/HdD0Yj.jpg',
 						'title' => 'Today - 30 Jun 17',
-						'text' => 'Everyday Special Get Cash Back Up to 17',
+						'text' => 'Everyday Special Get Cash Back Up to 17.Wen spending at 1,500 Baht or more / sales slip',
 						'actions' => [
 							[
 							    'type' => 'postback',
@@ -64,7 +64,7 @@ if (!is_null($events['events'])) {
 							  [
 							    'type' => 'uri',
 							    'label' => 'More information',
-							    'uri' => 'http://example.com/page/123'
+							    'uri' => 'https://www.kasikornbank.com/EN/promotion/Pages/Supermarket.aspx'
 							  ]
 						      ]
 
