@@ -40,19 +40,20 @@ if (!is_null($events['events'])) {
 			error_log($xcpResult);			
 			$messages = '';
 			if(substr($xcpResult,0,4)!="http"){
-				error_log('pic');	
+				
 				$messages = [
 					'type' => 'text',
 					'text' => $xcpResult
 				];
 			}else{
+				error_log('pic');	
 				$messages = [
 					'type' => 'image',
 					'originalContentUrl' => $xcpResult,
 					'previewImageUrl' =>  $xcpResult
 				];
 			}
-			error_log($messages);	
+			error_log('message : '.$messages);	
 			// Make a POST Request to Messaging API to reply to sender
 			 $url = 'https://api.line.me/v2/bot/message/reply';
 			
