@@ -54,8 +54,20 @@ if (!is_null($events['events'])) {
 						'type'=> 'buttons',
 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b7e/HdD0Yj.jpg',
 						'title' => 'Today - 30 Jun 17',
-						'text' => 'Everyday Special'
-						
+						'text' => 'Everyday Special',
+						"actions": [
+							[
+							    'type' => 'postback',
+							    'label' => 'Buy',
+							    'data' => 'action=buy&itemid=123'
+							  ],
+							  [
+							    'type' => 'uri',
+							    'label' => 'View detail',
+							    'uri' => 'http://example.com/page/123'
+							  ]
+						      ]
+
 				  		]
 					];
 				
