@@ -39,6 +39,7 @@ if (!is_null($events['events'])) {
 			curl_close($chcxp);
 			error_log($xcpResult);	
 			error_log(':'.substr($xcpResult,0,6).':');
+			error_log(':'.substr($xcpResult,0,26).':');
 			$messages = '';
 			if(substr($xcpResult,0,6)=="  http"){
 				error_log('pic');
