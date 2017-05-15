@@ -41,6 +41,7 @@ if (!is_null($events['events'])) {
 			error_log(':'.substr($xcpResult,0,6).':');
 			$messages = '';
 			if(substr($xcpResult,0,6)=="  http"){
+				error_log('pic');
 				$messages = [
 					'type' => 'image',
 					'originalContentUrl' => $xcpResult,
