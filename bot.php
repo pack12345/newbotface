@@ -54,13 +54,8 @@ if (!is_null($events['events'])) {
 						'type'=> 'buttons',
 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b7e/HdD0Yj.jpg',
 						'title' => 'Today - 30 Jun 17',
-						'text' => '
-							Everyday Special',
-						'actions'=> [
-							    'type' => 'uri',
-							    'label' => 'More information',
-							    'uri'=> 'https://www.kasikornbank.com/EN/promotion/Pages/Supermarket.aspx'
-							    ]
+						'text' => 'Everyday Special'
+						
 				  		]
 					];
 				
