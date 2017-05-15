@@ -54,10 +54,10 @@ if (!is_null($events['events'])) {
 						'type'=> 'buttons',
 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b7e/HdD0Yj.jpg',
 						'title' => 'Today - 30 Jun 17',
-						'text' => 'EEveryday Special, Get Cash Back Up to 17%
-							   Get Cash Back up to 7% when spending at 1,500 Baht or more 
-							   sales slip 7% cash back for THE WISDOM card 
-							   4% ash back for other K-Credit Cards',
+						'text' => 'EEveryday Special, Get Cash Back Up to 17 precentage
+							   Get Cash Back up to 7 precentage when spending at 1500 Baht or more 
+							   sales slip 7 precentage cash back for THE WISDOM card 
+							   4 precentage ash back for other K Credit Cards',
 						'actions' => [
 							
 							  [
