@@ -28,6 +28,7 @@ error_log('facebook hook' );
 			curl_setopt($chcxp, CURLOPT_FOLLOWLOCATION, 1);
 			$xcpResult = curl_exec($chcxp);
 			curl_close($chcxp);
+error_log('cxp '.$chcxp);
 
 //API Url
 $url = 'https://graph.facebook.com/v2.6/me/messages';
