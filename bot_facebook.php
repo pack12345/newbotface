@@ -72,8 +72,8 @@ $ch = curl_init($url);
 */
 $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนเป็ด[คำถาม|คำตอบ]';
+    $arrPostData['messages'][0]['type'] = 'text';
+    $arrPostData['messages'][0]['text'] = 'CXP';
 error_log('jsonData : '.$arrPostData);
 //Encode the array into JSON.
 $jsonDataEncoded = $arrPostData;
