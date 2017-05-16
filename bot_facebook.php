@@ -64,19 +64,16 @@ error_log('url reply'.$url);
 //Initiate cURL.
 $ch = curl_init($url);
 //The JSON data.
-/*$data = [
-				'replyToken' => $replyToken,
-				'messages' => [$messages],
-			];
-			$post = json_encode($data);
-*/
-$arrPostData = array();
-    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    $arrPostData['messages'][0]['type'] = 'text';
-    $arrPostData['messages'][0]['text'] = 'CXP';
-error_log('jsonData : '.$arrPostData);
+$jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+    },
+    "message":{
+        "text":"'.$message_to_reply.'"
+    }
+}';
 //Encode the array into JSON.
-$jsonDataEncoded = $arrPostData;
+$jsonDataEncoded = $jsonData;
 //Tell cURL that we want to send a POST request.
 curl_setopt($ch, CURLOPT_POST, 1);
 //Attach our encoded JSON string to the POST fields.
