@@ -47,6 +47,7 @@ $jsonData = [
         'text'=>$message_to_reply
     ]
 ];
+
 //Encode the array into JSON.
 $jsonDataEncoded = json_encode($jsonData);
 //Tell cURL that we want to send a POST request.
