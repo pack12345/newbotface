@@ -66,12 +66,12 @@ $ch = curl_init($url);
 //The JSON data.
 
 $jsonData = '{
-    'access_token':'EAASvNkXVo7wBAAZCAZBU4dJBXMCWnoCFCx9sgpLMVZAnUMb3JbqlYehI2bu2rblrSPVurMZCYgqb4mIdHCfVZAz6jcE3aAhQPUjU8CqFiwSJbRZC6SlkZB5WPprBhbwrc5Q2bAE7Az9P1ukzAAYnvBZCWlZCENEd1N7ZAXhC43aZCtiKAZDZD',
+    'access_token':$access_token,
     'recipient':{
         'id': $sender
     },
     'message':{
-        'text':'$message_to_reply'
+        'text':$message_to_reply
     }
 }';
 //Encode the array into JSON.
