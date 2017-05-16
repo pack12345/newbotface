@@ -18,48 +18,20 @@ error_log('facebook hook' );
  error_log('sender  '. $sender );
   $message = $input['entry'][0]['messaging'][0]['message']['text'];
  
-/* 
-$api_key="<mLAP API KEY>";
-$url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
-$json = file_get_contents('https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$message.'"}');
-$data = json_decode($json);
-$isData=sizeof($data);
-if (strpos($message, 'สอนเป็ด') !== false) {
-  if (strpos($message, 'สอนเป็ด') !== false) {
-    $x_tra = str_replace("สอนเป็ด","", $message);
-    $pieces = explode("|", $x_tra);
-    $_question=str_replace("[","",$pieces[0]);
-    $_answer=str_replace("]","",$pieces[1]);
-    //Post New Data
-    $newData = json_encode(
-      array(
-        'question' => $_question,
-        'answer'=> $_answer
-      )
-    );
-    $opts = array(
-      'http' => array(
-          'method' => "POST",
-          'header' => "Content-type: application/json",
-          'content' => $newData
-       )
-    );
-    $context = stream_context_create($opts);
-    $returnValue = file_get_contents($url,false,$context);
-    $message_to_reply = 'ขอบคุณที่สอนเป็ด';
-  }
-}else{
-  if($isData >0){
-   foreach($data as $rec){
-     $message_to_reply = $rec->answer;
-   }
-  }else{
-    $message_to_reply = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนเป็ด[คำถาม|คำตอบ]';
-  }
-}*/
+			$cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$message.'&vsDriver=164&channel=facebook&sessionID='.$sender;
+					
+			error_log($cxpUrl);
+			$chcxp = curl_init($cxpUrl);
+			
+			curl_setopt($chcxp, CURLOPT_CUSTOMREQUEST, "GET");
+			curl_setopt($chcxp, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($chcxp, CURLOPT_FOLLOWLOCATION, 1);
+			$xcpResult = curl_exec($chcxp);
+			curl_close($chcxp);
+
 //API Url
 $url = 'https://graph.facebook.com/v2.6/me/messages';
-$message_to_reply = 'welcome';
+$message_to_reply = $xcpResult;
 error_log('url reply'.$url);
 //Initiate cURL.
 $ch = curl_init($url);
