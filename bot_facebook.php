@@ -6,12 +6,16 @@
     $challenge = $_REQUEST['hub_challenge'];
     $hub_verify_token = $_REQUEST['hub_verify_token'];
   }
+ error_log('hub_verify_token  '. $hub_verify_token );
   if ($hub_verify_token === $verify_token) {
-   echo $challenge;
+    error_log('challenge '.$challenge);
   }
   $input = json_decode(file_get_contents('php://input'), true);
+ error_log('input  '. $input );
   $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
+ error_log('sender  '. $sender );
   $message = $input['entry'][0]['messaging'][0]['message']['text'];
+ error_log('message  '. $message );
   $message_to_reply = '';
 /*
  
