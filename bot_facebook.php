@@ -39,30 +39,33 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 	error_log('url reply'.$url);
 	//Initiate cURL.
 	$ch = curl_init($url);
-	
+	$messages = '';
 	if(substr($xcpResult,0,27)=='  https://www.mx7.com/i/b7e'){
 			error_log('pic');
-		
 			$messages=[
 				'attachment' =>['type' => 'template',
-					'payload' => [ 'template_type' => 'generic',
 						      'elements' => [
-							      [
-								'title' => 'Today - 30 Jun 17',
-								'image_url'=> 'https://www.mx7.com/i/b7e/HdD0Yj.jpg',
-								'subtitle' => 'Everyday Special, Get Cash Back Up to 17 precentage',
-								'buttons' => [
-									 	['type' => 'web_url',
+								 [
+									'title' => 'Today - 30 Jun 17',
+									'image_url'=> 'https://www.mx7.com/i/b7e/HdD0Yj.jpg',
+									'subtitle' => 'Everyday Special, Get Cash Back Up to 17 precentage',
+									'buttons' => [
+										['type' => 'web_url',
 										'title' => 'More information',
 										'url' => 'https://www.kasikornbank.com/EN/promotion/Pages/Supermarket.aspx'
-									  	]
-							    		]
+										]
+									]
 								]
-							  ]
-						    ]
+							]
+						    
 						]
 				];
 						
+	}else{	
+		$messages = [
+			'type' => 'text',
+			'text' => $message_to_reply
+		];
 	}
 
 	//The JSON data.
