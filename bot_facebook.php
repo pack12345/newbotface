@@ -18,9 +18,9 @@ error_log('facebook hook' );
  error_log('sender  '. $sender );
   $message = $input['entry'][0]['messaging'][0]['message']['text'];
  error_log('message  '. $message );
-  $message_to_reply = '';
-/*
- 
+  $message_to_reply = 'test';
+
+/* 
 $api_key="<mLAP API KEY>";
 $url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
 $json = file_get_contents('https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$message.'"}');
@@ -58,7 +58,7 @@ if (strpos($message, 'สอนเป็ด') !== false) {
   }else{
     $message_to_reply = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนเป็ด[คำถาม|คำตอบ]';
   }
-}
+}*/
 //API Url
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
 //Initiate cURL.
@@ -84,5 +84,5 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 //Execute the request
 if(!empty($input['entry'][0]['messaging'][0]['message'])){
     $result = curl_exec($ch);
-}*/
+}
 ?>
