@@ -67,7 +67,7 @@ if (!is_null($events['events'])) {
 							]
 				];
 			}	
-			 else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/ba0"){
+			 else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/b7b"){
 				error_log('pic');
 		
 				$messages=[
@@ -75,7 +75,7 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/ba0/NLFwtM.jpg',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b7b/CQ6y5K.png',
 						'title' => 'Shori Sushi House',
 						'text' => 'Tel: 02-169-1532
 								Opening Hours: 11:00 – 23:00',
@@ -91,7 +91,7 @@ if (!is_null($events['events'])) {
 				  		]
 					];
 			}	
-			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/177"){
+			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/bde"){
 				error_log('pic');
 		
 				$messages=[
@@ -99,7 +99,7 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/177/wfu2Vl.jpg',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bde/2oPh6u.png',
 						'title' => 'Hakone Bangkok',
 						'text' => 'Tel: 02-108-2790
 								Opening Hours: 10:00 – 22:00',
@@ -115,7 +115,7 @@ if (!is_null($events['events'])) {
 				  		]
 					];	
 			}	
-			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/195"){
+			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/1f1"){
 				error_log('pic');
 		
 				$messages=[
@@ -123,7 +123,7 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/195/k8rDeL.jpg',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/1f1/79drKy.png',
 						'title' => 'Yoshino Yama',
 						'text' => 'Tel: 02-259-2582
 								Opening Hours: 17:00 – 01:00',
