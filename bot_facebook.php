@@ -74,7 +74,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 	    'recipient'=>[
 		'id'=> $sender
 	      ],
-	    'message'=>[$message_to_reply]		
+	    'message'=> 'text' => [$message_to_reply]		
 	];
 
 	//Encode the array into JSON.
