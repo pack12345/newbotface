@@ -13,9 +13,7 @@
   $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
   $message = $input['entry'][0]['messaging'][0]['message']['text'];
   $message_to_reply = '';
-/**
- * Some Basic rules to validate incoming messages
- */
+/*
  
 $api_key="<mLAP API KEY>";
 $url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
@@ -80,5 +78,5 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 //Execute the request
 if(!empty($input['entry'][0]['messaging'][0]['message'])){
     $result = curl_exec($ch);
-}
+}*/
 ?>
