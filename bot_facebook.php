@@ -61,10 +61,18 @@ if (strpos($message, 'สอนเป็ด') !== false) {
 }*/
 //API Url
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
+
+error_log('url reply'.$url);
 //Initiate cURL.
 $ch = curl_init($url);
 //The JSON data.
-$jsonData = '{
+/*$data = [
+				'replyToken' => $replyToken,
+				'messages' => [$messages],
+			];
+			$post = json_encode($data);
+*/
+  $jsonData = '{
     "recipient":{
         "id":"'.$sender.'"
     },
@@ -72,6 +80,7 @@ $jsonData = '{
         "text":"'.$message_to_reply.'"
     }
 }';
+error_log('jsonData : '.$jsonData);
 //Encode the array into JSON.
 $jsonDataEncoded = $jsonData;
 //Tell cURL that we want to send a POST request.
