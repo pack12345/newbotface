@@ -59,7 +59,7 @@ if (strpos($message, 'สอนเป็ด') !== false) {
 }*/
 //API Url
 $url = 'https://graph.facebook.com/v2.6/me/messages';
-
+$message_to_reply = 'welcome';
 error_log('url reply'.$url);
 //Initiate cURL.
 $ch = curl_init($url);
