@@ -65,15 +65,15 @@ error_log('url reply'.$url);
 $ch = curl_init($url);
 //The JSON data.
 
-$jsonData = '{
-    'access_token':$access_token,
-    'recipient':{
-        'id': $sender
-    },
-    'message':{
-        'text':$message_to_reply
-    }
-}';
+$jsonData = [
+    'access_token'=>$access_token,
+    'recipient'=>[
+        'id'=> $sender
+      ],
+    'message'=>[
+        'text'=>$message_to_reply
+    ]
+];
 //Encode the array into JSON.
 $jsonDataEncoded = $jsonData;
 //Tell cURL that we want to send a POST request.
