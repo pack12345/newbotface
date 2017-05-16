@@ -17,9 +17,7 @@ error_log('facebook hook' );
   $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
  error_log('sender  '. $sender );
   $message = $input['entry'][0]['messaging'][0]['message']['text'];
- error_log('message  '. $message );
-  $message_to_reply = 'test';
-
+ 
 /* 
 $api_key="<mLAP API KEY>";
 $url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
@@ -72,17 +70,13 @@ $ch = curl_init($url);
 			];
 			$post = json_encode($data);
 */
-  $jsonData = '[
-    	'recipient' => [
-        'id'=> $sender
-    ],
-    'message'=>[
-        'text'=> $message_to_reply
-    ]
-]';
-error_log('jsonData : '.$jsonData);
+$arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนเป็ด[คำถาม|คำตอบ]';
+error_log('jsonData : '.$arrPostData);
 //Encode the array into JSON.
-$jsonDataEncoded = $jsonData;
+$jsonDataEncoded = $arrPostData;
 //Tell cURL that we want to send a POST request.
 curl_setopt($ch, CURLOPT_POST, 1);
 //Attach our encoded JSON string to the POST fields.
