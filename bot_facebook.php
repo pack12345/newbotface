@@ -51,7 +51,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 										 [
 											'title' => 'Today - 30 Jun 17',
 											'image_url'=> 'https://www.mx7.com/i/b7e/HdD0Yj.jpg',
-											'subtitle' => 'Everyday Special, Get Cash Back Up to 17 precentage',
+											'subtitle' => 'Everyday Special, Get Cash Back Up to 17 precentage 7% cash back for THE WISDOM card 4% cash back for other K-Credit Cards',
 											'buttons' => [
 												['type' => 'web_url',
 												'title' => 'More information',
@@ -73,7 +73,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 										 [
 											'title' => 'Shori Sushi House',
 											'image_url'=> 'https://www.mx7.com/i/b7b/CQ6y5K.png',
-											'subtitle' => 'Tel: 02-169-1532<br />Opening Hours: 11:00 – 23:00',
+											'subtitle' => 'Opening Hours: 11:00 – 23:00  Tel: 02-169-1532',
 											'buttons' => [
 												['type' => 'web_url',
 												'title' => 'Location',
@@ -96,7 +96,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 										[
 											'title' => 'Hakone Bangkok',
 											'image_url'=> 'https://www.mx7.com/i/bde/2oPh6u.png',
-											'subtitle' => 'Tel: 02-108-2790<br />Opening Hours: 10:00 – 22:00',
+											'subtitle' => 'Opening Hours: 10:00 – 22:00  Tel: 02-108-2790',
 											'buttons' => [
 												['type' => 'web_url',
 												'title' => 'Location',
@@ -118,7 +118,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 								 [
 									'title' => 'Yoshino Yama',
 									'image_url'=> 'https://www.mx7.com/i/1f1/79drKy.png',
-									'subtitle' => 'Tel: 02-259-2582<br />Opening Hours: 17:00 – 01:00',
+									'subtitle' => 'Opening Hours: 17:00 – 01:00  Tel: 02-259-2582',
 									'buttons' => [
 										['type' => 'web_url',
 										'title' => 'Location',
