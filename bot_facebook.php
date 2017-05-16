@@ -51,7 +51,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 										 [
 											'title' => 'Today - 30 Jun 17',
 											'image_url'=> 'https://www.mx7.com/i/b7e/HdD0Yj.jpg',
-											'subtitle' => 'Everyday Special, Get Cash Back Up to 17 precentage 7% cash back for THE WISDOM card 4% cash back for other K-Credit Cards',
+											'subtitle' => 'Everyday Special,Get Cash Back Up to 17%,4% cash back for other K-Credit Cards',
 											'buttons' => [
 												['type' => 'web_url',
 												'title' => 'More information',
