@@ -42,7 +42,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 	
 	// check if
  	$messages = '';
- 	if(substr($xcpResult,0,27)=='  https://www.mx7.com/i/b7e'){
+ 	if(substr($message_to_reply,0,27)=='  https://www.mx7.com/i/b7e'){
  			error_log('pic');
  			$messages=[
  				'attachment' =>['type' => 'template',
@@ -62,6 +62,69 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 						    
  						]
  				];
+	}else if(substr($message_to_reply,0,27)=='  https://www.mx7.com/i/b7b'){
+ 			error_log('pic');
+ 			$messages=[
+ 				'attachment' =>['type' => 'template',
+ 						      'elements' => [
+ 								 [
+ 									'title' => 'Shori Sushi House',
+ 									'image_url'=> 'https://www.mx7.com/i/b7b/CQ6y5K.png',
+ 									'subtitle' => 'Tel: 02-169-1532
+											Opening Hours: 11:00 – 23:00',
+ 									'buttons' => [
+ 										['type' => 'web_url',
+ 										'title' => 'Location',
+ 										'url' => 'https://goo.gl/maps/jxgfN1aXYzR2'
+ 										]
+ 									]
+ 								]
+ 							]
+						    
+ 						]
+ 				];
+	}else if(substr($message_to_reply,0,27)=='  https://www.mx7.com/i/bde'){
+		error_log('pic');
+		$messages=[
+			'attachment' =>['type' => 'template',
+					      'elements' => [
+							 [
+								'title' => 'Hakone Bangkok',
+								'image_url'=> 'https://www.mx7.com/i/bde/2oPh6u.png',
+								'subtitle' => 'Tel: 02-108-2790
+										Opening Hours: 10:00 – 22:00',
+								'buttons' => [
+									['type' => 'web_url',
+									'title' => 'Location',
+									'url' => 'https://goo.gl/maps/EJQUDLLtugE2'
+									]
+								]
+							]
+						]
+
+					]
+			];
+	}else if(substr($message_to_reply,0,27)=='  https://www.mx7.com/i/1f1'){
+	error_log('pic');
+	$messages=[
+		'attachment' =>['type' => 'template',
+				      'elements' => [
+						 [
+							'title' => 'Yoshino Yama',
+							'image_url'=> 'https://www.mx7.com/i/1f1/79drKy.png',
+							'subtitle' => 'Tel: 02-259-2582
+									Opening Hours: 17:00 – 01:00',
+							'buttons' => [
+								['type' => 'web_url',
+								'title' => 'Location',
+								'url' => 'https://goo.gl/maps/FgVPc8yddDo'
+								]
+							]
+						]
+					]
+
+				]
+		];
 						
  	}else{	
 		$messages = [
