@@ -1,6 +1,6 @@
 <?php
 
-error_log('facebook hook' );
+error_log('facebook hook ');
 
   $access_token = 'EAASvNkXVo7wBAAZCAZBU4dJBXMCWnoCFCx9sgpLMVZAnUMb3JbqlYehI2bu2rblrSPVurMZCYgqb4mIdHCfVZAz6jcE3aAhQPUjU8CqFiwSJbRZC6SlkZB5WPprBhbwrc5Q2bAE7Az9P1ukzAAYnvBZCWlZCENEd1N7ZAXhC43aZCtiKAZDZD';
   $verify_token = 'cxp_poc';
@@ -46,7 +46,9 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 	    'recipient'=>[
 		'id'=> $sender
 	      ],
-	    'message'=> 'text' => $message_to_reply		
+	    'message'=> [
+		    'text' => $message_to_reply	
+		    ]
 	];
 
 	//Encode the array into JSON.
