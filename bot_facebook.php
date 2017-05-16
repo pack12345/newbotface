@@ -72,14 +72,14 @@ $ch = curl_init($url);
 			];
 			$post = json_encode($data);
 */
-  $jsonData = '{
-    "recipient":{
-        "id":"'.$sender.'"
-    },
-    "message":{
-        "text":"'.$message_to_reply.'"
-    }
-}';
+  $jsonData = '[
+    	'recipient' => [
+        'id'=> $sender
+    ],
+    'message'=>[
+        'text'=> $message_to_reply
+    ]
+]';
 error_log('jsonData : '.$jsonData);
 //Encode the array into JSON.
 $jsonDataEncoded = $jsonData;
