@@ -66,7 +66,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 // 	}else{	
 		$messages = [
 			'text' => $message_to_reply
-// 		];
+ 		];
 // 	}
 
 
