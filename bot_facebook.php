@@ -73,7 +73,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 										 [
 											'title' => 'Shori Sushi House',
 											'image_url'=> 'https://www.mx7.com/i/b7b/CQ6y5K.png',
-											'subtitle' => 'Tel: 02-169-1532 \n Opening Hours: 11:00 – 23:00',
+											'subtitle' => 'Tel: 02-169-1532\r\nOpening Hours: 11:00 – 23:00',
 											'buttons' => [
 												['type' => 'web_url',
 												'title' => 'Location',
@@ -96,7 +96,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 										[
 											'title' => 'Hakone Bangkok',
 											'image_url'=> 'https://www.mx7.com/i/bde/2oPh6u.png',
-											'subtitle' => 'Tel: 02-108-2790 \n Opening Hours: 10:00 – 22:00',
+											'subtitle' => 'Tel: 02-108-2790\r\nOpening Hours: 10:00 – 22:00',
 											'buttons' => [
 												['type' => 'web_url',
 												'title' => 'Location',
@@ -118,7 +118,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 								 [
 									'title' => 'Yoshino Yama',
 									'image_url'=> 'https://www.mx7.com/i/1f1/79drKy.png',
-									'subtitle' => 'Tel: 02-259-2582 \n Opening Hours: 17:00 – 01:00',
+									'subtitle' => 'Tel: 02-259-2582\r\nOpening Hours: 17:00 – 01:00',
 									'buttons' => [
 										['type' => 'web_url',
 										'title' => 'Location',
