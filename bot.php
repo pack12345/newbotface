@@ -11,7 +11,7 @@ if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
-		error_log('userid  '.$event['source'].userId);
+		error_log('userid  '.$event['source']['userId']);
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
 			error_log('message '.$event['message']);
