@@ -146,7 +146,6 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bde/2oPh6u.png',
 						'title' => 'Hakone Bangkok',
 						'text' => 'Tel: 02-108-2790
 								Opening Hours: 10:00 – 22:00',
