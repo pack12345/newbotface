@@ -137,6 +137,48 @@ if (!is_null($events['events'])) {
 
 				  		]
 					];
+			}	
+			else if(substr($xcpResult,0,27)=="  https://www.skyscanner.ne"){
+				error_log('pic');
+		
+				$messages=[
+  					'type'=> 'template',
+  					'altText' => 'this is a buttons template',
+ 					'template' => [
+						'type'=> 'buttons',
+						'title' => 'Skyscanner Flights',
+						'actions' => [
+							
+							  [
+							    'type' => 'uri',
+							    'label' => 'Check It',
+							    'uri' => 'https://www.skyscanner.net/'
+							  ]
+						      ]
+
+				  		]
+					];
+			}	
+			else if(substr($xcpResult,0,27)=="  https://www.hotelscombine"){
+				error_log('pic');
+		
+				$messages=[
+  					'type'=> 'template',
+  					'altText' => 'this is a buttons template',
+ 					'template' => [
+						'type'=> 'buttons',
+						'title' => 'Hotels Combined',
+						'actions' => [
+							
+							  [
+							    'type' => 'uri',
+							    'label' => 'Check It',
+							    'uri' => 'https://www.hotelscombined.co.th'
+							  ]
+						      ]
+
+				  		]
+					];
 		
 				
 			}else{	
