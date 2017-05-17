@@ -152,7 +152,7 @@ if (!is_null($events['events'])) {
 							
 							  [
 							    'type' => 'uri',
-							    'label' => 'Location',
+							    'label' => 'Check It',
 							    'uri' => 'https://www.skyscanner.net'
 							  ]
 						      ]
@@ -174,7 +174,7 @@ if (!is_null($events['events'])) {
 							
 							  [
 							    'type' => 'uri',
-							    'label' => 'Location',
+							    'label' => 'Check It',
 							    'uri' => 'https://www.hotelscombined.co.th'
 							  ]
 						      ]
