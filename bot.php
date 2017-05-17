@@ -147,7 +147,7 @@ if (!is_null($events['events'])) {
  					'template' => [
 						'type'=> 'buttons',
 						'title' => 'Skyscanner Flights',
-						'text' => 'Skyscanner compares million of flight find you cheapest deal',
+						'text' => 'compares millions of flights to find you the cheapest deal',
 						'actions' => [
 							
 							  [
