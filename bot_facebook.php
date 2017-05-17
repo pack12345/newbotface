@@ -41,7 +41,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 	$ch = curl_init($url);
 	
 	// check if
- 	$messages = '';
+ 	//$messages = '';
  	if(substr($message_to_reply,0,27)=='  https://www.mx7.com/i/b7e'){
  			error_log('pic');
  			$messages=[
