@@ -15,13 +15,18 @@ error_log('facebook hook ');
   if ($hub_verify_token === $verify_token) {
     	error_log('challenge '.$challenge);
   }
+
   $input = json_decode(file_get_contents('php://input'), true);
  error_log('input  '. $input );
   $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
  error_log('sender  '. $sender );
   $message = $input['entry'][0]['messaging'][0]['message']['text'];
 error_log('XXXXXmessage :  '. $message );
- 
+	if($message==''){
+		return;
+	}
+	
+
 $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$message.'&vsDriver=164&channel=facebook&sessionID=EAASvNkXVo7wBAAZCAZBU4dJBXMCWnoCF';
 					
 	error_log($cxpUrl);
