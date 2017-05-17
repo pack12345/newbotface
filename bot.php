@@ -146,15 +146,14 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'title' => 'Hakone Bangkok',
-						'text' => 'Tel: 02-108-2790
-								Opening Hours: 10:00 – 22:00',
+						'title' => 'Skyscanner Flights',
+						'text' => 'Skyscanner compares millions of flights to find you the cheapest deal, fast',
 						'actions' => [
 							
 							  [
 							    'type' => 'uri',
 							    'label' => 'Location',
-							    'uri' => 'https://goo.gl/maps/EJQUDLLtugE2'
+							    'uri' => 'https://www.skyscanner.net'
 							  ]
 						      ]
 
