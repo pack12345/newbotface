@@ -137,6 +137,46 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 					      ]
 				]
 		];
+	}else if(substr($message_to_reply,0,27)=='  https://www.skyscanner.ne'){
+	error_log('pic');
+	$messages=[
+		'attachment' =>['type' => 'template',
+				'payload' => ['template_type' => 'generic',
+					      	'elements' => [
+								 [
+									'title' => 'Skyscanner Flights',
+									'buttons' => [
+										['type' => 'web_url',
+										'title' => 'Check It',
+										'url' => 'https://www.skyscanner.net/'
+										]
+									]
+								]
+							]
+					      
+					      ]
+				]
+		];
+	}else if(substr($message_to_reply,0,27)=='  https://www.hotelscombine'){
+	error_log('pic');
+	$messages=[
+		'attachment' =>['type' => 'template',
+				'payload' => ['template_type' => 'generic',
+					      	'elements' => [
+								 [
+									'title' => 'Hotels Combined',
+									'buttons' => [
+										['type' => 'web_url',
+										'title' => 'Check It',
+										'url' => 'https://www.hotelscombined.co.th'
+										]
+									]
+								]
+							]
+					      
+					      ]
+				]
+		];
 						
  	}else{	
 		$messages = [
