@@ -137,7 +137,7 @@ if (!is_null($events['events'])) {
 
 				  		]
 					];	
-				}	
+			}	
 			else if(substr($xcpResult,0,27)=="  https://www.skyscanner.ne"){
 				error_log('pic');
 		
@@ -147,7 +147,7 @@ if (!is_null($events['events'])) {
  					'template' => [
 						'type'=> 'buttons',
 						'title' => 'Skyscanner Flights',
-						'text' => 'Skyscanner compares millions of flights to find you the cheapest deal, fast',
+						'text' => 'Skyscanner compares million of flight find you cheapest deal',
 						'actions' => [
 							
 							  [
@@ -159,7 +159,28 @@ if (!is_null($events['events'])) {
 
 				  		]
 					];
+				}	
+			else if(substr($xcpResult,0,27)=="  https://www.hotelscombine"){
+				error_log('pic');
 		
+				$messages=[
+  					'type'=> 'template',
+  					'altText' => 'this is a buttons template',
+ 					'template' => [
+						'type'=> 'buttons',
+						'title' => 'SHotels Combined',
+						'text' => 'The best hotel deals from all the top travel site Guaranteed',
+						'actions' => [
+							
+							  [
+							    'type' => 'uri',
+							    'label' => 'Location',
+							    'uri' => 'https://www.hotelscombined.co.th'
+							  ]
+						      ]
+
+				  		]
+					];
 		
 			}else{	
 				$messages = [
