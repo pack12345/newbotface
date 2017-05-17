@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
 			//$text = 'hello world';
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-
+			error_log('replyToken'.$replyToken);
 			// Build message to reply back
 			// make GET
 			$sessionID = session_id();
