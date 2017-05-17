@@ -145,6 +145,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 					      	'elements' => [
 								 [
 									'title' => 'Skyscanner Flights',
+									'subtitle' => 'Skyscanner compares millions of flights to find you the cheapest deal, fast.',
 									'buttons' => [
 										['type' => 'web_url',
 										'title' => 'Check It',
@@ -168,6 +169,7 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 									'buttons' => [
 										['type' => 'web_url',
 										'title' => 'Check It',
+										'subtitle' => 'The best hotel deals from all the top travel sites. Guaranteed',
 										'url' => 'https://www.hotelscombined.co.th'
 										]
 									]
