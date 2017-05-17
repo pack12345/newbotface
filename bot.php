@@ -137,7 +137,7 @@ if (!is_null($events['events'])) {
 
 				  		]
 					];	
-			}	
+				}	
 			else if(substr($xcpResult,0,27)=="  https://www.skyscanner.ne"){
 				error_log('pic');
 		
@@ -146,20 +146,22 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'title' => 'Skyscanner Flights',
 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bde/2oPh6u.png',
-						'text' => 'Skyscanner compares millions of flights to find you the cheapest deal, fast.',
+						'title' => 'Hakone Bangkok',
+						'text' => 'Tel: 02-108-2790
+								Opening Hours: 10:00 – 22:00',
 						'actions' => [
 							
 							  [
 							    'type' => 'uri',
-							    'label' => 'Check It',
-							    'uri' => 'https://www.skyscanner.net'
+							    'label' => 'Location',
+							    'uri' => 'https://goo.gl/maps/EJQUDLLtugE2'
 							  ]
 						      ]
 
 				  		]
 					];
+		
 		
 			}else{	
 				$messages = [
