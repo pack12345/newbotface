@@ -11,7 +11,7 @@ if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
-		error_log('userid  '.$event['source']['userId']);
+		$userID = $event['source']['userId'];
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
 			error_log('message '.$event['message']);
@@ -25,7 +25,7 @@ if (!is_null($events['events'])) {
 			$sessionID = session_id();
 			error_log('session '.$sessionID);
 			$postCXP = json_encode($para);
-			$cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$text.'&vsDriver=164&channel=line&sessionID=1234567890';
+			$cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$text.'&vsDriver=164&channel=line&sessionID='.$userID;
 			
 			
 			error_log($cxpUrl);
