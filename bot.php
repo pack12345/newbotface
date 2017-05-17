@@ -136,7 +136,8 @@ if (!is_null($events['events'])) {
 						      ]
 
 				  		]
-					];
+					];	
+	
 		
 			}else{	
 				$messages = [
