@@ -48,7 +48,12 @@ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@Syste
 	
 	// check if
  	$messages = '';
- 	if(substr($message_to_reply,0,27)=='  https://www.mx7.com/i/b7e'){
+	if(strstr($message_to_reply) == '<,[,{,*,#'){
+		error_log('---XXXXXXX test new function');
+	}
+		
+ //	if(substr($message_to_reply,0,27)=='  https://www.mx7.com/i/b7e'){
+ 	if(substr($message_to_reply,0,27)=='  <https://www.mx7.com/i/b7'){
  			error_log('pic');
  			$messages=[
  				'attachment' =>['type' => 'template',
