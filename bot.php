@@ -42,32 +42,32 @@ if (!is_null($events['events'])) {
 			
 			// inint value
 			$messages = '';
-			$imageURL = "";
-			$title = "";
-			$subTitle = "";
-			$titleButton = "";
-			$webURL = "";
+			$imageURL = '';
+			$title = '';
+			$subTitle = '';
+			$titleButton = '';
+			$webURL = '';
 	
 			// convert value 
 			
-			$result = explode("\n",$xcpResult);
+			$resultMes = explode("\n",$xcpResult);
 			
-			for($i = 0; $i < count($result) ; $i++){
+			for($i = 0; $i < count($resultMes) ; $i++){
 
-				if(substr($result[$i],0,1) == "!"){
-					$imageURL  = trim($result[$i],"!");
+				if(substr($resultMes[$i],0,1) == "!"){
+					$imageURL  = trim($resultMes[$i],"!");
 
-				}elseif (substr($result[$i],0,1) == "["){
-					$title  = trim($result[$i],"[");
+				}elseif (substr($resultMes[$i],0,1) == "["){
+					$title  = trim($resultMes[$i],"[");
 
-				}elseif (substr($result[$i],0,1) == "{"){
-					$subTitle   = trim($result[$i],"{");
+				}elseif (substr($resultMes[$i],0,1) == "{"){
+					$subTitle   = trim($resultMes[$i],"{");
 
-				}elseif (substr($result[$i],0,1) == "*"){
-					$titleButton   = trim($result[$i],"*");
+				}elseif (substr($resultMes[$i],0,1) == "*"){
+					$titleButton   = trim($resultMes[$i],"*");
 
-				}elseif (substr($result[$i],0,1) == "#"){
-					$webURL    = trim($result[$i],"#");
+				}elseif (substr($resultMes[$i],0,1) == "#"){
+					$webURL    = trim($resultMes[$i],"#");
 
 				}else{
 					echo "Not have condition fix.";
@@ -78,13 +78,15 @@ if (!is_null($events['events'])) {
 			
 			$symResult = "";
 			$symImageURL = "!";
+			// 40 charpter
 			$symTitle = "[";
+			// 40 charpter
 			$symSubtitle = "{";
 			$symTitleBN = "*";
 			$symWebURL = "#";
 // 			$symMessOnly = "(";
 
-			foreach ($result as $value) {
+			foreach ($resultMes as $value) {
 			    $symResult .= substr($value, 0, 1);
 			}
 			
