@@ -38,156 +38,116 @@ if (!is_null($events['events'])) {
 			curl_close($chcxp);
 			error_log($xcpResult);	
 			//error_log(':'.substr($xcpResult,0,6).':');
-			error_log('XXXX:'.substr($xcpResult,0,27).'');
-			$messages = '';
+			//error_log('XXXX:'.substr($xcpResult,0,27).'');
 			
-		if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/b7e"){
-			error_log('pic');
-		/*	$messages = [
-					'type' => 'image',
-					'originalContentUrl' => $xcpResult,
-					'previewImageUrl' =>  $xcpResult
-				];*/
-			$messages=['type'=> 'template',
+			// inint value
+			$messages = '';
+			$imageURL = '';
+			$title = '';
+			$subTitle = '';
+			$titleButton = '';
+			$webURL = '';
+	
+			// convert value 
+			
+			$resultMes = explode("\n",$xcpResult);
+			
+			for($i = 0; $i < count($resultMes) ; $i++){
+
+				if(substr($resultMes[$i],0,1) == "!"){
+					$imageURL  = trim($resultMes[$i],"!");
+
+				}elseif (substr($resultMes[$i],0,1) == "["){
+					$title  = trim($resultMes[$i],"[");
+
+				}elseif (substr($resultMes[$i],0,1) == "{"){
+					$subTitle   = trim($resultMes[$i],"{");
+
+				}elseif (substr($resultMes[$i],0,1) == "*"){
+					$titleButton   = trim($resultMes[$i],"*");
+
+				}elseif (substr($resultMes[$i],0,1) == "#"){
+					$webURL    = trim($resultMes[$i],"#");
+
+				}else{
+					echo "Not have condition fix.";
+				}
+			}
+			
+			// set message to type
+			
+			$symResult = "";
+			$symImageURL = "!";
+			// 40 charpter
+			$symTitle = "[";
+			// 40 charpter
+			$symSubtitle = "{";
+			$symTitleBN = "*";
+			$symWebURL = "#";
+// 			$symMessOnly = "(";
+
+			foreach ($resultMes as $value) {
+			    $symResult .= substr($value, 0, 1);
+			}
+			
+			$checkImageURL = strpos($symResult, $symImageURL);
+			$checkTitle = strpos($symResult, $symTitle);
+			$checkSubtitle = strpos($symResult, $symSubtitle);
+			$checkTitleBN = strpos($symResult, $symTitleBN);
+			$checkWebURL = strpos($symResult, $symWebURL);
+			$checkMessOnly = strpos($symResult, $symMessOnly);
+
+			
+			if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+				
+			    	$messages=['type'=> 'template',
 					'altText' => 'this is a buttons template',
 					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b7e/HdD0Yj.jpg',
-						'title' => 'Today - 30 Jun 17',
-						'text' => 'Everyday Special, Get Cash Back Up to 17 precentage',
+						'thumbnailImageUrl'=> $imageURL,
+						'title' => $title,
+						'text' => $subTitle,
 						'actions' => [
-
 								 ['type' => 'uri',
-									'label' => 'More information',
-									'uri' => 'https://www.kasikornbank.com/EN/promotion/Pages/Supermarket.aspx'
+									'label' => $titleButton,
+									'uri' => $webURL
 								  ]
 							     ]
-
 							]
-				];
-			}	
-			 else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/b7b"){
-				error_log('pic');
-		
-				$messages=[
-  					'type'=> 'template',
-  					'altText' => 'this is a buttons template',
- 					'template' => [
-						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b7b/CQ6y5K.png',
-						'title' => 'Shori Sushi House',
-						'text' => 'Tel: 02-169-1532
-								Opening Hours: 11:00 – 23:00',
-						'actions' => [
-							
-							  [
-							    'type' => 'uri',
-							    'label' => 'Location',
-							    'uri' => 'https://goo.gl/maps/jxgfN1aXYzR2'
-							  ]
-						      ]
-
-				  		]
 					];
-			}	
-			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/bde"){
-				error_log('pic');
-		
-				$messages=[
-  					'type'=> 'template',
-  					'altText' => 'this is a buttons template',
- 					'template' => [
-						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bde/2oPh6u.png',
-						'title' => 'Hakone Bangkok',
-						'text' => 'Tel: 02-108-2790
-								Opening Hours: 10:00 – 22:00',
-						'actions' => [
-							
-							  [
-							    'type' => 'uri',
-							    'label' => 'Location',
-							    'uri' => 'https://goo.gl/maps/EJQUDLLtugE2'
-							  ]
-						      ]
-
-				  		]
-					];	
-			}	
-			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/1f1"){
-				error_log('pic');
-		
-				$messages=[
-  					'type'=> 'template',
-  					'altText' => 'this is a buttons template',
- 					'template' => [
-						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/1f1/79drKy.png',
-						'title' => 'Yoshino Yama',
-						'text' => 'Tel: 02-259-2582
-								Opening Hours: 17:00 – 01:00',
-						'actions' => [
-							
-							  [
-							    'type' => 'uri',
-							    'label' => 'Location',
-							    'uri' => 'https://goo.gl/maps/FgVPc8yddDo'
-							  ]
-						      ]
-
-				  		]
-					];	
-			}	
-			else if(substr($xcpResult,0,27)=="  https://www.skyscanner.ne"){
-				error_log('pic');
-		
-				$messages=[
-  					'type'=> 'template',
-  					'altText' => 'this is a buttons template',
- 					'template' => [
-						'type'=> 'buttons',
-						'title' => 'Skyscanner Flights',
-						'text' => 'compares millions of flights to find you the cheapest deal',
-						'actions' => [
-							
-							  [
-							    'type' => 'uri',
-							    'label' => 'Check It',
-							    'uri' => 'https://www.skyscanner.net'
-							  ]
-						      ]
-
-				  		]
-					];
-				}	
-			else if(substr($xcpResult,0,27)=="  https://www.hotelscombine"){
-				error_log('pic');
-		
-				$messages=[
-  					'type'=> 'template',
-  					'altText' => 'this is a buttons template',
- 					'template' => [
-						'type'=> 'buttons',
-						'title' => 'SHotels Combined',
-						'text' => 'The best hotel deals from all the top travel site Guaranteed',
-						'actions' => [
-							
-							  [
-							    'type' => 'uri',
-							    'label' => 'Check It',
-							    'uri' => 'https://www.hotelscombined.co.th'
-							  ]
-						      ]
-
-				  		]
-					];
-		
-			}else{	
-				$messages = [
-					'type' => 'text',
-					'text' => $xcpResult
-				];
 			}
+			
+
+			}elseif (($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+
+			    echo "Template not have image";
+
+			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
+			    echo "Template not have button";
+
+			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
+			    echo "Template not have title";
+
+			}elseif (($checkImageURL !== false) && ($checkTitle !== false)) {
+			    echo "Template not have subtitle and button";
+
+			}elseif (($checkImageURL !== false)) {
+			    echo "Send image only";
+
+			}elseif (($checkMessOnly !== false)) {
+			    echo "Send message only";
+
+			}else{
+				$messages = [
+				'type' => 'text',
+				'text' => $xcpResult];
+			
+				//ho "Not have condition fix.";
+			}
+			
+			
+			
+		
 			error_log('message : '.$messages);	
 			// Make a POST Request to Messaging API to reply to sender
 			 $url = 'https://api.line.me/v2/bot/message/reply';
