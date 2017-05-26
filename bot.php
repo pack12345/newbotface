@@ -60,8 +60,8 @@ if (!is_null($events['events'])) {
 				}elseif (substr($resultMes[$i],0,1) == "["){
 					$title  = trim($resultMes[$i],"[");
 
-				}elseif (substr($resultMes[$i],0,1) == "\"){
-					$subTitle   = trim($resultMes[$i],"\");
+				}elseif (substr($resultMes[$i],0,1) == "/"){
+					$subTitle   = trim($resultMes[$i],"/");
 
 				}elseif (substr($resultMes[$i],0,1) == "*"){
 					$titleButton   = trim($resultMes[$i],"*");
@@ -81,7 +81,7 @@ if (!is_null($events['events'])) {
 			// 40 charpter
 			$symTitle = "[";
 			// 40 charpter
-			$symSubtitle = "\";
+			$symSubtitle = "/";
 			$symTitleBN = "*";
 			$symWebURL = "#";
 // 			$symMessOnly = "(";
