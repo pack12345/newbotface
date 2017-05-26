@@ -72,7 +72,7 @@ if (!is_null($events['events'])) {
 				}else{
 					echo "Not have condition fix.";
 				}
-			};
+			}
 			
 			// set message to type
 			
@@ -87,7 +87,7 @@ if (!is_null($events['events'])) {
 // 			$symMessOnly = "(";
 
 			foreach ($resultMes as $value) {
-			    $symResult .= substr($value, 0, 1);
+			    $symResult .= substr($value, 0, 1)
 			}
 			
 			$checkImageURL = strpos($symResult, $symImageURL);
