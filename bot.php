@@ -72,7 +72,7 @@ if (!is_null($events['events'])) {
 				}else{
 					echo "Not have condition fix.";
 				}
-			}
+			};
 			
 			// set message to type
 			
@@ -81,7 +81,7 @@ if (!is_null($events['events'])) {
 			// 40 charpter
 			$symTitle = "[";
 			// 40 charpter
-			$symSubtitle = "{";
+			$symSubtitle = "\";
 			$symTitleBN = "*";
 			$symWebURL = "#";
 // 			$symMessOnly = "(";
@@ -115,9 +115,7 @@ if (!is_null($events['events'])) {
 							     ]
 							]
 					];
-			}
-			
-
+		
 			}elseif (($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 
 			    echo "Template not have image";
@@ -174,3 +172,4 @@ if (!is_null($events['events'])) {
 }
 echo "OK";
 ?>
+
