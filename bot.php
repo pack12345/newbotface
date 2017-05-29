@@ -90,7 +90,7 @@ for($i = 0; $i < count($result) ; $i++){
 	}else{
 	
 		echo "Not have condition fix.";
-		$messageDir = $xcpResult;
+		$messageDir = implode("\n", $result);
 	}
 	
 	
