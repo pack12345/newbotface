@@ -129,13 +129,13 @@ error_log('facebook hook ');
  						'payload' => ['template_type' => 'generic',
  							      	'elements' => [
  										 [
- 											'title' => '$title',
-											'image_url'=> '$imageURL',
- 											'subtitle' => '$subTitle',
+ 											'title' => $title,
+											'image_url'=> $imageURL,
+ 											'subtitle' => $subTitle,
  											'buttons' => [
  												['type' => 'web_url',
- 												'title' => '$titleButton',
- 												'url' => '$webURL'
+ 												'title' => $titleButton,
+ 												'url' => $webURL
  												]
  											]
  										]
@@ -153,13 +153,12 @@ error_log('facebook hook ');
  						'payload' => ['template_type' => 'generic',
  							      	'elements' => [
  										 [
- 											'title' => '$title',
-											'image_url'=> '$imageURL',
- 											'subtitle' => '$subTitle',
+ 											'title' => $title,
+ 											'subtitle' => $subTitle,
  											'buttons' => [
  												['type' => 'web_url',
- 												'title' => '$titleButton',
- 												'url' => '$webURL'
+ 												'title' => $titleButton,
+ 												'url' => $webURL
  												]
  											]
  										]
@@ -171,52 +170,77 @@ error_log('facebook hook ');
 
 			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
 			    error_log("Template not have button");
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'thumbnailImageUrl'=> $imageURL,
-									'title' => $title,
-									'text' => $subTitle
+			$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+ 											'title' => $title,
+											'image_url'=> $imageURL,
+ 											'subtitle' => $subTitle
+ 											
+ 										]
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
 
-										]
-								];
 
 			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
 			    error_log("Template not have title");
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'thumbnailImageUrl'=> $imageURL,
-									'text' => $subTitle
+				$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+											'image_url'=> $imageURL,
+ 											'subtitle' => $subTitle,
+ 											
+ 										]
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
 
-										]
-								];
 
 			}elseif (($checkImageURL !== false) && ($checkTitle !== false)) {
 			    error_log("Template not have subtitle and button");
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'thumbnailImageUrl'=> $imageURL,
-									'title' => $title
+				$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+ 											'title' => $title,
+											'image_url'=> $imageURL
+ 											
+ 										]
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
 
-
-										]
-								];
 
 			}elseif (($checkImageURL !== false)) {
 			    error_log("Send image only");
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'thumbnailImageUrl'=> $imageURL
+				$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+ 										
+											'image_url'=> $imageURL
+ 											
+ 										
+ 										]
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
 
-										]
-								];
 
 			}elseif (($checkMessOnly !== false)) {
 			    error_log("Send message only");
