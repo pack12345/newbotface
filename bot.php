@@ -41,184 +41,184 @@ if (!is_null($events['events'])) {
 			error_log('XXXX:'.substr($xcpResult,0,27).'');
 			$messages = '';
 			
-			
-$result = explode("\n",$xcpResult);
 
-$symResult = "";
+			$result = explode("\n",$xcpResult);
 
-foreach ($result as $value) {
-    $symResult .= substr($value, 0, 1);
-}
+			$symResult = "";
 
-
-$imageURL = "";
-$title = "";
-$subTitle = "";
-$titleButton = "";
-$webURL = "";
-$messages = "";
+			foreach ($result as $value) {
+			    $symResult .= substr($value, 0, 1);
+			}
 
 
-for($i = 0; $i < count($result) ; $i++){
-	
-	
-	if(substr($result[$i],0,1) == "!"){
-		 
-		$imageURL  = trim($result[$i],"!");
-		 error_log($imageURL);
-		
-		
-	}elseif (substr($result[$i],0,1) == "["){
-		 
-		$title  = trim($result[$i],"[");
-		error_log($title);
-	
-		
-	}elseif (substr($result[$i],0,1) == "{"){
-		 
-		$subTitle   = trim($result[$i],"{");
-		error_log($subTitle);
-		
-		
-	}elseif (substr($result[$i],0,1) == "*"){
-		 
-		$titleButton   = trim($result[$i],"*");
-		error_log($titleButton);
-	
-
-	}elseif (substr($result[$i],0,1) == "#"){
-		 
-		$webURL    = trim($result[$i],"#");
-		error_log($webURL);
-	
-		
-	}else{
-	
-		error_log("Not have condition fix2.");
-		$messageDir = implode("\n", $result);
-	}
-	
-	
-}
-
-$symImageURL = "!";
-$symTitle = "[";
-$symSubtitle = "{";
-$symTitleBN = "*";
-$symWebURL = "#";
-$symMessOnly = "(";
+			$imageURL = "";
+			$title = "";
+			$subTitle = "";
+			$titleButton = "";
+			$webURL = "";
+			$messages = "";
 
 
-$checkImageURL = strpos($symResult, $symImageURL);
-$checkTitle = strpos($symResult, $symTitle);
-$checkSubtitle = strpos($symResult, $symSubtitle);
-$checkTitleBN = strpos($symResult, $symTitleBN);
-$checkWebURL = strpos($symResult, $symWebURL);
-$checkMessOnly = strpos($symResult, $symMessOnly);
+			for($i = 0; $i < count($result) ; $i++){
 
 
-if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
-    error_log("Template have all");
-	
-	$messages=['type'=> 'template',
-					'altText' => 'this is a buttons template',
-					'template' => [
-						'type'=> 'buttons',
-						'thumbnailImageUrl'=> $imageURL,
-						'title' => $title,
-						'text' => $subTitle,
-						'actions' => [
-								 ['type' => 'uri',
-									'label' => $titleButton,
-									'uri' => $webURL
-								  ]
-							     ]
-							]
+				if(substr($result[$i],0,1) == "!"){
+
+					$imageURL  = trim($result[$i],"!");
+					 error_log($imageURL);
+
+
+				}elseif (substr($result[$i],0,1) == "["){
+
+					$title  = trim($result[$i],"[");
+					error_log($title);
+
+
+				}elseif (substr($result[$i],0,1) == "{"){
+
+					$subTitle   = trim($result[$i],"{");
+					error_log($subTitle);
+
+
+				}elseif (substr($result[$i],0,1) == "*"){
+
+					$titleButton   = trim($result[$i],"*");
+					error_log($titleButton);
+
+
+				}elseif (substr($result[$i],0,1) == "#"){
+
+					$webURL    = trim($result[$i],"#");
+					error_log($webURL);
+
+
+				}else{
+
+					error_log("Not have condition fix2.");
+					$messageDir = implode("\n", $result);
+				}
+
+
+			}
+
+			$symImageURL = "!";
+			$symTitle = "[";
+			$symSubtitle = "{";
+			$symTitleBN = "*";
+			$symWebURL = "#";
+			$symMessOnly = "(";
+
+
+			$checkImageURL = strpos($symResult, $symImageURL);
+			$checkTitle = strpos($symResult, $symTitle);
+			$checkSubtitle = strpos($symResult, $symSubtitle);
+			$checkTitleBN = strpos($symResult, $symTitleBN);
+			$checkWebURL = strpos($symResult, $symWebURL);
+			$checkMessOnly = strpos($symResult, $symMessOnly);
+
+
+			if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+			    error_log("Template have all");
+
+				$messages=['type'=> 'template',
+								'altText' => 'this is a buttons template',
+								'template' => [
+									'type'=> 'buttons',
+									'thumbnailImageUrl'=> $imageURL,
+									'title' => $title,
+									'text' => $subTitle,
+									'actions' => [
+											 ['type' => 'uri',
+												'label' => $titleButton,
+												'uri' => $webURL
+											  ]
+										     ]
+										]
+								];
+
+			}elseif (($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+
+			    error_log("Template not have image");
+				$messages=['type'=> 'template',
+								'altText' => 'this is a buttons template',
+								'template' => [
+									'type'=> 'buttons',
+									'title' => $title,
+									'text' => $subTitle,
+									'actions' => [
+											 ['type' => 'uri',
+												'label' => $titleButton,
+												'uri' => $webURL
+											  ]
+										     ]
+										]
+								];
+
+			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
+			    error_log("Template not have button");
+				$messages=['type'=> 'template',
+								'altText' => 'this is a buttons template',
+								'template' => [
+									'type'=> 'buttons',
+									'thumbnailImageUrl'=> $imageURL,
+									'title' => $title,
+									'text' => $subTitle
+
+										]
+								];
+
+			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
+			    error_log("Template not have title");
+				$messages=['type'=> 'template',
+								'altText' => 'this is a buttons template',
+								'template' => [
+									'type'=> 'buttons',
+									'thumbnailImageUrl'=> $imageURL,
+									'text' => $subTitle
+
+										]
+								];
+
+			}elseif (($checkImageURL !== false) && ($checkTitle !== false)) {
+			    error_log("Template not have subtitle and button");
+				$messages=['type'=> 'template',
+								'altText' => 'this is a buttons template',
+								'template' => [
+									'type'=> 'buttons',
+									'thumbnailImageUrl'=> $imageURL,
+									'title' => $title
+
+
+										]
+								];
+
+			}elseif (($checkImageURL !== false)) {
+			    error_log("Send image only");
+				$messages=['type'=> 'template',
+								'altText' => 'this is a buttons template',
+								'template' => [
+									'type'=> 'buttons',
+									'thumbnailImageUrl'=> $imageURL
+
+										]
+								];
+
+			}elseif (($checkMessOnly !== false)) {
+			    error_log("Send message only");
+					$messages = [
+						'type' => 'text',
+						'text' => $messageDir
 					];
-	
-}elseif (($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 
-    error_log("Template not have image");
-	$messages=['type'=> 'template',
-					'altText' => 'this is a buttons template',
-					'template' => [
-						'type'=> 'buttons',
-						'title' => $title,
-						'text' => $subTitle,
-						'actions' => [
-								 ['type' => 'uri',
-									'label' => $titleButton,
-									'uri' => $webURL
-								  ]
-							     ]
-							]
-					];
+			}else{
 
-}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
-    error_log("Template not have button");
-	$messages=['type'=> 'template',
-					'altText' => 'this is a buttons template',
-					'template' => [
-						'type'=> 'buttons',
-						'thumbnailImageUrl'=> $imageURL,
-						'title' => $title,
-						'text' => $subTitle
-						
-							]
+				error_log("Not have condition fix.");
+				$messages = [
+						'type' => 'text',
+						'text' => $messageDir
 					];
-	
-}elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
-    error_log("Template not have title");
-	$messages=['type'=> 'template',
-					'altText' => 'this is a buttons template',
-					'template' => [
-						'type'=> 'buttons',
-						'thumbnailImageUrl'=> $imageURL,
-						'text' => $subTitle
-				
-							]
-					];
-	
-}elseif (($checkImageURL !== false) && ($checkTitle !== false)) {
-    error_log("Template not have subtitle and button");
-	$messages=['type'=> 'template',
-					'altText' => 'this is a buttons template',
-					'template' => [
-						'type'=> 'buttons',
-						'thumbnailImageUrl'=> $imageURL,
-						'title' => $title
-					
-					
-							]
-					];
-	
-}elseif (($checkImageURL !== false)) {
-    error_log("Send image only");
-	$messages=['type'=> 'template',
-					'altText' => 'this is a buttons template',
-					'template' => [
-						'type'=> 'buttons',
-						'thumbnailImageUrl'=> $imageURL
-					
-							]
-					];
-	
-}elseif (($checkMessOnly !== false)) {
-    error_log("Send message only");
-		$messages = [
-			'type' => 'text',
-			'text' => $messageDir
-		];
+			}
 
-}else{
-	
-	error_log("Not have condition fix.");
-	$messages = [
-			'type' => 'text',
-			'text' => $messageDir
-		];
-}
-		
 			
 			error_log('message : '.$messages);	
 			// Make a POST Request to Messaging API to reply to sender
