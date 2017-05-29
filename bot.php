@@ -111,6 +111,12 @@ $checkTitleBN = strpos($symResult, $symTitleBN);
 $checkWebURL = strpos($symResult, $symWebURL);
 $checkMessOnly = strpos($symResult, $symMessOnly);
 
+ error_log($imageURL);
+error_log($title);
+error_log($subTitle);
+error_log($titleButton);
+error_log($webURL);
+
 if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
     error_log("Template have all");
 	
