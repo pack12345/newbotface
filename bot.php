@@ -90,6 +90,7 @@ for($i = 0; $i < count($result) ; $i++){
 	}else{
 	
 		echo "Not have condition fix.";
+		$messageDir = $xcpResult;
 	}
 	
 	
@@ -161,7 +162,7 @@ if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !==
 	echo "Not have condition fix.";
 	$messages = [
 			'type' => 'text',
-			'text' => $xcpResult
+			'text' => $messageDir
 		];
 }
 		
