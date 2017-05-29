@@ -124,21 +124,26 @@ error_log('facebook hook ');
 			if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 			    error_log("Template have all");
 
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'thumbnailImageUrl'=> $imageURL,
-									'title' => $title,
-									'text' => $subTitle,
-									'actions' => [
-											 ['type' => 'uri',
-												'label' => $titleButton,
-												'uri' => $webURL
-											  ]
-										     ]
-										]
-								];
+			$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+ 											'title' => '$title',
+											'image_url'=> '$imageURL',
+ 											'subtitle' => '$subTitle',
+ 											'buttons' => [
+ 												['type' => 'web_url',
+ 												'title' => '$titleButton',
+ 												'url' => '$webURL'
+ 												]
+ 											]
+ 										]
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
 
 			}elseif (($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 
@@ -149,6 +154,7 @@ error_log('facebook hook ');
  							      	'elements' => [
  										 [
  											'title' => '$title',
+											'image_url'=> '$imageURL',
  											'subtitle' => '$subTitle',
  											'buttons' => [
  												['type' => 'web_url',
