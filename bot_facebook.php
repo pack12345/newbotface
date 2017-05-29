@@ -45,7 +45,7 @@ error_log('facebook hook ');
  
  // check if
   
-	$result = explode("\n",$xcpResult);
+	$result = explode("\n",$message_to_reply );
 
 			$symResult = "";
 
@@ -279,6 +279,6 @@ error_log('facebook hook ');
  	//curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
  	//Execute the request
  	if(!empty($input['entry'][0]['messaging'][0]['message'])){
- 	    $result = curl_exec($ch);
+ 	    $resultMes = curl_exec($ch);
 	 }
  ?>
