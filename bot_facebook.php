@@ -42,6 +42,7 @@ error_log('facebook hook ');
  	error_log('url reply'.$url);
  	//Initiate cURL.
  	$ch = curl_init($url);
+	$messages = '';
  
  // check if
   
