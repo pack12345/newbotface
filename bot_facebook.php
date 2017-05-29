@@ -199,6 +199,7 @@ error_log('facebook hook ');
 												[
 													'image_url'=> '$imageURL',
 													'subtitle' => '$subTitle'
+													]
 													
 											]
 
