@@ -245,15 +245,13 @@ error_log('facebook hook ');
 			}elseif (($checkMessOnly !== false)) {
 			    error_log("Send message only");
 					$messages = [
-						'type' => 'text',
 						'text' => $messageDir
-					];
+						];
 
 			}else{
 
 				error_log("Not have condition fix.");
 				$messages = [
-						'type' => 'text',
 						'text' => $messageDir
 					];
 			}
