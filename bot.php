@@ -62,9 +62,9 @@ $messages = "";
 for($i = 0; $i < count($result) ; $i++){
 	
 	
-	if(substr($result[$i],0,3) == "  !"){
+	if(substr($result[$i],0,1) == "!"){
 		 
-		$imageURL  = trim($result[$i],"  !");
+		$imageURL  = trim($result[$i],"!");
 		 error_log($imageURL);
 		
 		
