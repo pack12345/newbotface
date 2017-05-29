@@ -89,7 +89,7 @@ for($i = 0; $i < count($result) ; $i++){
 		
 	}else{
 	
-		error_log("Not have condition fix.");
+		error_log("Not have condition fix2.");
 		$messageDir = implode("\n", $result);
 	}
 	
@@ -148,6 +148,10 @@ if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !==
 	
 }elseif (($checkMessOnly !== false)) {
     error_log("Send message only");
+		$messages = [
+			'type' => 'text',
+			'text' => $messageDir
+		];
 
 }else{
 	
