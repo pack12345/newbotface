@@ -89,20 +89,12 @@ for($i = 0; $i < count($result) ; $i++){
 		
 	}else{
 	
-		echo "Not have condition fix.";
+		error_log("Not have condition fix.");
 		$messageDir = implode("\n", $result);
 	}
 	
 	
 }
-
-echo $imageURL."<br>";
-echo $title."<br>";
-echo $subTitle."<br>";
-echo $titleButton."<br>";
-echo $webURL."<br>";
-
-print_r ("--------------------------------------------------"."<br>");
 
 $symImageURL = "!";
 $symTitle = "[";
@@ -140,26 +132,26 @@ if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !==
 	
 }elseif (($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 
-    echo "Template not have image";
+    error_log("Template not have image");
 
 }elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
-    echo "Template not have button";
+    error_log("Template not have button");
 	
 }elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
-    echo "Template not have title";
+    error_log("Template not have title");
 	
 }elseif (($checkImageURL !== false) && ($checkTitle !== false)) {
-    echo "Template not have subtitle and button";
+    error_log("Template not have subtitle and button");
 	
 }elseif (($checkImageURL !== false)) {
-    echo "Send image only";
+    error_log("Send image only");
 	
 }elseif (($checkMessOnly !== false)) {
-    echo "Send message only";
+    error_log("Send message only");
 
 }else{
 	
-	echo "Not have condition fix.";
+	error_log("Not have condition fix.");
 	$messages = [
 			'type' => 'text',
 			'text' => $messageDir
