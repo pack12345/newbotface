@@ -1,144 +1,150 @@
-<?php
-// 3 บรรทัดนี้้ สำหรับป้องกันการ cache จำค่าเก่าตอนทพสอบ คงไว้ หรือเอาออกได้
-header("Content-type:text/html; charset=UTF-8");          
-header("Cache-Control: no-store, no-cache, must-revalidate");         
-header("Cache-Control: post-check=0, pre-check=0", false);   
-?>
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Polygon 01</title>
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <style type="text/css">
-    html {
-        height: 100%
-    }
-    body {
-        height:100%;
-        margin:0;
-        padding:0;
-        font-family:tahoma, "Microsoft Sans Serif", sans-serif, Verdana;
-        font-size:12px;
-    }
-    /* css กำหนดความกว้าง ความสูงของแผนที่ */
-    #map_canvas {
-        position:relative;
-        width:550px;
-        height:400px;
-        margin:auto;/*  margin-top:100px;*/
-    }
-    #contain_map {
-        position:relative;
-        width:550px;
-        height:400px;
-        margin:auto;
-        margin-top:10px;
-    }
-    </style>
+<title></title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
 </head>
+ 
 <body>
-     
-   <br>
-   <div class="container-fluid">
-        <div id="contain_map">
-          <div id="map_canvas"></div>
-        </div>
-                
-      
-    </div>
-    
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>   
+<style type="text/css">
+/* css สำหรับ div คลุม google map อีกที */
+#contain_map{
+    position:relative;
+    width:650px;
+    height:400px;
+    margin:auto;    
+}   
+/* css กำหนดความกว้าง ความสูงของแผนที่ */
+#map_canvas { 
+    top:0px;
+    width:100%;
+    height:400px;
+    margin:auto;
+}
+/*css กำหนดรูปแบบ ของ input สำหรับพิมพ์ค้นหา effect */
+.controls_tools {
+    margin-top: 16px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+/*css กำหนดรูปแบบ ของ input สำหรับพิมพ์ค้นหา*/
+#pac-input {
+    background-color: #fff;
+    padding: 0 11px 0 13px;
+    width: 60%;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    text-overflow: ellipsis;
+}
+/*css กำหนดรูปแบบ ของ input สำหรับพิมพ์ค้นหา ขณะ focus*/
+#pac-input:focus {
+    width: 60%;
+    border-color: #4d90fe;
+    margin-left: -1px;
+    padding-left: 14px;  /* Regular padding-left + 1. */     
+}
+ 
+</style>
+<br />
+<br />
+&nbsp;
+</p>
+<div id="contain_map">
+  <input id="pac-input" class="controls_tools" type="text"placeholder="Enter a location">  
+  <div id="map_canvas">&nbsp;</div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
 <script type="text/javascript">
-  
+var geocoder; // กำหนดตัวแปรสำหรับ เก็บ Geocoder Object ใช้แปลงชื่อสถานที่เป็นพิกัด
 var map; // กำหนดตัวแปร map ไว้ด้านนอกฟังก์ชัน เพื่อให้สามารถเรียกใช้งาน จากส่วนอื่นได้
+var my_Marker; // กำหนดตัวแปรสำหรับเก็บตัว marker
 var GGM; // กำหนดตัวแปร GGM ไว้เก็บ google.maps Object จะได้เรียกใช้งานได้ง่ายขึ้น
- 
-var polygon = [];
-var marker=[];
-var infowindow=[]; 
- 
-var simple_path = [
-    [
-        { lat:13.749056356171124, lng:100.62678337097168 },
-        { lat:13.7470554365528, lng:100.6442928314209 },
-        { lat:13.75972763865473, lng:100.64995765686035 },
-        { lat:13.759060697754025, lng:100.63261985778809 }
-    ],
-    [
-        { lat:13.76439617172456, lng:100.66025733947754 },
-        { lat:13.753058144112895, lng:100.66523551940918 },
-        { lat:13.759227433157418, lng:100.68600654602051 },
-        { lat:13.77156552321108, lng:100.67965507507324 }   
-    ]   
-];
-// กำหนด style ของ polygon กรณีเมาส์เลื่อนออก
-var polygonOptions_out = {
-  strokeColor: '#FF0000',
-  geodesic:true,
-  strokeOpacity: 1.0,
-  strokeWeight: 3,
-  fillColor: '#FF0000',
-  fillOpacity: 0.35   
-}
-// กำหนด style ของ polygon กรณีเมาส์อยู่ด้านบน
-var polygonOptions_over = {
-  strokeColor: '#008000',
-  geodesic:true,
-  strokeOpacity: 1.0,
-  strokeWeight: 3,
-  fillColor: '#008000',
-  fillOpacity: 0.35   
-}
-// กำหนด style object เป็น array 
-var polygonOptions = [polygonOptions_out,polygonOptions_over];
- 
+var inputSearch; // กำหนดตัวแปร สำหรับ อ้างอิง input สำหรับพิมพ์ค้นหา
+var infowindow;// กำหนดตัวแปร สำหรับใช้แสดง popup สถานที่ ที่ค้นหาเจอ
+var autocomplete; // กำหนดตัวแปร สำหรับเก็บค่า การใช้งาน places Autocomplete
 function initialize() { // ฟังก์ชันแสดงแผนที่
     GGM=new Object(google.maps); // เก็บตัวแปร google.maps Object ไว้ในตัวแปร GGM
+    geocoder = new GGM.Geocoder(); // เก็บตัวแปร google.maps.Geocoder Object
     // กำหนดจุดเริ่มต้นของแผนที่
     var my_Latlng  = new GGM.LatLng(13.761728449950002,100.6527900695800);
     var my_mapTypeId=GGM.MapTypeId.ROADMAP; // กำหนดรูปแบบแผนที่ที่แสดง
     // กำหนด DOM object ที่จะเอาแผนที่ไปแสดง ที่นี้คือ div id=map_canvas
-    var my_DivObj=$("#map_canvas")[0]; 
+    var my_DivObj=$("#map_canvas")[0];
     // กำหนด Option ของแผนที่
     var myOptions = {
         zoom: 13, // กำหนดขนาดการ zoom
-        center: my_Latlng , // กำหนดจุดกึ่งกลาง
-        mapTypeId:my_mapTypeId // กำหนดรูปแบบแผนที่
+        center: my_Latlng , // กำหนดจุดกึ่งกลาง จากตัวแปร my_Latlng
+        mapTypeId:my_mapTypeId // กำหนดรูปแบบแผนที่ จากตัวแปร my_mapTypeId
     };
-    map = new GGM.Map(my_DivObj,myOptions);// สร้างแผนที่และเก็บตัวแปรไว้ในชื่อ map
+    map = new GGM.Map(my_DivObj,myOptions); // สร้างแผนที่และเก็บตัวแปรไว้ในชื่อ map
  
-    // เพิ่มฟังก์ชั่นสำหรับหาตำแหน่งตรงกลางของพื้นที่ polygon
-    GGM.Polygon.prototype.my_getBounds=function(){
-        var bounds = new google.maps.LatLngBounds()
-        this.getPath().forEach(function(element,index){bounds.extend(element)})
-        return bounds
-    }
- 
-    // ทดสอบวนลูปสร้าง polygon
+    inputSearch = $("#pac-input")[0]; // เก็บตัวแปร dom object โดยใช้ jQuery
+    // จัดตำแหน่ง input สำหรับการค้นหา ด้วย คำสั่งของ google map
+    map.controls[GGM.ControlPosition.TOP_LEFT].push(inputSearch);
      
-    for(i = 0; i < simple_path.length; i++){
-        polygon[i] = new GGM.Polygon(polygonOptions[0]);
-        polygon[i].idx = i; // สร้าง object สำหรับเก็บ index ของ polygon ไว้ใช้กับ infowindow
-        polygon[i].setPath(simple_path[i]);
-        polygon[i].setMap(map);     
+    // เรียกใช้งาน Autocomplete โดยส่งค่าจากข้อมูล input ชื่อ inputSearch
+    autocomplete = new GGM.places.Autocomplete(inputSearch);
+    autocomplete.bindTo('bounds', map); 
+     
+    infowindow = new GGM.InfoWindow();// เก็บ InfoWindow object ไว้ในตัวแปร infowindow
+    // เก็บ Marker object พร้อมกำหนดรูปแบบ ไว้ในตัวแปร my_Marker
+    my_Marker = new GGM.Marker({
+        map: map,
+        anchorPoint: new GGM.Point(0, -29)
+    });
+     
+    // เมื่อแผนที่มีการเปลี่ยนสถานที่ จากการค้นหา
+    GGM.event.addListener(autocomplete, 'place_changed', function() {
+        infowindow.close();// เปิด ข้อมูลตัวปักหมุด (infowindow)
+        my_Marker.setVisible(false);// ซ่อนตัวปักหมุด (marker) 
+        var place = autocomplete.getPlace();// เก็บค่าสถานที่จากการใช้งาน autocomplete ไว้ในตัวแปร place
+        if (!place.geometry) {// ถ้าไม่มีข้อมูลสถานที่ 
+            return;
+        }
          
-        infowindow[i] = new GGM.InfoWindow({// สร้าง infowindow ของแต่ละ เป็นแบบ array
-            content: 'test at polygon '+i // ทดสอบแสดงค่า infowindow
-        });     
+        // ถ้ามีข้อมูลสถานที่  และรูปแบบการแสดง  ให้แสดงในแผนที่
+        if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+        } else { // ให้แสดงแบบกำหนดเอง
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);  // แผนที่ขยายที่ขนาด 17 ถือว่าเหมาะสม
+        }
+        my_Marker.setIcon(/** // กำหนดรูปแบบของ icons การแสดงสถานที่ */({
+            url: place.icon,
+            size: new GGM.Size(71, 71),
+            origin: new GGM.Point(0, 0),
+            anchor: new GGM.Point(17, 34),
+            scaledSize: new GGM.Size(35, 35)
+        }));
          
-        GGM.event.addListener(polygon[i],'mouseover', function(e) { 
-            this.setOptions(polygonOptions[1]);
-            infowindow[this.idx].setPosition(this.my_getBounds().getCenter());
-            infowindow[this.idx].open(map);
-       });      
-        GGM.event.addListener(polygon[i],'mouseout', function(e) {  
-            this.setOptions(polygonOptions[0]);
-            infowindow[this.idx].close();
-       });             
-    }
-    
+        // ปักหมุด (marker) ตำแหน่ง สถานที่ที่เลือก
+        my_Marker.setPosition(place.geometry.location);
+        my_Marker.setVisible(true);// แสดงตัวปักหมุด จากการซ่อนในการทำงานก่อนหน้า
+         
+        // สรัางตัวแปร สำหรับเก็บชื่อสถานที่ จากการรวม ค่าจาก array ข้อมูล
+        var address = '';
+        if (place.address_components) {
+            address = [
+                (place.address_components[0] && place.address_components[0].short_name || ''),
+                (place.address_components[1] && place.address_components[1].short_name || ''),
+                (place.address_components[2] && place.address_components[2].short_name || '')
+            ].join(' ');
+        }
+         
+        // แสดงข้อมูลในตัวปักหมุด (infowindow)
+        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+        infowindow.open(map, my_Marker);// แสดงตัวปักหมุด (infowindow)
+         
+    });
+ 
+ 
 }
 $(function(){
     // โหลด สคริป google map api เมื่อเว็บโหลดเรียบร้อยแล้ว
@@ -147,12 +153,12 @@ $(function(){
     //  v เวอร์ชัน่ 3.2
     //  sensor กำหนดให้สามารถแสดงตำแหน่งทำเปิดแผนที่อยู่ได้ เหมาะสำหรับมือถือ ปกติใช้ false
     //  language ภาษา th ,en เป็นต้น
-    //  callback ให้เรียกใช้ฟังก์ชันแสดง แผนที่ initialize
-    $("<script/>", {  
-      "type": "text/javascript",  
-      src: "http://maps.google.com/maps/api/js?key=AIzaSyATk0ZiHZoPYaSPtoYUB7pOVrDjMd8_eKw&language=th&region=TH&v=3.2&sensor=false&callback=initialize" 
-    }).appendTo("body");        
+    //  callback ให้เรียกใช้ฟังก์ชันแสดง แผนที่ initialize  
+    $("<script/>", {
+      "type": "text/javascript",
+      src: "http://maps.google.com/maps/api/js?v=3.2&sensor=false&language=th&callback=initialize&libraries=places"
+    }).appendTo("body");    
 });
-</script>      
+</script>
 </body>
 </html>
