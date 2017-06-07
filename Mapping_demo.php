@@ -150,7 +150,7 @@ $(function(){
     //  callback ให้เรียกใช้ฟังก์ชันแสดง แผนที่ initialize
     $("<script/>", {  
       "type": "text/javascript",  
-      src: "http://maps.google.com/maps/api/js?key=your_api_key&language=th&region=TH&v=3.2&sensor=false&callback=initialize" 
+      src: "http://maps.google.com/maps/api/js?key=AIzaSyATk0ZiHZoPYaSPtoYUB7pOVrDjMd8_eKw&language=th&region=TH&v=3.2&sensor=false&callback=initialize" 
     }).appendTo("body");        
 });
 </script>      
