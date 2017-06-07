@@ -1,9 +1,3 @@
-<?php
-// 3 บรรทัดนี้้ สำหรับป้องกันการ cache จำค่าเก่าตอนทพสอบ คงไว้ หรือเอาออกได้
-header("Content-type:text/html; charset=UTF-8");          
-header("Cache-Control: no-store, no-cache, must-revalidate");         
-header("Cache-Control: post-check=0, pre-check=0", false);   
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
