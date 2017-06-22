@@ -1,8 +1,8 @@
 <?php
 error_log('facebook hook ');
  
-   $access_token = 'EAASvNkXVo7wBAAZCAZBU4dJBXMCWnoCFCx9sgpLMVZAnUMb3JbqlYehI2bu2rblrSPVurMZCYgqb4mIdHCfVZAz6jcE3aAhQPUjU8CqFiwSJbRZC6SlkZB5WPprBhbwrc5Q2bAE7Az9P1ukzAAYnvBZCWlZCENEd1N7ZAXhC43aZCtiKAZDZD';
-   $verify_token = 'cxp_poc';
+   $access_token = 'EAABvD2ZBmpBkBAMMYJZCZCou0BFkNQ3ipYhP5nmiKkWv3uHVRLZCmZB4zJ36NXBJeTjPvRX4pDzq6DfNJw8yiSZB82w4PSiaZBHcf2F5qsktkTCqOGBZBXPtVkclGt9aZCORZAOAmfGynPSrROwUtsP87CsQQRG9sWmpY7CVOWq6hENkZCU76HdXjUM';
+   $verify_token = 'rvp_poc';
    $hub_verify_token = null;
  
    if(isset($_REQUEST['hub_challenge'])) {
@@ -24,7 +24,7 @@ error_log('facebook hook ');
  	if($message==''){
  		return;
  	}
- $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$message.'&vsDriver=164&channel=facebook&sessionID=EAASvNkXVo7wBAAZCAZBU4dJBXMCWnoCF';
+ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$message.'&vsDriver=164&channel=facebook&sessionID=EAABvD2ZBmpBkBAMMYJZCZ';
  					
  	error_log($cxpUrl);
  	$chcxp = curl_init($cxpUrl);
