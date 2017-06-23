@@ -25,7 +25,7 @@ if (!is_null($events['events'])) {
 			$sessionID = session_id();
 			error_log('session '.$sessionID);
 			$postCXP = json_encode($para);
-			$cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$text.'&vsDriver=164&channel=line&sessionID='.$userID;
+			$cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$text.'&vsDriver=164&channel=linervp&sessionID='.$userID;
 			
 			
 			error_log($cxpUrl);
