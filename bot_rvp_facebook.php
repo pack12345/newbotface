@@ -24,7 +24,7 @@ error_log('facebook hook ');
  	if($message==''){
  		return;
  	}
- $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$message.'&vsDriver=164&channel=facebook&sessionID=EAABvD2ZBmpBkBAMMYJZCZ';
+ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$message.'&vsDriver=164&channel=facebookrvp&sessionID=EAABvD2ZBmpBkBAMMYJZCZ';
  					
  	error_log($cxpUrl);
  	$chcxp = curl_init($cxpUrl);
