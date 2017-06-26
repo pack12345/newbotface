@@ -53,20 +53,19 @@ if (!is_null($events['events'])) {
 					'template' => [
 						'type'=> 'buttons',
 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bbb/G5xC6I.png',
-						'title' => 'Today - 30 Jun 17',
-						'text' => 'Everyday Special, Get Cash Back Up to 17 precentage',
+						'text' => 'Contact Center at  0-2100-9191',
 						'actions' => [
 
 								 ['type' => 'uri',
 									'label' => 'More information',
-									'uri' => 'https://www.kasikornbank.com/EN/promotion/Pages/Supermarket.aspx'
+									'uri' => 'http://www.rvp.co.th/ClaimQA.php'
 								  ]
 							     ]
 
 							]
 				];
 			}	
-			 else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/b7b"){
+			 else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/184"){
 				error_log('pic');
 		
 				$messages=[
@@ -74,23 +73,20 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b7b/CQ6y5K.png',
-						'title' => 'Shori Sushi House',
-						'text' => 'Tel: 02-169-1532
-								Opening Hours: 11:00 – 23:00',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/184/jxJwgZ.png',
+						'text' => 'Contact Center at  0-2100-9191',
 						'actions' => [
-							
-							  [
-							    'type' => 'uri',
-							    'label' => 'Location',
-							    'uri' => 'https://goo.gl/maps/jxgfN1aXYzR2'
-							  ]
-						      ]
 
-				  		]
+								 ['type' => 'uri',
+									'label' => 'More information',
+									'uri' => 'http://www.rvp.co.th/makingaclaim.php'
+								  ]
+							     ]
+
+							]
 					];
 			}	
-			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/bde"){
+			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/b1f"){
 				error_log('pic');
 		
 				$messages=[
@@ -98,23 +94,20 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bde/2oPh6u.png',
-						'title' => 'Hakone Bangkok',
-						'text' => 'Tel: 02-108-2790
-								Opening Hours: 10:00 – 22:00',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b1f/WuFfPp.png',
+						'text' => 'Contact Center at  0-2100-9191',
 						'actions' => [
-							
-							  [
-							    'type' => 'uri',
-							    'label' => 'Location',
-							    'uri' => 'https://goo.gl/maps/EJQUDLLtugE2'
-							  ]
-						      ]
 
-				  		]
+								 ['type' => 'uri',
+									'label' => 'More information',
+									'uri' => 'http://www.rvp.co.th/makingaclaim.php'
+								  ]
+							     ]
+
+							]
 					];	
 			}	
-			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/1f1"){
+			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/bc1"){
 				error_log('pic');
 		
 				$messages=[
@@ -122,23 +115,20 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/1f1/79drKy.png',
-						'title' => 'Yoshino Yama',
-						'text' => 'Tel: 02-259-2582
-								Opening Hours: 17:00 – 01:00',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bc1/PNwwLS.png',
+						'text' => 'Contact Center at  0-2100-9191',
 						'actions' => [
-							
-							  [
-							    'type' => 'uri',
-							    'label' => 'Location',
-							    'uri' => 'https://goo.gl/maps/FgVPc8yddDo'
-							  ]
-						      ]
 
-				  		]
+								 ['type' => 'uri',
+									'label' => 'More information',
+									'uri' => 'http://www.rvp.co.th/makingaclaim.php'
+								  ]
+							     ]
+
+							]
 					];	
 			}	
-			else if(substr($xcpResult,0,27)=="  https://www.skyscanner.ne"){
+			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/b5a"){
 				error_log('pic');
 		
 				$messages=[
@@ -146,41 +136,19 @@ if (!is_null($events['events'])) {
   					'altText' => 'this is a buttons template',
  					'template' => [
 						'type'=> 'buttons',
-						'title' => 'Skyscanner Flights',
-						'text' => 'compares millions of flights to find you the cheapest deal',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/b5a/pjfxyj.png',
+						'text' => 'Contact Center at  0-2100-9191',
 						'actions' => [
-							
-							  [
-							    'type' => 'uri',
-							    'label' => 'Check It',
-							    'uri' => 'https://www.skyscanner.net'
-							  ]
-						      ]
 
-				  		]
-					];
-				}	
-			else if(substr($xcpResult,0,27)=="  https://www.hotelscombine"){
-				error_log('pic');
+								 ['type' => 'uri',
+									'label' => 'More information',
+									'uri' => 'http://www.rvp.co.th/makingaclaim.php'
+								  ]
+							     ]
+
+							]
+					];	
 		
-				$messages=[
-  					'type'=> 'template',
-  					'altText' => 'this is a buttons template',
- 					'template' => [
-						'type'=> 'buttons',
-						'title' => 'SHotels Combined',
-						'text' => 'The best hotel deals from all the top travel site Guaranteed',
-						'actions' => [
-							
-							  [
-							    'type' => 'uri',
-							    'label' => 'Check It',
-							    'uri' => 'https://www.hotelscombined.co.th'
-							  ]
-						      ]
-
-				  		]
-					];
 		
 			}else{	
 				$messages = [
