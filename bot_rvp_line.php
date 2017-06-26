@@ -41,7 +41,7 @@ if (!is_null($events['events'])) {
 			error_log('XXXX:'.substr($xcpResult,0,27).'');
 			$messages = '';
 			
-		if(substr($xcpResult,0,27)=="https://www.mx7.com/i/bb"){
+		if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/bbb"){
 			error_log('pic');
 		/*	$messages = [
 					'type' => 'image',
@@ -65,7 +65,7 @@ if (!is_null($events['events'])) {
 							]
 				];
 			}	
-			 else if(substr($xcpResult,0,27)=="https://www.mx7.com/i/bc"){
+			 else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/bc1"){
 				error_log('pic');
 		
 				$messages=[
@@ -87,7 +87,7 @@ if (!is_null($events['events'])) {
 				  		]
 					];
 			}	
-			else if(substr($xcpResult,0,27)=="https://www.mx7.com/i/18"){
+			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/184"){
 				error_log('pic');
 		
 				$messages=[
@@ -109,7 +109,7 @@ if (!is_null($events['events'])) {
 				  		]
 					];	
 			}	
-			else if(substr($xcpResult,0,27)=="https://www.mx7.com/i/b1"){
+			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/b1f"){
 				error_log('pic');
 		
 				$messages=[
@@ -131,7 +131,7 @@ if (!is_null($events['events'])) {
 				  		]
 					];	
 			}	
-			else if(substr($xcpResult,0,27)=="https://www.mx7.com/i/b5"){
+			else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/b5a"){
 				error_log('pic');
 		
 				$messages=[
