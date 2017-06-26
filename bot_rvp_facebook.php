@@ -1,7 +1,7 @@
 <?php
 error_log('facebook hook ');
  
-   $access_token = 'EAAbA8bgw2Y0BAGDXPu7LnWCgsybFLriaiFiokPQIu5LTL3uNbI3qO4YKE3RXSDfa4pZCCMwhmFIsqcguVfabB8JTcrui9tNR71RsYDAdJIKZALBPZAWmZCmgEtYzTZBMX7EjOUMCS49gdYvzZAh1ahgAaQZCArXxdsiUPiTtaQGENfkj1F8iEBZCWom19RSZAqZAcZ';
+   $access_token = 'EAABvD2ZBmpBkBAOhgmbcNhW024yJ2bVuzbiAonViVlAfvCDhOtCc9ZClXgIH3uzwZA93FhScdEfDnXR5s4FT0zfQpihhZBFJ92MvKkWOoY6hN2O0k0yDsfBA3Skdp88MZCT0fouDIKiKJjGM7CkCYtiohBoWWngX14NVLHQHONDJeS6CWHjIp';
    $verify_token = 'rvp_poc';
    $hub_verify_token = null;
  
@@ -24,7 +24,7 @@ error_log('facebook hook ');
  	if($message==''){
  		return;
  	}
- $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$message.'&vsDriver=164&channel=facebookrvp&sessionID=EAABvD2ZBmpBkBAMMYJZCZ';
+ $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$message.'&vsDriver=164&channel=facebookrvp&sessionID=EAABvD2ZBmpBkBAOhgmbcNhW024y';
  					
  	error_log($cxpUrl);
  	$chcxp = curl_init($cxpUrl);
@@ -42,100 +42,25 @@ error_log('facebook hook ');
  	error_log('url reply'.$url);
  	//Initiate cURL.
  	$ch = curl_init($url);
-	
-			$messages = '';
-			
+ 
+ // check if
+  	$messages = '';
 
-			$result = explode("\n",$message_to_reply);
-
-			$symResult = "";
-
-			foreach ($result as $value) {
-			    $symResult .= substr($value, 0, 1);
-			}
-
-
-			$imageURL = "";
-			$title = "";
-			$subTitle = "";
-			$titleButton = "";
-			$webURL = "";
-			$messages = "";
-
-
-			for($i = 0; $i < count($result) ; $i++){
-
-
-				if(substr($result[$i],0,1) == "!"){
-
-					$imageURL  = trim($result[$i],"!");
-					 error_log($imageURL);
-
-
-				}elseif (substr($result[$i],0,1) == "["){
-
-					$title  = trim($result[$i],"[");
-					error_log($title);
-
-
-				}elseif (substr($result[$i],0,1) == "{"){
-
-					$subTitle   = trim($result[$i],"{");
-					error_log($subTitle);
-
-
-				}elseif (substr($result[$i],0,1) == "*"){
-
-					$titleButton   = trim($result[$i],"*");
-					error_log($titleButton);
-
-
-				}elseif (substr($result[$i],0,1) == "#"){
-
-					$webURL    = trim($result[$i],"#");
-					error_log($webURL);
-
-
-				}else{
-
-					error_log("Not have condition fix2.");
-					$messageDir = implode("\n", $result);
-				}
-
-
-			}
-
-			$symImageURL = "!";
-			$symTitle = "[";
-			$symSubtitle = "{";
-			$symTitleBN = "*";
-			$symWebURL = "#";
-			$symMessOnly = "(";
-
-
-			$checkImageURL = strpos($symResult, $symImageURL);
-			$checkTitle = strpos($symResult, $symTitle);
-			$checkSubtitle = strpos($symResult, $symSubtitle);
-			$checkTitleBN = strpos($symResult, $symTitleBN);
-			$checkWebURL = strpos($symResult, $symWebURL);
-			$checkMessOnly = strpos($symResult, $symMessOnly);
-
-
-			if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
-			    error_log("Template have all");
-
-			$messages=[
+	 if(substr($message_to_reply,0,27)=='  https://www.mx7.com/i/bbb'){
+  		
+  			error_log('pic');
+  			$messages=[
   				'attachment' =>['type' => 'template',
  						'payload' => ['template_type' => 'generic',
  							      	'elements' => [
  										 [
- 											'title' => $title,
-											'image_url'=> $imageURL,
- 											'subtitle' => $subTitle,
+ 											'title' => 'Today - 30 Jun 17',
+ 											'image_url'=> 'https://www.mx7.com/i/bbb/G5xC6I.png',
+ 											'subtitle' => 'Everyday Special,Get Cash Back Up to 17%,4% cash back for other K-Credit Cards',
  											'buttons' => [
  												['type' => 'web_url',
- 												'title' => $titleButton,
- 												'url' => $webURL
+ 												'title' => 'More information',
+ 												'url' => 'https://www.kasikornbank.com/EN/promotion/Pages/Supermarket.aspx'
  												]
  											]
  										]
@@ -144,118 +69,137 @@ error_log('facebook hook ');
  							      ]
   						]
   				];
-
-			}elseif (($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
-
-			    error_log("Template not have image");
-				$messages=[
+ 	}else if(substr($message_to_reply,0,27)=='  https://www.mx7.com/i/b7b'){
+  			error_log('pic');
+  			$messages=[
   				'attachment' =>['type' => 'template',
  						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
+ 								'elements' => [
  										 [
- 											'title' => $title,
- 											'subtitle' => $subTitle,
+ 											'title' => 'Shori Sushi House',
+ 											'image_url'=> 'https://www.mx7.com/i/b7b/CQ6y5K.png',
+ 											'subtitle' => 'Opening Hours: 11:00 – 23:00',
  											'buttons' => [
  												['type' => 'web_url',
- 												'title' => $titleButton,
- 												'url' => $webURL
- 												]
+ 												'title' => 'Location',
+ 												'url' => 'https://goo.gl/maps/jxgfN1aXYzR2'
+ 												],
+ 												[
+ 												  'type' => 'phone_number',
+ 												  'title' => 'Call',
+ 												  'payload' => '+662-169-1532'
+ 											       ]
  											]
  										]
   									]
  							      
  							      ]
+ 
   						]
   				];
-
-			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
-			    error_log("Template not have button");
-			$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
- 											'title' => $title,
-											'image_url'=> $imageURL,
- 											'subtitle' => $subTitle
- 											
+ 	}else if(substr($message_to_reply,0,27)=='  https://www.mx7.com/i/bde'){
+ 		error_log('pic');
+ 		$messages=[
+ 			'attachment' =>['type' => 'template',
+ 					'payload' => ['template_type' => 'generic',
+ 						      		'elements' => [
+ 										[
+ 											'title' => 'Hakone Bangkok',
+ 											'image_url'=> 'https://www.mx7.com/i/bde/2oPh6u.png',
+ 											'subtitle' => 'Opening Hours: 10:00 – 22:00',
+ 											'buttons' => [
+ 												['type' => 'web_url',
+ 												'title' => 'Location',
+ 												'url' => 'https://goo.gl/maps/EJQUDLLtugE2'
+ 												],
+ 												[
+ 												  'type' => 'phone_number',
+ 												  'title' => 'Call',
+ 												  'payload' => '+662-108-2790'
+ 											       ]
+ 											]
  										]
-  									]
- 							      
- 							      ]
-  						]
-  				];
-
-
-			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
-			    error_log("Template not have title");
-				$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
-											'image_url'=> $imageURL,
- 											'subtitle' => $subTitle,
- 											
+ 									]
+ 						      
+ 						      ]
+ 					]
+				];
+	}else if(substr($message_to_reply,0,27)=='  https://www.mx7.com/i/1f1'){
+ 	error_log('pic');
+ 	$messages=[
+ 		'attachment' =>['type' => 'template',
+ 				'payload' => ['template_type' => 'generic',
+ 					      	'elements' => [
+ 								 [
+ 									'title' => 'Yoshino Yama',
+ 									'image_url'=> 'https://www.mx7.com/i/1f1/79drKy.png',
+ 									'subtitle' => 'Opening Hours: 17:00 – 01:00',
+ 									'buttons' => [
+ 										['type' => 'web_url',
+ 										'title' => 'Location',
+ 										'url' => 'https://goo.gl/maps/FgVPc8yddDo'
+ 										],
+ 										[
+ 										  'type' => 'phone_number',
+ 										  'title' => 'Call',
+ 										  'payload' => '+662-259-2582'
+ 									       ]
+ 									]
+ 								]
+ 							]
+ 					      
+ 					      ]
+ 				]
+ 		];
+ 	}else if(substr($message_to_reply,0,27)=='  https://www.skyscanner.ne'){
+ 	error_log('pic');
+ 	$messages=[
+ 		'attachment' =>['type' => 'template',
+ 				'payload' => ['template_type' => 'generic',
+ 					      	'elements' => [
+ 								 [
+ 									'title' => 'Skyscanner Flights',
+ 									'subtitle' => 'Skyscanner compares millions of flights to find you the cheapest deal, fast.',
+ 									'buttons' => [
+ 										['type' => 'web_url',
+ 										'title' => 'Check It',
+ 										'url' => 'https://www.skyscanner.net/'
  										]
-  									]
- 							      
- 							      ]
-  						]
-  				];
-
-
-			}elseif (($checkImageURL !== false) && ($checkTitle !== false)) {
-			    error_log("Template not have subtitle and button");
-				$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
- 											'title' => $title,
-											'image_url'=> $imageURL
- 											
+ 									]
+ 								]
+ 							]
+ 					      
+ 					      ]
+ 				]
+ 		];
+ 	}else if(substr($message_to_reply,0,27)=='  https://www.hotelscombine'){
+ 	error_log('pic');
+ 	$messages=[
+ 		'attachment' =>['type' => 'template',
+ 				'payload' => ['template_type' => 'generic',
+ 					      	'elements' => [
+ 								 [
+ 									'title' => 'Hotels Combined',
+ 									'buttons' => [
+ 										['type' => 'web_url',
+ 										'title' => 'Check It',
+ 										'subtitle' => 'The best hotel deals from all the top travel sites. Guaranteed',
+ 										'url' => 'https://www.hotelscombined.co.th'
  										]
-  									]
- 							      
- 							      ]
-  						]
-  				];
-
-
-			}elseif (($checkImageURL !== false)) {
-			    error_log("Send image only");
-				$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
- 										
-											'image_url'=> $imageURL
- 											
- 										
- 										]
-  									]
- 							      
- 							      ]
-  						]
-  				];
-
-
-			}elseif (($checkMessOnly !== false)) {
-			    error_log("Send message only");
-					$messages = [
-						'text' => $messageDir
-					];
-
-			}else{
-
-				error_log("Not have condition fix.");
-				$messages = [
-						'text' => $messageDir
-					];
-			}
-
+ 									]
+ 								]
+ 							]
+ 					      
+ 					      ]
+ 				]
+ 		];
+ 						
+  	}else{	
+ 		$messages = [
+ 			'text' => $message_to_reply
+  		];
+  	}
+ 
  
  //The JSON data.
  	$jsonData = [
@@ -279,6 +223,6 @@ error_log('facebook hook ');
  	//curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
  	//Execute the request
  	if(!empty($input['entry'][0]['messaging'][0]['message'])){
- 	    $resultMes = curl_exec($ch);
+ 	    $result = curl_exec($ch);
 	 }
  ?>
