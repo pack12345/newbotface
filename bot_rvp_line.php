@@ -38,7 +38,7 @@ if (!is_null($events['events'])) {
 			curl_close($chcxp);
 			error_log($xcpResult);	
 			//error_log(':'.substr($xcpResult,0,6).':');
-			error_log('XXXX:'.substr($xcpResult,0,30).'');
+			error_log('XXXX:'.substr($xcpResult,0,27).'');
 			$messages = '';
 			
 		if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/bbb"){
