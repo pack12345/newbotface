@@ -17,7 +17,7 @@ error_log('facebook hook ');
  
    $input = json_decode(file_get_contents('php://input'), true);
   error_log('input  '. $input );
-   $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
+   $sender = '4882481fc71aa38c9049a6ec9ada6f6d' ;
   error_log('sender  '. $sender );
    $message = $input['entry'][0]['messaging'][0]['message']['text'];
   error_log('XXXXXmessage :  '. $message );
