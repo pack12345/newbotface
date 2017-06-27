@@ -48,22 +48,29 @@ if (!is_null($events['events'])) {
 					'originalContentUrl' => $xcpResult,
 					'previewImageUrl' =>  $xcpResult
 				];*/
-			$messages=['type'=> 'template',
-					'altText' => 'this is a buttons template',
-					'template' => [
-						'type'=> 'buttons',
-						'thumbnailImageUrl'=> '<a href="https://www.mx7.com/view2/zWMqmW8pN5uIDTMB" target="_blank"><img border="0" src="https://www.mx7.com/i/bbb/G5xC6I.png" /></a>',
-						'text' => 'Contact Center at  0-2100-9191',
-						'actions' => [
+// 			$messages=['type'=> 'template',
+// 					'altText' => 'this is a buttons template',
+// 					'template' => [
+// 						'type'=> 'buttons',
+// 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bbb/G5xC6I.png',
+// 						'text' => 'Contact Center at  0-2100-9191',
+// 						'actions' => [
 
-								 ['type' => 'uri',
-									'label' => 'More information',
-									'uri' => 'http://www.rvp.co.th/ClaimQA.php'
-								  ]
-							     ]
+// 								 ['type' => 'uri',
+// 									'label' => 'More information',
+// 									'uri' => 'http://www.rvp.co.th/ClaimQA.php'
+// 								  ]
+// 							     ]
 
-							]
-				];
+// 							]
+// 				];
+							$messages=['type'=> 'template',
+								'altText' => 'this is a buttons template',
+								'template' => [
+									'type'=> 'buttons',
+									'thumbnailImageUrl'=> 'https://www.mx7.com/i/bbb/G5xC6I.png'
+										]
+								];
 			}	
 			 else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/184"){
 				error_log('pic');
