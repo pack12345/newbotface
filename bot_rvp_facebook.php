@@ -198,7 +198,7 @@ error_log('facebook hook ');
   		];
   	}
  
- 
+ error_log('before response');
  //The JSON data.
  	$jsonData = [
  	    'access_token'=>$access_token,
