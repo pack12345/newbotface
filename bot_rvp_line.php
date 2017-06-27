@@ -49,7 +49,6 @@ if (!is_null($events['events'])) {
 					'template' => [
 						'type'=> 'buttons',
 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bbb/G5xC6I.png',
-//						'text' => 'Contact Center at  0-2100-9191',
 						'actions' => [
 
 								 ['type' => 'uri',
