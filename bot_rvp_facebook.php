@@ -15,8 +15,6 @@ error_log('facebook hook ');
      	error_log('challenge '.$challenge);
    }
 
-]
-
 
 error_log('data : '.file_get_contents('php://input'));
 $input = json_decode(file_get_contents('php://input'), true);
