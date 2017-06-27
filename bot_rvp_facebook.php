@@ -9,7 +9,18 @@ error_log('facebook hook ');
      	$challenge = $_REQUEST['hub_challenge'];
     	$hub_verify_token = $_REQUEST['hub_verify_token'];
    }
- 
+
+ function get_func_argNames($funcName) {
+    $f = new ReflectionFunction($funcName);
+    $result = array();
+    foreach ($f->getParameters() as $param) {
+        $result[] = $param->name;   
+    }
+    return $result;
+}
+
+print_r(get_func_argNames('get_func_argNames'));
+
   error_log('hub_verify_token  '. $hub_verify_token );
    if ($hub_verify_token === $verify_token) {
      	error_log('challenge '.$challenge);
