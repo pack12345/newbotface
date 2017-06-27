@@ -21,9 +21,7 @@ error_log('facebook hook ');
   error_log('sender  '. $sender );
    $message = $input['entry'][0]['messaging'][0]['message']['text'];
   error_log('XXXXXmessage :  '. $message );
- 	if($message==''){
- 		return;
- 	}
+ $message = 'test';
  $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$message.'&vsDriver=164&channel=facebookrvp&sessionID=EAABvD2ZBmpBkBAOhgmbcNhW024y';
  					
  	error_log($cxpUrl);
