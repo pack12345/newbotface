@@ -48,17 +48,15 @@ if (!is_null($events['events'])) {
 					'altText' => 'this is a buttons template',
 					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bbb/G5xC6I.png'
-						
-// 						,
-// 						'text' => 'Contact Center at  0-2100-9191',
-// 						'actions' => [
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bbb/G5xC6I.png',
+//						'text' => 'Contact Center at  0-2100-9191',
+						'actions' => [
 
-// 								 ['type' => 'uri',
-// 									'label' => 'More information',
-// 									'uri' => 'http://www.rvp.co.th/ClaimQA.php'
-// 								  ]
-// 							     ]
+								 ['type' => 'uri',
+									'label' => 'More information',
+									'uri' => 'http://www.rvp.co.th/ClaimQA.php'
+								  ]
+							     ]
 
 							]
 				];
