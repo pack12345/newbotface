@@ -43,16 +43,14 @@ if (!is_null($events['events'])) {
 			
 		if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/bbb"){
 			error_log('pic');
-		/*	$messages = [
-					'type' => 'image',
-					'originalContentUrl' => $xcpResult,
-					'previewImageUrl' =>  $xcpResult
-				];*/
-// 			$messages=['type'=> 'template',
-// 					'altText' => 'this is a buttons template',
-// 					'template' => [
-// 						'type'=> 'buttons',
-// 						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bbb/G5xC6I.png',
+	
+			$messages=['type'=> 'template',
+					'altText' => 'this is a buttons template',
+					'template' => [
+						'type'=> 'buttons',
+						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bbb/G5xC6I.png'
+						
+// 						,
 // 						'text' => 'Contact Center at  0-2100-9191',
 // 						'actions' => [
 
@@ -62,15 +60,9 @@ if (!is_null($events['events'])) {
 // 								  ]
 // 							     ]
 
-// 							]
-// 				];
-							$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'thumbnailImageUrl'=> 'https://www.mx7.com/i/bbb/G5xC6I.png'
-										]
-								];
+							]
+				];
+
 			}	
 			 else if(substr($xcpResult,0,27)=="  https://www.mx7.com/i/184"){
 				error_log('pic');
