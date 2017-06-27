@@ -1,7 +1,7 @@
 <?php
 error_log('facebook hook ');
  
-   $access_token = 'EAAEw6LZCnZBCQBAGmYKWj9S19ZBSJel4qnfcKNkJRESFNchw8EWoqsbsNjyEHkUObJfZAqoE2NjviWIQZCkZBmdawetQUz4dDK52Vhcvwk7rOZBbX1ZCQ1M3KAcLlJ3Paptn0mn32zUg05YebGlOLDlCHZCx4SpJ3ZCZA7CZAnQIFULY3AZDZD';
+   $access_token = 'EAAYCbn0ZBGEoBAK5h65vPJM5egQTIrsYZCR2QeNwthy3ADZAzWeZCGHKPpZByFUwHJK6QoKerZBi26haiOQGu5Q8q1hlAl6d8HXG5PzaDZAUEEGtIoSZBz9MW0ZCAZCtG8rgCTDNoyJHt2crQ6Jet1SVyApjJGE9BprQSi0Gn6s4ZCc0QZDZD';
    
 
 $challenge = $_REQUEST['hub_challenge'];
