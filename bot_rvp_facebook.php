@@ -2,19 +2,14 @@
 error_log('facebook hook ');
  
    $access_token = 'EAABvD2ZBmpBkBAOhvBOmxgXp2ZCmuRVkY1p8DK9gXT1nYt9Y3zKmZA6hzqujoaysYm3UVfG9A0DNQD8W2hsUeNleIk4y5r6Mn4KWabJeWZBWBXZCNY3qfQY0XU0sSKuw23eFlufMCUHzKD16d1E1zY8lOFIy9L3aE6PKpF3ZBwXz3TJ7L56x91';
-   $verify_token = 'rvp_cxp_poc';
-   $hub_verify_token = null;
- 
-   if(isset($_REQUEST['hub_challenge'])) {
-     	$challenge = $_REQUEST['hub_challenge'];
-    	$hub_verify_token = $_REQUEST['hub_verify_token'];
-   }
-	
-  error_log('hub_verify_token  '. $hub_verify_token );
-   if ($hub_verify_token === $verify_token) {
-     	error_log('challenge '.$challenge);
-   }
+   
 
+$challenge = $_REQUEST['hub_challenge'];
+$verify_token = $_REQUEST['hub_verify_token'];
+
+if ($verify_token === 'rvp_cxp_poc') {
+error_log( 'challenge'.$challenge);
+}
 
 error_log('data : '.file_get_contents('php://input'));
 $input = json_decode(file_get_contents('php://input'), true);
