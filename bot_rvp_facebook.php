@@ -14,8 +14,9 @@ error_log('facebook hook ');
    if ($hub_verify_token === $verify_token) {
      	error_log('challenge '.$challenge);
    }
-error_log('request input '.$_REQUEST['input']);
- 
+error_log('request input '.$_REQUEST[0]);
+ error_log('request input '.$_REQUEST[1]);
+error_log('request input '.$_REQUEST[2]);
    $input = json_decode(file_get_contents('php://input'), false);
   error_log('input  '. $input );
 
