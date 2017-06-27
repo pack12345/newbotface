@@ -52,7 +52,7 @@ if (!is_null($events['events'])) {
 					'altText' => 'this is a buttons template',
 					'template' => [
 						'type'=> 'buttons',
-						'thumbnailImageUrl'=> 'https://www.mx7.com/i/bbb/G5xC6I.png',
+						'thumbnailImageUrl'=> '<a href="https://www.mx7.com/view2/zWMqmW8pN5uIDTMB" target="_blank"><img border="0" src="https://www.mx7.com/i/bbb/G5xC6I.png" /></a>',
 						'text' => 'Contact Center at  0-2100-9191',
 						'actions' => [
 
