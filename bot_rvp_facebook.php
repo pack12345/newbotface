@@ -14,6 +14,12 @@ error_log('facebook hook ');
    if ($hub_verify_token === $verify_token) {
      	error_log('challenge '.$challenge);
    }
+
+ 
+   $input = json_decode(file_get_contents('php://input'), false);
+  error_log('input  '. $input );
+
+
 error_log('data : '.file_get_contents('php://input'));
 $input = json_decode(file_get_contents('php://input'), true);
 error_log($input);
