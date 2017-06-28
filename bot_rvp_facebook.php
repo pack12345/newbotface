@@ -137,63 +137,172 @@ error_log($message);
  										[
  										  'type' => 'phone_number',
  										  'title' => 'Call',
- 										  'payload' => '+662-259-2582'
- 									       ]
- 									]
- 								]
- 							]
- 					      
- 					      ]
- 				]
- 		];
- 	}else if(substr($message_to_reply,0,27)=='  https://www.skyscanner.ne'){
- 	error_log('pic');
- 	$messages=[
- 		'attachment' =>['type' => 'template',
- 				'payload' => ['template_type' => 'generic',
- 					      	'elements' => [
- 								 [
- 									'title' => 'Skyscanner Flights',
- 									'subtitle' => 'Skyscanner compares millions of flights to find you the cheapest deal, fast.',
- 									'buttons' => [
- 										['type' => 'web_url',
- 										'title' => 'Check It',
- 										'url' => 'https://www.skyscanner.net/'
+$messages = '';
+			
+			$result = explode("\n",$message_to_reply);
+			$symResult = "";
+			foreach ($result as $value) {
+			    $symResult .= substr($value, 0, 1);
+			}
+			$imageURL = "";
+			$title = "";
+			$subTitle = "";
+			$titleButton = "";
+			$webURL = "";
+			$messages = "";
+			for($i = 0; $i < count($result) ; $i++){
+				if(substr($result[$i],0,1) == "!"){
+					$imageURL  = trim($result[$i],"!");
+					 error_log($imageURL);
+				}elseif (substr($result[$i],0,1) == "["){
+					$title  = trim($result[$i],"[");
+					error_log($title);
+				}elseif (substr($result[$i],0,1) == "{"){
+					$subTitle   = trim($result[$i],"{");
+					error_log($subTitle);
+				}elseif (substr($result[$i],0,1) == "*"){
+					$titleButton   = trim($result[$i],"*");
+					error_log($titleButton);
+				}elseif (substr($result[$i],0,1) == "#"){
+					$webURL    = trim($result[$i],"#");
+					error_log($webURL);
+				}else{
+					error_log("Not have condition fix2.");
+					$messageDir = implode("\n", $result);
+				}
+			}
+			$symImageURL = "!";
+			$symTitle = "[";
+			$symSubtitle = "{";
+			$symTitleBN = "*";
+			$symWebURL = "#";
+			$symMessOnly = "(";
+			$checkImageURL = strpos($symResult, $symImageURL);
+			$checkTitle = strpos($symResult, $symTitle);
+			$checkSubtitle = strpos($symResult, $symSubtitle);
+			$checkTitleBN = strpos($symResult, $symTitleBN);
+			$checkWebURL = strpos($symResult, $symWebURL);
+			$checkMessOnly = strpos($symResult, $symMessOnly);
+			if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+			    error_log("Template have all");
+			$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+ 											'title' => $title,
+											'image_url'=> $imageURL,
+ 											'subtitle' => $subTitle,
+ 											'buttons' => [
+ 												['type' => 'web_url',
+ 												'title' => $titleButton,
+ 												'url' => $webURL
+ 												]
+ 											]
  										]
- 									]
- 								]
- 							]
- 					      
- 					      ]
- 				]
- 		];
- 	}else if(substr($message_to_reply,0,27)=='  https://www.hotelscombine'){
- 	error_log('pic');
- 	$messages=[
- 		'attachment' =>['type' => 'template',
- 				'payload' => ['template_type' => 'generic',
- 					      	'elements' => [
- 								 [
- 									'title' => 'Hotels Combined',
- 									'buttons' => [
- 										['type' => 'web_url',
- 										'title' => 'Check It',
- 										'subtitle' => 'The best hotel deals from all the top travel sites. Guaranteed',
- 										'url' => 'https://www.hotelscombined.co.th'
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
+			}elseif (($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+			    error_log("Template not have image");
+				$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+ 											'title' => $title,
+ 											'subtitle' => $subTitle,
+ 											'buttons' => [
+ 												['type' => 'web_url',
+ 												'title' => $titleButton,
+ 												'url' => $webURL
+ 												]
+ 											]
  										]
- 									]
- 								]
- 							]
- 					      
- 					      ]
- 				]
- 		];
- 						
-  	}else{	
- 		$messages = [
- 			'text' => $message_to_reply
-  		];
-  	}
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
+			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
+			    error_log("Template not have button");
+			$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+ 											'title' => $title,
+											'image_url'=> $imageURL,
+ 											'subtitle' => $subTitle
+ 											
+ 										]
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
+			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
+			    error_log("Template not have title");
+				$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+											'image_url'=> $imageURL,
+ 											'subtitle' => $subTitle,
+ 											
+ 										]
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
+			}elseif (($checkImageURL !== false) && ($checkTitle !== false)) {
+			    error_log("Template not have subtitle and button");
+				$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+ 											'title' => $title,
+											'image_url'=> $imageURL
+ 											
+ 										]
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
+			}elseif (($checkImageURL !== false)) {
+			    error_log("Send image only");
+				$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+ 										
+											'image_url'=> $imageURL
+ 											
+ 										
+ 										]
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
+			}elseif (($checkMessOnly !== false)) {
+			    error_log("Send message only");
+					$messages = [
+						'text' => $messageDir
+					];
+			}else{
+				error_log("Not have condition fix.");
+				$messages = [
+						'text' => $messageDir
+					];
+			}
  
  error_log('before response');
  //The JSON data.
