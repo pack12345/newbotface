@@ -2,7 +2,7 @@
 
 error_log('facebook hook ');
  
-$access_token = 'EAAGJ1qglvHoBAG4ZAcu21bWCnsHwxAJgolI1xZCGOgwlPdyZBv54QMQtB0UKf63jIMOPo3UZCVb180S8lf8ZC1hjNwrP1QP09IhE5hfCbbw5H2DqMBR9sxZCVKy1UaR7zl8WCZCh9iOEGtpXIZAZBigpMe1QixZC4Wz9zjB6voUTJhNnAUwlzKe38M';
+$access_token = 'EAAYCbn0ZBGEoBANVGl1iKib67nimJ55WO1QfFlVAe2sDBfaFvvK5gK4niTZCLMD3nRsokcbFmuRUSuKzVYeDO17UlZBxvvzQb5NsIqmFSETwO225uuTvCQArwRUDYoz3DKpkDHBoFZCbcyKhGlgVSXgMnPehgZBBWDdDoKh5GD3WsyhrYTJFw';
 $verify_token === 'rvp_poc';
    
 $challenge = $_REQUEST['hub_challenge'];
