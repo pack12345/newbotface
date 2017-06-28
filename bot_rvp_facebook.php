@@ -90,7 +90,13 @@ error_log('facebook hook ');
 			$checkWebURL = strpos($symResult, $symWebURL);
 			$checkMessOnly = strpos($symResult, $symMessOnly);
 
-			error_log($checkImageURL,$checkTitle,$checkSubtitle,$checkTitleBN,$checkWebURL,$checkMessOnly);
+				error_log($checkImageURL);
+				error_log($checkTitle);
+				error_log($checkSubtitle);
+				error_log($checkTitleBN);
+				error_log($checkWebURL);
+				error_log($checkMessOnly);
+
 			if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 			    error_log("Template have all");
 			$messages=[
