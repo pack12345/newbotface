@@ -102,13 +102,13 @@ if (!is_null($events['events'])) {
 										     ]
 										]
 								];
-			}elseif (($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+			}elseif (($checkTitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 			    error_log("Template not have image and title");
 				$messages=['type'=> 'template',
 								'altText' => 'this is a buttons template',
 								'template' => [
 									'type'=> 'buttons',
-									'text' => $subTitle,
+									'title' => $title,
 									'actions' => [
 											 ['type' => 'uri',
 												'label' => $titleButton,
@@ -117,14 +117,14 @@ if (!is_null($events['events'])) {
 										     ]
 										]
 								];
-			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 			    error_log("Template not have title");
 				$messages=['type'=> 'template',
 								'altText' => 'this is a buttons template',
 								'template' => [
 									'type'=> 'buttons',
 									'thumbnailImageUrl'=> $imageURL,
-									'text' => $subTitle,
+									'title' => $title,
 									'actions' => [
 											 ['type' => 'uri',
 												'label' => $titleButton,
