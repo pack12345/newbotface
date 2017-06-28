@@ -129,6 +129,25 @@ if (!is_null($events['events'])) {
 									'text' => $subTitle
 										]
 								];
+				
+			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+			    error_log("Template not have title");
+				$messages=['type'=> 'template',
+								'altText' => 'this is a buttons template',
+								'template' => [
+									'type'=> 'buttons',
+									'thumbnailImageUrl'=> $imageURL,
+									'text' => $subTitle,
+									'actions' => [
+											 ['type' => 'uri',
+												'label' => $titleButton,
+												'uri' => $webURL
+											  ]
+										     ]
+
+										]
+								];
+				
 			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
 			    error_log("Template not have title");
 				$messages=['type'=> 'template',
