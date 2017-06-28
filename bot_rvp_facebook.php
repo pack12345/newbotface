@@ -10,7 +10,8 @@ $verify_token = $_REQUEST['hub_verify_token'];
 if ($verify_token === 'rvp_poc') {
 error_log( 'challenge'.$challenge);
 }
-
+print_r($verify_token);
+/*
 error_log('data : '.file_get_contents('php://input'));
 $input = json_decode(file_get_contents('php://input'), true);
 error_log($input);
@@ -220,4 +221,5 @@ error_log($message);
  	if(!empty($input['entry'][0]['messaging'][0]['message'])){
  	    $result = curl_exec($ch);
 	 }
+	 */
  ?>
