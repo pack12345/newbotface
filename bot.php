@@ -153,7 +153,7 @@ if (!is_null($events['events'])) {
 										     ]
 										]
 								];
-
+				
 			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
 			    error_log("Template not have button");
 				$messages=['type'=> 'template',
@@ -163,6 +163,24 @@ if (!is_null($events['events'])) {
 									'thumbnailImageUrl'=> $imageURL,
 									'title' => $title,
 									'text' => $subTitle
+
+										]
+								];
+
+			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
+			    error_log("Template not have title");
+				$messages=['type'=> 'template',
+								'altText' => 'this is a buttons template',
+								'template' => [
+									'type'=> 'buttons',
+									'thumbnailImageUrl'=> $imageURL,
+									'text' => $subTitle,
+									'actions' => [
+											 ['type' => 'uri',
+												'label' => $titleButton,
+												'uri' => $webURL
+											  ]
+										     ]
 
 										]
 								];
