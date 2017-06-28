@@ -1,16 +1,11 @@
 <?php
-$access_token = 'Mb1MfpF5t/adwXJenkK5jMkKvZOcGCOaiLIZzFI2ZcV059EKV4eC0FV4Euf8FPg4XqQcDwoB+7bTMVxxtoeJgAlqAxJfbXcnpzxLX8eiHTIaA6snZz8ZU6i8q9drPExofgFrjUrDH/TuDT/OYenjDgdB04t89/1O/w1cDnyilFU=';
 
-$url = 'https://api.line.me/v2/bot/message/reply';
+error_log('facebook hook ');
+ 
+$access_token = 'EAAGJ1qglvHoBAG4ZAcu21bWCnsHwxAJgolI1xZCGOgwlPdyZBv54QMQtB0UKf63jIMOPo3UZCVb180S8lf8ZC1hjNwrP1QP09IhE5hfCbbw5H2DqMBR9sxZCVKy1UaR7zl8WCZCh9iOEGtpXIZAZBigpMe1QixZC4Wz9zjB6voUTJhNnAUwlzKe38M';
+$verify_token === 'rvp_poc';
+   
 
-$headers = array('Authorization: Bearer ' . $access_token);
 
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-$result = curl_exec($ch);
-curl_close($ch);
 
-echo $result;
 ?>
