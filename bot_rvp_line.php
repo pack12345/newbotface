@@ -85,6 +85,7 @@ if (!is_null($events['events'])) {
 			$checkTitleBN = strpos($symResult, $symTitleBN);
 			$checkWebURL = strpos($symResult, $symWebURL);
 			$checkMessOnly = strpos($symResult, $symMessOnly);
+			
 			if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 			    error_log("Template have all");
 				$messages=['type'=> 'template',
@@ -102,21 +103,7 @@ if (!is_null($events['events'])) {
 										     ]
 										]
 								];
-			}elseif (($checkTitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
-			    error_log("Template not have image and title");
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'title' => $title,
-									'actions' => [
-											 ['type' => 'uri',
-												'label' => $titleButton,
-												'uri' => $webURL
-											  ]
-										     ]
-										]
-								];
+				
 			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 			    error_log("Template not have title");
 				$messages=['type'=> 'template',
@@ -133,6 +120,23 @@ if (!is_null($events['events'])) {
 										     ]
 										]
 								];
+				
+			}elseif (($checkTitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+			    error_log("Template not have image ");
+				$messages=['type'=> 'template',
+								'altText' => 'this is a buttons template',
+								'template' => [
+									'type'=> 'buttons',
+									'title' => $title,
+									'actions' => [
+											 ['type' => 'uri',
+												'label' => $titleButton,
+												'uri' => $webURL
+											  ]
+										     ]
+										]
+								];
+
 			
 			}elseif (($checkImageURL !== false)) {
 			    error_log("Send image only");
