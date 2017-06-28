@@ -133,14 +133,14 @@ error_log('facebook hook ');
  							      ]
   						]
   				];
-			}elseif (($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+			}elseif (($checkTitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 			error_log("Template not have title and image");
 			$messages=[
   				'attachment' =>['type' => 'template',
  						'payload' => ['template_type' => 'generic',
  							      	'elements' => [
  										 [
- 											'subtitle' => $subTitle,
+ 											'title' => $title,
  											'buttons' => [
  												['type' => 'web_url',
  												'title' => $titleButton,
