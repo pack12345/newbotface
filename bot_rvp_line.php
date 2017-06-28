@@ -102,22 +102,6 @@ if (!is_null($events['events'])) {
 										     ]
 										]
 								];
-			}elseif (($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
-			    error_log("Template not have image");
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'title' => $title,
-									'text' => $subTitle,
-									'actions' => [
-											 ['type' => 'uri',
-												'label' => $titleButton,
-												'uri' => $webURL
-											  ]
-										     ]
-										]
-								];
 			}elseif (($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 			    error_log("Template not have image and title");
 				$messages=['type'=> 'template',
@@ -133,18 +117,6 @@ if (!is_null($events['events'])) {
 										     ]
 										]
 								];
-			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
-			    error_log("Template not have button");
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'thumbnailImageUrl'=> $imageURL,
-									'title' => $title,
-									'text' => $subTitle
-										]
-								];
-				
 			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 			    error_log("Template not have title");
 				$messages=['type'=> 'template',
@@ -159,30 +131,9 @@ if (!is_null($events['events'])) {
 												'uri' => $webURL
 											  ]
 										     ]
-
 										]
 								];
-				
-			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
-			    error_log("Template not have title");
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'thumbnailImageUrl'=> $imageURL,
-									'text' => $subTitle
-										]
-								];
-			}elseif (($checkImageURL !== false) && ($checkTitle !== false)) {
-			    error_log("Template not have subtitle and button");
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'thumbnailImageUrl'=> $imageURL,
-									'title' => $title
-										]
-								];
+			
 			}elseif (($checkImageURL !== false)) {
 			    error_log("Send image only");
 				$messages=['type'=> 'template',
