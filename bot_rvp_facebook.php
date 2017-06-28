@@ -149,6 +149,50 @@ error_log('facebook hook ');
  							      ]
   						]
   				];
+			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+			error_log("Template not have title");
+			$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+											'image_url'=> $imageURL,
+ 											'subtitle' => $subTitle
+											 'buttons' => [
+ 												['type' => 'web_url',
+ 												'title' => $titleButton,
+ 												'url' => $webURL
+ 												]
+ 											]
+ 											
+ 										]
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
+			}elseif (($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+			error_log("Template not have title and image");
+			$messages=[
+  				'attachment' =>['type' => 'template',
+ 						'payload' => ['template_type' => 'generic',
+ 							      	'elements' => [
+ 										 [
+								
+ 											'subtitle' => $subTitle
+											 'buttons' => [
+ 												['type' => 'web_url',
+ 												'title' => $titleButton,
+ 												'url' => $webURL
+ 												]
+ 											]
+ 											
+ 										]
+  									]
+ 							      
+ 							      ]
+  						]
+  				];
 			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
 			    error_log("Template not have title");
 				$messages=[
