@@ -5,11 +5,13 @@ error_log('facebook hook ');
    $verify_token = 'rvp_poc';
    $hub_verify_token = null;
 
+
    if(isset($_REQUEST['hub_challenge'])) {
      	$challenge = $_REQUEST['hub_challenge'];
     	$hub_verify_token = $_REQUEST['hub_verify_token'];
    }
- 
+	print_r($challenge);
+/* 
   error_log('hub_verify_token  '. $hub_verify_token );
    if ($hub_verify_token === $verify_token) {
      	error_log('challenge '.$challenge);
@@ -206,5 +208,5 @@ error_log('facebook hook ');
  	//Execute the request
  	if(!empty($input['entry'][0]['messaging'][0]['message'])){
  	    $resultMes = curl_exec($ch);
-	 }
+	 }*/
  ?>
