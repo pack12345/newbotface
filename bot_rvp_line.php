@@ -128,7 +128,6 @@ if (!is_null($events['events'])) {
 								'altText' => 'this is a buttons template',
 								'template' => [
 									'type'=> 'buttons',
-									'title' => 'RVP',
 									'text' => $title,
 									'actions' => [
 											 ['type' => 'uri',
