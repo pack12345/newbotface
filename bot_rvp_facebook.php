@@ -111,14 +111,14 @@ error_log('facebook hook ');
  							      ]
   						]
   				];
-			}elseif (($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
-			    error_log("Template not have image");
-				$messages=[
+			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+			    error_log("Template not have title");
+			$messages=[
   				'attachment' =>['type' => 'template',
  						'payload' => ['template_type' => 'generic',
  							      	'elements' => [
  										 [
- 											'title' => $title,
+											'image_url'=> $imageURL,
  											'subtitle' => $subTitle,
  											'buttons' => [
  												['type' => 'web_url',
@@ -132,45 +132,6 @@ error_log('facebook hook ');
  							      ]
   						]
   				];
-			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
-			    error_log("Template not have button");
-			$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
- 											'title' => $title,
-											'image_url'=> $imageURL,
- 											'subtitle' => $subTitle
- 											
- 										]
-  									]
- 							      
- 							      ]
-  						]
-  				];
-			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
-			error_log("Template not have title");
-			$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
-											'image_url'=> $imageURL,
- 											'subtitle' => $subTitle,
-											 'buttons' => [
- 												['type' => 'web_url',
- 												'title' => $titleButton,
- 												'url' => $webURL
- 												]
- 											]
- 											
- 										]
-  									]
- 							      
- 							      ]
-  						]
-  				];
 			}elseif (($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 			error_log("Template not have title and image");
 			$messages=[
@@ -178,53 +139,20 @@ error_log('facebook hook ');
  						'payload' => ['template_type' => 'generic',
  							      	'elements' => [
  										 [
-								
  											'subtitle' => $subTitle,
-											 'buttons' => [
+ 											'buttons' => [
  												['type' => 'web_url',
  												'title' => $titleButton,
  												'url' => $webURL
  												]
  											]
- 											
  										]
   									]
  							      
  							      ]
   						]
   				];
-			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
-			    error_log("Template not have title");
-				$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
-											'image_url'=> $imageURL,
- 											'subtitle' => $subTitle,
- 											
- 										]
-  									]
- 							      
- 							      ]
-  						]
-  				];
-			}elseif (($checkImageURL !== false) && ($checkTitle !== false)) {
-			    error_log("Template not have subtitle and button");
-				$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
- 											'title' => $title,
-											'image_url'=> $imageURL
- 											
- 										]
-  									]
- 							      
- 							      ]
-  						]
-  				];
+			
 			}elseif (($checkImageURL !== false)) {
 			    error_log("Send image only");
 				$messages=[
