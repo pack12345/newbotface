@@ -157,7 +157,7 @@ error_log('facebook hook ');
  							      	'elements' => [
  										 [
 											'image_url'=> $imageURL,
- 											'subtitle' => $subTitle
+ 											'subtitle' => $subTitle,
 											 'buttons' => [
  												['type' => 'web_url',
  												'title' => $titleButton,
