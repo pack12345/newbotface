@@ -111,7 +111,8 @@ if (!is_null($events['events'])) {
 								'template' => [
 									'type'=> 'buttons',
 									'thumbnailImageUrl'=> $imageURL,
-									'title' => $title,
+									'title' => 'RVP',
+									'text' => $title,
 									'actions' => [
 											 ['type' => 'uri',
 												'label' => $titleButton,
