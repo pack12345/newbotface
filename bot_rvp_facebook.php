@@ -1,9 +1,9 @@
 <?php
 error_log('facebook hook ');
  
-   $access_token = 'EAAYCbn0ZBGEoBABtZC3PexrdHUPsB2bSsiPIl7cw6fIMeZC06uTofO3Ch9lemiwKEyjsi4iiFPi0OyoZAmslRHfFPU5yeoq3w2M4ZB4Gly5etZCGo30PpbxeAz8tTiL8f8XnKnGXzjqbnktw7dY4jnSRw9671AA0XhkCv9pfY2tAZDZD';
-   $verify_token = 'rvp_poc';
-   $hub_verify_token = null;
+//    $access_token = 'EAAYCbn0ZBGEoBABtZC3PexrdHUPsB2bSsiPIl7cw6fIMeZC06uTofO3Ch9lemiwKEyjsi4iiFPi0OyoZAmslRHfFPU5yeoq3w2M4ZB4Gly5etZCGo30PpbxeAz8tTiL8f8XnKnGXzjqbnktw7dY4jnSRw9671AA0XhkCv9pfY2tAZDZD';
+//    $verify_token = 'rvp_poc';
+//    $hub_verify_token = null;
 
 
    if(isset($_REQUEST['hub_challenge'])) {
