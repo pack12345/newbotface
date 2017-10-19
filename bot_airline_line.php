@@ -37,6 +37,7 @@ if (!is_null($events['events'])) {
 			$xcpResult = curl_exec($chcxp);
 			curl_close($chcxp);
 			error_log($xcpResult);	
+			error_log('XXXX:'.substr($xcpResult,0,27).'');
 			
 			$messages = [
 						'type' => 'text',
