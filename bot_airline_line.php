@@ -39,7 +39,7 @@ if (!is_null($events['events'])) {
 			curl_setopt($ch, CURLOPT_URL,"http://58.82.133.74:8070/VoxeoCXP/DialogMapping");
 			curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_POSTFIELDS,
-				    "VSN=testService@System&message='.$text.'&vsDriver=164&channel=line&sessionID='.$userID");
+				    "VSN=testService@System&message=".$text."&vsDriver=164&channel=line&sessionID=".$userID");
 			
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
