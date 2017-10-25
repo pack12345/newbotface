@@ -52,13 +52,12 @@ if (!is_null($events['events'])) {
 			error_log('XXXX:'.substr($xcpResult,0,27).'');
 			
 			if(substr($xcpResult,0,27) == "  https://www.picz.in.th/im"){
-			    error_log("Template have all");
+			    error_log("Send image only");
 				$messages=['type'=> 'template',
 								'altText' => 'this is a buttons template',
 								'template' => [
 									'type'=> 'buttons',
 									'thumbnailImageUrl'=> 'https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg'
-									
 										]
 								];
 				
