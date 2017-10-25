@@ -49,7 +49,7 @@ if (!is_null($events['events'])) {
 			//$xcpResult = curl_exec($chcxp);
 			curl_close($ch);
 			error_log($xcpResult);	
-			error_log('XXXX:'.substr($xcpResult,0,27).'');
+			error_log('XXXX:'.substr($xcpResult,0,6).'');
 			
 			if ($xcpResult == "  true") {
 			    error_log("Template have all");
