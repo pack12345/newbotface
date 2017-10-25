@@ -51,7 +51,7 @@ if (!is_null($events['events'])) {
 			error_log($xcpResult);	
 			error_log('XXXX:'.substr($xcpResult,0,27).'');
 			
-			if ($xcpResult == "true") {
+			if ($xcpResult == "  true") {
 			    error_log("Template have all");
 				$messages=['type'=> 'template',
 								'altText' => 'this is a buttons template',
