@@ -46,7 +46,7 @@ if (!is_null($events['events'])) {
 			$xcpResult = curl_exec($ch);
 			
 			//$xcpResult = curl_exec($chcxp);
-			curl_close($chcxp);
+			curl_close($ch);
 			error_log($xcpResult);	
 			error_log('XXXX:'.substr($xcpResult,0,27).'');
 			
