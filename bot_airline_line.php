@@ -42,7 +42,7 @@ if (!is_null($events['events'])) {
 				    "VSN=testService@System&message='.$text.'&vsDriver=164&channel=line&sessionID='.$userID");
 			
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			error_log($ch);
+			error_log("".$ch);
 			$xcpResult = curl_exec($ch);
 			
 			//$xcpResult = curl_exec($chcxp);
