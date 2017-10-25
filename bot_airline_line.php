@@ -25,16 +25,27 @@ if (!is_null($events['events'])) {
 			$sessionID = session_id();
 			error_log('session '.$sessionID);
 			$postCXP = json_encode($para);
-			$cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$text.'&vsDriver=164&channel=line&sessionID='.$userID;
+			//$cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$text.'&vsDriver=164&channel=line&sessionID='.$userID;
 			
 			
-			error_log($cxpUrl);
-			$chcxp = curl_init($cxpUrl);
+// 			error_log($cxpUrl);
+// 			$chcxp = curl_init($cxpUrl);
 			
-			curl_setopt($chcxp, CURLOPT_CUSTOMREQUEST, "GET");
-			curl_setopt($chcxp, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($chcxp, CURLOPT_FOLLOWLOCATION, 1);
-			$xcpResult = curl_exec($chcxp);
+// 			curl_setopt($chcxp, CURLOPT_CUSTOMREQUEST, "GET");
+// 			curl_setopt($chcxp, CURLOPT_RETURNTRANSFER, true);
+// 			curl_setopt($chcxp, CURLOPT_FOLLOWLOCATION, 1);
+			$ch = curl_init();
+
+			curl_setopt($ch, CURLOPT_URL,"http://58.82.133.74:8070/VoxeoCXP/DialogMapping");
+			curl_setopt($ch, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_POSTFIELDS,
+				    "VSN=testService@System&message='.$text.'&vsDriver=164&channel=line&sessionID='.$userID");
+			
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+			$xcpResult = curl_exec($ch);
+			
+			//$xcpResult = curl_exec($chcxp);
 			curl_close($chcxp);
 			error_log($xcpResult);	
 			error_log('XXXX:'.substr($xcpResult,0,27).'');
