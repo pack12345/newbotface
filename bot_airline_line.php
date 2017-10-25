@@ -53,14 +53,7 @@ if (!is_null($events['events'])) {
 			
 			if($xcpResult == "  https://www.picz.in.th/im"){
 			    error_log("Template have all");
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'thumbnailImageUrl'=> 'https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg'
-									
-										]
-								];
+				
 			}
 			
 			$messages = [
