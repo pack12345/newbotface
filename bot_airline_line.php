@@ -62,12 +62,12 @@ if (!is_null($events['events'])) {
 										]
 								];
 				
-			}
-			
-			$messages = [
+			}else{
+				$messages = [
 						'type' => 'text',
 						'text' => $xcpResult
 					];
+			}
 			
 			error_log('message : '.$messages);	
 			// Make a POST Request to Messaging API to reply to sender
