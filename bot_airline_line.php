@@ -58,11 +58,11 @@ if (!is_null($events['events'])) {
 								'template' => [
 									'type'=> 'buttons',
 									'thumbnailImageUrl'=> 'https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg',
-									'title' => 'hhhh',
-									'text' => 'pppp',
+									'title' => 'Promotion',
+									'text' => 'xxxxxxxxxxxxxxx',
 									'actions' => [
 											 ['type' => 'uri',
-												'label' => 'ooooo',
+												'label' => 'Full image',
 												'uri' => 'https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg'
 											  ]
 										     ]
