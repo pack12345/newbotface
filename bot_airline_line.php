@@ -51,7 +51,7 @@ if (!is_null($events['events'])) {
 			error_log($xcpResult);	
 			error_log('XXXX:'.substr($xcpResult,0,27).'');
 			
-			if($xcpResult.equals('  https://www.picz.in.th/im')){
+			if($xcpResult == "  https://www.picz.in.th/im"){
 			    error_log("Template have all");
 				$messages=['type'=> 'template',
 								'altText' => 'this is a buttons template',
