@@ -43,7 +43,7 @@ if (!is_null($events['events'])) {
 			
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			error_log("url_post : ".$ch);
+			error_log('url_post : '.$ch);
 			$xcpResult = curl_exec($ch);
 			
 			//$xcpResult = curl_exec($chcxp);
