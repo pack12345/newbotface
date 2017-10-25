@@ -49,9 +49,9 @@ if (!is_null($events['events'])) {
 			//$xcpResult = curl_exec($chcxp);
 			curl_close($ch);
 			error_log($xcpResult);	
-			error_log('XXXX:'.substr($xcpResult,0,6).'');
+			error_log('XXXX:'.substr($xcpResult,0,27).'');
 			
-			if ($xcpResult === "  true") {
+			if ($xcpResult === '  https://www.picz.in.th/im') {
 			    error_log("Template have all");
 				$messages=['type'=> 'template',
 								'altText' => 'this is a buttons template',
