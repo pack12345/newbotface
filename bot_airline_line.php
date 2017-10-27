@@ -1,5 +1,6 @@
 <?php
 session_start();
+session_register('ark_departure');
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
 
 
@@ -12,7 +13,6 @@ if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
-		$_SESSION['ark_departure'] = "";
 		$userID = $event['source']['userId'];
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
