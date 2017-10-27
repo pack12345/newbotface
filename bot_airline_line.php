@@ -12,12 +12,13 @@ if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
+		$_SESSION['ark_departure'] = "";
 		$userID = $event['source']['userId'];
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
 			error_log('message '.$event['message']);
 			error_log('--$_SESSION1 : '.$_SESSION['ark_departure']);
-			if($_SESSION['ark_departure'] == ""){
+			if($_SESSION['ark_departure'] == "1"){
 				error_log("----- send departure ----");
 				$text ='จาก'. $event['message']['text'];
 			}else{
