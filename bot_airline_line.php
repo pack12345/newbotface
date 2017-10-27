@@ -1,4 +1,6 @@
 <?php
+session_start();
+$_SESSION['ark_departure'] = "";
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
 
 
@@ -50,25 +52,17 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 			error_log($xcpResult);	
 			error_log('XXXX:'.substr($xcpResult,0,27).'');
-			
-			if(substr($xcpResult,0,27) == "  https://www.picz.in.th/im"){
-			    error_log("Send image only");
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'thumbnailImageUrl'=> 'https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg',
-									'title' => 'Promotion',
-									'text' => 'xxxxxxxxxxxxxxx',
-									'actions' => [
-											 ['type' => 'uri',
-												'label' => 'Full image',
-												'uri' => 'https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg'
-											  ]
-										     ]
-										]
-								];
-				
+			error_log('--$_SESSION1 : '.$_SESSION['ark_departure']);
+			if($xcpResult.trim().substring(0,1).equals("1")){
+			    error_log("----- ark departure ----");
+				$_SESSION['ark_departure'] = "1";
+				$aaa = $xcpResult.split(":")[1];
+				error_log('--$_SESSION2 : '.$_SESSION['ark_departure']);
+				error_log('--$aaa : '.$aaa);
+				$messages = [
+						'type' => 'text',
+						'text' => $aaa
+					];
 			}else{
 				$messages = [
 						'type' => 'text',
