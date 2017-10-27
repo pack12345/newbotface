@@ -71,6 +71,8 @@ if (!is_null($events['events'])) {
 						'text' => $aaa[1]
 					];
 			}else{
+				$_SESSION['ark_departure'] = "";
+				session_write_close();
 				$messages = [
 						'type' => 'text',
 						'text' => $xcpResult
