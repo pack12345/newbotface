@@ -53,7 +53,7 @@ if (!is_null($events['events'])) {
 			error_log($xcpResult);	
 			error_log('XXXX:'.substr($xcpResult,0,27).'');
 			error_log('--$_SESSION1 : '.$_SESSION['ark_departure']);
-			if($xcpResult.trim().substring(0,1).equals("1")){
+			if($xcpResult.trim().substr(0,1).equals("1")){
 			    error_log("----- ark departure ----");
 				$_SESSION['ark_departure'] = "1";
 				$aaa = $xcpResult.split(":")[1];
