@@ -62,7 +62,7 @@ if (!is_null($events['events'])) {
 				error_log('--$aaa : '.$aaa[1]);
 				$messages = [
 						'type' => 'text',
-						'text' => $aaa
+						'text' => $aaa[1]
 					];
 			}else{
 				$messages = [
