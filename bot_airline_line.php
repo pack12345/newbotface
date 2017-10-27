@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['ark_departure'] = "";
+$_SESSION['ark_departure'];
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
 
 
@@ -73,6 +73,7 @@ if (!is_null($events['events'])) {
 			}else{
 				$_SESSION['ark_departure'] = "0";
 				session_write_close();
+				error_log('--$_SESSION2 : '.$_SESSION['ark_departure']);
 				$messages = [
 						'type' => 'text',
 						'text' => $xcpResult
