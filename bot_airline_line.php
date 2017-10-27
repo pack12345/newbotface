@@ -1,7 +1,6 @@
 <?php
 session_start();
-//$_SESSION['ark_departure'] = "";
-$ark_departure ='';
+$_SESSION['ark_departure'];
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
 
 
@@ -18,8 +17,8 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
 			error_log('message '.$event['message']);
-			error_log('--$_SESSION1 : '.$ark_departure);
-			if($ark_departure == "1"){
+			error_log('--$_SESSION1 : '.$_SESSION['ark_departure']);
+			if($_SESSION['ark_departure'] == "1"){
 				error_log("----- send departure ----");
 				$text ='จาก'. $event['message']['text'];
 			}else{
@@ -63,20 +62,18 @@ if (!is_null($events['events'])) {
 		
 			if(substr($xcpResult,0,5) == "    1"){
 			    error_log("----- ark departure ----");
-				//$_SESSION['ark_departure'] = "1";
-				//session_write_close();
-				$ark_departure ='1';
+				$_SESSION['ark_departure'] = "1";
+				session_write_close();
 				$aaa = explode(":",$xcpResult);
-				error_log('--$_SESSION2 : '.$ark_departure);
+				error_log('--$_SESSION2 : '.$_SESSION['ark_departure']);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
 					];
 			}else{
-				//$_SESSION['ark_departure'] = "0";
-				//session_write_close();
-				$ark_departure ='0';
-				error_log('--$_SESSION2 : '.$ark_departure);
+				$_SESSION['ark_departure'] = "0";
+				session_write_close();
+				error_log('--$_SESSION2 : '.$_SESSION['ark_departure']);
 				$messages = [
 						'type' => 'text',
 						'text' => $xcpResult
