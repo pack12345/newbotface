@@ -17,7 +17,14 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
 			error_log('message '.$event['message']);
-			$text = $event['message']['text'];
+			error_log('--$_SESSION1 : '.$_SESSION['ark_departure']);
+			if($_SESSION['ark_departure'] == "1"){
+				error_log("----- send departure ----");
+				$text ='จาก'. $event['message']['text'];
+			}else{
+				$text = $event['message']['text'];
+			}
+			
 			//$text = 'hello world';
 			// Get replyToken
 			$replyToken = $event['replyToken'];
@@ -52,14 +59,13 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 			error_log($xcpResult);	
 			error_log('XXXX:'.substr($xcpResult,0,27).'');
-			error_log('--$_SESSION1 : '.$_SESSION['ark_departure']);
+		
 			if(substr($xcpResult,0,5) == "    1"){
 			    error_log("----- ark departure ----");
 				$_SESSION['ark_departure'] = "1";
+				session_write_close();
 				$aaa = explode(":",$xcpResult);
 				error_log('--$_SESSION2 : '.$_SESSION['ark_departure']);
-				error_log('--$aaa : '.$aaa[0]);
-				error_log('--$aaa : '.$aaa[1]);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
