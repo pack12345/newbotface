@@ -72,7 +72,7 @@ if (!is_null($events['events'])) {
 						'text' => $aaa[1]
 					];
 			}
-			if(substr($xcpResult,0,27) == "  https://www.picz.in.th/im"){
+			else if(substr($xcpResult,0,27) == "  https://www.picz.in.th/im"){
 			    error_log("Send image only");
 				$messages=[
 						  "type"=> "template",
@@ -82,11 +82,7 @@ if (!is_null($events['events'])) {
 						      "columns"=> [
 							  [
 							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/20170906-104358.png",
-							    "action"=> [
-							      "type"=> "postback",
-							      "label"=> "Buy",
-							      "data"=> "action=buy&itemid=111"
-							    ]
+							   
 							  ],
 							  [
 							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/airasia20150629.jpg",
@@ -101,9 +97,17 @@ if (!is_null($events['events'])) {
 							    "action"=> [
 							      "type"=> "uri",
 							      "label"=> "View detail",
-							      "uri"=> "http://example.com/page/222"
+							      "uri"=> "https://www.picz.in.th/images/2017/10/30/qantas.jpg"
 							    ]
-							  ]
+							  ],
+							    [
+							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg",
+							    "action"=> [
+							      "type"=> "uri",
+							      "label"=> "View detail",
+							      "uri"=> "https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg"
+							    ]
+							  ]    
 						      ]
 						  ]
 						
