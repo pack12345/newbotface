@@ -18,10 +18,10 @@ if (!is_null($events['events'])) {
 			error_log('message '.$event['message']);
 			error_log('--$_SESSION1 : '.$_SESSION['departure']);
 			
-			if($_SESSION['departure'] = "1"){
+			if($_SESSION['departure'] == "1"){
 				error_log("----- send departure ----");
 				$text ='จาก'. $event['message']['text'];
-			}else if($_SESSION['departure'] = "2"){
+			}else if($_SESSION['departure'] == "2"){
 				error_log("----- send date ----");
 				$text ='วันที่'. $event['message']['text'];
 			}else{
