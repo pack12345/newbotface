@@ -2,6 +2,7 @@
 session_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
 $ch_session = $_SESSION['departure'];
+error_log('ss:'.$_SESSION['departure']);
 
 // Get POST body content
 $content = file_get_contents('php://input');
