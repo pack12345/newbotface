@@ -74,21 +74,40 @@ if (!is_null($events['events'])) {
 			}
 			if(substr($xcpResult,0,27) == "  https://www.picz.in.th/im"){
 			    error_log("Send image only");
-				$messages=['type'=> 'template',
-								'altText' => 'this is a buttons template',
-								'template' => [
-									'type'=> 'buttons',
-									'thumbnailImageUrl'=> 'https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg',
-									'title' => 'Promotion',
-									'text' => 'xxxxxxxxxxxxxxx',
-									'actions' => [
-											 ['type' => 'uri',
-												'label' => 'Full image',
-												'uri' => 'https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg'
-											  ]
-										     ]
-										]
-								];
+				$messages=[
+						  "type"=> "template",
+						  "altText"=> "this is a image carousel template",
+						  "template"=> {
+						      "type"=> "image_carousel",
+						      "columns"=> [
+							  {
+							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/20170906-104358.png",
+							    "action"=> {
+							      "type"=> "postback",
+							      "label"=> "Buy",
+							      "data"=> "action=buy&itemid=111"
+							    }
+							  },
+							  {
+							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/airasia20150629.jpg",
+							    "action"=> {
+							      "type"=> "message",
+							      "label"=> "Yes",
+							      "text"=> "yes"
+							    }
+							  },
+							  {
+							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/qantas.jpg",
+							    "action"=> {
+							      "type"=> "uri",
+							      "label"=> "View detail",
+							      "uri"=> "http://example.com/page/222"
+							    }
+							  }
+						      ]
+						  }
+						
+					];
 				
 			}else{
 				$_SESSION['departure'] = "0";
