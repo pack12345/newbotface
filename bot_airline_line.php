@@ -1,7 +1,7 @@
 <?php
 session_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
-$_SESSION['departure'] = '3';
+$ch_session = $_SESSION['departure'];
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -16,12 +16,12 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
 			error_log('message '.$event['message']);
-			error_log('--$_SESSION1 : '.$_SESSION['departure']);
+			error_log('--$_SESSION1 : '.$ch_session);
 			
-			if($_SESSION['departure'] == '1'){
+			if($ch_session == '1'){
 				error_log("----- send departure ----");
 				$text ='จาก'. $event['message']['text'];
-			}else if($_SESSION['departure'] == '2'){
+			}else if($ch_session == '2'){
 				error_log("----- send date ----");
 				$text ='วันที่'. $event['message']['text'];
 			}else{
