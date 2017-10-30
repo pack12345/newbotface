@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
 				error_log("----- send date ----");
 				$text ='วันที่'. $event['message']['text'];
 			}else{
-				$text = $event['message']['text'];
+				$text = 'วันที่ จาก'.$event['message']['text'];
 			}
 			
 			//$text = 'hello world';
