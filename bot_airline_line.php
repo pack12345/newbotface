@@ -81,7 +81,12 @@ if (!is_null($events['events'])) {
 						      "type"=> "image_carousel",
 						      "columns"=> [
 							  [
-							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/20170906-104358.png"
+							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/20170906-104358.png",
+								"action"=> [
+							      "type"=> "postback",
+							      "label"=> "Buy",
+							      "data"=> "action=buy&itemid=111"
+							    ]
 							  ],
 							  [
 							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/airasia20150629.jpg",
