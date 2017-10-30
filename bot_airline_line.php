@@ -1,8 +1,8 @@
 <?php
 session_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
-$ch_session = $_SESSION['departure'];
-error_log('ss:'.$_SESSION['departure']);
+$ch_session = $_COOKIE['departure'];
+//error_log('ss:'.$_SESSION['departure']);
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -17,12 +17,12 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
 			error_log('message '.$event['message']);
-			error_log('--$_SESSION1 : '.$ch_session);
+			error_log('--$_COOKIE1 : '.$_COOKIE['departure']);
 			
-			if($ch_session == '1'){
+			if($_COOKIE['departure'] == '1'){
 				error_log("----- send departure ----");
 				$text ='จาก'. $event['message']['text'];
-			}else if($ch_session == '2'){
+			}else if($_COOKIE['departure'] == '2'){
 				error_log("----- send date ----");
 				$text ='วันที่'. $event['message']['text'];
 			}else{
@@ -66,10 +66,10 @@ if (!is_null($events['events'])) {
 		
 			if(substr($xcpResult,0,5) == "    1"){
 			    error_log("----- ark departure ----");
-				$_SESSION['departure'] = '1';
+				 setcookie('departure', '1',time()+3600);
 				//session_write_close();
 				$aaa = explode(":",$xcpResult);
-				error_log('--$_SESSION2 : '.$_SESSION['departure']);
+				error_log('--$_COOKIE2 : '.$_COOKIE['departure']);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
@@ -77,10 +77,10 @@ if (!is_null($events['events'])) {
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
-				$_SESSION['departure'] = '2';
+				setcookie('departure', '2',time()+3600);
 				//session_write_close();
 				$aaa = explode(":",$xcpResult);
-				error_log('--$_SESSION2 : '.$_SESSION['departure']);
+				error_log('--$_COOKIE2 : '.$_COOKIE['departure']);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
@@ -132,9 +132,9 @@ if (!is_null($events['events'])) {
 					];
 				
 			}else{
-				$_SESSION['departure'] = '0';
+				setcookie('departure', '2',time()+3600);
 				//session_write_close();
-				error_log('--$_SESSION2 : '.$_SESSION['departure']);
+				error_log('--$_COOKIE2 : '.$_COOKIE['departure']);
 				$messages = [
 						'type' => 'text',
 						'text' => $xcpResult
