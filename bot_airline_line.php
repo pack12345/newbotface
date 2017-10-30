@@ -131,7 +131,7 @@ if (!is_null($events['events'])) {
 					];
 				
 			}else{
-				$_SESSION['departure'] = "0";
+				$_SESSION['departure'] = '0';
 				session_write_close();
 				error_log('--$_SESSION2 : '.$_SESSION['departure']);
 				$messages = [
