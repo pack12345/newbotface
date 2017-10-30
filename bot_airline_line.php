@@ -82,18 +82,18 @@ if (!is_null($events['events'])) {
 						      "columns"=> [
 							  [
 							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/20170906-104358.png",
-								"action"=> [
-							      "type"=> "postback",
-							      "label"=> "Buy",
-							      "data"=> "action=buy&itemid=111"
+								 "action"=> [
+							      "type"=> "uri",
+							      "label"=> "View detail",
+							      "uri"=> "https://www.picz.in.th/images/2017/10/30/20170906-104358.png"
 							    ]
 							  ],
 							  [
 							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/airasia20150629.jpg",
-							    "action"=> [
-							      "type"=> "message",
-							      "label"=> "Yes",
-							      "text"=> "yes"
+							     "action"=> [
+							      "type"=> "uri",
+							      "label"=> "View detail",
+							      "uri"=> "https://www.picz.in.th/images/2017/10/30/airasia20150629.jpg"
 							    ]
 							  ],
 							  [
