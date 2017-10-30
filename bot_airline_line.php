@@ -67,7 +67,7 @@ if (!is_null($events['events'])) {
 			if(substr($xcpResult,0,5) == "    1"){
 			    error_log("----- ark departure ----");
 				$_SESSION['departure'] = '1';
-				session_write_close();
+				//session_write_close();
 				$aaa = explode(":",$xcpResult);
 				error_log('--$_SESSION2 : '.$_SESSION['departure']);
 				$messages = [
@@ -78,7 +78,7 @@ if (!is_null($events['events'])) {
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
 				$_SESSION['departure'] = '2';
-				session_write_close();
+				//session_write_close();
 				$aaa = explode(":",$xcpResult);
 				error_log('--$_SESSION2 : '.$_SESSION['departure']);
 				$messages = [
@@ -133,7 +133,7 @@ if (!is_null($events['events'])) {
 				
 			}else{
 				$_SESSION['departure'] = '0';
-				session_write_close();
+				//session_write_close();
 				error_log('--$_SESSION2 : '.$_SESSION['departure']);
 				$messages = [
 						'type' => 'text',
