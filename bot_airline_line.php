@@ -1,7 +1,7 @@
 <?php
 session_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
-$_SESSION['departure'] = "3";
+$_SESSION['departure'] = '3';
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -18,10 +18,10 @@ if (!is_null($events['events'])) {
 			error_log('message '.$event['message']);
 			error_log('--$_SESSION1 : '.$_SESSION['departure']);
 			
-			if($_SESSION['departure'] == "1"){
+			if($_SESSION['departure'] == '1'){
 				error_log("----- send departure ----");
 				$text ='จาก'. $event['message']['text'];
-			}else if($_SESSION['departure'] == "2"){
+			}else if($_SESSION['departure'] == '2'){
 				error_log("----- send date ----");
 				$text ='วันที่'. $event['message']['text'];
 			}else{
@@ -65,7 +65,7 @@ if (!is_null($events['events'])) {
 		
 			if(substr($xcpResult,0,5) == "    1"){
 			    error_log("----- ark departure ----");
-				$_SESSION['departure'] = "1";
+				$_SESSION['departure'] = '1';
 				session_write_close();
 				$aaa = explode(":",$xcpResult);
 				error_log('--$_SESSION2 : '.$_SESSION['departure']);
@@ -76,7 +76,7 @@ if (!is_null($events['events'])) {
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
-				$_SESSION['departure'] = "2";
+				$_SESSION['departure'] = '2';
 				session_write_close();
 				$aaa = explode(":",$xcpResult);
 				error_log('--$_SESSION2 : '.$_SESSION['departure']);
