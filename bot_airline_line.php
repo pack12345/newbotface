@@ -71,6 +71,25 @@ if (!is_null($events['events'])) {
 						'type' => 'text',
 						'text' => $aaa[1]
 					];
+			}
+			if(substr($xcpResult,0,27) == "  https://www.picz.in.th/im"){
+			    error_log("Send image only");
+				$messages=['type'=> 'template',
+								'altText' => 'this is a buttons template',
+								'template' => [
+									'type'=> 'buttons',
+									'thumbnailImageUrl'=> 'https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg',
+									'title' => 'Promotion',
+									'text' => 'xxxxxxxxxxxxxxx',
+									'actions' => [
+											 ['type' => 'uri',
+												'label' => 'Full image',
+												'uri' => 'https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg'
+											  ]
+										     ]
+										]
+								];
+				
 			}else{
 				$_SESSION['departure'] = "0";
 				session_write_close();
