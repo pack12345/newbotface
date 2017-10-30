@@ -2,7 +2,7 @@
 session_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
 $ch_session = $_COOKIE['departure'];
-//error_log('ss:'.$_SESSION['departure']);
+error_log('ss:'.$ch_session);
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -17,6 +17,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
 			error_log('message '.$event['message']);
+			setcookie('departure', '3',time()+3600);
 			error_log('--$_COOKIE1 : '.$_COOKIE['departure']);
 			
 			if($_COOKIE['departure'] == '1'){
