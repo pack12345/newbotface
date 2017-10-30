@@ -3,7 +3,7 @@ ob_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
 // $ch_session = $_COOKIE['departure'];
 if(!isset($_COOKIE["departure"])) {
-setcookie('departure', 'AAAA',time()+3600);
+setcookie("departure","AAAA",time()+3600);
 error_log('noss:'.$_COOKIE["departure"]);
 }
 error_log('ss:'.$_COOKIE["departure"]);
