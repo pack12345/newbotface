@@ -23,7 +23,7 @@ if (!is_null($events['events'])) {
 			error_log('--$_COOKIE1 : '.$_COOKIE['departure']);
 			
 			if($_COOKIE['departure'] == '1'){
-				error_log("----- send departure ----");
+				error_log("---- send departure ----");
 				$text ='จาก'. $event['message']['text'];
 			}else if($_COOKIE['departure'] == '2'){
 				error_log("----- send date ----");
