@@ -26,7 +26,7 @@ if (!is_null($events['events'])) {
 				error_log("---- send departure ----");
 				$text ='จาก'. $event['message']['text'];
 			}else if($_COOKIE['departure'] == '2'){
-				error_log("----- send date ----");
+				error_log("---- send date ----");
 				$text ='วันที่'. $event['message']['text'];
 			}else{
 				$text = $event['message']['text'];
