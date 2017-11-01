@@ -6,7 +6,8 @@ $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkI
 // if(isset($_COOKIE['user_id'])) {
 // setcookie('user_id', 0, time()+3600, '/');
 // $_COOKIE['user_id'] ='8';
-// error_log('noss:'.$_COOKIE['user_id']);
+ error_log('doss:'.$pp);
+ error_log('noss:'.$_COOKIE['user_id']);
 // }
 error_log('ss:'.$_COOKIE['user_id']);
 // Get POST body content
