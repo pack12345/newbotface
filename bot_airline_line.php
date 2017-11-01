@@ -116,17 +116,17 @@ if (!is_null($events['events'])) {
 							  [
 							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/qantas.jpg",
 							    "action"=> [
-							      "type": "message",
-							      "label": "จอง",
-							      "text": "จอง"
+							      "type"=> "message",
+							      "label"=> "จอง",
+							      "text"=> "จอง"
 							    ]
 							  ],
 							    [
 							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg",
 							    "action"=> [
-							      "type": "message",
-							      "label": "จอง",
-							      "text": "จอง"
+							      "type"=> "message",
+							      "label"=> "จอง",
+							      "text"=> "จอง"
 							    ]
 							  ]    
 						      ]
