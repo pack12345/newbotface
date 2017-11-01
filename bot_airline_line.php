@@ -3,8 +3,9 @@ ob_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
 // $ch_session = $_COOKIE['departure'];
 $_COOKIE['user_id'] ='5';
-if(!isset($_COOKIE['user_id'])) {
+if(isset($_COOKIE['user_id'])) {
 setcookie('user_id', 0, time()+3600, '/');
+$_COOKIE['user_id'] ='8';
 error_log('noss:'.$_COOKIE['user_id']);
 }
 error_log('ss:'.$_COOKIE['user_id']);
