@@ -2,12 +2,12 @@
 ob_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
 // $ch_session = $_COOKIE['departure'];
-$_COOKIE['user_id'] ='5';
-if(isset($_COOKIE['user_id'])) {
-setcookie('user_id', 0, time()+3600, '/');
-$_COOKIE['user_id'] ='8';
-error_log('noss:'.$_COOKIE['user_id']);
-}
+// $_COOKIE['user_id'] ='5';
+// if(isset($_COOKIE['user_id'])) {
+// setcookie('user_id', 0, time()+3600, '/');
+// $_COOKIE['user_id'] ='8';
+// error_log('noss:'.$_COOKIE['user_id']);
+// }
 error_log('ss:'.$_COOKIE['user_id']);
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -22,12 +22,12 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
 			error_log('message '.$event['message']);
-			error_log('--$_COOKIE1 : '.$_COOKIE['departure']);
+			error_log('--$_COOKIE1 : '.$_COOKIE['user_id']);
 			
-			if($_COOKIE['departure'] == '1'){
+			if($_COOKIE['user_id'] == '1'){
 				error_log("---- send departure ----");
 				$text ='จาก'. $event['message']['text'];
-			}else if($_COOKIE['departure'] == '2'){
+			}else if($_COOKIE['user_id'] == '2'){
 				error_log("---- send date ----");
 				$text ='วันที่'. $event['message']['text'];
 			}else{
@@ -71,7 +71,8 @@ if (!is_null($events['events'])) {
 		
 			if(substr($xcpResult,0,5) == "    1"){
 			    error_log("----- ark departure ----");
-				 setcookie('user_id', 1, time()+3600, '/');
+				$_COOKIE['user_id'] = '1';
+				 //setcookie('user_id', 1, time()+3600, '/');
 				//session_write_close();
 				$aaa = explode(":",$xcpResult);
 				error_log('--$_COOKIE2 : '.$_COOKIE['departure']);
@@ -82,7 +83,7 @@ if (!is_null($events['events'])) {
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
-				setcookie('user_id', 2, time()+3600, '/');
+				$_COOKIE['user_id'] ='2'
 				//session_write_close();
 				$aaa = explode(":",$xcpResult);
 				error_log('--$_COOKIE2 : '.$_COOKIE['departure']);
@@ -137,7 +138,7 @@ if (!is_null($events['events'])) {
 					];
 				
 			}else{
-				setcookie('user_id', 3, time()+3600, '/');
+				$_COOKIE['user_id'] = '0';
 				//session_write_close();
 				error_log('--$_COOKIE2 : '.$_COOKIE['departure']);
 				$messages = [
