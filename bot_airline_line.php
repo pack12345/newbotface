@@ -1,10 +1,10 @@
 <?php
 ob_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
-// $ch_session = $_COOKIE['departure'];
+
 if(!isset($_COOKIE['user_id'])) {
 error_log('noss:'.$_COOKIE['user_id']);
-setcookie('user_id', '0',time()+3600,'https://floating-brook-89249.herokuapp.com/cooky.txt');
+setcookie('user_id','AAAAA', time()+3600, '/','', 0);
  }
 error_log('ss:'.$_COOKIE['user_id']);
 // Get POST body content
@@ -42,17 +42,8 @@ if (!is_null($events['events'])) {
 			$sessionID = session_id();
 			error_log('session '.$sessionID);
 			$postCXP = json_encode($para);
-			//$cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$text.'&vsDriver=164&channel=line&sessionID='.$userID;
-			
-			
-// 			error_log($cxpUrl);
-// 			$chcxp = curl_init($cxpUrl);
-			
-// 			curl_setopt($chcxp, CURLOPT_CUSTOMREQUEST, "GET");
-// 			curl_setopt($chcxp, CURLOPT_RETURNTRANSFER, true);
-// 			curl_setopt($chcxp, CURLOPT_FOLLOWLOCATION, 1);
+		
 			$ch = curl_init();
-
 			curl_setopt($ch, CURLOPT_URL,"http://58.82.133.74:8070/VoxeoCXP/DialogMapping");
 			curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_POSTFIELDS,
@@ -70,7 +61,6 @@ if (!is_null($events['events'])) {
 		
 			if(substr($xcpResult,0,5) == "    1"){
 			    error_log("----- ark departure ----");
-				$pp = '1';
 				 //setcookie('user_id', 1, time()+3600, '/');
 				//session_write_close();
 				$aaa = explode(":",$xcpResult);
@@ -83,7 +73,6 @@ if (!is_null($events['events'])) {
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
-				$pp ='2';
 				//session_write_close();
 				$aaa = explode(":",$xcpResult);
 				error_log('--$_COOKIE2 : '.$_COOKIE['user_id']);
@@ -138,7 +127,6 @@ if (!is_null($events['events'])) {
 					];
 				
 			}else{
-				$pp = '0';
 				//session_write_close();
 				error_log('--$_COOKIE2 : '.$_COOKIE['user_id']);
 				$messages = [
