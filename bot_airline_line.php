@@ -83,7 +83,7 @@ if (!is_null($events['events'])) {
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
-				$_COOKIE['user_id'] ='2'
+				$_COOKIE['user_id'] ='2';
 				//session_write_close();
 				$aaa = explode(":",$xcpResult);
 				error_log('--$_COOKIE2 : '.$_COOKIE['departure']);
