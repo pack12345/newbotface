@@ -75,7 +75,7 @@ if (!is_null($events['events'])) {
 				 //setcookie('user_id', 1, time()+3600, '/');
 				//session_write_close();
 				$aaa = explode(":",$xcpResult);
-				error_log('--$_COOKIE2 : '.$_COOKIE['departure']);
+				error_log('--$_COOKIE2 : '.$_COOKIE['user_id']);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
@@ -86,7 +86,7 @@ if (!is_null($events['events'])) {
 				$_COOKIE['user_id'] ='2';
 				//session_write_close();
 				$aaa = explode(":",$xcpResult);
-				error_log('--$_COOKIE2 : '.$_COOKIE['departure']);
+				error_log('--$_COOKIE2 : '.$_COOKIE['user_id']);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
@@ -140,7 +140,7 @@ if (!is_null($events['events'])) {
 			}else{
 				$_COOKIE['user_id'] = '0';
 				//session_write_close();
-				error_log('--$_COOKIE2 : '.$_COOKIE['departure']);
+				error_log('--$_COOKIE2 : '.$_COOKIE['user_id']);
 				$messages = [
 						'type' => 'text',
 						'text' => $xcpResult
