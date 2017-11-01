@@ -2,7 +2,7 @@
 ob_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
 // $ch_session = $_COOKIE['departure'];
-// $_COOKIE['user_id'] ='5';
+ $_COOKIE['user_id'] =$pp;
 // if(isset($_COOKIE['user_id'])) {
 // setcookie('user_id', 0, time()+3600, '/');
 // $_COOKIE['user_id'] ='8';
@@ -71,7 +71,7 @@ if (!is_null($events['events'])) {
 		
 			if(substr($xcpResult,0,5) == "    1"){
 			    error_log("----- ark departure ----");
-				$_COOKIE['user_id'] = '1';
+				$pp = '1';
 				 //setcookie('user_id', 1, time()+3600, '/');
 				//session_write_close();
 				$aaa = explode(":",$xcpResult);
@@ -83,7 +83,7 @@ if (!is_null($events['events'])) {
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
-				$_COOKIE['user_id'] ='2';
+				$pp ='2';
 				//session_write_close();
 				$aaa = explode(":",$xcpResult);
 				error_log('--$_COOKIE2 : '.$_COOKIE['user_id']);
@@ -138,7 +138,7 @@ if (!is_null($events['events'])) {
 					];
 				
 			}else{
-				$_COOKIE['user_id'] = '0';
+				$pp = '0';
 				//session_write_close();
 				error_log('--$_COOKIE2 : '.$_COOKIE['user_id']);
 				$messages = [
