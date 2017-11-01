@@ -22,7 +22,8 @@ if (!is_null($events['events'])) {
 		$userID = $event['source']['userId'];
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
-			error_log('message '.$event['message']);
+			error_log('message1 '.$event['message']['text']);
+			error_log('message2 '.$event['text']['text']);
 			error_log('--$_COOKIE1 : '.$_COOKIE['user_id']);
 			
 			if($event['text']['text'] == 'กรุณากรอกต้นทาง'){
