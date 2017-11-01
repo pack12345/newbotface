@@ -101,32 +101,32 @@ if (!is_null($events['events'])) {
 							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/20170906-104358.png",
 								 "action"=> [
 							      "type"=> "uri",
-							      "label"=> "View detail",
-							      "uri"=> "https://www.picz.in.th/images/2017/10/30/20170906-104358.png"
+							      "label"=> "ดูเพิ่มเติม",
+							      "uri"=> "http://www.lionairthai.com/th/Special-Offer/Latest-Promotion"
 							    ]
 							  ],
 							  [
 							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/airasia20150629.jpg",
 							     "action"=> [
 							      "type"=> "uri",
-							      "label"=> "View detail",
-							      "uri"=> "https://www.picz.in.th/images/2017/10/30/airasia20150629.jpg"
+							      "label"=> "ดูเพิ่มเติม",
+							      "uri"=> "https://www.airasia.com/th/th/promotion.page"
 							    ]
 							  ],
 							  [
 							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/qantas.jpg",
 							    "action"=> [
-							      "type"=> "uri",
-							      "label"=> "View detail",
-							      "uri"=> "https://www.picz.in.th/images/2017/10/30/qantas.jpg"
+							      "type": "message",
+							      "label": "จอง",
+							      "text": "จอง"
 							    ]
 							  ],
 							    [
 							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg",
 							    "action"=> [
-							      "type"=> "uri",
-							      "label"=> "View detail",
-							      "uri"=> "https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg"
+							      "type": "message",
+							      "label": "จอง",
+							      "text": "จอง"
 							    ]
 							  ]    
 						      ]
