@@ -2,12 +2,9 @@
 ob_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
 // $ch_session = $_COOKIE['departure'];
- $_COOKIE['user_id'] =$pp;
-// if(isset($_COOKIE['user_id'])) {
-// setcookie('user_id', 0, time()+3600, '/');
-// $_COOKIE['user_id'] ='8';
- error_log('doss:'.$pp);
- error_log('noss:'.$_COOKIE['user_id']);
+if(!isset($_COOKIE['user_id'])) {
+error_log('noss:'.$_COOKIE['user_id']);
+setcookie('user_id', '0');
 // }
 error_log('ss:'.$_COOKIE['user_id']);
 // Get POST body content
@@ -26,8 +23,9 @@ if (!is_null($events['events'])) {
 			error_log('message2 '.$event['text']['text']);
 			error_log('--$_COOKIE1 : '.$_COOKIE['user_id']);
 			
-			if($event['text']['text'] == 'กรุณากรอกต้นทาง'){
+			if($_COOKIE['user_id'] == '1'){
 				error_log("---- VVV BBB send departure ----");
+				$text ='จาก'. $event['message']['text'];
 			}else if($_COOKIE['user_id'] == '2'){
 				error_log("---- send date ----");
 				$text ='วันที่'. $event['message']['text'];
@@ -81,6 +79,7 @@ if (!is_null($events['events'])) {
 						'type' => 'text',
 						'text' => $aaa[1]
 					];
+				
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
