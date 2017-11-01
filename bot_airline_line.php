@@ -25,7 +25,7 @@ if (!is_null($events['events'])) {
 			error_log('message '.$event['message']);
 			error_log('--$_COOKIE1 : '.$_COOKIE['user_id']);
 			
-			if($event['message']['text'] == 'จอง'){
+			if($event['text']['text'] == 'กรุณากรอกต้นทาง'){
 				error_log("---- VVV BBB send departure ----");
 			}else if($_COOKIE['user_id'] == '2'){
 				error_log("---- send date ----");
