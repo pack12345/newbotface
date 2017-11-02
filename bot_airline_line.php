@@ -62,13 +62,9 @@ if (!is_null($events['events'])) {
 						'type' => 'text',
 						'text' => $aaa[1]
 					];
-			$airlineURL = 'https://floating-brook-89249.herokuapp.com/airline_cookie.php?departure=1';
-			$aUrl = curl_init($airlineURL);
-			
-			curl_setopt($aUrl, CURLOPT_CUSTOMREQUEST, "GET");
-			curl_setopt($aUrl, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($aUrl, CURLOPT_FOLLOWLOCATION, 1);
-			$airResult = curl_exec($aUrl);
+			?>
+			<a href="https://floating-brook-89249.herokuapp.com/airline_cookie.php?date=1">
+			<?php
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
@@ -132,13 +128,9 @@ if (!is_null($events['events'])) {
 					];
 				
 			}else{
-				$airlineURL = 'https://floating-brook-89249.herokuapp.com/airline_cookie.php?departure=0&date=0';
-				$aUrl = curl_init($airlineURL);
-
-				curl_setopt($aUrl, CURLOPT_CUSTOMREQUEST, "GET");
-				curl_setopt($aUrl, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($aUrl, CURLOPT_FOLLOWLOCATION, 1);
-				$airResult = curl_exec($aUrl);
+				?>
+				<a href="https://floating-brook-89249.herokuapp.com/airline_cookie.php?date=1">
+				<?php
 				error_log('--$_COOKIE2 : '.$_COOKIE['ckDeparture']);
 				$messages = [
 						'type' => 'text',
