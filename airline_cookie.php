@@ -8,5 +8,6 @@ $_SESSION['ssdate'] = $_GET['date'];
 
 echo "departure".$_GET['departure'];
 echo "ssdeparture".$_SESSION['departure'];
-echo "departure1".$_GET['date'];
-echo "ssdeparture1".$_SESSION['date'];
+echo "date".$_GET['date'];
+echo "ssdate".$_SESSION['date'];
+header('https://floating-brook-89249.herokuapp.com/airline_cookie.php?departure='.$_SESSION['ssdeparture'].'&date='.$_SESSION['ssdate']);
