@@ -17,4 +17,4 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 error_log('--$_GET error : '.$_GET['departure']);
 error_log('--$_GET error : '.$_GET['date']);
 error_log('--$sDeparture error : '.$_COOKIE[$cookie_name]);
-error_log('--$sDate error : '.$_COOKIE['date']);
+error_log('--$sDate error : '.$_COOKIE['$cookie_value']);
