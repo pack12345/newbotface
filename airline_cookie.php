@@ -8,6 +8,8 @@
 // $_COOKIE['ckDate'] = 2; 
 setcookie('departure',$_GET['departure']);
 setcookie('date',$_GET['date'],time()+3600, "/");
+$_COOKIE['departure'] = '1';
+$_COOKIE['date'] = '2';
 
 error_log('--$_GET error : '.$_GET['departure']);
 error_log('--$_GET error : '.$_GET['date']);
