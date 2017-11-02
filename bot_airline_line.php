@@ -6,6 +6,8 @@ error_log('ss:'.$_COOKIE['ckDeparture']);
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
+include("airline_cookie.php");
+error_log('--dosss : '.$_COOKIE['ckDeparture']);
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
