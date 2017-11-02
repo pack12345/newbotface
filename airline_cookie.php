@@ -7,6 +7,5 @@ $_SESSION['date'] = $_GET['date'];
 // $_COOKIE['ckDeparture'] = 1; 
 // $_COOKIE['ckDate'] = 2; 
 
-echo "departure".$_GET['departure'];
-echo "ssdeparture".$_SESSION['departure'];
-echo "date".$_GET['date'];
+error_log('--$_GET error : '.$_GET['departure']);
+error_log('--$_GET error : '.$_GET['date']);
