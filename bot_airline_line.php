@@ -63,7 +63,7 @@ if (!is_null($events['events'])) {
 						'text' => $aaa[1]
 					];
 			?>
-			<a href="https://floating-brook-89249.herokuapp.com/airline_cookie.php?date=1">
+			<a href="https://floating-brook-89249.herokuapp.com/airline_cookie.php?departure=1">
 			<?php
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
@@ -129,7 +129,7 @@ if (!is_null($events['events'])) {
 				
 			}else{
 				?>
-				<a href="https://floating-brook-89249.herokuapp.com/airline_cookie.php?date=1">
+				<a href="https://floating-brook-89249.herokuapp.com/airline_cookie.php?departure=1">
 				<?php
 				error_log('--$_COOKIE2 : '.$_COOKIE['ckDeparture']);
 				$messages = [
