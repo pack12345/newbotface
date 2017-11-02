@@ -1,13 +1,10 @@
 <?php
 ob_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
-error_log('ss:'.$_COOKIE['ckDeparture']);
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
-include("airline_cookie.php");
-error_log('--dosss : '.$_COOKIE['ckDeparture']);
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -56,31 +53,23 @@ if (!is_null($events['events'])) {
 		
 			if(substr($xcpResult,0,5) == "    1"){
 			    error_log("----- ark departure ----");
+				$_COOKIE['ckDeparture'] = '1';
 				$aaa = explode(":",$xcpResult);
 				error_log('--$_COOKIE2 : '.$_COOKIE['ckDeparture']);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
 					];
-			?>
-			<a href="https://floating-brook-89249.herokuapp.com/airline_cookie.php?departure=1">
-			<?php
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
+				$_COOKIE['ckDeparture'] = '2';
 				$aaa = explode(":",$xcpResult);
 				error_log('--$_COOKIE2 : '.$_COOKIE['ckDeparture']);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
 					];
-			$airlineURL = 'https://floating-brook-89249.herokuapp.com/airline_cookie.php?date=2';
-			$aUrl = curl_init($airlineURL);
-			
-			curl_setopt($aUrl, CURLOPT_CUSTOMREQUEST, "GET");
-			curl_setopt($aUrl, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($aUrl, CURLOPT_FOLLOWLOCATION, 1);
-			$airResult = curl_exec($aUrl);
 			}
 			else if(substr($xcpResult,0,27) == "    https://www.picz.in.th/"){
 			    error_log("Send image only");
@@ -128,9 +117,7 @@ if (!is_null($events['events'])) {
 					];
 				
 			}else{
-				?>
-				<a href="https://floating-brook-89249.herokuapp.com/airline_cookie.php?departure=1">
-				<?php
+				$_COOKIE['ckDeparture'] = '0';
 				error_log('--$_COOKIE2 : '.$_COOKIE['ckDeparture']);
 				$messages = [
 						'type' => 'text',
