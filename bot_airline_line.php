@@ -61,7 +61,7 @@ if (!is_null($events['events'])) {
 						'type' => 'text',
 						'text' => $aaa[1]
 					];
-				header("https://floating-brook-89249.herokuapp.com/airline_cookie.php");
+				header("https://floating-brook-89249.herokuapp.com/airline_cookie.php?departure=1");
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
@@ -72,7 +72,7 @@ if (!is_null($events['events'])) {
 						'type' => 'text',
 						'text' => $aaa[1]
 					];
-				header("https://floating-brook-89249.herokuapp.com/airline_cookie.php");
+				header("https://floating-brook-89249.herokuapp.com/airline_cookie.php?departure=2");
 			}
 			else if(substr($xcpResult,0,27) == "    https://www.picz.in.th/"){
 			    error_log("Send image only");
@@ -126,7 +126,7 @@ if (!is_null($events['events'])) {
 						'type' => 'text',
 						'text' => $xcpResult
 					];
-				header("https://floating-brook-89249.herokuapp.com/airline_cookie.php");
+				header("https://floating-brook-89249.herokuapp.com/airline_cookie.php?departure=0&date=0");
 			}
 			
 			error_log('message : '.$messages);	
