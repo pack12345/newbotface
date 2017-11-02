@@ -1,9 +1,10 @@
 <?php
-ob_start();
+session_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
+
 $events = json_decode($content, true);
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
@@ -13,7 +14,7 @@ if (!is_null($events['events'])) {
 		$userID = $event['source']['userId'];
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
-			error_log('--$_COOKIE1 : '.$_COOKIE['ckDeparture']);
+			error_log('--$_COOKIE1 : '.$_SESSION['departure']);
 			
 			if($_COOKIE['user_id'] == '1'){
 				error_log("---- VVV BBB send departure ----");
@@ -53,23 +54,25 @@ if (!is_null($events['events'])) {
 		
 			if(substr($xcpResult,0,5) == "    1"){
 			    error_log("----- ark departure ----");
-				$_COOKIE['ckDeparture'] = '1';
+				$_SESSION['departure'] = '1';
 				$aaa = explode(":",$xcpResult);
-				error_log('--$_COOKIE2 : '.$_COOKIE['ckDeparture']);
+				error_log('--$_COOKIE2 : '.$_SESSION['departure']);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
 					];
+				header("https://floating-brook-89249.herokuapp.com/airline_cookie.php");
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
-				$_COOKIE['ckDeparture'] = '2';
+				$_SESSION['departure'] = '2';
 				$aaa = explode(":",$xcpResult);
-				error_log('--$_COOKIE2 : '.$_COOKIE['ckDeparture']);
+				error_log('--$_COOKIE2 : '.$_SESSION['departure']);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
 					];
+				header("https://floating-brook-89249.herokuapp.com/airline_cookie.php");
 			}
 			else if(substr($xcpResult,0,27) == "    https://www.picz.in.th/"){
 			    error_log("Send image only");
@@ -117,12 +120,13 @@ if (!is_null($events['events'])) {
 					];
 				
 			}else{
-				$_COOKIE['ckDeparture'] = '0';
-				error_log('--$_COOKIE2 : '.$_COOKIE['ckDeparture']);
+				$_SESSION['departure'] = '0';
+				error_log('--$_COOKIE2 : '.$_SESSION['departure']);
 				$messages = [
 						'type' => 'text',
 						'text' => $xcpResult
 					];
+				header("https://floating-brook-89249.herokuapp.com/airline_cookie.php");
 			}
 			
 			error_log('message : '.$messages);	
