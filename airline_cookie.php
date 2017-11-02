@@ -1,13 +1,12 @@
 
 <?php
 //$departure = $_SESSION['departure']; 
-$_SESSION['ssdeparture'] = $_GET['departure']; 
-$_SESSION['ssdate'] = $_GET['date']; 
+//$_SESSION['departure'] = $_GET['departure']; 
+$_SESSION['departure'] = '1'; 
+$_SESSION['date'] = '2'; 
 // $_COOKIE['ckDeparture'] = 1; 
 // $_COOKIE['ckDate'] = 2; 
 
 echo "departure".$_GET['departure'];
 echo "ssdeparture".$_SESSION['departure'];
 echo "date".$_GET['date'];
-echo "ssdate".$_SESSION['date'];
-header('https://floating-brook-89249.herokuapp.com/airline_cookie.php?departure=1&date=2');
