@@ -6,10 +6,11 @@
 // $sDate = $_GET['date']; 
 // $_COOKIE['ckDeparture'] = 1; 
 // $_COOKIE['ckDate'] = 2; 
-setcookie('departure',$_GET['departure']);
-setcookie('date',$_GET['date'],time()+3600, "/");
+// setcookie('departure',$_GET['departure']);
+// setcookie('date',$_GET['date'],time()+3600, "/");
 // $_COOKIE['departure'] = $_GET['departure'];
 // $_COOKIE['date'] = $_GET['date'];
+cookies.set('departure','0');
 
 error_log('--$_GET error : '.$_GET['departure']);
 error_log('--$_GET error : '.$_GET['date']);
