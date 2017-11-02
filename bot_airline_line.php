@@ -1,12 +1,8 @@
 <?php
 ob_start();
 $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkIekN82nmiUonCyubOwPxCD0WN6ObtI8miTVkemgWQN8M27m8kCdxcbE6Q/rGRExajPhaWfpzyrO8xTyGyIrE/TGgdB04t89/1O/w1cDnyilFU=';
-
-if(!isset($_COOKIE['user_id'])) {
-error_log('noss:'.$_COOKIE['user_id']);
-setcookie('user_id','AAAAA', time()+3600, '/','', 0);
- }
-error_log('ss:'.$_COOKIE['user_id']);
+$departure = '5';
+error_log('ss:'.$departure);
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -19,9 +15,7 @@ if (!is_null($events['events'])) {
 		$userID = $event['source']['userId'];
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
-			error_log('message1 '.$event['message']['text']);
-			error_log('message2 '.$event['text']['text']);
-			error_log('--$_COOKIE1 : '.$_COOKIE['user_id']);
+			error_log('--$_COOKIE1 : '.$departure);
 			
 			if($_COOKIE['user_id'] == '1'){
 				error_log("---- VVV BBB send departure ----");
@@ -61,10 +55,9 @@ if (!is_null($events['events'])) {
 		
 			if(substr($xcpResult,0,5) == "    1"){
 			    error_log("----- ark departure ----");
-				 //setcookie('user_id', 1, time()+3600, '/');
-				//session_write_close();
+				 $GLOBALS['departure'] = '1';
 				$aaa = explode(":",$xcpResult);
-				error_log('--$_COOKIE2 : '.$_COOKIE['user_id']);
+				error_log('--$_COOKIE2 : '.$departure);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
@@ -73,9 +66,9 @@ if (!is_null($events['events'])) {
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
-				//session_write_close();
+				$GLOBALS['departure'] = '2';
 				$aaa = explode(":",$xcpResult);
-				error_log('--$_COOKIE2 : '.$_COOKIE['user_id']);
+				error_log('--$_COOKIE2 : '.$departure);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
@@ -127,8 +120,9 @@ if (!is_null($events['events'])) {
 					];
 				
 			}else{
-				//session_write_close();
-				error_log('--$_COOKIE2 : '.$_COOKIE['user_id']);
+				
+				$GLOBALS['departure'] = '0';
+				error_log('--$_COOKIE2 : '.$departure);
 				$messages = [
 						'type' => 'text',
 						'text' => $xcpResult
