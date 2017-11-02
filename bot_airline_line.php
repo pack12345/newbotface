@@ -132,7 +132,7 @@ if (!is_null($events['events'])) {
 			curl_setopt($aUrl, CURLOPT_CUSTOMREQUEST, "GET");
 			curl_setopt($aUrl, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($aUrl, CURLOPT_FOLLOWLOCATION, 1);
-			curl_setopt($aUrl, CURLOPT_COOKIE, 'departure=0');
+			curl_setopt($aUrl, CURLOPT_COOKIE, 'departure=ellen; date=swimming');
 			$airResult = curl_exec($aUrl);
 			}
 			
