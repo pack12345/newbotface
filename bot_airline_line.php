@@ -13,7 +13,7 @@ if (!is_null($events['events'])) {
 		$userID = $event['source']['userId'];
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
-			error_log('--$_COOKIE1 : '.$_SESSION['departure']);
+			error_log('--$_COOKIE1 : '. $event['message']['text']);
 		
 			$text = $event['message']['text'];
 			//$text = 'hello world';
