@@ -4,9 +4,6 @@ $access_token = 'IHf9TGAiHOH3XZdKNdrz+NBHzcPr2y+f2rpdiDj7b2okT11aW2a7eknIfMCVkkI
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
-include 'airline_cookie.php';
-error_log('--get_session : '.$_SESSION['departure']);
-
 $events = json_decode($content, true);
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
@@ -17,17 +14,8 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent			
 			error_log('--$_COOKIE1 : '.$_SESSION['departure']);
-			
-			if($_COOKIE['user_id'] == '1'){
-				error_log("---- VVV BBB send departure ----");
-				$text ='จาก'. $event['message']['text'];
-			}else if($_COOKIE['user_id'] == '2'){
-				error_log("---- send date ----");
-				$text ='วันที่'. $event['message']['text'];
-			}else{
-				$text = $event['message']['text'];
-			}
-			
+		
+			$text = $event['message']['text'];
 			//$text = 'hello world';
 			// Get replyToken
 			$replyToken = $event['replyToken'];
@@ -56,9 +44,7 @@ if (!is_null($events['events'])) {
 		
 			if(substr($xcpResult,0,5) == "    1"){
 			    error_log("----- ark departure ----");
-				$_SESSION['departure'] = '1';
 				$aaa = explode(":",$xcpResult);
-				error_log('--$_COOKIE2 : '.$_SESSION['departure']);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
@@ -66,9 +52,7 @@ if (!is_null($events['events'])) {
 			}
 			else if(substr($xcpResult,0,5) == "    2"){
 			    error_log("----- ark date ----");
-				$_SESSION['departure'] = '2';
 				$aaa = explode(":",$xcpResult);
-				error_log('--$_COOKIE2 : '.$_SESSION['departure']);
 				$messages = [
 						'type' => 'text',
 						'text' => $aaa[1]
@@ -120,20 +104,10 @@ if (!is_null($events['events'])) {
 					];
 				
 			}else{
-				$_SESSION['departure'] = '0';
-				error_log('--$_COOKIE2 : '.$_SESSION['departure']);
 				$messages = [
 						'type' => 'text',
 						'text' => $xcpResult
 					];
-			$airlineURL = 'https://floating-brook-89249.herokuapp.com/airline_cookie.php?departure=0&date=0';
-			$aUrl = curl_init($airlineURL);
-			
-			curl_setopt($aUrl, CURLOPT_CUSTOMREQUEST, "GET");
-			curl_setopt($aUrl, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($aUrl, CURLOPT_FOLLOWLOCATION, 1);
-			curl_setopt($aUrl, CURLOPT_COOKIE, 'departure=ellen; date=swimming');
-			$airResult = curl_exec($aUrl);
 			}
 			
 			error_log('message : '.$messages);	
