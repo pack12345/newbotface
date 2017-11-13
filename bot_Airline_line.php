@@ -58,7 +58,7 @@ if (!is_null($events['events'])) {
 						'text' => $aaa[1]
 					];
 			}
-			else if(substr($xcpResult,0,27) == "    https://www.picz.in.th/"){
+			else if(substr($xcpResult,0,27) == "    http://ark-insights.com"){
 			    error_log("Send image only");
 				$messages=[
 						  "type"=> "template",
@@ -67,7 +67,7 @@ if (!is_null($events['events'])) {
 						      "type"=> "image_carousel",
 						      "columns"=> [
 							  [
-							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/20170906-104358.png",
+							    "imageUrl"=> "http://ark-insights.com/th/wp-content/uploads/2017/11/air_promotion.jpg1_.png",
 								 "action"=> [
 							      "type"=> "uri",
 							      "label"=> "ดูเพิ่มเติม",
@@ -75,7 +75,7 @@ if (!is_null($events['events'])) {
 							    ]
 							  ],
 							  [
-							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/airasia20150629.jpg",
+							    "imageUrl"=> "http://ark-insights.com/th/wp-content/uploads/2017/11/air_promotion.jpg2_.jpg",
 							     "action"=> [
 							      "type"=> "uri",
 							      "label"=> "ดูเพิ่มเติม",
@@ -83,7 +83,7 @@ if (!is_null($events['events'])) {
 							    ]
 							  ],
 							  [
-							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/30/qantas.jpg",
+							    "imageUrl"=> "http://ark-insights.com/th/wp-content/uploads/2017/11/air_promotion.jpg3_.jpg",
 							    "action"=> [
 							      "type"=> "message",
 							      "label"=> "จอง",
@@ -91,7 +91,7 @@ if (!is_null($events['events'])) {
 							    ]
 							  ],
 							    [
-							    "imageUrl"=> "https://www.picz.in.th/images/2017/10/24/20150828-230116.jpg",
+							    "imageUrl"=> "http://ark-insights.com/th/wp-content/uploads/2017/11/air_promotion.jpg",
 							    "action"=> [
 							      "type"=> "message",
 							      "label"=> "จอง",
