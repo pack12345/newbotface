@@ -42,7 +42,7 @@ if (!is_null($events['events'])) {
 			error_log($xcpResult);	
 			error_log('XXXX:'.substr($xcpResult,0,27).'');
 		
-			if(substr($xcpResult,0,5) == "    1"){
+			if(substr($xcpResult,0,1) == "1"){
 			    error_log("----- ark departure ----");
 				$aaa = explode(":",$xcpResult);
 				$messages = [
@@ -50,7 +50,7 @@ if (!is_null($events['events'])) {
 						'text' => $aaa[1]
 					];
 			}
-			else if(substr($xcpResult,0,5) == "    2"){
+			else if(substr($xcpResult,0,1) == "2"){
 			    error_log("----- ark date ----");
 				$aaa = explode(":",$xcpResult);
 				$messages = [
@@ -58,7 +58,7 @@ if (!is_null($events['events'])) {
 						'text' => $aaa[1]
 					];
 			}
-			else if(substr($xcpResult,0,27) == "    https://www.picz.in.th/"){
+			else if(substr($xcpResult,0,23) == "https://www.picz.in.th/"){
 			    error_log("Send image only");
 				$messages=[
 						  "type"=> "template",
