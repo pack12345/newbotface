@@ -5,256 +5,256 @@ error_log('facebook hook ');
    $verify_token = 'airline_bot';
    $hub_verify_token = null;
  
-   if(isset($_REQUEST['hub_challenge'])) {
-     	$challenge = $_REQUEST['hub_challenge'];
-    	$hub_verify_token = $_REQUEST['hub_verify_token'];
-   }
+//    if(isset($_REQUEST['hub_challenge'])) {
+//      	$challenge = $_REQUEST['hub_challenge'];
+//     	$hub_verify_token = $_REQUEST['hub_verify_token'];
+//    }
  
-  error_log('hub_verify_token  '. $hub_verify_token );
-   if ($hub_verify_token === $verify_token) {
-     	error_log('challenge '.$challenge);
-   }
+//   error_log('hub_verify_token  '. $hub_verify_token );
+//    if ($hub_verify_token === $verify_token) {
+//      	error_log('challenge '.$challenge);
+//    }
  
-   $input = json_decode(file_get_contents('php://input'), true);
-  error_log('input  '. $input );
-   $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
-  error_log('sender  '. $sender );
-   $message = $input['entry'][0]['messaging'][0]['message']['text'];
-  error_log('XXXXXmessage :  '. $message );
- 	if($message==''){
- 		return;
- 	}
- $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$message.'&vsDriver=164&channel=facebook&sessionID=EAASvNkXVo7wBAAZCAZBU4dJBXMCWnoCF';
+//    $input = json_decode(file_get_contents('php://input'), true);
+//   error_log('input  '. $input );
+//    $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
+//   error_log('sender  '. $sender );
+//    $message = $input['entry'][0]['messaging'][0]['message']['text'];
+//   error_log('XXXXXmessage :  '. $message );
+//  	if($message==''){
+//  		return;
+//  	}
+//  $cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$message.'&vsDriver=164&channel=facebook&sessionID=EAASvNkXVo7wBAAZCAZBU4dJBXMCWnoCF';
  					
- 	error_log($cxpUrl);
- 	$chcxp = curl_init($cxpUrl);
+//  	error_log($cxpUrl);
+//  	$chcxp = curl_init($cxpUrl);
  
- 	curl_setopt($chcxp, CURLOPT_CUSTOMREQUEST, "GET");
- 	curl_setopt($chcxp, CURLOPT_RETURNTRANSFER, true);
- 	curl_setopt($chcxp, CURLOPT_FOLLOWLOCATION, 1);
- 	$xcpResult = curl_exec($chcxp);
- 	curl_close($chcxp);
- 	error_log('cxp '.$chcxp);
+//  	curl_setopt($chcxp, CURLOPT_CUSTOMREQUEST, "GET");
+//  	curl_setopt($chcxp, CURLOPT_RETURNTRANSFER, true);
+//  	curl_setopt($chcxp, CURLOPT_FOLLOWLOCATION, 1);
+//  	$xcpResult = curl_exec($chcxp);
+//  	curl_close($chcxp);
+//  	error_log('cxp '.$chcxp);
  
- 	//API Url
- 	$url = 'https://graph.facebook.com/v2.6/me/messages';
- 	$message_to_reply = $xcpResult;
- 	error_log('url reply'.$url);
- 	//Initiate cURL.
- 	$ch = curl_init($url);
+//  	//API Url
+//  	$url = 'https://graph.facebook.com/v2.6/me/messages';
+//  	$message_to_reply = $xcpResult;
+//  	error_log('url reply'.$url);
+//  	//Initiate cURL.
+//  	$ch = curl_init($url);
 	
-			$messages = '';
+// 			$messages = '';
 			
 
-			$result = explode("\n",$message_to_reply);
+// 			$result = explode("\n",$message_to_reply);
 
-			$symResult = "";
+// 			$symResult = "";
 
-			foreach ($result as $value) {
-			    $symResult .= substr($value, 0, 1);
-			}
-
-
-			$imageURL = "";
-			$title = "";
-			$subTitle = "";
-			$titleButton = "";
-			$webURL = "";
-			$messages = "";
+// 			foreach ($result as $value) {
+// 			    $symResult .= substr($value, 0, 1);
+// 			}
 
 
-			for($i = 0; $i < count($result) ; $i++){
+// 			$imageURL = "";
+// 			$title = "";
+// 			$subTitle = "";
+// 			$titleButton = "";
+// 			$webURL = "";
+// 			$messages = "";
 
 
-				if(substr($result[$i],0,1) == "!"){
-
-					$imageURL  = trim($result[$i],"!");
-					 error_log($imageURL);
+// 			for($i = 0; $i < count($result) ; $i++){
 
 
-				}elseif (substr($result[$i],0,1) == "["){
+// 				if(substr($result[$i],0,1) == "!"){
 
-					$title  = trim($result[$i],"[");
-					error_log($title);
-
-
-				}elseif (substr($result[$i],0,1) == "{"){
-
-					$subTitle   = trim($result[$i],"{");
-					error_log($subTitle);
+// 					$imageURL  = trim($result[$i],"!");
+// 					 error_log($imageURL);
 
 
-				}elseif (substr($result[$i],0,1) == "*"){
+// 				}elseif (substr($result[$i],0,1) == "["){
 
-					$titleButton   = trim($result[$i],"*");
-					error_log($titleButton);
-
-
-				}elseif (substr($result[$i],0,1) == "#"){
-
-					$webURL    = trim($result[$i],"#");
-					error_log($webURL);
+// 					$title  = trim($result[$i],"[");
+// 					error_log($title);
 
 
-				}else{
+// 				}elseif (substr($result[$i],0,1) == "{"){
 
-					error_log("Not have condition fix2.");
-					$messageDir = implode("\n", $result);
-				}
-
-
-			}
-
-			$symImageURL = "!";
-			$symTitle = "[";
-			$symSubtitle = "{";
-			$symTitleBN = "*";
-			$symWebURL = "#";
-			$symMessOnly = "(";
+// 					$subTitle   = trim($result[$i],"{");
+// 					error_log($subTitle);
 
 
-			$checkImageURL = strpos($symResult, $symImageURL);
-			$checkTitle = strpos($symResult, $symTitle);
-			$checkSubtitle = strpos($symResult, $symSubtitle);
-			$checkTitleBN = strpos($symResult, $symTitleBN);
-			$checkWebURL = strpos($symResult, $symWebURL);
-			$checkMessOnly = strpos($symResult, $symMessOnly);
+// 				}elseif (substr($result[$i],0,1) == "*"){
+
+// 					$titleButton   = trim($result[$i],"*");
+// 					error_log($titleButton);
 
 
-			if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
-			    error_log("Template have all");
+// 				}elseif (substr($result[$i],0,1) == "#"){
 
-			$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
- 											'title' => $title,
-											'image_url'=> $imageURL,
- 											'subtitle' => $subTitle,
- 											'buttons' => [
- 												['type' => 'web_url',
- 												'title' => $titleButton,
- 												'url' => $webURL
- 												]
- 											]
- 										]
-  									]
+// 					$webURL    = trim($result[$i],"#");
+// 					error_log($webURL);
+
+
+// 				}else{
+
+// 					error_log("Not have condition fix2.");
+// 					$messageDir = implode("\n", $result);
+// 				}
+
+
+// 			}
+
+// 			$symImageURL = "!";
+// 			$symTitle = "[";
+// 			$symSubtitle = "{";
+// 			$symTitleBN = "*";
+// 			$symWebURL = "#";
+// 			$symMessOnly = "(";
+
+
+// 			$checkImageURL = strpos($symResult, $symImageURL);
+// 			$checkTitle = strpos($symResult, $symTitle);
+// 			$checkSubtitle = strpos($symResult, $symSubtitle);
+// 			$checkTitleBN = strpos($symResult, $symTitleBN);
+// 			$checkWebURL = strpos($symResult, $symWebURL);
+// 			$checkMessOnly = strpos($symResult, $symMessOnly);
+
+
+// 			if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+// 			    error_log("Template have all");
+
+// 			$messages=[
+//   				'attachment' =>['type' => 'template',
+//  						'payload' => ['template_type' => 'generic',
+//  							      	'elements' => [
+//  										 [
+//  											'title' => $title,
+// 											'image_url'=> $imageURL,
+//  											'subtitle' => $subTitle,
+//  											'buttons' => [
+//  												['type' => 'web_url',
+//  												'title' => $titleButton,
+//  												'url' => $webURL
+//  												]
+//  											]
+//  										]
+//   									]
  							      
- 							      ]
-  						]
-  				];
+//  							      ]
+//   						]
+//   				];
 
-			}elseif (($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
+// 			}elseif (($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
 
-			    error_log("Template not have image");
-				$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
- 											'title' => $title,
- 											'subtitle' => $subTitle,
- 											'buttons' => [
- 												['type' => 'web_url',
- 												'title' => $titleButton,
- 												'url' => $webURL
- 												]
- 											]
- 										]
-  									]
+// 			    error_log("Template not have image");
+// 				$messages=[
+//   				'attachment' =>['type' => 'template',
+//  						'payload' => ['template_type' => 'generic',
+//  							      	'elements' => [
+//  										 [
+//  											'title' => $title,
+//  											'subtitle' => $subTitle,
+//  											'buttons' => [
+//  												['type' => 'web_url',
+//  												'title' => $titleButton,
+//  												'url' => $webURL
+//  												]
+//  											]
+//  										]
+//   									]
  							      
- 							      ]
-  						]
-  				];
+//  							      ]
+//   						]
+//   				];
 
-			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
-			    error_log("Template not have button");
-			$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
- 											'title' => $title,
-											'image_url'=> $imageURL,
- 											'subtitle' => $subTitle
+// 			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false)) {
+// 			    error_log("Template not have button");
+// 			$messages=[
+//   				'attachment' =>['type' => 'template',
+//  						'payload' => ['template_type' => 'generic',
+//  							      	'elements' => [
+//  										 [
+//  											'title' => $title,
+// 											'image_url'=> $imageURL,
+//  											'subtitle' => $subTitle
  											
- 										]
-  									]
+//  										]
+//   									]
  							      
- 							      ]
-  						]
-  				];
+//  							      ]
+//   						]
+//   				];
 
 
-			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
-			    error_log("Template not have title");
-				$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
-											'image_url'=> $imageURL,
- 											'subtitle' => $subTitle,
+// 			}elseif (($checkImageURL !== false) && ($checkSubtitle !== false)) {
+// 			    error_log("Template not have title");
+// 				$messages=[
+//   				'attachment' =>['type' => 'template',
+//  						'payload' => ['template_type' => 'generic',
+//  							      	'elements' => [
+//  										 [
+// 											'image_url'=> $imageURL,
+//  											'subtitle' => $subTitle,
  											
- 										]
-  									]
+//  										]
+//   									]
  							      
- 							      ]
-  						]
-  				];
+//  							      ]
+//   						]
+//   				];
 
 
-			}elseif (($checkImageURL !== false) && ($checkTitle !== false)) {
-			    error_log("Template not have subtitle and button");
-				$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
- 											'title' => $title,
-											'image_url'=> $imageURL
+// 			}elseif (($checkImageURL !== false) && ($checkTitle !== false)) {
+// 			    error_log("Template not have subtitle and button");
+// 				$messages=[
+//   				'attachment' =>['type' => 'template',
+//  						'payload' => ['template_type' => 'generic',
+//  							      	'elements' => [
+//  										 [
+//  											'title' => $title,
+// 											'image_url'=> $imageURL
  											
- 										]
-  									]
+//  										]
+//   									]
  							      
- 							      ]
-  						]
-  				];
+//  							      ]
+//   						]
+//   				];
 
 
-			}elseif (($checkImageURL !== false)) {
-			    error_log("Send image only");
-				$messages=[
-  				'attachment' =>['type' => 'template',
- 						'payload' => ['template_type' => 'generic',
- 							      	'elements' => [
- 										 [
+// 			}elseif (($checkImageURL !== false)) {
+// 			    error_log("Send image only");
+// 				$messages=[
+//   				'attachment' =>['type' => 'template',
+//  						'payload' => ['template_type' => 'generic',
+//  							      	'elements' => [
+//  										 [
  										
-											'image_url'=> $imageURL
+// 											'image_url'=> $imageURL
  											
  										
- 										]
-  									]
+//  										]
+//   									]
  							      
- 							      ]
-  						]
-  				];
+//  							      ]
+//   						]
+//   				];
 
 
-			}elseif (($checkMessOnly !== false)) {
-			    error_log("Send message only");
-					$messages = [
-						'text' => $messageDir
-					];
+// 			}elseif (($checkMessOnly !== false)) {
+// 			    error_log("Send message only");
+// 					$messages = [
+// 						'text' => $messageDir
+// 					];
 
-			}else{
+// 			}else{
 
-				error_log("Not have condition fix.");
-				$messages = [
-						'text' => $messageDir
-					];
-			}
+// 				error_log("Not have condition fix.");
+// 				$messages = [
+// 						'text' => $messageDir
+// 					];
+// 			}
 
  
  //The JSON data.
