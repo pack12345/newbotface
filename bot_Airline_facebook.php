@@ -11,9 +11,9 @@ error_log('facebook hook ');
 //    }
  
 //   error_log('hub_verify_token  '. $hub_verify_token );
-   if ($hub_verify_token === $verify_token) {
-     	error_log('challenge '.$challenge);
-   }
+//    if ($hub_verify_token === $verify_token) {
+//      	error_log('challenge '.$challenge);
+//    }
  
 //    $input = json_decode(file_get_contents('php://input'), true);
 //   error_log('input  '. $input );
@@ -258,27 +258,27 @@ error_log('facebook hook ');
 
  
  //The JSON data.
- 	$jsonData = [
- 	    'access_token'=>$access_token,
- 	    'recipient'=>[
- 		'id'=> $sender
- 	      ],
- 	    'message'=> $messages
+//  	$jsonData = [
+//  	    'access_token'=>$access_token,
+//  	    'recipient'=>[
+//  		'id'=> $sender
+//  	      ],
+//  	    'message'=> $messages
  		    
- 	];
+//  	];
  
- 	//Encode the array into JSON.
- 	$jsonDataEncoded = json_encode($jsonData);
- 	//Tell cURL that we want to send a POST request.
- 	curl_setopt($ch, CURLOPT_POST, 1);
- 	//Attach our encoded JSON string to the POST fields.
- 	curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
- 	//Set the content type to application/json
- 	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+//  	//Encode the array into JSON.
+//  	$jsonDataEncoded = json_encode($jsonData);
+//  	//Tell cURL that we want to send a POST request.
+//  	curl_setopt($ch, CURLOPT_POST, 1);
+//  	//Attach our encoded JSON string to the POST fields.
+//  	curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
+//  	//Set the content type to application/json
+//  	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
  
- 	//curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
- 	//Execute the request
- 	if(!empty($input['entry'][0]['messaging'][0]['message'])){
- 	    $resultMes = curl_exec($ch);
-	 }
+//  	//curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+//  	//Execute the request
+//  	if(!empty($input['entry'][0]['messaging'][0]['message'])){
+//  	    $resultMes = curl_exec($ch);
+// 	 }
  ?>
