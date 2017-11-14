@@ -58,7 +58,7 @@ if (!is_null($events['events'])) {
 						'text' => $aaa[1]
 					];
 			}
-			else if(substr($xcpResult,0,27) == "    http://ark-insights.com"){
+			else if(substr($xcpResult,0,27) == "    https://www.picz.in.th/"){
 			    error_log("Send image only");
 				$messages=[
 						  "type"=> "template",
