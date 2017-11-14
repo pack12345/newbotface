@@ -87,7 +87,7 @@ if (!is_null($events['events'])) {
 							    "action"=> [
 							      "type"=> "message",
 							      "label"=> "จอง",
-							      "text"=> "ที่นั่งกลุ่ม"
+							      "text"=> "จอง"
 							    ]
 							  ],
 							    [
@@ -95,7 +95,7 @@ if (!is_null($events['events'])) {
 							    "action"=> [
 							      "type"=> "message",
 							      "label"=> "จอง",
-							      "text"=> "ที่นั่งกลุ่ม"
+							      "text"=> "จอง"
 							    ]
 							  ]    
 						      ]
