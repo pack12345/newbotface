@@ -111,7 +111,7 @@ if (!is_null($events['events'])) {
 								'template' => [
 									'type'=> 'buttons',
 									'thumbnailImageUrl'=> $imageURL,
-									'title' => 'RVP',
+									'title' => 'ARK',
 									'text' => $title,
 									'actions' => [
 											 ['type' => 'uri',
