@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="style.css" type="text/css" />
     
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="chat.js"></script>
     <script type="text/javascript">
     
