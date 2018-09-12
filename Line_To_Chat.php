@@ -55,7 +55,7 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
         $arrayPostData['messages'][1]['stickerId'] = "131";
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if($message == "CardInfo"){
+    else if($message == "Card"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "imagemap";
         $arrayPostData['messages'][0]['baseUrl'] = "https://github.com/pack12345/BOTCHAT/blob/master/image_Credit/card%20info.jpg";
