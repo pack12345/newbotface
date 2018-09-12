@@ -18,6 +18,12 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
         replyMsg($arrayHeader,$arrayPostData);
     }
+    else if($message == "Credit"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "บัตรเครดิต เรามีให้เลือกหลายอย่าง";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
     #ตัวอย่าง Message Type "Sticker"
     else if($message == "ฝันดี"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
@@ -60,69 +66,51 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
         $arrayPostData['messages'][0]['type'] = "imagemap";
         $arrayPostData['messages'][0]['baseUrl'] = "https://github.com/pack12345/BOTCHAT/blob/master/immapcard";
         $arrayPostData['messages'][0]['altText'] = "This is an imagemap";
-        $arrayPostData['messages'][0]['baseSize'] = '{"width":1024,"height":1024}';
-        $arrayPostData['messages'][0]['actions'] = '[
-    {
-      "type": "message",
-      "area": {
-        "x": 17,
-        "y": 93,
-        "width": 322,
-        "height": 324
-      },
-      "text": "GSB PREMIUM"
-    },
-    {
-      "type": "message",
-      "area": {
-        "x": 351,
-        "y": 92,
-        "width": 326,
-        "height": 327
-      },
-      "text": "GSB PRECIOUS"
-    },
-    {
-      "type": "message",
-      "area": {
-        "x": 687,
-        "y": 91,
-        "width": 321,
-        "height": 326
-      },
-      "text": "GSB PRESTIGE"
-    },
-    {
-      "type": "message",
-      "area": {
-        "x": 19,
-        "y": 431,
-        "width": 322,
-        "height": 341
-      },
-      "text": "บัตรเงินสด"
-    },
-    {
-      "type": "message",
-      "area": {
-        "x": 353,
-        "y": 431,
-        "width": 321,
-        "height": 344
-      },
-      "text": "บัตรออมสินวีซ่า"
-    },
-    {
-      "type": "message",
-      "area": {
-        "x": 685,
-        "y": 431,
-        "width": 323,
-        "height": 341
-      },
-      "text": "บัตรออมสินสมาร์ทแคร์"
-    }
-  ]';
+        $arrayPostData['messages'][0]['baseSize']['width'] = 1040;
+        $arrayPostData['messages'][0]['baseSize']['height'] = 1040;
+        $arrayPostData['messages'][0]['actionCount'] = 6;
+        
+        $arrayPostData['messages'][0]['actions'][0]['type'] = "message";
+        $arrayPostData['messages'][0]['actions'][0]['area']['x'] = 17;
+        $arrayPostData['messages'][0]['actions'][0]['area']['y'] = 93;
+        $arrayPostData['messages'][0]['actions'][0]['area']['width'] = 322;
+        $arrayPostData['messages'][0]['actions'][0]['area']['height'] = 324;
+        $arrayPostData['messages'][0]['actions'][0]['area']['text'] = "GSB PREMIUM";
+        
+        $arrayPostData['messages'][0]['actions'][1]['type'] = "message";
+        $arrayPostData['messages'][0]['actions'][1]['area']['x'] = 351;
+        $arrayPostData['messages'][0]['actions'][1]['area']['y'] = 93;
+        $arrayPostData['messages'][0]['actions'][1]['area']['width'] = 322;
+        $arrayPostData['messages'][0]['actions'][1]['area']['height'] = 324;
+        $arrayPostData['messages'][0]['actions'][1]['area']['text'] = "GSB PRECIOUS";
+        
+        $arrayPostData['messages'][0]['actions'][2]['type'] = "message";
+        $arrayPostData['messages'][0]['actions'][2]['area']['x'] = 687;
+        $arrayPostData['messages'][0]['actions'][2]['area']['y'] = 93;
+        $arrayPostData['messages'][0]['actions'][2]['area']['width'] = 322;
+        $arrayPostData['messages'][0]['actions'][2]['area']['height'] = 324;
+        $arrayPostData['messages'][0]['actions'][2]['area']['text'] = "GSB PRESTIGE";
+        
+        $arrayPostData['messages'][0]['actions'][3]['type'] = "message";
+        $arrayPostData['messages'][0]['actions'][3]['area']['x'] = 17;
+        $arrayPostData['messages'][0]['actions'][3]['area']['y'] = 431;
+        $arrayPostData['messages'][0]['actions'][3]['area']['width'] = 322;
+        $arrayPostData['messages'][0]['actions'][3]['area']['height'] = 324;
+        $arrayPostData['messages'][0]['actions'][3]['area']['text'] = "บัตรเงินสด";
+        
+        $arrayPostData['messages'][0]['actions'][4]['type'] = "message";
+        $arrayPostData['messages'][0]['actions'][4]['area']['x'] = 351;
+        $arrayPostData['messages'][0]['actions'][4]['area']['y'] = 431;
+        $arrayPostData['messages'][0]['actions'][4]['area']['width'] = 322;
+        $arrayPostData['messages'][0]['actions'][4]['area']['height'] = 324;
+        $arrayPostData['messages'][0]['actions'][4]['area']['text'] = "บัตรออมสินวีซ่า";
+        
+        $arrayPostData['messages'][0]['actions'][5]['type'] = "message";
+        $arrayPostData['messages'][0]['actions'][5]['area']['x'] = 687;
+        $arrayPostData['messages'][0]['actions'][5]['area']['y'] = 431;
+        $arrayPostData['messages'][0]['actions'][5]['area']['width'] = 322;
+        $arrayPostData['messages'][0]['actions'][5]['area']['height'] = 324;
+        $arrayPostData['messages'][0]['actions'][5]['area']['text'] = "บัตรออมสินสมาร์ทแคร์";
         replyMsg($arrayHeader,$arrayPostData);
     }
 function replyMsg($arrayHeader,$arrayPostData){
