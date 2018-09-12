@@ -114,17 +114,46 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
         replyMsg($arrayHeader,$arrayPostData);
     }
     else if($message == "เมนู"){
-        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "template";
-        $arrayPostData['messages'][0]['altText'] = "this is a buttons template";
-        $arrayPostData['messages'][0]['template']['type'] = "BUTTONS";
-        $arrayPostData['messages'][0]['template']['height'] = 1040;
-        $arrayPostData['messages'][0]['template']['title'] = "GSB Main menu";
-        $arrayPostData['messages'][0]['template']['text'] = "ยินดีตอนรับสู่บริการของเราค่ะ";
+        $arrayPostData = 
+        array(
+        "replyToken" => $arrayJson['events'][0]['replyToken'],
+        "messages" => [
+          array(
+              "type" => "template",
+              "altText" => "this is a confirm template",
+              "template" => 
+                 array(
+                     "type" => "confirm",
+                     "text" => "Are you sure?",
+                     "actions" => [
+                         array(
+                             "type" => "datetimepicker",
+                             "data" => "datestring", // will be included in postback action
+                             "label" => "Please Choose",
+                             "mode" => "date"
+                             ),
+                         array(
+                             "type" => "message",
+                             "label" => "No",
+                             "text" => "no"
+                         )
+                         ]
+                     )
+              )
+            ]
+            );
+                         
+                             
+        #$arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        #$arrayPostData['messages'][0]['type'] = "template";
+        #$arrayPostData['messages'][0]['altText'] = "this is a buttons template";
+        #$arrayPostData['messages'][0]['template']['type'] = "BUTTONS";
+        #$arrayPostData['messages'][0]['template']['title'] = "GSB Main menu";
+        #$arrayPostData['messages'][0]['template']['text'] = "ยินดีตอนรับสู่บริการของเราค่ะ";
         
-        $arrayPostData['messages'][0]['template']['actions'][0]['type'] = "message";
-        $arrayPostData['messages'][0]['template']['actions'][0]['label'] = "บัตรเครดิต";
-        $arrayPostData['messages'][0]['template']['actions'][0]['text'] = "บัตรเครดิต";
+        #$arrayPostData['messages'][0]['template']['actions'][0]['type'] = "message";
+        #$arrayPostData['messages'][0]['template']['actions'][0]['label'] = "บัตรเครดิต";
+        #$arrayPostData['messages'][0]['template']['actions'][0]['text'] = "บัตรเครดิต";
         
         replyMsg($arrayHeader,$arrayPostData);
     }
