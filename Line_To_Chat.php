@@ -1,375 +1,72 @@
 <?php
 
-$access_token = 'GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+wLiaimWdqOXYECwLirSjbKa5fewj3uPpnBgb1yCeiEpF0ICEXBm465sagEWT6V1q9YKSYUEKjpN1PuPuVQ+V4wdB04t89/1O/w1cDnyilFU=';
-
-
-
-
-
-// Get POST body content
-
-$content = file_get_contents('php://input');
-
-// Parse JSON
-
-$events = json_decode($content, true);
-
-// Validate parsed JSON data
-
-if (!is_null($events['events'])) {
-
-	// Loop through each event
-
-	foreach ($events['events'] as $event) {
-
-		// Reply only when message sent is in 'text' format
-
-		$userID = $event['source']['userId'];
-
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-
-			// Get text sent			
-
-			error_log('message '.$event['message']);
-
-			$text = $event['message']['text'];
-
-			//$text = 'hello world';
-
-			// Get replyToken
-
-			$replyToken = $event['replyToken'];
-
-			error_log('replyToken'.$replyToken);
-
-			// Build message to reply back
-
-			// make GET
-
-			$sessionID = session_id();
-
-			error_log('session '.$sessionID);
-
-			$postCXP = json_encode($para);
-
-			$cxpUrl = 'http://58.82.133.74:8070/VoxeoCXP/DialogMapping?VSN=testService@System&message='.$text.'&vsDriver=164&channel=line&sessionID='.$userID;
-
-			
-
-			
-
-			error_log($cxpUrl);
-
-			$chcxp = curl_init($cxpUrl);
-
-			
-
-			curl_setopt($chcxp, CURLOPT_CUSTOMREQUEST, "GET");
-
-			curl_setopt($chcxp, CURLOPT_RETURNTRANSFER, true);
-
-			curl_setopt($chcxp, CURLOPT_FOLLOWLOCATION, 1);
-
-			$xcpResult = curl_exec($chcxp);
-
-			curl_close($chcxp);
-
-			error_log($xcpResult);	
-
-			//error_log(':'.substr($xcpResult,0,6).':');
-
-			error_log('XXXX:'.substr($xcpResult,0,27).'');
-
-			$messages = '';
-
-			
-
-			$result = explode("\n",$xcpResult);
-
-			$symResult = "";
-
-			foreach ($result as $value) {
-
-			    $symResult .= substr($value, 0, 1);
-
-			}
-
-			$imageURL = "";
-
-			$title = "";
-
-			$subTitle = "";
-
-			$titleButton = "";
-
-			$webURL = "";
-
-			$messages = "";
-
-			for($i = 0; $i < count($result) ; $i++){
-
-				if(substr($result[$i],0,1) == "!"){
-
-					$imageURL  = trim($result[$i],"!");
-
-					 error_log($imageURL);
-
-				}elseif (substr($result[$i],0,1) == "["){
-
-					$title  = trim($result[$i],"[");
-
-					error_log($title);
-
-				}elseif (substr($result[$i],0,1) == "{"){
-
-					$subTitle   = trim($result[$i],"{");
-
-					error_log($subTitle);
-
-				}elseif (substr($result[$i],0,1) == "*"){
-
-					$titleButton   = trim($result[$i],"*");
-
-					error_log($titleButton);
-
-				}elseif (substr($result[$i],0,1) == "#"){
-
-					$webURL    = trim($result[$i],"#");
-
-					error_log($webURL);
-
-				}else{
-
-					error_log("Not have condition fix2.");
-
-					$messageDir = implode("\n", $result);
-
-				}
-
-			}
-
-			$symImageURL = "!";
-
-			$symTitle = "[";
-
-			$symSubtitle = "{";
-
-			$symTitleBN = "*";
-
-			$symWebURL = "#";
-
-			$symMessOnly = "(";
-
-			$checkImageURL = strpos($symResult, $symImageURL);
-
-			$checkTitle = strpos($symResult, $symTitle);
-
-			$checkSubtitle = strpos($symResult, $symSubtitle);
-
-			$checkTitleBN = strpos($symResult, $symTitleBN);
-
-			$checkWebURL = strpos($symResult, $symWebURL);
-
-			$checkMessOnly = strpos($symResult, $symMessOnly);
-
-			
-
-			if (($checkImageURL !== false) && ($checkTitle !== false) && ($checkSubtitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
-
-			    error_log("Template have all");
-
-				$messages=['type'=> 'template',
-
-								'altText' => 'this is a buttons template',
-
-								'template' => [
-
-									'type'=> 'buttons',
-
-									'thumbnailImageUrl'=> $imageURL,
-
-									'title' => $title,
-
-									'text' => $subTitle,
-
-									'actions' => [
-
-											 ['type' => 'uri',
-
-												'label' => $titleButton,
-
-												'uri' => $webURL
-
-											  ]
-
-										     ]
-
-										]
-
-								];
-
-				
-
-			}elseif (($checkImageURL !== false) && ($checkTitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
-
-			    error_log("Template not have title");
-
-				$messages=['type'=> 'template',
-
-								'altText' => 'this is a buttons template',
-
-								'template' => [
-
-									'type'=> 'buttons',
-
-									'thumbnailImageUrl'=> $imageURL,
-
-									'title' => 'ARK',
-
-									'text' => $title,
-
-									'actions' => [
-
-											 ['type' => 'uri',
-
-												'label' => $titleButton,
-
-												'uri' => $webURL
-
-											  ]
-
-										     ]
-
-										]
-
-								];
-
-				
-
-			}elseif (($checkTitle !== false) && ($checkTitleBN !== false) && ($checkWebURL !== false)) {
-
-			    error_log("Template not have image ");
-
-				$messages=['type'=> 'template',
-
-								'altText' => 'this is a buttons template',
-
-								'template' => [
-
-									'type'=> 'buttons',
-
-									'text' => $title,
-
-									'actions' => [
-
-											 ['type' => 'uri',
-
-												'label' => $titleButton,
-
-												'uri' => $webURL
-
-											  ]
-
-										     ]
-
-										]
-
-								];
-
-
-
-			
-
-			}elseif (($checkImageURL !== false)) {
-
-			    error_log("Send image only");
-
-				$messages=['type'=> 'template',
-
-								'altText' => 'this is a buttons template',
-
-								'template' => [
-
-									'type'=> 'buttons',
-
-									'thumbnailImageUrl'=> $imageURL
-
-										]
-
-								];
-
-			}elseif (($checkMessOnly !== false)) {
-
-			    error_log("Send message only");
-
-					$messages = [
-
-						'type' => 'text',
-
-						'text' => $messageDir
-
-					];
-
-			}else{
-
-				error_log("Not have condition fix.");
-
-				$messages = [
-
-						'type' => 'text',
-
-						'text' => $messageDir
-
-					];
-
-			}
-
-			
-
-			error_log('message : '.$messages);	
-
-			// Make a POST Request to Messaging API to reply to sender
-
-			 $url = 'https://api.line.me/v2/bot/message/reply';
-
-			
-
-			$data = [
-
-				'replyToken' => $replyToken,
-
-				'messages' => [$messages],
-
-			];
-
-			$post = json_encode($data);
-
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
-			$ch = curl_init($url);
-
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-
-			$resultMes = curl_exec($ch);
-
-			curl_close($ch);
-
-			echo $resultMes . "\r\n";
-
-		}
-
-	}
-
-}
-
-echo "OK";
-
+$accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+wLiaimWdqOXYECwLirSjbKa5fewj3uPpnBgb1yCeiEpF0ICEXBm465sagEWT6V1q9YKSYUEKjpN1PuPuVQ+V4wdB04t89/1O/w1cDnyilFU=";
+
+    $content = file_get_contents('php://input');
+    $arrayJson = json_decode($content, true);
+    
+    $arrayHeader = array();
+    $arrayHeader[] = "Content-Type: application/json";
+    $arrayHeader[] = "Authorization: Bearer {$accessToken}";
+    
+    //รับข้อความจากผู้ใช้
+    $message = $arrayJson['events'][0]['message']['text'];
+#ตัวอย่าง Message Type "Text"
+    if($message == "สวัสดี"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    #ตัวอย่าง Message Type "Sticker"
+    else if($message == "ฝันดี"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "sticker";
+        $arrayPostData['messages'][0]['packageId'] = "2";
+        $arrayPostData['messages'][0]['stickerId'] = "46";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    #ตัวอย่าง Message Type "Image"
+    else if($message == "รูปน้องแมว"){
+        $image_url = "https://i.pinimg.com/originals/cc/22/d1/cc22d10d9096e70fe3dbe3be2630182b.jpg";
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "image";
+        $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
+        $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    #ตัวอย่าง Message Type "Location"
+    else if($message == "พิกัดสยามพารากอน"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "location";
+        $arrayPostData['messages'][0]['title'] = "สยามพารากอน";
+        $arrayPostData['messages'][0]['address'] =   "13.7465354,100.532752";
+        $arrayPostData['messages'][0]['latitude'] = "13.7465354";
+        $arrayPostData['messages'][0]['longitude'] = "100.532752";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    #ตัวอย่าง Message Type "Text + Sticker ใน 1 ครั้ง"
+    else if($message == "ลาก่อน"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "อย่าทิ้งกันไป";
+        $arrayPostData['messages'][1]['type'] = "sticker";
+        $arrayPostData['messages'][1]['packageId'] = "1";
+        $arrayPostData['messages'][1]['stickerId'] = "131";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+function replyMsg($arrayHeader,$arrayPostData){
+        $strUrl = "https://api.line.me/v2/bot/message/reply";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$strUrl);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);    
+        curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($arrayPostData));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $result = curl_exec($ch);
+        curl_close ($ch);
+    }
+   exit;
 ?>
