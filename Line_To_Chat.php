@@ -60,7 +60,7 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
         $arrayPostData['messages'][0]['type'] = "imagemap";
         $arrayPostData['messages'][0]['baseUrl'] = "https://github.com/pack12345/BOTCHAT/blob/master/immapcard";
         $arrayPostData['messages'][0]['altText'] = "This is an imagemap";
-        $arrayPostData['messages'][0]['baseSize'] = '{"width":1040,"height":995}';
+        $arrayPostData['messages'][0]['baseSize'] = '{"width":1024,"height":1024}';
         $arrayPostData['messages'][0]['actions'] = '[
     {
       "type": "message",
