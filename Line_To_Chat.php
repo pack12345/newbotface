@@ -113,6 +113,93 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
         $arrayPostData['messages'][0]['actions'][5]['area']['text'] = "บัตรออมสินสมาร์ทแคร์";
         replyMsg($arrayHeader,$arrayPostData);
     }
+     else if($message == "บัตร"){
+        $arrayPostData = 
+        array(
+            "replyToken" => $arrayJson['events'][0]['replyToken'],
+            "messages" => [
+                array(
+                    "type" => "imagemap",
+                    "baseUrl"=> "https://github.com/pack12345/BOTCHAT/blob/master/immapcard",
+                    "altText"=> "This is an imagemap",
+                    "baseSize"=> 
+                    array(
+                        "width"=> 1040,
+                        "height"=> 1040
+                    ),
+                    "actions"=> [
+                        array(
+                            "type"=> "message",
+                            "area"=> 
+                            array(
+                                "x"=> 15,
+                                "y"=> 93,
+                                "width"=> 322,
+                                "height"=> 322
+                            ),
+                            "text"=> "GSB PREMIUM"
+                        ),
+                        array(
+                            "type"=> "message",
+                            "area"=> 
+                            array(
+                                "x"=> 350,
+                                "y"=> 93,
+                                "width"=> 322,
+                                "height"=> 322
+                            ),
+                            "text"=> "GSB PRECIOUS"
+                        ),
+                        array(
+                            "type"=> "message",
+                            "area"=> 
+                            array(
+                                "x"=> 685,
+                                "y"=> 93,
+                                "width"=> 322,
+                                "height"=> 322
+                            ),
+                            "text"=> "GSB PRESTIGE"
+                        ),
+                        array(
+                            "type"=> "message",
+                            "area"=> 
+                            array(
+                                "x"=> 15,
+                                "y"=> 430,
+                                "width"=> 322,
+                                "height"=> 322
+                            ),
+                            "text"=> "บัตรเงินสด"
+                        ),
+                        array(
+                            "type"=> "message",
+                            "area"=> 
+                            array(
+                                "x"=> 350,
+                                "y"=> 430,
+                                "width"=> 322,
+                                "height"=> 322
+                            ),
+                            "text"=> "บัตรออมสินวีซ่า"
+                        ),
+                        array(
+                            "type"=> "message",
+                            "area"=> 
+                            array(
+                                "x"=> 685,
+                                "y"=> 430,
+                                "width"=> 322,
+                                "height"=> 322
+                            ),
+                            "text"=> "บัตรออมสินสมาร์ทแคร์"
+                        )
+                    ]
+                )
+            ]
+        );
+           replyMsg($arrayHeader,$arrayPostData);
+    }
     else if($message == "เมนู"){
         $arrayPostData = 
         array(
@@ -140,20 +227,22 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
                          ]
                      )
               )
-            ]
-            );
-                         
+        ]
+        );
+           replyMsg($arrayHeader,$arrayPostData);
+    }
+     else if($message == "เมนูหลัก"){      
                              
-        #$arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        #$arrayPostData['messages'][0]['type'] = "template";
-        #$arrayPostData['messages'][0]['altText'] = "this is a buttons template";
-        #$arrayPostData['messages'][0]['template']['type'] = "BUTTONS";
-        #$arrayPostData['messages'][0]['template']['title'] = "GSB Main menu";
-        #$arrayPostData['messages'][0]['template']['text'] = "ยินดีตอนรับสู่บริการของเราค่ะ";
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "template";
+        $arrayPostData['messages'][0]['altText'] = "this is a buttons template";
+        $arrayPostData['messages'][0]['template']['type'] = "BUTTONS";
+        $arrayPostData['messages'][0]['template']['title'] = "GSB Main menu";
+        $arrayPostData['messages'][0]['template']['text'] = "ยินดีตอนรับสู่บริการของเราค่ะ";
         
-        #$arrayPostData['messages'][0]['template']['actions'][0]['type'] = "message";
-        #$arrayPostData['messages'][0]['template']['actions'][0]['label'] = "บัตรเครดิต";
-        #$arrayPostData['messages'][0]['template']['actions'][0]['text'] = "บัตรเครดิต";
+        $arrayPostData['messages'][0]['template']['actions'][0]['type'] = "message";
+        $arrayPostData['messages'][0]['template']['actions'][0]['label'] = "บัตรเครดิต";
+        $arrayPostData['messages'][0]['template']['actions'][0]['text'] = "บัตรเครดิต";
         
         replyMsg($arrayHeader,$arrayPostData);
     }
