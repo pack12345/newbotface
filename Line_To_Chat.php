@@ -113,6 +113,21 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
         $arrayPostData['messages'][0]['actions'][5]['area']['text'] = "บัตรออมสินสมาร์ทแคร์";
         replyMsg($arrayHeader,$arrayPostData);
     }
+    else if($message == "เมนู"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "template";
+        $arrayPostData['messages'][0]['altText'] = "this is a buttons template";
+        $arrayPostData['messages'][0]['template']['type'] = "BUTTONS";
+        $arrayPostData['messages'][0]['template']['height'] = 1040;
+        $arrayPostData['messages'][0]['template']['title'] = "GSB Main menu";
+        $arrayPostData['messages'][0]['template']['text'] = "ยินดีตอนรับสู่บริการของเราค่ะ";
+        
+        $arrayPostData['messages'][0]['template']['actions'][0]['type'] = "message";
+        $arrayPostData['messages'][0]['template']['actions'][0]['label'] = "บัตรเครดิต";
+        $arrayPostData['messages'][0]['template']['actions'][0]['text'] = "บัตรเครดิต";
+        
+        replyMsg($arrayHeader,$arrayPostData);
+    }
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
         $ch = curl_init();
