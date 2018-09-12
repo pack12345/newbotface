@@ -64,7 +64,7 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     else if($message == "Card"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "imagemap";
-        $arrayPostData['messages'][0]['baseUrl'] = "https://github.com/pack12345/BOTCHAT/blob/master/immapcard";
+        $arrayPostData['messages'][0]['baseUrl'] = "https://cxpmiddleware.herokuapp.com/immapcard/";
         $arrayPostData['messages'][0]['altText'] = "This is an imagemap";
         $arrayPostData['messages'][0]['baseSize']['width'] = 1040;
         $arrayPostData['messages'][0]['baseSize']['height'] = 1040;
@@ -120,7 +120,7 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
             "messages" => [
                 array(
                     "type" => "imagemap",
-                    "baseUrl"=> "https://github.com/pack12345/BOTCHAT/blob/master/immapcard/cardinfo.jpg",
+                    "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard",
                     "altText"=> "This is an imagemap",
                     "baseSize"=> 
                     array(
