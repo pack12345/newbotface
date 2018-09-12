@@ -120,7 +120,7 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
             "messages" => [
                 array(
                     "type" => "imagemap",
-                    "baseUrl"=> "https://github.com/pack12345/BOTCHAT/blob/master/immapcard",
+                    "baseUrl"=> "https://github.com/pack12345/BOTCHAT/blob/master/immapcard/cardinfo.jpg",
                     "altText"=> "This is an imagemap",
                     "baseSize"=> 
                     array(
