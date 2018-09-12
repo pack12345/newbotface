@@ -56,74 +56,13 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
         replyMsg($arrayHeader,$arrayPostData);
     }
     else if($message == "CardInfo"){
-         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "imagemap";
         $arrayPostData['messages'][0]['baseUrl'] = "https://github.com/pack12345/BOTCHAT/blob/master/image_Credit/card%20info.jpg";
         $arrayPostData['messages'][0]['altText'] = "This is an imagemap";
         $arrayPostData['messages'][0]['baseSize']['width'] = "1040";
 	$arrayPostData['messages'][0]['baseSize']['height'] = "995";
-        $arrayPostData['messages'][0]['actions'] = "[
-    {
-      "type": "message",
-      "area": {
-        "x": 17,
-        "y": 93,
-        "width": 322,
-        "height": 324
-      },
-      "text": "GSB PREMIUM"
-    },
-    {
-      "type": "message",
-      "area": {
-        "x": 351,
-        "y": 92,
-        "width": 326,
-        "height": 327
-      },
-      "text": "GSB PRECIOUS"
-    },
-    {
-      "type": "message",
-      "area": {
-        "x": 687,
-        "y": 91,
-        "width": 321,
-        "height": 326
-      },
-      "text": "GSB PRESTIGE"
-    },
-    {
-      "type": "message",
-      "area": {
-        "x": 19,
-        "y": 431,
-        "width": 322,
-        "height": 341
-      },
-      "text": "บัตรเงินสด"
-    },
-    {
-      "type": "message",
-      "area": {
-        "x": 353,
-        "y": 431,
-        "width": 321,
-        "height": 344
-      },
-      "text": "บัตรออมสินวีซ่า"
-    },
-    {
-      "type": "message",
-      "area": {
-        "x": 685,
-        "y": 431,
-        "width": 323,
-        "height": 341
-      },
-      "text": "บัตรออมสินสมาร์ทแคร์"
-    }
-  ]";
+        
         replyMsg($arrayHeader,$arrayPostData);
     }
 function replyMsg($arrayHeader,$arrayPostData){
