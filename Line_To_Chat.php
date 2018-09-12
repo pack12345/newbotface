@@ -58,7 +58,7 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     else if($message == "Card"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "imagemap";
-        $arrayPostData['messages'][0]['baseUrl'] = "https://github.com/pack12345/BOTCHAT/blob/master/image_Credit/card%20info.jpg";
+        $arrayPostData['messages'][0]['baseUrl'] = "https://github.com/pack12345/BOTCHAT/blob/master/image_Credit/card%20info.jpg?_ignored=";
         $arrayPostData['messages'][0]['altText'] = "This is an imagemap";
         $arrayPostData['messages'][0]['baseSize'] = '{"width":1040,"height":995}';
         $arrayPostData['messages'][0]['actions'] = '[
