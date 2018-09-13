@@ -14,24 +14,48 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     //รับ user id ของผู้ใช้
     $id = $arrayJson['events'][0]['source']['userId'];
     #Message Type "Text"
-    if($message == "สวัสดี"){
+    if(strpos($message, "สวัสดี") !== false || strtoupper($message) == "HELLO"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา ".$id;
+        $arrayPostData['messages'][0]['text'] = "สวัสดีครับยินดีตอนรับ";
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if($message == "Credit"){
+    else if(strpos($message, "ช่วยเหลือ") !== false || strtoupper($message) == "LOAN"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "บัตรเครดิต เรามีให้เลือกหลายอย่าง";
+        $arrayPostData['messages'][0]['text'] = "สินเชื่อ คุณภาพ บริการด้วยใจ";
         replyMsg($arrayHeader,$arrayPostData);
     }
     # Message Type "Sticker"
-    else if($message == "ฝันดี"){
+    #else if($message == "เงินฝาก"){
+    #    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+    #    $arrayPostData['messages'][0]['type'] = "sticker";
+    #    $arrayPostData['messages'][0]['packageId'] = "2";
+    #    $arrayPostData['messages'][0]['stickerId'] = "46";
+    #    replyMsg($arrayHeader,$arrayPostData);
+    #}
+    else if($message == "เงินฝาก"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "sticker";
-        $arrayPostData['messages'][0]['packageId'] = "2";
-        $arrayPostData['messages'][0]['stickerId'] = "46";
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "รับประกันเงินฝาก โดยรัฐบาล";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if($message == "สลากออมสิน"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "สลากออมสินการ ออมเงินอย่างดี";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if(strtoupper($message) == "PROMOTION"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "Promotion สุดพิเศษ สำหรับคุณ";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if($message == "สมัครบริการ"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "มาร่วมใช้บรการกับเรา";
         replyMsg($arrayHeader,$arrayPostData);
     }
     # Message Type "Image"
@@ -63,60 +87,8 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
         $arrayPostData['messages'][1]['stickerId'] = "131";
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if($message == "Card"){
-        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "imagemap";
-        $arrayPostData['messages'][0]['baseUrl'] = "https://cxpmiddleware.herokuapp.com/immapcard/";
-        $arrayPostData['messages'][0]['altText'] = "This is an imagemap";
-        $arrayPostData['messages'][0]['baseSize']['width'] = 1040;
-        $arrayPostData['messages'][0]['baseSize']['height'] = 1040;
-        $arrayPostData['messages'][0]['actionCount'] = 6;
-        
-        $arrayPostData['messages'][0]['actions'][0]['type'] = "message";
-        $arrayPostData['messages'][0]['actions'][0]['area']['x'] = 17;
-        $arrayPostData['messages'][0]['actions'][0]['area']['y'] = 93;
-        $arrayPostData['messages'][0]['actions'][0]['area']['width'] = 322;
-        $arrayPostData['messages'][0]['actions'][0]['area']['height'] = 324;
-        $arrayPostData['messages'][0]['actions'][0]['area']['text'] = "GSB PREMIUM";
-        
-        $arrayPostData['messages'][0]['actions'][1]['type'] = "message";
-        $arrayPostData['messages'][0]['actions'][1]['area']['x'] = 351;
-        $arrayPostData['messages'][0]['actions'][1]['area']['y'] = 93;
-        $arrayPostData['messages'][0]['actions'][1]['area']['width'] = 322;
-        $arrayPostData['messages'][0]['actions'][1]['area']['height'] = 324;
-        $arrayPostData['messages'][0]['actions'][1]['area']['text'] = "GSB PRECIOUS";
-        
-        $arrayPostData['messages'][0]['actions'][2]['type'] = "message";
-        $arrayPostData['messages'][0]['actions'][2]['area']['x'] = 687;
-        $arrayPostData['messages'][0]['actions'][2]['area']['y'] = 93;
-        $arrayPostData['messages'][0]['actions'][2]['area']['width'] = 322;
-        $arrayPostData['messages'][0]['actions'][2]['area']['height'] = 324;
-        $arrayPostData['messages'][0]['actions'][2]['area']['text'] = "GSB PRESTIGE";
-        
-        $arrayPostData['messages'][0]['actions'][3]['type'] = "message";
-        $arrayPostData['messages'][0]['actions'][3]['area']['x'] = 17;
-        $arrayPostData['messages'][0]['actions'][3]['area']['y'] = 431;
-        $arrayPostData['messages'][0]['actions'][3]['area']['width'] = 322;
-        $arrayPostData['messages'][0]['actions'][3]['area']['height'] = 324;
-        $arrayPostData['messages'][0]['actions'][3]['area']['text'] = "บัตรเงินสด";
-        
-        $arrayPostData['messages'][0]['actions'][4]['type'] = "message";
-        $arrayPostData['messages'][0]['actions'][4]['area']['x'] = 351;
-        $arrayPostData['messages'][0]['actions'][4]['area']['y'] = 431;
-        $arrayPostData['messages'][0]['actions'][4]['area']['width'] = 322;
-        $arrayPostData['messages'][0]['actions'][4]['area']['height'] = 324;
-        $arrayPostData['messages'][0]['actions'][4]['area']['text'] = "บัตรออมสินวีซ่า";
-        
-        $arrayPostData['messages'][0]['actions'][5]['type'] = "message";
-        $arrayPostData['messages'][0]['actions'][5]['area']['x'] = 687;
-        $arrayPostData['messages'][0]['actions'][5]['area']['y'] = 431;
-        $arrayPostData['messages'][0]['actions'][5]['area']['width'] = 322;
-        $arrayPostData['messages'][0]['actions'][5]['area']['height'] = 324;
-        $arrayPostData['messages'][0]['actions'][5]['area']['text'] = "บัตรออมสินสมาร์ทแคร์";
-        replyMsg($arrayHeader,$arrayPostData);
-    }
-     # Message image map
-     else if($message == "บัตร"){
+    # Message image map
+    else if($message == "บัตรเครดิต"){
         $arrayPostData = 
         array(
             "replyToken" => $arrayJson['events'][0]['replyToken'],
@@ -235,6 +207,42 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
         );
            replyMsg($arrayHeader,$arrayPostData);
     }
+    else if(strtoupper($message) == "GSB PREMIUM"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "บัตรแพลตตินั้ม สุดพิเศษ";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if(strtoupper($message) == "GSB PRECIOUS"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "บัตร PRECIOUS สุดพิเศษ";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if(strtoupper($message) == "GSB PRESTIGE"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "บัตร PRESTIGE สุดพิเศษ";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if($message == "บัตรเงินสด"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "บัตรเงินสด สุดพิเศษ";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if($message == "บัตรออมสินสมาร์ทแคร์"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "บัตรออมสินสมาร์ทแคร์ สุดพิเศษ";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if($message == "บัตรออมสินวีซ่า"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "บัตรออมสินวีซ่า สุดพิเศษ";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
      # Message Buttons
      else if($message == "เมนูหลัก"){      
                              
@@ -251,15 +259,7 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
         
         replyMsg($arrayHeader,$arrayPostData);
     }
-    # Message Pushback 
-    if(!empty($_GET["userid"])){
-       echo $_GET["userid"];
-        echo $_GET["text"];
-        $arrayPostData['to'] = $_GET["userid"];
-          $arrayPostData['messages'][0]['type'] = "text";
-          $arrayPostData['messages'][0]['text'] = $_GET["text"];
-          pushMsg($arrayHeader,$arrayPostData);
-    }
+
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
         $ch = curl_init();
@@ -273,19 +273,5 @@ function replyMsg($arrayHeader,$arrayPostData){
         $result = curl_exec($ch);
         curl_close ($ch);
     }
-   exit;
-function pushMsg($arrayHeader,$arrayPostData){
-      $strUrl = "https://api.line.me/v2/bot/message/push";
-      $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL,$strUrl);
-      curl_setopt($ch, CURLOPT_HEADER, false);
-      curl_setopt($ch, CURLOPT_POST, true);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrayPostData));
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
-      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-      $result = curl_exec($ch);
-      curl_close ($ch);
-   }
    exit;
 ?>
