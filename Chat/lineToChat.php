@@ -11,7 +11,7 @@
        			$message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
 				} 
 			 if(!file_exists('Agent.txt')){
-				 fwrite(fopen('chat.txt', 'w'), $_GET["userid"] . "\n");
+				 fwrite(fopen('Agent.txt', 'w'), $_GET["userid"] . "\n");
 			 }
 			 
         	
