@@ -296,7 +296,7 @@ function replyMsg($arrayHeader,$arrayPostData){
     }
    exit;
 function replyMsgChat($arrayHeader,$arrayPostData){
-        $strUrl = "https://cxpmiddleware.herokuapp.com/Chat/lineToChat.php?userid=".$arrayHeader."text=".$arrayPostData;
+        $strUrl = "https://cxpmiddleware.herokuapp.com/Chat/lineToChat.php?userid=".$arrayHeader."&text=".$arrayPostData;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$strUrl);
         curl_setopt($ch, CURLOPT_HEADER, 0);
