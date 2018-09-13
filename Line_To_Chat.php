@@ -253,7 +253,7 @@ if($agentHold !== $id){
     else if(strtoupper($message) == "AGENT"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "กรุณารอซักครู่";
+        $arrayPostData['messages'][0]['text'] = "https://cxpmiddleware.herokuapp.com/Chat/lineToChat.php?userid=".$id."&text="."ลูกค้าต้องการคุยกับ Agent";
         replyMsg($arrayHeader,$arrayPostData);
 
         replyMsgChat($id,"ลูกค้าต้องการคุยกับ Agent");
@@ -262,6 +262,15 @@ if($agentHold !== $id){
 else{
     replyMsgChat($id,$message);   
 }
+
+function replyMsgChat($arrayHeader,$arrayPostData){
+        $strUrl = "https://cxpmiddleware.herokuapp.com/Chat/lineToChat.php?userid=".$arrayHeader."&text=".$arrayPostData;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$strUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($ch);
+        curl_close ($ch);
+    }
 
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
@@ -277,13 +286,5 @@ function replyMsg($arrayHeader,$arrayPostData){
         curl_close ($ch);
     }
    exit;
-function replyMsgChat($arrayHeader,$arrayPostData){
-        $strUrl = "https://cxpmiddleware.herokuapp.com/Chat/lineToChat.php?userid=".$arrayHeader."&text=".$arrayPostData;
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$strUrl);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $result = curl_exec($ch);
-        curl_close ($ch);
-    }
-   exit;
+ 
 ?>
