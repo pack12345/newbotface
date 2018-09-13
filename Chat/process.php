@@ -64,7 +64,7 @@
     echo json_encode($log);
 
 function replyMsg($arrayUser,$arrayGetData){
-        $strUrl = "https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=".$arrayUser."text=".$arrayGetData;
+        $strUrl = "https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=".$arrayUser."&text=".$arrayGetData;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$strUrl);
         curl_setopt($ch, CURLOPT_HEADER, 0);
