@@ -12,9 +12,11 @@ $log = array();
 		#	 if(preg_match($reg_exUrl, $message, $url)) {
        		#	$message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
 		#		} 
-			 if(!file_exists('Agent.txt')){
-				 fwrite(fopen('Agent.txt', 'w'), $_GET['userid'] . "\n");
-				 fclose(fopen('Agent.txt', 'w'));
+			 if(!file_exists("Agent.txt")){
+				 $myfile = fopen("Agent.txt", "w") or die("Unable to open file!");
+				 $txt = $_GET['userid'];
+				 fwrite($myfile, $txt);
+				 fclose($myfile);
 			 }
 			 
         	
@@ -22,5 +24,8 @@ $log = array();
 		 #}
      }
   echo json_encode($log);
+  echo $_GET['userid'] ."\n";
+  echo $_GET['text'] ."\n";
+  
 
 ?>
