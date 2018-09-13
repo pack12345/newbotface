@@ -15,12 +15,12 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     $id = $arrayJson['events'][0]['source']['userId'];
     $my_file = "/Chat/Agent.txt";
     $agentHold = "";
-if(!file_exists($my_file)){
+if(file_exists($my_file)){
     $line = file($my_file);
     $agentHold = $line[0];
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = $line[0];
+        $arrayPostData['messages'][0]['text'] = $agentHold;
         replyMsg($arrayHeader,$arrayPostData);
 }
 if($agentHold != $id){
