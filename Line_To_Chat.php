@@ -14,7 +14,7 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     //รับ user id ของผู้ใช้
     $id = $arrayJson['events'][0]['source']['userId'];
     $my_file = "/Chat/".$id.".txt";
-if(!file_exists($my_file){
+if(!file_exists($my_file)){
     #Message Type "Text"
     if(strpos($message, "สวัสดี") !== false || strtoupper($message) == "HELLO"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
@@ -271,6 +271,9 @@ if(!file_exists($my_file){
         fclose($handle);
         replyMsg($arrayHeader,$arrayPostData);
     }
+}
+else{
+    
 }
 
 function replyMsg($arrayHeader,$arrayPostData){
