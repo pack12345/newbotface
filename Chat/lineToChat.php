@@ -14,6 +14,7 @@ $log = array();
 				} 
 			 if(!file_exists('Agent.txt')){
 				 fwrite(fopen('Agent.txt', 'w'), $_GET['userid'] . "\n");
+				 fclose(fopen('Agent.txt', 'w'));
 			 }
 			 
         	
