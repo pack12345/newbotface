@@ -31,7 +31,7 @@
                        {
         				   if($line_num >= $state){
                          $text[] =  $line = str_replace("\n", "", $line);
-        				   }
+					   }
          
                         }
         			 $log['text'] = $text; 
@@ -48,14 +48,29 @@
 			 if(preg_match($reg_exUrl, $message, $url)) {
        			$message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
 				} 
+			 if(file_exists('Agent.txt')){
+				 $lines = file('Agent.txt');
+				 replyMsg($lines[0],$message);
+			 }
 			 
         	
         	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+			 
 		 }
         	 break;
     	
     }
     
     echo json_encode($log);
+
+function replyMsg($arrayUser,$arrayGetData){
+        $strUrl = "https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=".$arrayUser."text=".$arrayGetData;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$strUrl);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        $result = curl_exec($ch);
+        curl_close ($ch);
+    }
+   exit;
 
 ?>
