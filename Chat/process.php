@@ -67,7 +67,8 @@ function replyMsg($arrayUser,$arrayGetData){
         $strUrl = "https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=".$arrayUser."&text=".$arrayGetData;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$strUrl);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         $result = curl_exec($ch);
         curl_close ($ch);
     }
