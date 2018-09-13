@@ -253,6 +253,8 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     }
     # Message Pushback 
     if(!empty($_GET["userid"])){
+       echo $_GET["userid"];
+        echo $_GET["text"];
         $arrayPostData['to'] = $_GET["userid"];
           $arrayPostData['messages'][0]['type'] = "text";
           $arrayPostData['messages'][0]['text'] = $_GET["text"];
