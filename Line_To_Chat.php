@@ -250,30 +250,12 @@ if($agentHold !== $id){
         $arrayPostData['messages'][0]['text'] = "บัตรออมสินวีซ่า สุดพิเศษ";
         replyMsg($arrayHeader,$arrayPostData);
     }
-     # Message Buttons
-     else if($message == "เมนูหลัก"){      
-                             
-        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "template";
-        $arrayPostData['messages'][0]['altText'] = "this is a buttons template";
-        $arrayPostData['messages'][0]['template']['type'] = "BUTTONS";
-        $arrayPostData['messages'][0]['template']['title'] = "GSB Main menu";
-        $arrayPostData['messages'][0]['template']['text'] = "ยินดีตอนรับสู่บริการของเราค่ะ";
-        
-        $arrayPostData['messages'][0]['template']['actions'][0]['type'] = "message";
-        $arrayPostData['messages'][0]['template']['actions'][0]['label'] = "บัตรเครดิต";
-        $arrayPostData['messages'][0]['template']['actions'][0]['text'] = "บัตรเครดิต";
-        
-        replyMsg($arrayHeader,$arrayPostData);
-    }
-    else if($message == "Agent"){
+    else if(strtoupper($message) == "AGENT"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "กรุณารอซักครู่";
-        $handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
-         //write some data here
-        fclose($handle);
         replyMsg($arrayHeader,$arrayPostData);
+
         replyMsgChat($id,"ลูกค้าต้องการคุยกับ Agent");
     }
 }
