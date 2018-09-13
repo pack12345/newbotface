@@ -18,8 +18,12 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
 if(!file_exists($my_file)){
     $line = file($my_file);
     $agentHold = $line[0];
+    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $line[0];
+        replyMsg($arrayHeader,$arrayPostData);
 }
-if($agentHold !== $id){
+if($agentHold != $id){
     #Message Type "Text"
     if(strpos($message, "สวัสดี") !== false || strtoupper($message) == "HELLO"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
@@ -253,10 +257,10 @@ if($agentHold !== $id){
     else if(strtoupper($message) == "AGENT"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "https://cxpmiddleware.herokuapp.com/Chat/lineToChat.php?userid=".$id."&text="."ลูกค้าต้องการคุยกับ Agent";
+        $arrayPostData['messages'][0]['text'] = "กำลังติดต่อ";
         replyMsg($arrayHeader,$arrayPostData);
 
-        replyMsgChat($id,"ลูกค้าต้องการคุยกับ Agent");
+        replyMsgChat($id,"ลูกค้าต้องการคุยกับพนักงาน");
     }
 }
 else{
