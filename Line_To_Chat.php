@@ -13,6 +13,8 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     $message = $arrayJson['events'][0]['message']['text'];
     //รับ user id ของผู้ใช้
     $id = $arrayJson['events'][0]['source']['userId'];
+    $my_file = "/Chat/".$id.".txt";
+if(!file_exists($my_file){
     #Message Type "Text"
     if(strpos($message, "สวัสดี") !== false || strtoupper($message) == "HELLO"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
@@ -259,6 +261,17 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
         
         replyMsg($arrayHeader,$arrayPostData);
     }
+    }
+    else if($message == "Agent"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = "กรุณารอซักครู่";
+        $handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
+         //write some data here
+        fclose($handle);
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+}
 
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
