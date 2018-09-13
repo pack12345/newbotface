@@ -18,5 +18,6 @@
         	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
 		 }
      }
+  echo "to chat".$_GET["userid"].$message;
 
 ?>
