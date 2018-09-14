@@ -227,7 +227,7 @@ array(
             "messages" => [
         array(
   "type"=> "imagemap",
-  "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard/บัญชีเงินฝาก",
+  "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard/bookbank",
   "altText"=> "This is an imagemap",
   "baseSize"=> array(
     "width"=> 1040,
@@ -257,7 +257,7 @@ array(
             "messages" => [
         array(
   "type"=> "imagemap",
-  "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard/สลากออมสิน",
+  "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard/oomsin",
   "altText"=> "This is an imagemap",
   "baseSize"=> array(
     "width"=> 1040,
