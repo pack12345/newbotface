@@ -52,12 +52,12 @@
 				} 
 			 if(file_exists("Agent.txt")){
 				 $lins = file("Agent.txt");
-			    $lineid = $lins[0]
+			    $lineid = $lins[0];
 				 replyMsg($lineid, $message);
 			 }
 			 
         	
-        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . $lineid . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
 			 
 		 }
         	 break;
