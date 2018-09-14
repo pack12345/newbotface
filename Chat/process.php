@@ -54,14 +54,11 @@
 				 $lins = file("Agent.txt");
 				 $lineid = $lins[0];
 				 $strUrl = "https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=".$lineid."&text=".$message;
-				 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-				 $result = curl_exec($ch);
-				 curl_close ($ch);
+				 $response = http_get($strUrl);
 			 }
 			 
         	
-        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message . $strUrl) . "\n"); 
+        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message . $response) . "\n"); 
 			 
 		 }
         	 break;
