@@ -49,9 +49,9 @@ array(
         "text"=> "บัตรกดเงินสด"
       ),
       array(
-        "type"=> "message",
+        "type"=> "uri",
         "label"=> "สินเชื่อ",
-        "text"=> "สินเชื่อ"
+        "uri"=> "https://www.gsb.or.th/services/RateLoan.aspx"
       )
     ],
     "title"=> "กรุณาเลือกรายการที่ท่าน",
@@ -59,6 +59,66 @@ array(
   )
 )
 ]
+);
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if($message == "บัตรเครดิต"){
+        $arrayPostData = 
+        array(
+            "replyToken" => $arrayJson['events'][0]['replyToken'],
+            "messages" => [
+                array(
+  "type"=> "imagemap",
+  "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard/creditSum",
+  "altText"=> "This is an imagemap",
+  "baseSize"=> array(
+    "width"=> 1040,
+    "height"=> 1136
+  ),
+  "actions"=> [
+    array(
+      "type"=> "uri",
+      "area"=> array(
+        "x"=> 89,
+        "y"=> 807,
+        "width"=> 828,
+        "height"=> 119
+      ),
+      "linkUri"=> "https=>//developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
+    )
+  ]
+)
+                ]
+);
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+        else if($message == "บัตรกดเงินสด"){
+        $arrayPostData = 
+        array(
+            "replyToken" => $arrayJson['events'][0]['replyToken'],
+            "messages" => [
+                array(
+  "type"=> "imagemap",
+  "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard/bookSum",
+  "altText"=> "This is an imagemap",
+  "baseSize"=> array(
+    "width"=> 1040,
+    "height"=> 1022
+  ),
+  "actions"=> [
+    array(
+      "type"=> "uri",
+      "area"=> array(
+        "x"=> 89,
+        "y"=> 695,
+        "width"=> 828,
+        "height"=> 119
+      ),
+      "linkUri"=> "https=>//developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
+    )
+  ]
+)
+                ]
 );
         replyMsg($arrayHeader,$arrayPostData);
     }
@@ -241,15 +301,100 @@ array(
         replyMsg($arrayHeader,$arrayPostData);
     }
     else if(strtoupper($message) == "PROMOTION"){
-        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "Promotion สุดพิเศษ สำหรับคุณ";
+        $arrayPostData = 
+        array(
+            "replyToken" => $arrayJson['events'][0]['replyToken'],
+            "messages" => [
+                array(
+  "type"=> "template",
+  "altText"=> "this is a carousel template",
+  "template"=> array(
+    "type"=> "carousel",
+    "actions"=> [],
+    "columns"=> [
+      array(
+        "thumbnailImageUrl"=> "https=>//cxpmiddleware.herokuapp.com/Carousel/CreditCard/precious.png",
+        "text"=> "GSB Precious Credit Card",
+        "actions"=> [
+          array(
+            "type"=> "uri",
+            "label"=> "สิทธิประโยชน์",
+            "uri"=> "https=>//www.gsb.or.th/PrivilegePrestige.aspx"
+          ),
+          array(
+            "type"=> "uri",
+            "label"=> "สมัครบัตร",
+            "uri"=> "https=>//www.gsb.or.th/Register-Online.aspx"
+          )
+        ]
+      ),
+      array(
+        "thumbnailImageUrl"=> "https=>//cxpmiddleware.herokuapp.com/Carousel/CreditCard/premium.png",
+        "text"=> "GSB Premium Credit Card",
+        "actions"=> [
+          array(
+            "type"=> "uri",
+            "label"=> "สิทธิประโยชน์",
+            "uri"=> "https=>//www.gsb.or.th/products/cards/credit_card/gsbpremium.aspx"
+          ),
+          array(
+            "type"=> "uri",
+            "label"=> "สมัครบัตร",
+            "uri"=> "https=>//www.gsb.or.th/Register-Online-Premium.aspx"
+          )
+        ]
+      ),
+      array(
+        "thumbnailImageUrl"=> "https=>//cxpmiddleware.herokuapp.com/Carousel/CreditCard/prestige.png",
+        "text"=> "GSB Prestige Credit Card",
+        "actions"=> [
+          array(
+            "type"=> "uri",
+            "label"=> "สิทธิประโยชน์",
+            "uri"=> "https=>//www.gsb.or.th/products/cards/credit_card/gsbprestige.aspx"
+          ),
+          array(
+            "type"=> "uri",
+            "label"=> "สมัครบัตร",
+            "uri"=> "https=>//www.gsb.or.th/personal/products/cards/credit_card/gsbprestige.aspx"
+          )
+        ]
+      )
+    ]
+  )
+)
+                ]
+            );
         replyMsg($arrayHeader,$arrayPostData);
     }
     else if($message == "สมัครบริการ"){
-        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "มาร่วมใช้บรการกับเรา";
+        $arrayPostData = 
+        array(
+            "replyToken" => $arrayJson['events'][0]['replyToken'],
+            "messages" => [
+        array(
+  "type"=> "imagemap",
+  "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard/registers",
+  "altText"=> "This is an imagemap",
+  "baseSize"=> array(
+    "width"=> 1040,
+    "height"=> 1040
+  ),
+  "actions"=> [
+    array(
+      "type"=> "uri",
+      "area"=> array(
+        "x"=> 226,
+        "y"=> 906,
+        "width"=> 561,
+        "height"=> 97
+      ),
+      "linkUri"=> "https=>//developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
+    )
+  ]
+)
+            ]
+            );
         replyMsg($arrayHeader,$arrayPostData);
     }
     # Message Type "Image"
@@ -282,7 +427,7 @@ array(
         replyMsg($arrayHeader,$arrayPostData);
     }
     # Message image map
-    else if($message == "บัตรเครดิต"){
+    else if($message == "Promotionบัตรเครดิต"){
         $arrayPostData = 
         array(
             "replyToken" => $arrayJson['events'][0]['replyToken'],
