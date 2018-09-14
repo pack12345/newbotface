@@ -55,7 +55,7 @@ array(
       )
     ],
     "title"=> "กรุณาเลือกรายการที่ท่าน",
-    "text"=> "ผลิตภัณฑ์บัตร, เงินฝาก และสินเชื่อ"
+    "text"=> "ผลิตภัณฑ์บัตรเครดิต, บัตรกดเงิน และสินเชื่อ"
   )
 )
 ]
@@ -84,7 +84,7 @@ array(
         "width"=> 828,
         "height"=> 119
       ),
-      "linkUri"=> "https=>//developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
+      "linkUri"=> "https://developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
     )
   ]
 )
@@ -114,7 +114,7 @@ array(
         "width"=> 828,
         "height"=> 119
       ),
-      "linkUri"=> "https=>//developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
+      "linkUri"=> "https://developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
     )
   ]
 )
@@ -242,7 +242,7 @@ array(
         "width"=> 828,
         "height"=> 119
       ),
-      "linkUri"=> "https=>//developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
+      "linkUri"=> "https://developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
     )
   ]
 )
@@ -313,50 +313,50 @@ array(
     "actions"=> [],
     "columns"=> [
       array(
-        "thumbnailImageUrl"=> "https=>//cxpmiddleware.herokuapp.com/Carousel/CreditCard/precious.png",
+        "thumbnailImageUrl"=> "https://cxpmiddleware.herokuapp.com/Carousel/CreditCard/precious.png",
         "text"=> "GSB Precious Credit Card",
         "actions"=> [
           array(
             "type"=> "uri",
             "label"=> "สิทธิประโยชน์",
-            "uri"=> "https=>//www.gsb.or.th/PrivilegePrestige.aspx"
+            "uri"=> "https://www.gsb.or.th/PrivilegePrestige.aspx"
           ),
           array(
             "type"=> "uri",
             "label"=> "สมัครบัตร",
-            "uri"=> "https=>//www.gsb.or.th/Register-Online.aspx"
+            "uri"=> "https://www.gsb.or.th/Register-Online.aspx"
           )
         ]
       ),
       array(
-        "thumbnailImageUrl"=> "https=>//cxpmiddleware.herokuapp.com/Carousel/CreditCard/premium.png",
+        "thumbnailImageUrl"=> "https://cxpmiddleware.herokuapp.com/Carousel/CreditCard/premium.png",
         "text"=> "GSB Premium Credit Card",
         "actions"=> [
           array(
             "type"=> "uri",
             "label"=> "สิทธิประโยชน์",
-            "uri"=> "https=>//www.gsb.or.th/products/cards/credit_card/gsbpremium.aspx"
+            "uri"=> "https://www.gsb.or.th/products/cards/credit_card/gsbpremium.aspx"
           ),
           array(
             "type"=> "uri",
             "label"=> "สมัครบัตร",
-            "uri"=> "https=>//www.gsb.or.th/Register-Online-Premium.aspx"
+            "uri"=> "https://www.gsb.or.th/Register-Online-Premium.aspx"
           )
         ]
       ),
       array(
-        "thumbnailImageUrl"=> "https=>//cxpmiddleware.herokuapp.com/Carousel/CreditCard/prestige.png",
+        "thumbnailImageUrl"=> "https://cxpmiddleware.herokuapp.com/Carousel/CreditCard/prestige.png",
         "text"=> "GSB Prestige Credit Card",
         "actions"=> [
           array(
             "type"=> "uri",
             "label"=> "สิทธิประโยชน์",
-            "uri"=> "https=>//www.gsb.or.th/products/cards/credit_card/gsbprestige.aspx"
+            "uri"=> "https://www.gsb.or.th/products/cards/credit_card/gsbprestige.aspx"
           ),
           array(
             "type"=> "uri",
             "label"=> "สมัครบัตร",
-            "uri"=> "https=>//www.gsb.or.th/personal/products/cards/credit_card/gsbprestige.aspx"
+            "uri"=> "https://www.gsb.or.th/personal/products/cards/credit_card/gsbprestige.aspx"
           )
         ]
       )
@@ -389,7 +389,7 @@ array(
         "width"=> 561,
         "height"=> 97
       ),
-      "linkUri"=> "https=>//developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
+      "linkUri"=> "https://developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
     )
   ]
 )
