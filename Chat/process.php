@@ -43,9 +43,11 @@
 		  $nickname = htmlentities(strip_tags($_POST['nickname']));
 			 $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
 			  $message = htmlentities(strip_tags($_POST['message']));
-		    if(file_exists("Agent.txt")){
+		    $lineid = "Line";
+		    if(file_exists('Agent.txt')){
 				 $lins = file("Agent.txt");
-				 replyMsg($lins[0],$message);
+			    $lineid = $lins[0]
+				 replyMsg($lineid, $message);
 			 }
 		 if(($message) != "\n"){
         	
@@ -55,7 +57,7 @@
 			 
 			 
         	
-        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname. $lineid . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
 			 
 		 }
         	 break;
