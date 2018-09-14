@@ -12,7 +12,7 @@ $log = array();
 		#	 if(preg_match($reg_exUrl, $message, $url)) {
        		#	$message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
 		#		} 
-			 if(!file_exists('Agent.txt')){
+			 if(!file_exists("Agent.txt")){
 				 $myfile = fopen("Agent.txt", "w") or die("Unable to open file!");
 				 $txt = $_GET['userid'];
 				 fwrite($myfile, $txt);
