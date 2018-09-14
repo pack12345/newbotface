@@ -53,12 +53,11 @@
 			 if(file_exists("Agent.txt")){
 				 $lins = file("Agent.txt");
 				 $lineid = $lins[0];
-				 $strUrl = "https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=".$lineid."&text=".$message;
-				 $response = http_get($strUrl);
+				 replyMsg($lineid, $message);
 			 }
 			 
         	
-        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message . $response) . "\n"); 
+        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
 			 
 		 }
         	 break;
