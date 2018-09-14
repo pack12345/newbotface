@@ -27,10 +27,129 @@ if($agentHold != $id){
         $arrayPostData['messages'][0]['text'] = "สวัสดีครับยินดีตอนรับ";
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if(strpos($message, "ช่วยเหลือ") !== false || strtoupper($message) == "LOAN"){
-        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "สินเชื่อ คุณภาพ บริการด้วยใจ";
+    else if(strpos($message, "บัตร/เงินสด/สินเชื่อ") !== false){
+        $arrayPostData = 
+        array(
+            "replyToken" => $arrayJson['events'][0]['replyToken'],
+            "messages" => [
+array(
+  "type"=> "template",
+  "altText"=> "this is a buttons template",
+  "template"=> array(
+    "type"=> "buttons",
+    "actions"=> [
+      array(
+        "type"=> "message",
+        "label"=> "บัตรเครดิต",
+        "text"=> "บัตรเครดิต"
+      ),
+      array(
+        "type"=> "message",
+        "label"=> "บัตรกดเงินสด",
+        "text"=> "บัตรกดเงินสด"
+      ),
+      array(
+        "type"=> "message",
+        "label"=> "สินเชื่อ",
+        "text"=> "สินเชื่อ"
+      )
+    ],
+    "title"=> "กรุณาเลือกรายการที่ท่าน",
+    "text"=> "ผลิตภัณฑ์บัตร, เงินฝาก และสินเชื่อ"
+  )
+)
+]
+);
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if(strpos($message, "ช่วยเหลือ") !== false || strtoupper($message) == "HELP"){
+        $arrayPostData = 
+        array(
+            "replyToken" => $arrayJson['events'][0]['replyToken'],
+            "messages" => [
+                array(
+  "type"=> "imagemap",
+  "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard/help",
+  "altText"=> "This is an imagemap",
+  "baseSize"=> array(
+    "width"=> 1040,
+    "height"=> 1506
+  ),
+  "actions"=> [
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 28,
+        "y"=> 154,
+        "width"=> 979,
+        "height"=> 145
+      ),
+      "text"=> "Action 1"
+    ),
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 29,
+        "y"=> 299,
+        "width"=> 979,
+        "height"=> 171
+      ),
+      "text"=> "Action 2"
+    ),
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 26,
+        "y"=> 470,
+        "width"=> 979,
+        "height"=> 158
+      ),
+      "text"=> "Action 3"
+    ),
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 27,
+        "y"=> 628,
+        "width"=> 979,
+        "height"=> 163
+      ),
+      "text"=> "Action 4"
+    ),
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 28,
+        "y"=> 791,
+        "width"=> 978,
+        "height"=> 169
+      ),
+      "text"=> "Action 5"
+    ),
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 27,
+        "y"=> 960,
+        "width"=> 979,
+        "height"=> 168
+      ),
+      "text"=> "Action 6"
+    ),
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 26,
+        "y"=> 1128,
+        "width"=> 978,
+        "height"=> 179
+      ),
+      "text"=> "Action 7"
+    )
+  ]
+)
+                ]
+            );
         replyMsg($arrayHeader,$arrayPostData);
     }
     # Message Type "Sticker"
@@ -41,16 +160,84 @@ if($agentHold != $id){
     #    $arrayPostData['messages'][0]['stickerId'] = "46";
     #    replyMsg($arrayHeader,$arrayPostData);
     #}
-    else if($message == "เงินฝาก"){
-        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "รับประกันเงินฝาก โดยรัฐบาล";
+    else if($message == "บัญชีเงินฝาก"){
+        $arrayPostData = 
+        array(
+            "replyToken" => $arrayJson['events'][0]['replyToken'],
+            "messages" => [
+        array(
+  "type"=> "imagemap",
+  "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard/บัญชีเงินฝาก",
+  "altText"=> "This is an imagemap",
+  "baseSize"=> array(
+    "width"=> 1040,
+    "height"=> 1022
+  ),
+  "actions"=> [
+    array(
+      "type"=> "uri",
+      "area"=> array(
+        "x"=> 89,
+        "y"=> 695,
+        "width"=> 828,
+        "height"=> 119
+      ),
+      "linkUri"=> "https=>//developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
+    )
+  ]
+)
+            ]
+            );
         replyMsg($arrayHeader,$arrayPostData);
     }
     else if($message == "สลากออมสิน"){
-        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "สลากออมสินการ ออมเงินอย่างดี";
+        $arrayPostData = 
+        array(
+            "replyToken" => $arrayJson['events'][0]['replyToken'],
+            "messages" => [
+        array(
+  "type"=> "imagemap",
+  "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard/สลากออมสิน",
+  "altText"=> "This is an imagemap",
+  "baseSize"=> array(
+    "width"=> 1040,
+    "height"=> 1049
+  ),
+  "actions"=> [
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 71,
+        "y"=> 93,
+        "width"=> 903,
+        "height"=> 260
+      ),
+      "text"=> "หมายเลขสลาก"
+    ),
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 71,
+        "y"=> 381,
+        "width"=> 901,
+        "height"=> 262
+      ),
+      "text"=> "หมายเลขสลาก"
+    ),
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 71,
+        "y"=> 673,
+        "width"=> 903,
+        "height"=> 264
+      ),
+      "text"=> "หมายเลขสลาก"
+    )
+  ]
+)
+            ]
+            );
         replyMsg($arrayHeader,$arrayPostData);
     }
     else if(strtoupper($message) == "PROMOTION"){
@@ -66,8 +253,8 @@ if($agentHold != $id){
         replyMsg($arrayHeader,$arrayPostData);
     }
     # Message Type "Image"
-    else if($message == "รูปน้องแมว"){
-        $image_url = "https://cxpmiddleware.herokuapp.com/immapcard/card%20info.png";#"https://i.pinimg.com/originals/cc/22/d1/cc22d10d9096e70fe3dbe3be2630182b.jpg";
+    else if($message == "หมายเลขสลาก"){
+        $image_url = "https://cxpmiddleware.herokuapp.com/image/oomsin.png";#"https://i.pinimg.com/originals/cc/22/d1/cc22d10d9096e70fe3dbe3be2630182b.jpg";
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "image";
         $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
