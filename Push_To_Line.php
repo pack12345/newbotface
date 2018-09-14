@@ -6,23 +6,12 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     $arrayHeader = array();
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
-    # test
-     $my_file = './Chat/Agent.txt';
-   echo  $my_file;
-if(file_exists($my_file)){
-    $line = file($my_file);
-    $agentHold = $line[0];
-    echo $agentHold;
-}
-else {
-    echo "file not found";
-}
-#end test
+
     //รับข้อความจากผู้ใช้
     $message = $arrayJson['events'][0]['message']['text'];
     //รับ user id ของผู้ใช้
     $id = $arrayJson['events'][0]['source']['userId'];
-    $my_file = "/Chat/Agent.txt";
+    $my_file = './Chat/Agent.txt';
 
     # Message Pushback 
     if(!empty($_GET["userid"])){
