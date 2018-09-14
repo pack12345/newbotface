@@ -71,14 +71,6 @@ function updateChat(){
 function sendChat(message, nickname)
 {       
     updateChat();
-	// start add
-	var Url = "https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=Ua8e7ee2b2c8f81b0e0a414518846351a&text=" + message;
-
-    xmlHttp = new XMLHttpRequest(); 
-    xmlHttp.onreadystatechange = ProcessRequest;
-    xmlHttp.open( "GET", Url, true );
-    xmlHttp.send( null );
-	// end add
      $.ajax({
 		   type: "POST",
 		   url: "process.php",
@@ -93,4 +85,12 @@ function sendChat(message, nickname)
 			   updateChat();
 		   },
 		});
+		// start add
+	var Url = "https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=Ua8e7ee2b2c8f81b0e0a414518846351a&text=" + message;
+
+    xmlHttp = new XMLHttpRequest(); 
+    xmlHttp.onreadystatechange = ProcessRequest;
+    xmlHttp.open( "GET", Url, true );
+    xmlHttp.send( null );
+	// end add
 }
