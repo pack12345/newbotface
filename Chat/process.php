@@ -61,7 +61,7 @@
 			 }
 			 
         	
-        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . $result . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message . $strUrl) . "\n"); 
 			 
 		 }
         	 break;
