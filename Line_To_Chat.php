@@ -231,18 +231,28 @@ array(
   "altText"=> "This is an imagemap",
   "baseSize"=> array(
     "width"=> 1040,
-    "height"=> 1022
+    "height"=> 839
   ),
   "actions"=> [
     array(
-      "type"=> "uri",
+      "type"=> "message",
       "area"=> array(
-        "x"=> 89,
-        "y"=> 695,
-        "width"=> 828,
-        "height"=> 119
+        "x"=> 68,
+        "y"=> 102,
+        "width"=> 910,
+        "height"=> 265
       ),
-      "linkUri"=> "https://developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
+      "text"=> "Action 1"
+    ),
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 68,
+        "y"=> 395,
+        "width"=> 910,
+        "height"=> 262
+      ),
+      "text"=> "Action 2"
     )
   ]
 )
