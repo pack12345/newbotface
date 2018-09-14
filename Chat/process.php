@@ -44,17 +44,17 @@
 			 $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
 			  $message = htmlentities(strip_tags($_POST['message']));
 		    $lineid = "Line";
-		    if(file_exists('Agent.txt')){
-				 $lins = file("Agent.txt");
-			    $lineid = $lins[0]
-				 replyMsg($lineid, $message);
-			 }
+		    
 		 if(($message) != "\n"){
         	
 			 if(preg_match($reg_exUrl, $message, $url)) {
        			$message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
 				} 
-			 
+			 if(file_exists('Agent.txt')){
+				 $lins = file("Agent.txt");
+			    $lineid = $lins[0]
+				 replyMsg($lineid, $message);
+			 }
 			 
         	
         	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname. $lineid . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
@@ -75,6 +75,6 @@ function replyMsg($arrayUser,$arrayGetData){
         $result = curl_exec($ch);
         curl_close ($ch);
     }
-   exit;
+
 
 ?>
