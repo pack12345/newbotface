@@ -18,10 +18,6 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
 if(file_exists($my_file)){
     $line = file($my_file);
     $agentHold = $line[0];
-    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = $agentHold;
-        replyMsg($arrayHeader,$arrayPostData);
 }
 if($agentHold != $id){
     #Message Type "Text"
