@@ -48,9 +48,9 @@
 			 if(preg_match($reg_exUrl, $message, $url)) {
        			$message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
 				} 
-			 if(file_exists('Agent.txt')){
-				 $lines = file('Agent.txt');
-				 replyMsg($lines[0],$message);
+			 if(file_exists("Agent.txt")){
+				 $lins = file("Agent.txt");
+				 replyMsg($lins[0],$message);
 			 }
 			 
         	
