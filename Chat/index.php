@@ -53,16 +53,12 @@
 		    }
 	            ?>
 	    } else {
-		    var rawFile = new XMLHttpRequest();
-		    rawFile.open("GET", agenttype, false);
-		    rawFile.onreadystatechange = function () {
-			    if(rawFile.readyState === 4) {
-				    if(rawFile.status === 200 || rawFile.status == 0) {
-					    var allText = rawFile.responseText;
-					    alert(allText);
-				    }
-			    }
-		    }     rawFile.send(null);
+		    var reader = new FileReader();
+		    reader.onload = function (e) { 
+			    var output=e.target.result;
+			    alert(output);
+		    }
+		    reader.readAsText('https://cxpmiddleware.herokuapp.com/Chat/'+agenttype);
 	     }
     	$(function() {
     	
