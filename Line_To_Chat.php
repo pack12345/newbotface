@@ -150,24 +150,24 @@ array(
   ),
   "actions"=> [
     array(
-      "type"=> "message",
+      "type"=> "uri",
       "area"=> array(
         "x"=> 28,
         "y"=> 154,
         "width"=> 979,
         "height"=> 145
       ),
-      "text"=> "Action 1"
+      "linkUri"=> "https://www.google.com/maps/search/สาขาธนาคารออมสิน/"
     ),
     array(
-      "type"=> "message",
+      "type"=> "uri",
       "area"=> array(
         "x"=> 29,
         "y"=> 299,
         "width"=> 979,
         "height"=> 171
       ),
-      "text"=> "Action 2"
+      "linkUri"=> "https://www.google.com/maps/search/ตู้ATMธนาคารออมสิน/"
     ),
     array(
       "type"=> "message",
