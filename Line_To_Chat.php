@@ -14,11 +14,24 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     //รับ user id ของผู้ใช้
     $id = $arrayJson['events'][0]['source']['userId'];
     $my_file = './Chat/Agent.txt';
+    $my_file1 = './Chat/AgentLOAN.txt';
+    $my_file2 = './Chat/AgentCREDIT.txt';
     $agentHold = "";
+    $agentType = "";
 if(file_exists($my_file)){
     $line = file($my_file);
     $agentHold = $line[0];
+    $agentType = "Agent.txt";
+} else if(file_exists($my_file1)){
+    $line = file($my_file1);
+    $agentHold = $line[0];
+    $agentType = "AgentLOAN.txt";
+} else if(file_exists($my_file2)){
+    $line = file($my_file2);
+    $agentHold = $line[0];
+    $agentType = "AgentCREDIT.txt";
 }
+    
 if($agentHold != $id){
     #Message Type "Text"
     if(strpos($message, "สวัสดี") !== false || strtoupper($message) == "HELLO"){
@@ -692,18 +705,46 @@ array(
     }
     else if(strtoupper($message) == "CHAT AGENT"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "กำลังติดต่อ";
+        if($agentType = "Agent.txt"){
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = "กำลังติดต่อ";
+            replyMsgChat($id,"ลูกค้าต้องการคุยกับพนักงาน","Agent.txt");
+        } else{
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = "ขณะนี้ Agent ให้บริการเต็ม";
+        }
         replyMsg($arrayHeader,$arrayPostData);
-
-        replyMsgChat($id,"ลูกค้าต้องการคุยกับพนักงาน");
+    }
+    else if(strtoupper($message) == "LOAN AGENT"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        if($agentType = "AgentLOAN.txt"){
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = "กำลังติดต่อ";
+            replyMsgChat($id,"ลูกค้าต้องการคุยกับพนักงาน","AgentLOAN.txt");
+        } else{
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = "ขณะนี้ Agent สินเชื่อ ให้บริการเต็ม";
+        }
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if(strtoupper($message) == "LOAN AGENT"){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        if($agentType = "AgentCREDIT.txt"){
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = "กำลังติดต่อ";
+            replyMsgChat($id,"ลูกค้าต้องการคุยกับพนักงาน","AgentCREDIT.txt");
+        } else{
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = "ขณะนี้ Agent สินเชื่อ ให้บริการเต็ม";
+        }
+        replyMsg($arrayHeader,$arrayPostData);
     }
 }
 else{
-    replyMsgChat($id,$message);   
+    replyMsgChat($id,$message,$agentType);   
 }
 
-function replyMsgChat($arrayHeader,$arrayPostData){
+function replyMsgChat($arrayHeader,$arrayPostData,$agentType){
         $strUrl = "https://cxpmiddleware.herokuapp.com/Chat/lineToChat.php?userid=".$arrayHeader."&text=".$arrayPostData;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $strUrl);
