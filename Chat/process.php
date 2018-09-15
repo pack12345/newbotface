@@ -46,6 +46,7 @@
 			 $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
 			  $message = htmlentities(strip_tags($_POST['message']));
 		    $lineid = "Line";
+		    $chattype = $_POST['chattype'];
 		    
 		 if(($message) != "\n"){
         	
@@ -59,7 +60,7 @@
 			 #}
 			 
         	
-        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+        	 fwrite(fopen($chattype, 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
 			 
 		 }
         	 break;
