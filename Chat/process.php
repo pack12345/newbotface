@@ -50,11 +50,11 @@
 			 if(preg_match($reg_exUrl, $message, $url)) {
        			$message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
 				} 
-			 if(file_exists("Agent.txt")){
-				 $lins = file("Agent.txt");
-				 $lineid = $lins[0];
-				 replyMsg($lineid, $message);
-			 }
+			 #if(file_exists("Agent.txt")){
+			#	 $lins = file("Agent.txt");
+			#	 $lineid = $lins[0];
+			#	 replyMsg($lineid, $message);
+			 #}
 			 
         	
         	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
