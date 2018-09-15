@@ -745,7 +745,7 @@ else{
 }
 
 function replyMsgChat($arrayHeader,$arrayPostData,$agentType){
-        $strUrl = "https://cxpmiddleware.herokuapp.com/Chat/lineToChat.php?userid=".$arrayHeader."&text=".$arrayPostData;
+        $strUrl = "https://cxpmiddleware.herokuapp.com/Chat/lineToChat.php?userid=".$arrayHeader."&text=".$arrayPostData."&type=".$agentType;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $strUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
