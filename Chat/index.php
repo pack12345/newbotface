@@ -59,29 +59,44 @@
     				var maxLength = $(this).attr("maxlength");  
                     var length = text.length; 
                     var lineuser = "";
-		    var agenttype = "";
-		    <?php 
-				  $my_file = 'Agent.txt';
+		    var agenttype = 'Agent.txt';
+		    var chattype = 'chat.txt';
+		    if (name.includes("LOAN")) {
+			    chattype = 'chatLOAN.txt';
+			    agenttype = 'AgentLOAN.txt';
+			    <?php 
 				  $my_file1 = 'AgentLOAN.txt';
-				  $my_file2 = 'AgentCREDIT.txt';
-				  if(file_exists($my_file)){
-					  $line = file($my_file);
-					  echo "lineuser = "."'".$line[0]."';";
-					  echo "agenttype = 'Agent.txt';";
-				  } else if(file_exists($my_file1)){
+				  if(file_exists($my_file1)){
 					  $line = file($my_file1);
 					  echo "lineuser = "."'".$line[0]."';";
-					  echo "agenttype = 'AgentLOAN.txt';";
-				  } else if(file_exists($my_file2)){
-					  $line = file($my_file2);
-					  echo "lineuser = "."'".$line[0]."';";
-					  echo "agenttype = 'AgentCREDIT.txt';";
 				  }
-			?>
+			    ?>
+		    } else if (name.includes("CREDIT")) {
+			    chattype = 'chatCREDIT.txt';
+			    agenttype = 'AgentCREDIT.txt';
+			    <?php 
+				  $my_file1 = 'AgentCREDIT.txt';
+				  if(file_exists($my_file1)){
+					  $line = file($my_file1);
+					  echo "lineuser = "."'".$line[0]."';";
+				  }
+			    ?>
+		    } else {
+			    chattype = 'chat.txt';
+			    agenttype = 'Agent.txt';
+			    <?php 
+				  $my_file1 = 'Agent.txt';
+				  if(file_exists($my_file1)){
+					  $line = file($my_file1);
+					  echo "lineuser = "."'".$line[0]."';";
+				  }
+			    ?>
+		    }
+			    
                     // send 
                     if (length <= maxLength + 1) { 
                      
-    			        chat.send(text, name);	
+    			        chat.send(text, name, chattype);	
     			        $(this).val("");
     			        
                     } else {
@@ -101,7 +116,7 @@
 				var maxLength = document.getElementById("sendie").getAttribute("maxlength"); 
 				var length = text.length; 
  				if (length <= maxLength + 1) { 
-				
+				if (lineuser.length > 2) {
 				try{
 					var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function() {
@@ -118,10 +133,9 @@
 				 catch(err) {
 					 alert(err.message);
 				 }
+				}
     			        
-                } else {                
-
-    			}	
+                } 	
 			}
 		}
     </script>
