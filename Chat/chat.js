@@ -64,7 +64,7 @@ function updateChat(chattype){
 			});
 	 }
 	 else {
-		 setTimeout(updateChat, 1500);
+		 setTimeout(updateChat(chattype), 1500);
 	 }
 }
 
