@@ -28,9 +28,42 @@
     	$("#name-area").html("You are: <span>" + name + "</span>");
     	// kick off chat
         var chat =  new Chat();
+	    
+	var lineuser = "";
+	var agenttype = 'Agent.txt';
+	var chattype = 'chat.txt';
+	    if (name.includes("LOAN")) {
+		    chattype = 'chatLOAN.txt';
+		    agenttype = 'AgentLOAN.txt';
+		    <?php 
+		    $my_file1 = 'AgentLOAN.txt';
+		    if(file_exists($my_file1)){
+			    $line = file($my_file1);
+			    echo "lineuser = "."'".$line[0]."';";
+		    }
+		    ?>
+	    } else if (name.includes("CREDIT")) {
+		    chattype = 'chatCREDIT.txt';
+		    agenttype = 'AgentCREDIT.txt';
+		    <?php 
+		    $my_file1 = 'AgentCREDIT.txt';
+		    if(file_exists($my_file1)){
+			    $line = file($my_file1);
+			    echo "lineuser = "."'".$line[0]."';";
+		    }
+	            ?>
+	    } else {
+		    <?php 
+		    $my_file1 = 'Agent.txt';
+		    if(file_exists($my_file1)){
+			    $line = file($my_file1);
+			    echo "lineuser = "."'".$line[0]."';";
+		    }
+		    ?>
+	     }
     	$(function() {
     	
-    		 chat.getState(); 
+    		 chat.getState(chattype); 
     		 
     		 // watch textarea for key presses
              $("#sendie").keydown(function(event) {  
@@ -58,40 +91,7 @@
                     var text = $(this).val();
     				var maxLength = $(this).attr("maxlength");  
                     var length = text.length; 
-                    var lineuser = "";
-		    var agenttype = 'Agent.txt';
-		    var chattype = 'chat.txt';
-		    if (name.includes("LOAN")) {
-			    chattype = 'chatLOAN.txt';
-			    agenttype = 'AgentLOAN.txt';
-			    <?php 
-				  $my_file1 = 'AgentLOAN.txt';
-				  if(file_exists($my_file1)){
-					  $line = file($my_file1);
-					  echo "lineuser = "."'".$line[0]."';";
-				  }
-			    ?>
-		    } else if (name.includes("CREDIT")) {
-			    chattype = 'chatCREDIT.txt';
-			    agenttype = 'AgentCREDIT.txt';
-			    <?php 
-				  $my_file1 = 'AgentCREDIT.txt';
-				  if(file_exists($my_file1)){
-					  $line = file($my_file1);
-					  echo "lineuser = "."'".$line[0]."';";
-				  }
-			    ?>
-		    } else {
-			    chattype = 'chat.txt';
-			    agenttype = 'Agent.txt';
-			    <?php 
-				  $my_file1 = 'Agent.txt';
-				  if(file_exists($my_file1)){
-					  $line = file($my_file1);
-					  echo "lineuser = "."'".$line[0]."';";
-				  }
-			    ?>
-		    }
+                    
 			    
                     // send 
                     if (length <= maxLength + 1) { 
@@ -142,7 +142,7 @@
 
 </head>
 
-<body onload="setInterval('chat.update()', 1000)">
+<body onload="setInterval('chat.update(chattype)', 1000)">
 
     <div id="page-wrap">
     
