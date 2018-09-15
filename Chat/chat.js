@@ -16,7 +16,7 @@ function Chat () {
 }
 
 //gets the state of the chat
-function getStateOfChat(){
+function getStateOfChat(chattype){
 	if(!instanse){
 		 instanse = true;
 		 $.ajax({
@@ -24,6 +24,7 @@ function getStateOfChat(){
 			   url: "process.php",
 			   data: {  
 			   			'function': 'getState',
+				                'chattype': chattype,
 						'file': file
 						},
 			   dataType: "json",
@@ -37,7 +38,7 @@ function getStateOfChat(){
 }
 
 //Updates the chat
-function updateChat(){
+function updateChat(chattype){
 	 if(!instanse){
 		 instanse = true;
 	     $.ajax({
@@ -46,6 +47,7 @@ function updateChat(){
 			   data: {  
 			   			'function': 'update',
 						'state': state,
+				                'chattype': chattype,
 						'file': file
 						},
 			   dataType: "json",
@@ -69,7 +71,7 @@ function updateChat(){
 //send the message
 function sendChat(message, nickname, chattype)
 {       
-    updateChat();
+    updateChat(chattype);
      $.ajax({
 		   type: "POST",
 		   url: "process.php",
@@ -82,7 +84,7 @@ function sendChat(message, nickname, chattype)
 				 },
 		   dataType: "json",
 		   success: function(data){
-			   updateChat();
+			   updateChat(chattype);
 		   },
 		});
 }
