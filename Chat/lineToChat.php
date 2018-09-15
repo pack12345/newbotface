@@ -8,6 +8,12 @@ $log = array();
 			# $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
 			  $message = $_GET['text'];#htmlentities(strip_tags($_GET['text']);
 	    $agentType = $_GET['type'];
+	    $chattype = "chat.txt";
+	    if($agentType == "AgentLOAN.txt"){
+		    $chattype = "chatLOAN.txt";
+	    } else if($agentType == "AgentCREDIT.txt"){
+		    $chattype = "chatCREDIT.txt";
+	    }
 		# if(($message) != "\n"){
         	
 		#	 if(preg_match($reg_exUrl, $message, $url)) {
@@ -21,7 +27,7 @@ $log = array();
 			 }
 			 
         	
-        	 fwrite(fopen($agentType, 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+        	 fwrite(fopen($chattype, 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
 		 #}
      }
   echo json_encode($log);
