@@ -11,7 +11,7 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     $message = $arrayJson['events'][0]['message']['text'];
     //รับ user id ของผู้ใช้
     $id = $arrayJson['events'][0]['source']['userId'];
-    $my_file = './Chat/Agent.txt';
+    $my_file = './Chat/'.$_GET["type"];
 
     # Message Pushback 
     if(!empty($_GET["userid"])){
