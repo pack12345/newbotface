@@ -49,9 +49,9 @@ array(
         "text"=> "บัตรกดเงินสด"
       ),
       array(
-        "type"=> "uri",
-        "label"=> "สินเชื่อ",
-        "uri"=> "https://www.gsb.or.th/services/RateLoan.aspx"
+        "type"=> "message",
+        "label"=> "บัตรสินเชื่อ",
+        "text"=> "บัตรสินเชื่อ"
       )
     ],
     "title"=> "กรุณาเลือกรายการที่ท่าน",
@@ -84,7 +84,7 @@ array(
         "width"=> 828,
         "height"=> 119
       ),
-      "linkUri"=> "https://developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
+      "linkUri"=> "https://cxpmiddleware.herokuapp.com/image/creditbarcode.png"
     )
   ]
 )
@@ -114,7 +114,7 @@ array(
         "width"=> 828,
         "height"=> 119
       ),
-      "linkUri"=> "https://developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
+      "linkUri"=> "https://cxpmiddleware.herokuapp.com/image/checking.png"
     )
   ]
 )
@@ -399,7 +399,7 @@ array(
         "width"=> 561,
         "height"=> 97
       ),
-      "linkUri"=> "https://developers.line.me/en/reference/messaging-api/#imagemap-action-objects"
+      "linkUri"=> "http://ark-insights.com/gsb"
     )
   ]
 )
@@ -407,9 +407,107 @@ array(
             );
         replyMsg($arrayHeader,$arrayPostData);
     }
+        else if($message == "สมัครบริการ"){
+        $arrayPostData = 
+        array(
+            "replyToken" => $arrayJson['events'][0]['replyToken'],
+            "messages" => [
+                array(
+  "type"=> "imagemap",
+  "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard/setting",
+  "altText"=> "This is an imagemap",
+  "baseSize"=> array(
+    "width"=> 1040,
+    "height"=> 1208
+  ),
+  "actions"=> [
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 0,
+        "y"=> 433,
+        "width"=> 1040,
+        "height"=> 192
+      ),
+      "text"=> "Account"
+    ),
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 0,
+        "y"=> 625,
+        "width"=> 1040,
+        "height"=> 192
+      ),
+      "text"=> "Chat Agent"
+    ),
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 0,
+        "y"=> 817,
+        "width"=> 1040,
+        "height"=> 200
+      ),
+      "text"=> "Notifications"
+    ),
+    array(
+      "type"=> "message",
+      "area"=> array(
+        "x"=> 0,
+        "y"=> 1017,
+        "width"=> 1040,
+        "height"=> 191
+      ),
+      "text"=> "Help"
+    )
+  ]
+)
+                ]
+            );
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if($message == "บัตรสินเชื่อ"){
+        $arrayPostData = 
+        array(
+            "replyToken" => $arrayJson['events'][0]['replyToken'],
+            "messages" => [
+                array(
+  "type"=> "imagemap",
+  "baseUrl"=> "https://cxpmiddleware.herokuapp.com/immapcard/loanSum",
+  "altText"=> "This is an imagemap",
+  "baseSize"=> array(
+    "width"=> 1040,
+    "height"=> 1136
+  ),
+  "actions"=> [
+    array(
+      "type"=> "uri",
+      "area"=> array(
+        "x"=> 89,
+        "y"=> 807,
+        "width"=> 828,
+        "height"=> 119
+      ),
+      "linkUri"=> "https://cxpmiddleware.herokuapp.com/image/loanbarcode.png"
+    )
+  ]
+)
+                ]
+);
+        replyMsg($arrayHeader,$arrayPostData);
+    }
     # Message Type "Image"
     else if($message == "หมายเลขสลาก"){
         $image_url = "https://cxpmiddleware.herokuapp.com/image/oomsin.png";#"https://i.pinimg.com/originals/cc/22/d1/cc22d10d9096e70fe3dbe3be2630182b.jpg";
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "image";
+        $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
+        $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    else if($message == "BARCODE"){
+        $image_url = "https://cxpmiddleware.herokuapp.com/image/creditbarcode.png";#"https://i.pinimg.com/originals/cc/22/d1/cc22d10d9096e70fe3dbe3be2630182b.jpg";
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "image";
         $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
@@ -592,7 +690,7 @@ array(
         $arrayPostData['messages'][0]['text'] = "บัตรออมสินวีซ่า สุดพิเศษ";
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if(strtoupper($message) == "AGENT"){
+    else if(strtoupper($message) == "CHAT AGENT"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "กำลังติดต่อ";
