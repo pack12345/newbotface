@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="style.css" type="text/css" />
     
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="chat.js"></script>
     <script type="text/javascript">
     
@@ -26,7 +26,6 @@
     	
     	// display name on page
     	$("#name-area").html("You are: <span>" + name + "</span>");
-    	
     	// kick off chat
         var chat =  new Chat();
     	$(function() {
@@ -51,6 +50,7 @@
                   }  
     		 																																																});
     		 // watch textarea for release of key press
+
     		 $('#sendie').keyup(function(e) {	
     		 					 
     			  if (e.keyCode == 13) { 
@@ -58,28 +58,13 @@
                     var text = $(this).val();
     				var maxLength = $(this).attr("maxlength");  
                     var length = text.length; 
-					
+                     
+                    // send 
                     if (length <= maxLength + 1) { 
-
-						chat.send(text, name);	
+                     
+    			        chat.send(text, name);	
     			        $(this).val("");
-
-						try{
-						var xhttp = new XMLHttpRequest();
-						xhttp.onreadystatechange = function() {
-							if (this.readyState == 4 && this.status == 200) {
-							   //document.getElementById("demo").innerHTML = xhttp.responseText;
-							}
-						};
-						
-						url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=U117c61075090d1375b6f1705d27e4399&text='+text;
-						xhttp.open("GET", url, true);
-						xhttp.send();
-					 }
-					 catch(err) {
-						 alert(err.message);
-					 }
-
+    			        
                     } else {
                     
     					$(this).val(text.substring(0, maxLength));
@@ -89,8 +74,37 @@
     				
     			  }
              });
-            
     	});
+		
+		function SendChat(e){
+			if (e.keyCode == 13) { 
+				text =  document.getElementById("sendie").value;
+				var maxLength = document.getElementById("sendie").getAttribute("maxlength"); 
+				var length = text.length; 
+ 				if (length <= maxLength + 1) { 
+				
+				try{
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+
+						}
+					};
+					
+					url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=Ua8e7ee2b2c8f81b0e0a414518846351a&text='+text;
+					xhttp.open("GET", url, true);
+					xhttp.send();
+					
+				 }
+				 catch(err) {
+					 alert(err.message);
+				 }
+    			        
+                } else {                
+
+    			}	
+			}
+		}
     </script>
 
 </head>
@@ -99,7 +113,7 @@
 
     <div id="page-wrap">
     
-        <h2>jQuery/PHP Chat</h2>
+        <h2>Agent Chat</h2>
         
         <p id="name-area"></p>
         
@@ -107,7 +121,7 @@
         
         <form id="send-message-area">
             <p>Your message: </p>
-            <textarea id="sendie" maxlength = '100' ></textarea>
+            <textarea id="sendie" maxlength = '100' onkeyup="SendChat(event);"></textarea>
         </form>
     
     </div>
