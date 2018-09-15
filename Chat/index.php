@@ -58,7 +58,26 @@
                     var text = $(this).val();
     				var maxLength = $(this).attr("maxlength");  
                     var length = text.length; 
-                     
+                    var lineuser = "";
+		    var agenttype = "";
+		    <?php 
+				  $my_file = 'Agent.txt';
+				  $my_file1 = 'AgentLOAN.txt';
+				  $my_file2 = 'AgentCREDIT.txt';
+				  if(file_exists($my_file)){
+					  $line = file($my_file);
+					  echo "lineuser = "."'".$line[0]."';";
+					  echo "agenttype = 'Agent.txt';";
+				  } else if(file_exists($my_file1)){
+					  $line = file($my_file1);
+					  echo "lineuser = "."'".$line[0]."';";
+					  echo "agenttype = 'AgentLOAN.txt';";
+				  } else if(file_exists($my_file2)){
+					  $line = file($my_file2);
+					  echo "lineuser = "."'".$line[0]."';";
+					  echo "agenttype = 'AgentCREDIT.txt';";
+				  }
+			?>
                     // send 
                     if (length <= maxLength + 1) { 
                      
@@ -91,9 +110,9 @@
 						}
 					};
 					
-					url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=Ua8e7ee2b2c8f81b0e0a414518846351a&text='+text;
-					xhttp.open("GET", url, true);
-					xhttp.send();
+			url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid='+lineuser+'&text='+text+'&type='+agenttype;
+				xhttp.open("GET", url, true);
+				xhttp.send();
 					
 				 }
 				 catch(err) {
