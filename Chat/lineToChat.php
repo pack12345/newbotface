@@ -21,7 +21,7 @@ $log = array();
 			 }
 			 
         	
-        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+        	 fwrite(fopen($agentType, 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
 		 #}
      }
   echo json_encode($log);
