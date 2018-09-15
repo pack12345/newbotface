@@ -420,7 +420,7 @@ array(
             );
         replyMsg($arrayHeader,$arrayPostData);
     }
-        else if($message == "สมัครบริการ"){
+        else if($message == "SETTING"){
         $arrayPostData = 
         array(
             "replyToken" => $arrayJson['events'][0]['replyToken'],
