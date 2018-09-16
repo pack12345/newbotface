@@ -119,24 +119,23 @@
 				
 				try{
 					var xhttp = new XMLHttpRequest();
-					//var readfile = new XMLHttpRequest();
-					//readfile.open("GET", agenttype, false);
-					//readfile.onreadystatechange = function () {
-					//	if(readfile.status == 200 || readfile.readyState == 4) {
-					//		lineuser = readfile.responseText;
-					//	}
-					//} readfile.send(null);
-					var fs = require("fs");
-					fs.readFile("./"+agenttype, function(lineuser){
-						lineuser = lineuser.split("\n")
-						});
+					xhttp.open("GET", agenttype, false);
+					xhttp.onreadystatechange = function () {
+						if(xhttp.status == 200 || xhttp.readyState == 4) {
+							lineuser = xhttp.responseText;
+						}
+					} 
+					//var fs = require("fs");
+					//fs.readFile("./"+agenttype, function(lineuser){
+					//	lineuser = lineuser.split("\n")
+					//	});
 					xhttp.onreadystatechange = function() {
 						if (this.readyState == 4 && this.status == 200) {
 
 						}
 					};
 					
-			url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=Ua8e7ee2b2c8f81b0e0a414518846351a&text='+text+'user'+lineuser[0]+'&type='+agenttype;
+			url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid='+lineuser'+&text='+text+'&type='+agenttype;
 				xhttp.open("GET", url, true);
 				xhttp.send();
 					
