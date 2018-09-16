@@ -7,11 +7,11 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 
-    $my_file = './Chat/'.$_GET["type"];
-    $agentid = $_GET["userid"];
+    $my_file = './Chat/'.$_GET['type'];
+    $agentid = $_GET['userid'];
         echo $agentid;
         echo $my_file;
-        echo $_GET["text"];
+        echo $_GET['text'];
     # Message Pushback 
     if(!empty($agentid){
         if($_GET["text"] == "ขอบคุณ" && file_exists($my_file)){
