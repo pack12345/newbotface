@@ -20,16 +20,24 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     $agentType = "";
 if(file_exists($my_file)){
     $line = file($my_file);
-    $agentHold = $line[0];
-    $agentType = "Agent.txt";
-} else if(file_exists($my_file1)){
+    if($line[0] == $id){
+        $agentHold = $line[0];
+        $agentType = "Agent.txt";
+    }
+}
+if(file_exists($my_file1)){
     $line = file($my_file1);
-    $agentHold = $line[0];
-    $agentType = "AgentLOAN.txt";
-} else if(file_exists($my_file2)){
+    if($line[0] == $id){
+        $agentHold = $line[0];
+        $agentType = "AgentLOAN.txt";
+    }
+} 
+if(file_exists($my_file2)){
     $line = file($my_file2);
-    $agentHold = $line[0];
-    $agentType = "AgentCREDIT.txt";
+    if($line[0] == $id){
+        $agentHold = $line[0];
+        $agentType = "AgentCREDIT.txt";
+    }
 }
     
 if($agentHold != $id){
