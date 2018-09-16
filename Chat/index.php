@@ -53,12 +53,13 @@
 		    }
 	            ?>
 	    } else {
-		    var reader = new FileReader();
-		    reader.onload = function (e) { 
-			    var output=e.target.result;
-			    alert(output);
+		    <?php 
+		    $my_file1 = 'Agent.txt';
+		    if(file_exists($my_file1)){
+			    $line = file($my_file1);
+			    echo "lineuser = "."'".$line[0]."';";
 		    }
-		    reader.readAsText('https://cxpmiddleware.herokuapp.com/Chat/'+agenttype);
+	            ?>
 	     }
     	$(function() {
     	
@@ -115,9 +116,16 @@
 				var maxLength = document.getElementById("sendie").getAttribute("maxlength"); 
 				var length = text.length; 
  				if (length <= maxLength + 1) { 
-				if (lineuser.length > 2) {
+				
 				try{
 					var xhttp = new XMLHttpRequest();
+					xhttp.open("GET", agenttype, false);
+					xhttp.onreadystatechange = function () {
+						if(xhttp.status == 200 || xhttp.readyState == 4) {
+							lineuser = xhttp.responseText;
+							alert(lineuser);
+						}
+					}
 					xhttp.onreadystatechange = function() {
 						if (this.readyState == 4 && this.status == 200) {
 
@@ -132,7 +140,7 @@
 				 catch(err) {
 					 alert(err.message);
 				 }
-				}
+				
     			        
                 } 	
 			}
