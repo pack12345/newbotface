@@ -16,7 +16,9 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     if(file_exists($my_file)){
         $line = file($my_file);
         $agentid = $line[0];
-    } 
+    } else {
+        $agentid = $_GET["userid"];
+    }
 
     # Message Pushback 
     if(!empty($_GET["type"])){
