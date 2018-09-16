@@ -106,7 +106,7 @@
 							if(readfile.status == 200 || readfile.readyState == 4) {
 								lineuser = readfile.responseText;
 								var xhttp = new XMLHttpRequest();
-								url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid='+lineuser+'&text='+text+'&type='+agenttype;
+								url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=Ua8e7ee2b2c8f81b0e0a414518846351a'+'&text='+text+lineuser+'&type='+agenttype;
 								xhttp.open("GET", url, true);
 								xhttp.send();
 								xhttp.onreadystatechange = function() {
@@ -120,7 +120,7 @@
 					}
 					else {
 						var xhttp = new XMLHttpRequest();
-						url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid='+lineuser+'&text='+text+'&type='+agenttype;
+						url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=Ua8e7ee2b2c8f81b0e0a414518846351a'+'&text='+text+lineuser+'&type='+agenttype;
 						xhttp.open("GET", url, true);
 						xhttp.send();
 						xhttp.onreadystatechange = function() {
@@ -129,7 +129,7 @@
 							}
 						};	
 					}
-					if (text.toUpperCase().includes("THANK")) {
+					if (text.toUpperCase().includes("ขอบคุณ")) {
 						lineuser = "";
 					}
 				 }
