@@ -9,16 +9,16 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
 
     $my_file = './Chat/'.$_GET["type"];
     $agentid = $_GET["userid"];
-
+        echo $agentid;
+        echo $my_file;
+        echo $_GET["text"];
     # Message Pushback 
     if(!empty($agentid){
-        echo $agentid;
-        echo $_GET["text"];
         if($_GET["text"] == "ขอบคุณ" && file_exists($my_file)){
             unlink($my_file);
         }
-     if($agentid !== ""){
-            
+     if($agentid != ""){
+          $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
           $arrayPostData['to'] = $agentid;
           $arrayPostData['messages'][0]['type'] = "text";
           $arrayPostData['messages'][0]['text'] = $_GET["text"];
