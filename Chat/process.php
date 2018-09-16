@@ -60,7 +60,7 @@
 			 #}
 			 
         	
-        	 fwrite(fopen($chattype, 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+        	 fwrite(fopen($chattype, 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message.$chattype) . "\n"); 
 			 
 		 }
         	 break;
