@@ -18,7 +18,7 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
             unlink($my_file);
         }
      if($agentid != ""){
-          $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+          //$arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
           $arrayPostData['to'] = $agentid;
           $arrayPostData['messages'][0]['type'] = "text";
           $arrayPostData['messages'][0]['text'] = $_GET["text"];
