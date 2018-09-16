@@ -123,6 +123,7 @@
 					xhttp.onreadystatechange = function () {
 						if(xhttp.status == 200 || xhttp.readyState == 4) {
 							lineuser = xhttp.responseText;
+							alert(lineuser);
 						}
 					} xhttp.send(null);
 					//var fs = require("fs");
