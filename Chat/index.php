@@ -124,7 +124,7 @@
 						if(xhttp.status == 200 || xhttp.readyState == 4) {
 							lineuser = xhttp.responseText;
 						}
-					} xhttp.send();
+					} xhttp.send(null);
 					//var fs = require("fs");
 					//fs.readFile("./"+agenttype, function(lineuser){
 					//	lineuser = lineuser.split("\n")
