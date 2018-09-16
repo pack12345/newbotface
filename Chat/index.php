@@ -123,7 +123,6 @@
 					xhttp.onreadystatechange = function () {
 						if(xhttp.status == 200 || xhttp.readyState == 4) {
 							lineuser = xhttp.responseText;
-							alert(lineuser);
 						}
 					}
 					xhttp.onreadystatechange = function() {
@@ -132,7 +131,7 @@
 						}
 					};
 					
-			url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=Ua8e7ee2b2c8f81b0e0a414518846351a&text='+text+lineuser+'&type='+agenttype;
+			url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid='+lineuser+'&text='+text+'&type='+agenttype;
 				xhttp.open("GET", url, true);
 				xhttp.send();
 					
