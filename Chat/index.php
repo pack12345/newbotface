@@ -32,11 +32,11 @@
 	var lineuser = "";
 	var agenttype = 'Agent.txt';
 	var chattype = 'chat.txt';
-	    if (name.includes("LOAN")) {
+	    if (name.toUpperCase().includes("LOAN")) {
 		    chattype = 'chatLOAN.txt';
 		    agenttype = 'AgentLOAN.txt';
 		    
-	    } else if (name.includes("CREDIT")) {
+	    } else if (name.toUpperCase().includes("CREDIT")) {
 		    chattype = 'chatCREDIT.txt';
 		    agenttype = 'AgentCREDIT.txt';
 		    
