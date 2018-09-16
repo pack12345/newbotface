@@ -29,7 +29,7 @@
     	// kick off chat
         var chat =  new Chat();
 		
-		var lineuser = "";
+		
 		var chattype = 'chat.txt';
 		var agenttype = 'Agent.txt';		
 	    if (name.toUpperCase().includes("LOAN")) {
@@ -39,8 +39,6 @@
 		    chattype = 'chatCREDIT.txt';
 		    agenttype = 'AgentCREDIT.txt';
 	    }
-		lineuser = GetLineID();
-		
 		
     	$(function() {
     	
@@ -98,15 +96,16 @@
  				if (length <= maxLength + 1) { 
 				
 				try{
+					var lineuser = GetLineID();
 					if(lineuser == ""){
-						var readfile = new XMLHttpRequest();
-						readfile.open("GET", agenttype, true);
-						readfile.send();
-						readfile.onreadystatechange = function () {
-							if(readfile.status == 200 || readfile.readyState == 4) {
-								lineuser = readfile.responseText;
+						#var readfile = new XMLHttpRequest();
+						#readfile.open("GET", agenttype, true);
+						#readfile.send();
+						#readfile.onreadystatechange = function () {
+						#	if(readfile.status == 200 || readfile.readyState == 4) {
+						#		lineuser = readfile.responseText;
 								var xhttp = new XMLHttpRequest();
-								url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=Ua8e7ee2b2c8f81b0e0a414518846351a'+'&text='+text+lineuser+'&type='+agenttype;
+								url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid=Ua8e7ee2b2c8f81b0e0a414518846351a'+'&text=0'+text+lineuser+'&type='+agenttype;
 								xhttp.open("GET", url, true);
 								xhttp.send();
 								xhttp.onreadystatechange = function() {
@@ -149,7 +148,7 @@
 			readfile.send();
 			readfile.onreadystatechange = function () {
 				if(readfile.status == 200 || readfile.readyState == 4) {
-					lineuser = readfile.responseText;
+					var lineuser = readfile.responseText;
 					return lineuser;
 				}
 			}
