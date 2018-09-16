@@ -417,7 +417,7 @@ if($agentHold != $id){
       "type"=> "uri",
       "area"=> array(
         "x"=> 28,
-        "y"=> 160,
+        "y"=> 167,
         "width"=> 979,
         "height"=> 108
       ),
@@ -436,10 +436,10 @@ if($agentHold != $id){
     array(
       "type"=> "message",
       "area"=> array(
-        "x"=> 29,
+        "x"=> 28,
         "y"=> 387,
         "width"=> 979,
-        "height"=> 115
+        "height"=> 117
       ),
       "text"=> "Action 3"
     ),
@@ -466,9 +466,9 @@ if($agentHold != $id){
     array(
       "type"=> "message",
       "area"=> array(
-        "x"=> 28,
+        "x"=> 27,
         "y"=> 724,
-        "width"=> 978,
+        "width"=> 979,
         "height"=> 106
       ),
       "text"=> "Action 6"
