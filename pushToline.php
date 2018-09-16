@@ -6,25 +6,20 @@ $accessToken = "GKTmRxPtlSGanBv4pz7OE3Kckxs93EKKpTzUJ/BfEu32CFq+d0N6dkup/3LgN8m+
     $arrayHeader = array();
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
-    //รับข้อความจากผู้ใช้
-    $message = $arrayJson['events'][0]['message']['text'];
-    //รับ user id ของผู้ใช้
-    $id = $arrayJson['events'][0]['source']['userId'];
+
     $my_file = './Chat/'.$_GET["type"];
-    $agentid = "";
-    if(file_exists($my_file)){
-        $line = file($my_file);
-        $agentid = $line[0];
-    } 
+    $agentid = $_GET["userid"];
+
     # Message Pushback 
-    if(!empty($_GET["userid"])){
+    if(!empty($agentid){
+        echo $agentid;
         echo $_GET["text"];
         if($_GET["text"] == "ขอบคุณ" && file_exists($my_file)){
             unlink($my_file);
         }
      if($agentid !== ""){
             
-          $arrayPostData['to'] = $_GET["userid"];
+          $arrayPostData['to'] = $agentid;
           $arrayPostData['messages'][0]['type'] = "text";
           $arrayPostData['messages'][0]['text'] = $_GET["text"];
           pushMsg($arrayHeader,$arrayPostData);
