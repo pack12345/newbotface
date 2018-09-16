@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="style.css" type="text/css" />
     
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="chat.js"></script>
     <script type="text/javascript">
     
@@ -39,13 +39,12 @@
 		    chattype = 'chatCREDIT.txt';
 		    agenttype = 'AgentCREDIT.txt';
 	    }
-		
-			lineuser = GetLineID();
+		lineuser = GetLineID();
 		
 		
     	$(function() {
     	
-    		 chat.getState(); 
+    		 chat.getState(chattype); 
     		 
     		 // watch textarea for key presses
              $("#sendie").keydown(function(event) {  
@@ -77,7 +76,7 @@
                     // send 
                     if (length <= maxLength + 1) { 
                      
-    			        chat.send(text, name);	
+    			        chat.send(text, name, chattype);	
     			        $(this).val("");
     			        
                     } else {
@@ -159,7 +158,7 @@
 
 </head>
 
-<body onload="setInterval('chat.update()', 1000)">
+<body onload="setInterval('chat.update(chattype)', 1000)">
 
     <div id="page-wrap">
     
