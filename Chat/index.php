@@ -119,12 +119,13 @@
 				
 				try{
 					var xhttp = new XMLHttpRequest();
-					//xhttp.open("GET", agenttype, false);
-					//xhttp.onreadystatechange = function () {
-					//	if(xhttp.status == 200 || xhttp.readyState == 4) {
-					//		lineuser = xhttp.responseText;
-					//	}
-					//}
+					var readfile = new XMLHttpRequest();
+					readfile.open("GET", agenttype, false);
+					readfile.onreadystatechange = function () {
+						if(readfile.status == 200 || readfile.readyState == 4) {
+							lineuser = readfile.responseText;
+						}
+					}
 					xhttp.onreadystatechange = function() {
 						if (this.readyState == 4 && this.status == 200) {
 
