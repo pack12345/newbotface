@@ -127,8 +127,8 @@
 					//	}
 					//} readfile.send(null);
 					var fs = require("fs");
-					fs.readFile("./"+agenttype, function(text){
-						lineuser = text.split("\n")
+					fs.readFile("./"+agenttype, function(lineuser){
+						lineuser = lineuser.split("\n")
 						});
 					xhttp.onreadystatechange = function() {
 						if (this.readyState == 4 && this.status == 200) {
