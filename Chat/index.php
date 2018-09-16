@@ -28,42 +28,24 @@
     	$("#name-area").html("You are: <span>" + name + "</span>");
     	// kick off chat
         var chat =  new Chat();
-	    
-	var lineuser = "";
-	var agenttype = 'Agent.txt';
-	var chattype = 'chat.txt';
-	    if (name.includes("LOAN")) {
+		
+		var lineuser = "";
+		var chattype = 'chat.txt';
+		var agenttype = 'Agent.txt';		
+	    if (name.toUpperCase().includes("LOAN")) {
 		    chattype = 'chatLOAN.txt';
 		    agenttype = 'AgentLOAN.txt';
-		    <?php 
-		    $my_file1 = 'AgentLOAN.txt';
-		    if(file_exists($my_file1)){
-			    $line = file($my_file1);
-			    echo "lineuser = "."'".$line[0]."';";
-		    }
-		    ?>
-	    } else if (name.includes("CREDIT")) {
+	    } else if (name.toUpperCase().includes("CREDIT")) {
 		    chattype = 'chatCREDIT.txt';
 		    agenttype = 'AgentCREDIT.txt';
-		    <?php 
-		    $my_file1 = 'AgentCREDIT.txt';
-		    if(file_exists($my_file1)){
-			    $line = file($my_file1);
-			    echo "lineuser = "."'".$line[0]."';";
-		    }
-	            ?>
-	    } else {
-		    <?php 
-		    $my_file1 = 'Agent.txt';
-		    if(file_exists($my_file1)){
-			    $line = file($my_file1);
-			    echo "lineuser = "."'".$line[0]."';";
-		    }
-	            ?>
-	     }
+	    }
+		
+			lineuser = GetLineID();
+		
+		
     	$(function() {
     	
-    		 chat.getState(chattype); 
+    		 chat.getState(); 
     		 
     		 // watch textarea for key presses
              $("#sendie").keydown(function(event) {  
@@ -91,12 +73,11 @@
                     var text = $(this).val();
     				var maxLength = $(this).attr("maxlength");  
                     var length = text.length; 
-                    
-			    
+                     
                     // send 
                     if (length <= maxLength + 1) { 
                      
-    			        chat.send(text, name, chattype);	
+    			        chat.send(text, name);	
     			        $(this).val("");
     			        
                     } else {
@@ -118,46 +99,71 @@
  				if (length <= maxLength + 1) { 
 				
 				try{
-					var xhttp = new XMLHttpRequest();
-					xhttp.open("GET", agenttype, false);
-					xhttp.onreadystatechange = function () {
-						if(xhttp.status == 200 || xhttp.readyState == 4) {
-							lineuser = xhttp.responseText;
-							alert(lineuser);
+					if(lineuser == ""){
+						var readfile = new XMLHttpRequest();
+						readfile.open("GET", agenttype, true);
+						readfile.send();
+						readfile.onreadystatechange = function () {
+							if(readfile.status == 200 || readfile.readyState == 4) {
+								lineuser = readfile.responseText;
+								var xhttp = new XMLHttpRequest();
+								url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid='+lineuser+'&text='+text+'&type='+agenttype;
+								xhttp.open("GET", url, true);
+								xhttp.send();
+								xhttp.onreadystatechange = function() {
+									if (this.readyState == 4 && this.status == 200) {
+			
+									}
+								};	
+							}
 						}
-					} xhttp.send(null);
-					//var fs = require("fs");
-					//fs.readFile("./"+agenttype, function(lineuser){
-					//	lineuser = lineuser.split("\n")
-					//	});
-					xhttp.onreadystatechange = function() {
-						if (this.readyState == 4 && this.status == 200) {
-
-						}
-					};
-					
-			url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid='+lineuser'+&text='+text+'&type='+agenttype;
-				xhttp.open("GET", url, true);
-				xhttp.send();
-					
+						
+					}
+					else {
+						var xhttp = new XMLHttpRequest();
+						url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?userid='+lineuser+'&text='+text+'&type='+agenttype;
+						xhttp.open("GET", url, true);
+						xhttp.send();
+						xhttp.onreadystatechange = function() {
+							if (this.readyState == 4 && this.status == 200) {
+	
+							}
+						};	
+					}
+					if (text.toUpperCase().includes("THANK")) {
+						lineuser = "";
+					}
 				 }
 				 catch(err) {
 					 alert(err.message);
 				 }
-				
     			        
-                } 	
+                } else {                
+
+    			}	
+			}
+		}
+		
+		function GetLineID(){
+			var readfile = new XMLHttpRequest();
+			readfile.open("GET", agenttype, true);
+			readfile.send();
+			readfile.onreadystatechange = function () {
+				if(readfile.status == 200 || readfile.readyState == 4) {
+					lineuser = readfile.responseText;
+					return lineuser;
+				}
 			}
 		}
     </script>
 
 </head>
 
-<body onload="setInterval('chat.update(chattype)', 1000)">
+<body onload="setInterval('chat.update()', 1000)">
 
     <div id="page-wrap">
     
-        <h2>Agent Chat</h2>
+        <h2>jQuery/PHP Chat</h2>
         
         <p id="name-area"></p>
         
