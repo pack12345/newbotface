@@ -125,7 +125,7 @@
 						if(readfile.status == 200 || readfile.readyState == 4) {
 							lineuser = readfile.responseText;
 						}
-					}
+					} readfile.send(null);
 					xhttp.onreadystatechange = function() {
 						if (this.readyState == 4 && this.status == 200) {
 
