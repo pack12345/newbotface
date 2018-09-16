@@ -64,8 +64,8 @@ if($agentHold != $id){
         "text"=> "บัตรสินเชื่อ"
       )
     ],
-    "title"=> "กรุณาเลือกรายการที่ท่าน",
-    "text"=> "ผลิตภัณฑ์ บัตรเครดิต/บัตรกดเงิน และสินเชื่อ"
+    "title"=> "กรุณาเลือกรายการของท่าน",
+    "text"=> "ผลิตภัณฑ์ บัตรเครดิต/บัตรกดเงินสด และสินเชื่อ"
   )
 )
 ]
@@ -392,16 +392,16 @@ if($agentHold != $id){
   "altText"=> "This is an imagemap",
   "baseSize"=> array(
     "width"=> 1040,
-    "height"=> 1506
+    "height"=> 1110
   ),
   "actions"=> [
     array(
       "type"=> "uri",
       "area"=> array(
         "x"=> 28,
-        "y"=> 154,
+        "y"=> 160,
         "width"=> 979,
-        "height"=> 145
+        "height"=> 108
       ),
       "linkUri"=> "https://www.google.com/maps/search/สาขาธนาคารออมสิน/"
     ),
@@ -409,29 +409,29 @@ if($agentHold != $id){
       "type"=> "uri",
       "area"=> array(
         "x"=> 29,
-        "y"=> 299,
+        "y"=> 275,
         "width"=> 979,
-        "height"=> 171
+        "height"=> 112
       ),
       "linkUri"=> "https://www.google.com/maps/search/ตู้ATMธนาคารออมสิน/"
     ),
     array(
       "type"=> "message",
       "area"=> array(
-        "x"=> 26,
-        "y"=> 470,
+        "x"=> 29,
+        "y"=> 387,
         "width"=> 979,
-        "height"=> 158
+        "height"=> 115
       ),
       "text"=> "Action 3"
     ),
     array(
       "type"=> "message",
       "area"=> array(
-        "x"=> 27,
-        "y"=> 628,
+        "x"=> 29,
+        "y"=> 504,
         "width"=> 979,
-        "height"=> 163
+        "height"=> 106
       ),
       "text"=> "Action 4"
     ),
@@ -439,29 +439,29 @@ if($agentHold != $id){
       "type"=> "message",
       "area"=> array(
         "x"=> 28,
-        "y"=> 791,
+        "y"=> 610,
         "width"=> 978,
-        "height"=> 169
+        "height"=> 114
       ),
       "text"=> "Action 5"
     ),
     array(
       "type"=> "message",
       "area"=> array(
-        "x"=> 27,
-        "y"=> 960,
-        "width"=> 979,
-        "height"=> 168
+        "x"=> 28,
+        "y"=> 724,
+        "width"=> 978,
+        "height"=> 106
       ),
       "text"=> "Action 6"
     ),
     array(
       "type"=> "message",
       "area"=> array(
-        "x"=> 26,
-        "y"=> 1128,
+        "x"=> 28,
+        "y"=> 830,
         "width"=> 978,
-        "height"=> 179
+        "height"=> 110
       ),
       "text"=> "Action 7"
     )
