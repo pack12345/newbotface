@@ -325,50 +325,68 @@ if($agentHold != $id){
     "actions"=> [],
     "columns"=> [
       array(
-        "thumbnailImageUrl"=> "https://cxpmiddleware.herokuapp.com/Carousel/CreditCard/precious.png",
-        "text"=> "GSB Precious Credit Card",
+        "thumbnailImageUrl"=> "https://cxpmiddleware.herokuapp.com/Carousel/promotion/cadit.png",
+        "text"=> "บัตรเครดิต",
         "actions"=> [
           array(
             "type"=> "uri",
-            "label"=> "สิทธิประโยชน์",
-            "uri"=> "https://www.gsb.or.th/PrivilegePrestige.aspx"
-          ),
-          array(
-            "type"=> "uri",
-            "label"=> "สมัครบัตร",
-            "uri"=> "https://www.gsb.or.th/Register-Online.aspx"
+            "label"=> "Promotion",
+            "uri"=> "https://www.gsb.or.th/PromotionCreditCardAll.aspx"
           )
         ]
       ),
       array(
-        "thumbnailImageUrl"=> "https://cxpmiddleware.herokuapp.com/Carousel/CreditCard/premium.png",
-        "text"=> "GSB Premium Credit Card",
+        "thumbnailImageUrl"=> "https://cxpmiddleware.herokuapp.com/Carousel/promotion/online.png",
+        "text"=> "ออนไลน์",
         "actions"=> [
           array(
             "type"=> "uri",
-            "label"=> "สิทธิประโยชน์",
-            "uri"=> "https://www.gsb.or.th/products/cards/credit_card/gsbpremium.aspx"
-          ),
-          array(
-            "type"=> "uri",
-            "label"=> "สมัครบัตร",
-            "uri"=> "https://www.gsb.or.th/Register-Online-Premium.aspx"
+            "label"=> "Promotion",
+            "uri"=> "https://www.gsb.or.th/PromotionsOnline.aspx"
           )
         ]
       ),
       array(
-        "thumbnailImageUrl"=> "https://cxpmiddleware.herokuapp.com/Carousel/CreditCard/prestige.png",
-        "text"=> "GSB Prestige Credit Card",
+        "thumbnailImageUrl"=> "https://cxpmiddleware.herokuapp.com/Carousel/promotion/ผลิตภัน.png",
+        "text"=> "ผลิตภัณฑ์",
         "actions"=> [
           array(
             "type"=> "uri",
-            "label"=> "สิทธิประโยชน์",
-            "uri"=> "https://www.gsb.or.th/products/cards/credit_card/gsbprestige.aspx"
-          ),
+            "label"=> "Promotion",
+            "uri"=> "https://www.gsb.or.th/GSBALLPromotions.aspx"
+          )
+        ]
+      ),
+      array(
+        "thumbnailImageUrl"=> "https://cxpmiddleware.herokuapp.com/Carousel/promotion/สินเชื้อ.png",
+        "text"=> "สินเชื่อ",
+        "actions"=> [
           array(
             "type"=> "uri",
-            "label"=> "สมัครบัตร",
-            "uri"=> "https://www.gsb.or.th/personal/products/cards/credit_card/gsbprestige.aspx"
+            "label"=> "Promotion",
+            "uri"=> "https://www.gsb.or.th/PromotionsLoanALL.aspx"
+          )
+        ]
+      ),
+      array(
+        "thumbnailImageUrl"=> "https://cxpmiddleware.herokuapp.com/Carousel/promotion/เงินฟาก.png",
+        "text"=> "เงินฝาก",
+        "actions"=> [
+          array(
+            "type"=> "uri",
+            "label"=> "Promotion",
+            "uri"=> "https://www.gsb.or.th/PromotionsDeposite.aspx"
+          )
+        ]
+      ),
+      array(
+        "thumbnailImageUrl"=> "https://cxpmiddleware.herokuapp.com/Carousel/promotion/เดบิต.png",
+        "text"=> "บัตรเดบิต",
+        "actions"=> [
+          array(
+            "type"=> "uri",
+            "label"=> "Promotion",
+            "uri"=> "https://www.gsb.or.th/PromotionsDebitcardALL.aspx"
           )
         ]
       )
