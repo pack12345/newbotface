@@ -779,7 +779,7 @@ if($agentHold != $id){
     }
     else if(strtoupper($message) == "CHAT AGENT"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        if($agentType = "Agent.txt"){
+        if($agentType !== "Agent.txt"){
             $arrayPostData['messages'][0]['type'] = "text";
             $arrayPostData['messages'][0]['text'] = "กำลังติดต่อ";
             replyMsgChat($id,"ลูกค้าต้องการคุยกับพนักงาน","Agent.txt");
@@ -791,7 +791,7 @@ if($agentHold != $id){
     }
     else if(strtoupper($message) == "LOAN AGENT"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        if($agentType = "AgentLOAN.txt"){
+        if($agentType !== "AgentLOAN.txt"){
             $arrayPostData['messages'][0]['type'] = "text";
             $arrayPostData['messages'][0]['text'] = "กำลังติดต่อ";
             replyMsgChat($id,"ลูกค้าต้องการคุยกับพนักงาน","AgentLOAN.txt");
@@ -803,7 +803,7 @@ if($agentHold != $id){
     }
     else if(strtoupper($message) == "LOAN AGENT"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        if($agentType = "AgentCREDIT.txt"){
+        if($agentType !== "AgentCREDIT.txt"){
             $arrayPostData['messages'][0]['type'] = "text";
             $arrayPostData['messages'][0]['text'] = "กำลังติดต่อ";
             replyMsgChat($id,"ลูกค้าต้องการคุยกับพนักงาน","AgentCREDIT.txt");
