@@ -30,6 +30,9 @@ $url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey
 $json = file_get_contents('https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$message.'"}');
 $data = json_decode($json);
 $isData=sizeof($data);
+if (strpos($message, 'สวัสดี') !== false) {
+    $message_to_reply = 'สวัสดีค่ะ';
+} else {
 if (strpos($message, 'สอนเป็ด') !== false) {
     if (strpos($message, 'สอนเป็ด') !== false) {
         $x_tra = str_replace("สอนเป็ด","", $message);
@@ -62,6 +65,7 @@ if (strpos($message, 'สอนเป็ด') !== false) {
     } else {
         $message_to_reply = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนเป็ด[คำถาม|คำตอบ]';
     }
+}
 }
 //API Url
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
