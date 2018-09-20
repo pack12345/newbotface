@@ -25,7 +25,7 @@ $message_to_reply = '';
  * Some Basic rules to validate incoming messages
  */
  
-$api_key="9b1a3a86e454415915b2a9dd8f275428";
+$api_key= "<mLAP API KEY>"; #"9b1a3a86e454415915b2a9dd8f275428";
 $url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
 $json = file_get_contents('https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$message.'"}');
 $data = json_decode($json);
