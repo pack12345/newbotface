@@ -1,5 +1,5 @@
 <?php
-error_log('facebook hook ');
+echo('facebook hook');
 
     #"appSecret": "9b1a3a86e454415915b2a9dd8f275428",
     #"pageAccessToken": "EAAKpA8qULosBAKlgZCXXBMllkJoGqFAJDpxRLzrSbZALH3u3DodMhM9vGuMLivIADWUpJQKzprE532Y9DDL7xW4WZCJ5O31tBzVR8oG5dJPRfErS4OXdtWQmWcUQJ8YdnXzcrN12vRV39CPy3QWtZCUZBRuHeuACVk98MTA1oX1Xhq3CBnruy5zlPaj098P8ZD",
