@@ -1,10 +1,10 @@
 <?php
 error_log('facebook hook ');
 
-    "appSecret": "9b1a3a86e454415915b2a9dd8f275428",
-    "pageAccessToken": "EAAKpA8qULosBAKlgZCXXBMllkJoGqFAJDpxRLzrSbZALH3u3DodMhM9vGuMLivIADWUpJQKzprE532Y9DDL7xW4WZCJ5O31tBzVR8oG5dJPRfErS4OXdtWQmWcUQJ8YdnXzcrN12vRV39CPy3QWtZCUZBRuHeuACVk98MTA1oX1Xhq3CBnruy5zlPaj098P8ZD",
-    "validationToken": "mybotarkinfo",
-    "serverURL": "https://facebotinfo.herokuapp.com/"
+    #"appSecret": "9b1a3a86e454415915b2a9dd8f275428",
+    #"pageAccessToken": "EAAKpA8qULosBAKlgZCXXBMllkJoGqFAJDpxRLzrSbZALH3u3DodMhM9vGuMLivIADWUpJQKzprE532Y9DDL7xW4WZCJ5O31tBzVR8oG5dJPRfErS4OXdtWQmWcUQJ8YdnXzcrN12vRV39CPy3QWtZCUZBRuHeuACVk98MTA1oX1Xhq3CBnruy5zlPaj098P8ZD",
+    #"validationToken": "mybotarkinfo",
+    #"serverURL": "https://facebotinfo.herokuapp.com/"
 
 $access_token = "EAAKpA8qULosBAKlgZCXXBMllkJoGqFAJDpxRLzrSbZALH3u3DodMhM9vGuMLivIADWUpJQKzprE532Y9DDL7xW4WZCJ5O31tBzVR8oG5dJPRfErS4OXdtWQmWcUQJ8YdnXzcrN12vRV39CPy3QWtZCUZBRuHeuACVk98MTA1oX1Xhq3CBnruy5zlPaj098P8ZD";
 $verify_token = "mybotarkinfo";
@@ -25,11 +25,11 @@ $message_to_reply = '';
  * Some Basic rules to validate incoming messages
  */
  
-#$api_key="9b1a3a86e454415915b2a9dd8f275428";
-#$url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
-#$json = file_get_contents('https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$message.'"}');
-#$data = json_decode($json);
-#$isData=sizeof($data);
+$api_key="9b1a3a86e454415915b2a9dd8f275428";
+$url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
+$json = file_get_contents('https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$message.'"}');
+$data = json_decode($json);
+$isData=sizeof($data);
 if (strpos($message, 'สอนเป็ด') !== false) {
     if (strpos($message, 'สอนเป็ด') !== false) {
         $x_tra = str_replace("สอนเป็ด","", $message);
