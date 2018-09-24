@@ -2,12 +2,12 @@
 #echo('facebook hook');
 
     #"appSecret": "9b1a3a86e454415915b2a9dd8f275428",
-    #"pageAccessToken": "EAAKpA8qULosBAKlgZCXXBMllkJoGqFAJDpxRLzrSbZALH3u3DodMhM9vGuMLivIADWUpJQKzprE532Y9DDL7xW4WZCJ5O31tBzVR8oG5dJPRfErS4OXdtWQmWcUQJ8YdnXzcrN12vRV39CPy3QWtZCUZBRuHeuACVk98MTA1oX1Xhq3CBnruy5zlPaj098P8ZD",
-    #"validationToken": "mybotarkinfo",
+    #"pageAccessToken": "EAAEpELvd68ABAA3FhOcxX8b7vXkZCfHHgZCiZBwrTmE7ZBoDxJinM9fiqWKrGLi4fDyAFS24ZByNrwzo2U4YQHXu804OFvElc9VZChu9I4ve9Pb2gib21gVTnWpVxnVCnImClnt1b9XZB9fOKcPNZB0OqMOGZC70ivUY5RPrZBfh2ZB1WxzNToGISZBzLcAGsZCt9VWsZD",
+    #"validationToken": "deves_poc",
     #"serverURL": "https://facebotinfo.herokuapp.com/"
 
-$access_token = "EAAKpA8qULosBAKlgZCXXBMllkJoGqFAJDpxRLzrSbZALH3u3DodMhM9vGuMLivIADWUpJQKzprE532Y9DDL7xW4WZCJ5O31tBzVR8oG5dJPRfErS4OXdtWQmWcUQJ8YdnXzcrN12vRV39CPy3QWtZCUZBRuHeuACVk98MTA1oX1Xhq3CBnruy5zlPaj098P8ZD";
-$verify_token = "mybotarkinfo";
+$access_token = "EAAEpELvd68ABAA3FhOcxX8b7vXkZCfHHgZCiZBwrTmE7ZBoDxJinM9fiqWKrGLi4fDyAFS24ZByNrwzo2U4YQHXu804OFvElc9VZChu9I4ve9Pb2gib21gVTnWpVxnVCnImClnt1b9XZB9fOKcPNZB0OqMOGZC70ivUY5RPrZBfh2ZB1WxzNToGISZBzLcAGsZCt9VWsZD";
+$verify_token = "deves_poc";
 $hub_verify_token = null;
 
 if(isset($_REQUEST['hub_challenge'])) {
