@@ -1,11 +1,6 @@
 <?php
 #echo('facebook hook');
 
-    #"appSecret": "9b1a3a86e454415915b2a9dd8f275428",
-    #"pageAccessToken": "EAAEpELvd68ABAA3FhOcxX8b7vXkZCfHHgZCiZBwrTmE7ZBoDxJinM9fiqWKrGLi4fDyAFS24ZByNrwzo2U4YQHXu804OFvElc9VZChu9I4ve9Pb2gib21gVTnWpVxnVCnImClnt1b9XZB9fOKcPNZB0OqMOGZC70ivUY5RPrZBfh2ZB1WxzNToGISZBzLcAGsZCt9VWsZD",
-    #"validationToken": "deves_poc",
-    #"serverURL": "https://facebotinfo.herokuapp.com/"
-
 $access_token = "EAAEpELvd68ABAA3FhOcxX8b7vXkZCfHHgZCiZBwrTmE7ZBoDxJinM9fiqWKrGLi4fDyAFS24ZByNrwzo2U4YQHXu804OFvElc9VZChu9I4ve9Pb2gib21gVTnWpVxnVCnImClnt1b9XZB9fOKcPNZB0OqMOGZC70ivUY5RPrZBfh2ZB1WxzNToGISZBzLcAGsZCt9VWsZD";
 $verify_token = "deves_poc";
 $hub_verify_token = null;
@@ -21,6 +16,8 @@ $input = json_decode(file_get_contents('php://input'), true);
 $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
 $message = $input['entry'][0]['messaging'][0]['message']['text'];
 $message_to_reply = '';
+$message_to_type = 'text';
+$file_url = 'https://phpfacechatbot.herokuapp.com';
 /**
  * Some Basic rules to validate incoming messages
  */
@@ -32,7 +29,45 @@ $data = json_decode($json);
 $isData=sizeof($data);
 if (strpos($message, 'สวัสดี') !== false) {
     $message_to_reply = 'สวัสดีค่ะ';
+    $message_to_type = 'text';
+} else if (strpos($message, 'สวัสดี') !== false) {
+    $message_to_reply = 'สวัสดีค่ะ';
+} else if (strpos($message, 'สวัสดี') !== false) {
+    $message_to_reply = 'สวัสดีค่ะ';
 } else {
+    
+}
+if ($message_to_type == 'text') {
+    $arrayPostData = array(
+        "recipient" => array(
+            "id" => $sender
+        ),
+        "message" => array(
+            "text" => $message_to_reply
+        )
+    );
+} else if ($message_to_type == 'file') {
+    $arrayPostData = array(
+        "recipient" => array(
+            "id" => $sender
+        ),
+        "message" => array(
+            "attachment" => array(
+                "type" => 'file',
+                "payload" => array(
+                    "url" => $file_url."/assets/test.txt"
+                    )
+                )
+            )
+    );
+} else if ($message_to_type == 'file') {
+    
+if(!empty($input['entry'][0]['messaging'][0]['message'])){
+    replyMsg($access_token,$arrayPostData);
+}
+
+// comment start by mee
+/*
 if (strpos($message, 'สอนเป็ด') !== false) {
     if (strpos($message, 'สอนเป็ด') !== false) {
         $x_tra = str_replace("สอนเป็ด","", $message);
@@ -93,8 +128,9 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 if(!empty($input['entry'][0]['messaging'][0]['message'])){
     $result = curl_exec($ch);
 } 
+*/ //comment end by mee
 
-/*function replyMsg($access_token,$arrayPostData){
+function replyMsg($access_token,$arrayPostData){
         $strUrl = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$strUrl);
@@ -107,5 +143,5 @@ if(!empty($input['entry'][0]['messaging'][0]['message'])){
         $result = curl_exec($ch);
         curl_close ($ch);
     }
-exit; */
+exit; 
 ?>
