@@ -15,28 +15,64 @@ if ($hub_verify_token === $verify_token) {
 $input = json_decode(file_get_contents('php://input'), true);
 $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
 $message = $input['entry'][0]['messaging'][0]['message']['text'];
+$postback = $input['entry'][0]['messaging'][0]['postback']['payload'];
 $message_to_reply = '';
-$message_to_type = 'text';
+$message_to_type = 'none';
+$postback_stat = 'flase';
 $file_url = 'https://phpfacechatbot.herokuapp.com';
 /**
  * Some Basic rules to validate incoming messages
  */
- 
+/* 
 $api_key= "<mLAP API KEY>"; #"9b1a3a86e454415915b2a9dd8f275428";
 $url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
 $json = file_get_contents('https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$message.'"}');
 $data = json_decode($json);
 $isData=sizeof($data);
-if (strpos($message, 'สวัสดี') !== false) {
-    $message_to_reply = 'สวัสดีค่ะ';
-    $message_to_type = 'text';
-} else if (strpos($message, 'สวัสดี') !== false) {
-    $message_to_reply = 'สวัสดีค่ะ';
-} else if (strpos($message, 'สวัสดี') !== false) {
-    $message_to_reply = 'สวัสดีค่ะ';
-} else {
-    
+*/
+if (!empty($postback)) {
+$message = $postback;
 }
+
+if (strpos($message, 'สวัสดี') !== false) {
+   $arrayPostData = array(
+        "recipient" => array(
+            "id" => $sender
+        ),
+        "message" => array(
+            "attachment" => array(
+             "type" => "template",
+             "payload" = > array(
+              "template_type" => "button",
+              "text" => "Deves Admin ยินดีให้บริการค่ะ วันนี้ให้ทางเทเวศดูแลเรื่องอะไรดีค่ะ",
+              "buttons" => [ array(
+               "type" => "postback",
+               "title" => "1. สอบถามอู่/ศูนย์จัดซ่อม",
+               "payload" => "M_1"
+               ), array(
+               "type" => "postback",
+               "title" => "2. สอบถามขั้นตอน/เอกสารที่ใช้ตั้งเบิก/คุมราคาจัดซ่อม",
+               "payload" => "M_2"
+               ), array(
+               "type" => "postback",
+               "title" => "3. สอบถามข้อมูลอื่นๆ",
+               "payload" => "M_3"
+               )]
+             )
+            )
+        )
+     );
+} else if (strpos($message, 'M_1') !== false) {
+    $message_to_reply = 'สวัสดี 1';
+    $message_to_type = 'text';
+} else if (strpos($message, 'M_2') !== false) {
+    $message_to_reply = 'สวัสดี 2';
+    $message_to_type = 'text';
+} else {
+    $message_to_reply = $message;
+    $message_to_type = 'text';
+}
+
 if ($message_to_type == 'text') {
     $arrayPostData = array(
         "recipient" => array(
@@ -55,16 +91,46 @@ if ($message_to_type == 'text') {
             "attachment" => array(
                 "type" => 'file',
                 "payload" => array(
-                    "url" => $file_url."/assets/test.txt"
+                    "url" => $file_url.$message_to_reply
                     )
                 )
             )
     );
-} else if ($message_to_type == 'file') {
-    
-if(!empty($input['entry'][0]['messaging'][0]['message'])){
-    replyMsg($access_token,$arrayPostData);
+} else if ($message_to_type == 'button') {
+     $arrayPostData = array(
+        "recipient" => array(
+            "id" => $sender
+        ),
+        "message" => array(
+            "attachment" => array(
+             "type" => "template",
+             "payload" = > array(
+              "template_type" => "button",
+              "text" => "Deves Admin ยินดีให้บริการค่ะ วันนี้ให้ทางเทเวศดูแลเรื่องอะไรดีค่ะ",
+              "buttons" => [ array(
+               "type" => "postback",
+               "title" => "1. สอบถามอู่/ศูนย์จัดซ่อม",
+               "payload" => "DEVELOPER_DEFINED_PAYLOAD_1"
+               ), array(
+               "type" => "postback",
+               "title" => "2. สอบถามขั้นตอน/เอกสารที่ใช้ตั้งเบิก/คุมราคาจัดซ่อม",
+               "payload" => "DEVELOPER_DEFINED_PAYLOAD_2"
+               ), array(
+               "type" => "postback",
+               "title" => "3. สอบถามข้อมูลอื่นๆ",
+               "payload" => "DEVELOPER_DEFINED_PAYLOAD_3"
+               )]
+             )
+            )
+        )
+     );
+ 
 }
+    
+
+    replyMsg($access_token,$arrayPostData);
+
+
 
 // comment start by mee
 /*
