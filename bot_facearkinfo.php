@@ -24,7 +24,7 @@ if (!empty($postback)){
     $message = $postback['payload'];
 }
 if (strpos($message, 'สวัสดี') !== false) {
- $message_to_type = 'buttonMain';
+ $message_to_type = 'button2_1';
 } else if (strpos($message, 'MENU_1') !== false) {
  $message_to_type = 'button2_1';
 }
