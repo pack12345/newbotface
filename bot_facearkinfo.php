@@ -33,7 +33,7 @@ if (strpos($message, 'สวัสดี') !== false) {
 	$message_to_reply = 'กรุณารอสักครู่นะค่ะ ';
 	$message_to_type = 'text';
 } else if (strpos($message, 'MENU_1_1') !== false) {
-	$message_to_reply = 'พิมพ์ชื่อ อำเภอ/เขต ที่ลูกค้าต้องการสอบถามได้เลยค่ะ เช่น "บางกอกใหญ่", "บางนา" เป็นต้น';
+	$message_to_reply = 'พิมพ์ชื่อ อำเภอ/เขต ที่ลูกค้าต้องการสอบถามได้เลยค่ะ เช่น บางกอกใหญ่, บางนา เป็นต้น';
 	$message_to_type = 'text';
 } else if (strpos($message, 'MENU_1_') !== false) {
 	$message_to_reply = 'พิมพ์ชื่อ จังหวัด ที่ลูกค้าต้องการสอบถามได้เลยค่ะ';
@@ -50,13 +50,13 @@ if (strpos($message, 'สวัสดี') !== false) {
 } else if (strpos($message, 'บุรี') !== false) {
 	$message_to_type = 'button2_1';
 } else if (strpos($message, 'FILE_1') !== false) {
-	$message_to_reply = '/asset/เอกสารประกอบการตั้งเบิกอู่นอกเครือ.pdf';
+	$message_to_reply = '/asset/file1.pdf';
 	$message_to_type = 'file';
 } else if (strpos($message, 'FILE_2') !== false) {
-	$message_to_reply = '/asset/เอกสารประกอบการตั้งเบิกคืนลูกค้า(รถคู่กรณี).pdf';
+	$message_to_reply = '/asset/file2.pdf';
 	$message_to_type = 'file';
 } else if (strpos($message, 'FILE_3') !== false) {
-	$message_to_reply = '/asset/เอกสารประกอบการตั้งเบิกคืนลูกค้า(รถประกัน).pdf';
+	$message_to_reply = '/asset/file3.pdf';
 	$message_to_type = 'file';
 } 
  
