@@ -12,7 +12,7 @@ if ($hub_verify_token === $verify_token) {
 $input = json_decode(file_get_contents('php://input'), true);
 $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
 $message = $input['entry'][0]['messaging'][0]['message']['text'];
-$postback = $input['entry'][0]['messaging'][0]['postback']['payload'];
+$postback = json_decode($input['entry'][0]['messaging'][0]['postback'],true);
 $message_to_reply = '';
 $message_to_type = '';
 $host_url = 'https://phpfacechatbot.herokuapp.com';
@@ -21,7 +21,7 @@ $host_url = 'https://phpfacechatbot.herokuapp.com';
  */
 
 if (!empty($postback)){
-    $message = $postback;
+    $message = $postback['payload'];
 }
 if (strpos($message, 'สวัสดี') !== false) {
  $message_to_type = 'buttonMain';
