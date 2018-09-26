@@ -179,7 +179,7 @@ $jsonDataEncoded = $jsonData;
 //curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
 //Execute the request
 
-if(!empty($message)){
+if(!empty($message_to_type)){
     $result = curl_exec($ch);
 }
 /*function replyMsg($access_token,$arrayPostData){
