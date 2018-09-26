@@ -72,20 +72,20 @@ $jsonData = '{
 
 $jsonDataEncoded = $jsonData;
 
-  replyMsg($access_token,$jsonDataEncoded)
+  //replyMsg($access_token,$jsonDataEncoded)
 //Tell cURL that we want to send a POST request.
-  //curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_POST, 1);
 //Attach our encoded JSON string to the POST fields.
-  //curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
 //Set the content type to application/json
-  //curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 //curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
 //Execute the request
 
-//if(!empty($input['entry'][0]['messaging'][0]['message'])){
-  //  $result = curl_exec($ch);
-//}
-function replyMsg($access_token,$arrayPostData){
+if(!empty($input['entry'][0]['messaging'][0]['message'])){
+    $result = curl_exec($ch);
+}
+/*function replyMsg($access_token,$arrayPostData){
         $strUrl = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
         $ch = curl_init($strUrl);
         //curl_setopt($ch, CURLOPT_URL,$strUrl);
@@ -98,6 +98,6 @@ function replyMsg($access_token,$arrayPostData){
         //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         $result = curl_exec($ch);
         curl_close ($ch);
-    }
+    } */
 
 ?>
