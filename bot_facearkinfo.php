@@ -56,9 +56,9 @@ if (strpos($message, 'สอนเป็ด') !== false) {
   }
 }
 //API Url
-$url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
+  //$url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
 //Initiate cURL.
-$ch = curl_init($url);
+  //$ch = curl_init($url);
 //The JSON data.
 $jsonData = '{
     "recipient":{
@@ -69,16 +69,35 @@ $jsonData = '{
     }
 }';
 //Encode the array into JSON.
+
 $jsonDataEncoded = $jsonData;
+
+replyMsg($access_token,$jsonDataEncoded)
 //Tell cURL that we want to send a POST request.
-curl_setopt($ch, CURLOPT_POST, 1);
+  //curl_setopt($ch, CURLOPT_POST, 1);
 //Attach our encoded JSON string to the POST fields.
-curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
+  //curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
 //Set the content type to application/json
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+  //curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 //curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
 //Execute the request
-if(!empty($input['entry'][0]['messaging'][0]['message'])){
-    $result = curl_exec($ch);
-}
+
+//if(!empty($input['entry'][0]['messaging'][0]['message'])){
+  //  $result = curl_exec($ch);
+//}
+function replyMsg($access_token,$arrayPostData){
+        $strUrl = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$strUrl);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));    
+        //curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($arrayPostData));
+        curl_setopt($ch, CURLOPT_POSTFIELDS,$arrayPostData);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $result = curl_exec($ch);
+        curl_close ($ch);
+    }
+
 ?>
