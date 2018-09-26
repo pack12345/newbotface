@@ -32,7 +32,7 @@ if (strpos($message, 'สวัสดี') !== false) {
 } else if ($message == 'MENU_3') {
 	$message_to_reply = 'กรุณารอสักครู่นะค่ะ ';
 	$message_to_type = 'text';
-} else if ($message == 'MENU_1_1') {
+} else if (strpos($message, 'MENU_1_1') !== false) {
 	$message_to_reply = 'พิมพ์ชื่อ อำเภอ/เขต ที่ลูกค้าต้องการสอบถามได้เลยค่ะ เช่น "บางกอกใหญ่", "บางนา" เป็นต้น';
 	$message_to_type = 'text';
 } else if (strpos($message, 'MENU_1_') !== false) {
