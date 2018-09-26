@@ -49,7 +49,7 @@ if (strpos($message, 'สวัสดี') !== false) {
 	$message_to_type = 'text';
 } else if (strpos($message, 'บุรี') !== false) {
 	$message_to_type = 'button2_1';
-} else if (strpos($message, 'FILE_1') !== false) {
+} else if ($message == 'FILE_1') {
 	$message_to_reply = '/asset/file1.pdf';
 	$message_to_type = 'file';
 } else if (strpos($message, 'FILE_2') !== false) {
@@ -194,17 +194,17 @@ if ($message_to_type == 'text') {
           "template_type": "button",
           "text": "เลือกหัวข้อที่ต้องการสอบถามข้อมูลค่ะ",
           "buttons":[{
-          "type": "postback",
-            "title": "1. เอกสารการตั้งเบิกอู่นอกเครือ",
-            "payload": "FILE_1"
+          "type": "web_url",
+	  "url": "https://phpfacechatbot.herokuapp.com/asset/file1.pdf",
+            "title": "1. เอกสารการตั้งเบิกอู่นอกเครือ"
           }, {
-            "type": "postback",
-            "title": "2. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถคู่กรณี)",
-            "payload": "FILE_2"
+            "type": "web_url",
+	    "url": "https://phpfacechatbot.herokuapp.com/asset/file2.pdf",
+            "title": "2. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถคู่กรณี)"
           }, {
-            "type": "postback",
-            "title": "3. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถประกัน)",
-            "payload": "FILE_3"
+            "type": "web_url",
+	    "url": "https://phpfacechatbot.herokuapp.com/asset/file3.pdf",
+            "title": "3. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถประกัน)"
           }]
         }
       }
