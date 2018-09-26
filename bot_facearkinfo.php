@@ -219,7 +219,7 @@ if ($message_to_type == 'text') {
     "attachment": {
         "type": "file",
         "payload": {
-          "url": "https://phpfacechatbot.herokuapp.com/asset/file1.pdf"
+          "url": "https://phpfacechatbot.herokuapp.com/asset/file1.txt"
         }
         }
     }
