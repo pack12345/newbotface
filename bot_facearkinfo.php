@@ -26,7 +26,7 @@ if (!empty($postback)){
 if (strpos($message, 'สวัสดี') !== false) {
  $message_to_type = 'buttonMain';
 } else if (strpos($message, 'MENU_1') !== false) {
- $message_to_type = 'buttonMain';
+ $message_to_type = 'button2_1';
 }
  
  /*
@@ -110,8 +110,9 @@ if ($message_to_type == 'text') {
         "attachment": {
         "type": "template",
         "payload": {
-          "template_type": "button",
-          "text": "พื้นที่อู่ ที่ลูกค้าต้องการสอบถามอยู่ภาคใดค่ะ",
+          "template_type": "generic",
+	  "elements": [{
+          "title": "พื้นที่อู่ ที่ลูกค้าต้องการสอบถามอยู่ภาคใดค่ะ",
           "buttons":[{
             "type": "postback",
             "title": "1. กรุงเทพมหานคร",
@@ -124,7 +125,9 @@ if ($message_to_type == 'text') {
             "type": "postback",
             "title": "3. ภาคกลาง",
             "payload": "MENU_1_3"
-          }, {
+          }]}, {
+	  "title": "เลื่อนด้าน ซ้าย หรือ ขวา สำหรับตัวเลือกอื่น",
+          "buttons":[{
             "type": "postback",
             "title": "4. ภาคตะวันออก",
             "payload": "MENU_1_4"
@@ -136,11 +139,14 @@ if ($message_to_type == 'text') {
             "type": "postback",
             "title": "6. ภาคเหนือ",
             "payload": "MENU_1_6"
-          }, {
+          }]}, {
+	  "title": "เลื่อนด้าน ซ้าย หรือ ขวา สำหรับตัวเลือกอื่น",
+          "buttons":[{
             "type": "postback",
             "title": "7. ภาคใต้",
             "payload": "MENU_1_7"
-          }]
+          }]}
+          ]
         }
       }
     }
