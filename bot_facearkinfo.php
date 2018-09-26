@@ -87,8 +87,8 @@ $jsonDataEncoded = $jsonData;
 //}
 function replyMsg($access_token,$arrayPostData){
         $strUrl = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$strUrl);
+        $ch = curl_init($strUrl);
+        //curl_setopt($ch, CURLOPT_URL,$strUrl);
         //curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));    
