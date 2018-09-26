@@ -24,10 +24,41 @@ if (!empty($postback)){
     $message = $postback;
 }
 if (strpos($message, 'สวัสดี') !== false) {
- $message_to_type = 'buttonMain';
-} else if (strpos($message, 'MENU_1') !== false) {
- $message_to_type = 'button2_1';
-}
+	$message_to_type = 'buttonMain';
+} else if ($message == 'MENU_1') {
+	$message_to_type = 'button1';
+} else if ($message == 'MENU_2') {
+	$message_to_type = 'button2';
+} else if ($message == 'MENU_3') {
+	$message_to_reply = 'กรุณารอสักครู่นะค่ะ ';
+	$message_to_type = 'text';
+} else if ($message == 'MENU_1_1') {
+	$message_to_reply = 'พิมพ์ชื่อ อำเภอ/เขต ที่ลูกค้าต้องการสอบถามได้เลยค่ะ เช่น "บางกอกใหญ่", "บางนา" เป็นต้น';
+	$message_to_type = 'text';
+} else if (strpos($message, 'MENU_1_') !== false) {
+	$message_to_reply = 'พิมพ์ชื่อ จังหวัด ที่ลูกค้าต้องการสอบถามได้เลยค่ะ';
+	$message_to_type = 'text';
+} else if (strpos($message, 'บาง') !== false) {
+	$message_to_reply = 'อู่ยงค์การช่าง 70/1 ม.2 ถ.งามวงศ์วาน ต.บางเขน อ.เมือง จ.นนทบุรี 11000 0-2589-5190,0-2591-3237';
+	$message_to_type = 'text';
+} else if (strpos($message, 'นคร') !== false) {
+	$message_to_reply = 'อู่'.$message.' อ.เมือง จ.'.$message;
+	$message_to_type = 'text';
+} else if (strpos($message, 'บุรี') !== false) {
+	$message_to_reply = 'อู่'.$message.' อ.เมือง จ.'.$message;
+	$message_to_type = 'text';
+} else if (strpos($message, 'บุรี') !== false) {
+	$message_to_type = 'button2_1';
+} else if (strpos($message, 'FILE_1') !== false) {
+	$message_to_reply = '/asset/เอกสารประกอบการตั้งเบิกอู่นอกเครือ.pdf';
+	$message_to_type = 'file';
+} else if (strpos($message, 'FILE_2') !== false) {
+	$message_to_reply = '/asset/เอกสารประกอบการตั้งเบิกคืนลูกค้า(รถคู่กรณี).pdf';
+	$message_to_type = 'file';
+} else if (strpos($message, 'FILE_3') !== false) {
+	$message_to_reply = '/asset/เอกสารประกอบการตั้งเบิกคืนลูกค้า(รถประกัน).pdf';
+	$message_to_type = 'file';
+} 
  
  /*
  if (strpos($message, 'สอนเป็ด') !== false) {
@@ -101,7 +132,7 @@ if ($message_to_type == 'text') {
       }
     }
 }';
-} else if ($message_to_type == 'button2_1') {
+} else if ($message_to_type == 'button1') {
  $jsonData = '{
     "recipient":{
         "id":"'.$sender.'"
@@ -151,7 +182,35 @@ if ($message_to_type == 'text') {
       }
     }
 }';
-}else if ($message_to_type == 'file') {
+}  else if ($message_to_type == 'button2') {
+ $jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+    },
+    "message":{
+        "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "button",
+          "text": "เลือกหัวข้อที่ต้องการสอบถามข้อมูลค่ะ",
+          "buttons":[{
+          "type": "postback",
+            "title": "1. เอกสารการตั้งเบิกอู่นอกเครือ",
+            "payload": "FILE_1"
+          }, {
+            "type": "postback",
+            "title": "2. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถคู่กรณี)",
+            "payload": "FILE_2"
+          }, {
+            "type": "postback",
+            "title": "3. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถประกัน)",
+            "payload": "FILE_3"
+          }]
+        }
+      }
+    }
+}';
+} else if ($message_to_type == 'file') {
  $jsonData = '{
     "recipient":{
         "id":"'.$sender.'"
