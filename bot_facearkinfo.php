@@ -12,7 +12,7 @@ if ($hub_verify_token === $verify_token) {
 $input = json_decode(file_get_contents('php://input'), true);
 $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
 $message = $input['entry'][0]['messaging'][0]['message']['text'];
-$postback = json_decode($input['entry'][0]['messaging'][0]['postback'],true);
+$postback = $input['entry'][0]['messaging'][0]['postback']['payload'];
 $message_to_reply = '';
 $message_to_type = '';
 $host_url = 'https://phpfacechatbot.herokuapp.com';
@@ -21,12 +21,12 @@ $host_url = 'https://phpfacechatbot.herokuapp.com';
  */
 
 if (!empty($postback)){
-    $message = $postback['payload'];
+    $message = $postback;
 }
 if (strpos($message, 'สวัสดี') !== false) {
- $message_to_type = 'button2_1';
+ $message_to_type = 'buttonMain';
 } else if (strpos($message, 'MENU_1') !== false) {
- $message_to_type = 'button2_1';
+ $message_to_type = 'buttonMain';
 }
  
  /*
@@ -113,7 +113,7 @@ if ($message_to_type == 'text') {
           "template_type": "button",
           "text": "พื้นที่อู่ ที่ลูกค้าต้องการสอบถามอยู่ภาคใดค่ะ",
           "buttons":[{
-          "type": "postback",
+            "type": "postback",
             "title": "1. กรุงเทพมหานคร",
             "payload": "MENU_1_1"
           }, {
