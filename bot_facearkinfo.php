@@ -12,18 +12,25 @@ if ($hub_verify_token === $verify_token) {
 $input = json_decode(file_get_contents('php://input'), true);
 $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
 $message = $input['entry'][0]['messaging'][0]['message']['text'];
+$postback = $input['entry'][0]['messaging'][0]['postback']['payload'];
 $message_to_reply = '';
+$message_to_type = '';
+$host_url = 'https://phpfacechatbot.herokuapp.com';
 /**
  * Some Basic rules to validate incoming messages
  */
 
-$api_key="<mLAP API KEY>";
-$url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
-$json = file_get_contents('https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$message.'"}');
-$data = json_decode($json);
-$isData=sizeof($data);
-if (strpos($message, 'สอนเป็ด') !== false) {
-  if (strpos($message, 'สอนเป็ด') !== false) {
+if (!empty($postback)){
+    $message = $postback;
+}
+if (strpos($message, 'สวัสดี') !== false) {
+ $message_to_type = 'buttonMain';
+} else if (strpos($message, 'MENU_1') !== false) {
+ $message_to_type = 'button2_1';
+}
+ 
+ /*
+ if (strpos($message, 'สอนเป็ด') !== false) {
     $x_tra = str_replace("สอนเป็ด","", $message);
     $pieces = explode("|", $x_tra);
     $_question=str_replace("[","",$pieces[0]);
@@ -55,12 +62,10 @@ if (strpos($message, 'สอนเป็ด') !== false) {
     $message_to_reply = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนเป็ด[คำถาม|คำตอบ]';
   }
 }
-//API Url
-  $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
-//Initiate cURL.
-  $ch = curl_init($url);
+*/
 //The JSON data.
-$jsonData = '{
+if ($message_to_type == 'text') {
+ $jsonData = '{
     "recipient":{
         "id":"'.$sender.'"
     },
@@ -68,6 +73,98 @@ $jsonData = '{
         "text":"'.$message_to_reply.'"
     }
 }';
+} else if ($message_to_type == 'buttonMain') {
+ $jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+    },
+    "message":{
+        "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "button",
+          "text": "Deves Admin ยินดีให้บริการค่ะ วันนี้ให้ทางเทเวศดูแลเรื่องอะไรดีค่ะ",
+          "buttons":[{
+          "type": "postback",
+            "title": "1. สอบถามอู่/ศูนย์จัดซ่อม",
+            "payload": "MENU_1"
+          }, {
+            "type": "postback",
+            "title": "2. สอบถามขั้นตอน/เอกสารที่ใช้ตั้งเบิก/คุมราคาจัดซ่อม",
+            "payload": "MENU_2"
+          }, {
+            "type": "postback",
+            "title": "3. สอบถามข้อมูลอื่นๆ",
+            "payload": "MENU_3"
+          }]
+        }
+      }
+    }
+}';
+} else if ($message_to_type == 'button2_1') {
+ $jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+    },
+    "message":{
+        "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "button",
+          "text": "พื้นที่อู่ ที่ลูกค้าต้องการสอบถามอยู่ภาคใดค่ะ",
+          "buttons":[{
+          "type": "postback",
+            "title": "1. กรุงเทพมหานคร",
+            "payload": "MENU_1_1"
+          }, {
+            "type": "postback",
+            "title": "2. ปริมณฑล",
+            "payload": "MENU_1_2"
+          }, {
+            "type": "postback",
+            "title": "3. ภาคกลาง",
+            "payload": "MENU_1_3"
+          }, {
+            "type": "postback",
+            "title": "4. ภาคตะวันออก",
+            "payload": "MENU_1_4"
+          }, {
+            "type": "postback",
+            "title": "5. ภาคอีสาน",
+            "payload": "MENU_1_5"
+          }, {
+            "type": "postback",
+            "title": "6. ภาคเหนือ",
+            "payload": "MENU_1_6"
+          }, {
+            "type": "postback",
+            "title": "7. ภาคใต้",
+            "payload": "MENU_1_7"
+          }]
+        }
+      }
+    }
+}';
+}else if ($message_to_type == 'file') {
+ $jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+    },
+    "message": {
+    "attachment": {
+        "type": "file",
+        "payload": {
+          "url": "'.$host_url.$message_to_reply.'"
+        }
+        }
+    }
+}';
+}
+
+//API Url
+  $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
+//Initiate cURL.
+  $ch = curl_init($url);
 //Encode the array into JSON.
 
 $jsonDataEncoded = $jsonData;
@@ -82,7 +179,7 @@ $jsonDataEncoded = $jsonData;
 //curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
 //Execute the request
 
-if(!empty($input['entry'][0]['messaging'][0]['message'])){
+if(!empty($message)){
     $result = curl_exec($ch);
 }
 /*function replyMsg($access_token,$arrayPostData){
