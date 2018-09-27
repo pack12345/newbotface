@@ -96,21 +96,21 @@ if ($agentHold != $sender) {
 		//fwrite($myfile, $txt);
 		//fclose($myfile);
 } else if ($message == 'FILE_1') {
-	$message_to_reply = $host_url.'/asset/file1.pdf';
+	$message_to_reply = "/asset/file1.pdf";
 	$message_to_type = 'text';
 	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
 		//$txt = "1. เอกสารการตั้งเบิกอู่นอกเครือ \n";
 		//fwrite($myfile, $txt);
 		//fclose($myfile);
 } else if (strpos($message, 'FILE_2') !== false) {
-	$message_to_reply = $host_url.'/asset/file2.pdf';
+	$message_to_reply = $host_url."/asset/file2.pdf";
 	$message_to_type = 'text';
 	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
 		//$txt = "2. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถคู่กรณี) \n";
 		//fwrite($myfile, $txt);
 		//fclose($myfile);
 } else if (strpos($message, 'FILE_3') !== false) {
-	$message_to_reply = $host_url.'/asset/file3.pdf';
+	$message_to_reply = $host_url."/asset/file3.pdf";
 	$message_to_type = 'text';
 	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
 		//$txt = "3. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถประกัน) \n";
