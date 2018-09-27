@@ -16,23 +16,36 @@ $postback = $input['entry'][0]['messaging'][0]['postback']['payload'];
 $message_to_reply = '';
 $message_to_type = '';
 $host_url = 'https://phpfacechatbot.herokuapp.com';
+
+// Agent chat
+$my_file = './Chat/Agent.txt';
+$agentHold = "";
+$agentType = "";
+if(file_exists($my_file)){
+    $line = file($my_file);
+    if($line[0] == $sender){
+        $agentHold = $line[0];
+        $agentType = "Agent.txt";
+    }
+}
 /**
  * Some Basic rules to validate incoming messages
  */
-
-if (!empty($postback)){
-    $message = $postback;
-}
-if (strpos($message, 'สวัสดี') !== false) {
-	$message_to_type = 'buttonMain';
-} else if ($message == 'MENU_1') {
+if ($agentHold != $sender) {
+	
+ if (!empty($postback)) {
+     $message = $postback;
+ }
+ if (strpos($message, 'สวัสดี') !== false) {
+ 	$message_to_type = 'buttonMain';
+ } else if ($message == 'MENU_1') {
 	$message_to_type = 'button1';
-} else if ($message == 'MENU_2') {
+ } else if ($message == 'MENU_2') {
 	$message_to_type = 'button2';
-} else if ($message == 'MENU_3') {
+ } else if ($message == 'MENU_3') {
 	$message_to_reply = 'กรุณารอสักครู่นะค่ะ ';
 	$message_to_type = 'text';
-} else if (strpos($message, 'MENU_1_1') !== false) {
+ } else if (strpos($message, 'MENU_1_1') !== false) {
 	$message_to_reply = 'พิมพ์ชื่อ อำเภอ/เขต ที่ลูกค้าต้องการสอบถามได้เลยค่ะ เช่น บางกอกใหญ่, บางนา เป็นต้น';
 	$message_to_type = 'text';
 } else if (strpos($message, 'MENU_1_') !== false) {
@@ -231,9 +244,7 @@ if ($message_to_type == 'text') {
 //Initiate cURL.
   $ch = curl_init($url);
 //Encode the array into JSON.
-
 $jsonDataEncoded = $jsonData;
-
   //replyMsg($access_token,$jsonDataEncoded)
 //Tell cURL that we want to send a POST request.
   curl_setopt($ch, CURLOPT_POST, 1);
@@ -243,10 +254,19 @@ $jsonDataEncoded = $jsonData;
   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 //curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
 //Execute the request
-
 if(!empty($message_to_type)){
     $result = curl_exec($ch);
 }
+	
+} else {
+        $strUrl = "https://phpfacechatbot.herokuapp.com/Chat/lineToChat.php?userid=".$sender."&text=".$message."&type=".$agentType;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $strUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        $result = curl_exec($ch);
+        //curl_close ($ch);
+    }
 /*function replyMsg($access_token,$arrayPostData){
         $strUrl = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
         $ch = curl_init($strUrl);
