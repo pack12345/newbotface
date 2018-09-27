@@ -24,7 +24,7 @@
     if(!empty($_GET["type"])){
         echo $_GET["text"];
         echo $agentid;
-        if($_GET["text"] == "ขอบคุณ" && file_exists($my_file)){
+        if(strpos($_GET["text"], 'ขอบคุณ') !== false && file_exists($my_file)){
             unlink($my_file);
         }
     }
