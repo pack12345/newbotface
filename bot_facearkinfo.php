@@ -368,8 +368,9 @@ if(!empty($message_to_type)){
 	
 } else {
         $strUrl = 'https://phpfacechatbot.herokuapp.com/Chat/lineToChat.php?userid='.$sender.'&text='.$message.'&type='.$agentType;
+	$strUrl = str_replace(" ", '%20', $strUrl);
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, rawurlencode($strUrl));
+        curl_setopt($ch, CURLOPT_URL, $strUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         if (!empty($message)) {
