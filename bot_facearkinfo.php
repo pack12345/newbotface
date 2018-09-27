@@ -19,7 +19,7 @@ $host_url = 'https://phpfacechatbot.herokuapp.com';
 
 // Agent chat
 $my_file = './Chat/Agent.txt';
-$sender_file = './'.$sender.'.txt';
+//$sender_file = './'.$sender.'.txt';
 $agentHold = "";
 $agentType = "Agent.txt";
 
@@ -43,79 +43,79 @@ if ($agentHold != $sender) {
  	$message_to_type = 'buttonMain';
  } else if ($message == 'MENU_1') {
 	$message_to_type = 'button1';
-		$myfile = fopen($sender_file, "w") or die("Unable to open file!");
-		$txt = "1. สอบถามอู่/ศูนย์จัดซ่อม \n";
-		fwrite($myfile, $txt);
-		fclose($myfile);
+		//$myfile = fopen($sender_file, "w") or die("Unable to open file!");
+		//$txt = "1. สอบถามอู่/ศูนย์จัดซ่อม \n";
+		//fwrite($myfile, $txt);
+		//fclose($myfile);
  } else if ($message == 'MENU_2') {
 	$message_to_type = 'button2';
-	 	$myfile = fopen($sender_file, "w") or die("Unable to open file!");
-		$txt = "2. สอบถามขั้นตอน/เอกสารที่ใช้ตั้งเบิก/คุมราคาจัดซ่อม \n";
-		fwrite($myfile, $txt);
-		fclose($myfile);
+	 	//$myfile = fopen($sender_file, "w") or die("Unable to open file!");
+		//$txt = "2. สอบถามขั้นตอน/เอกสารที่ใช้ตั้งเบิก/คุมราคาจัดซ่อม \n";
+		//fwrite($myfile, $txt);
+		//fclose($myfile);
  } else if ($message == 'MENU_3') {
 	$message_to_reply = 'กรุณารอสักครู่นะค่ะ ';
 	$message_to_type = 'text';
-	 	$myfile = fopen($sender_file, "w") or die("Unable to open file!");
-		$txt = "3. สอบถามข้อมูลอื่นๆ";
-		fwrite($myfile, $txt);
-		fclose($myfile);	 
+	 	//$myfile = fopen($sender_file, "w") or die("Unable to open file!");
+		//$txt = "3. สอบถามข้อมูลอื่นๆ";
+		//fwrite($myfile, $txt);
+		//fclose($myfile);	 
  } else if (strpos($message, 'MENU_1_1') !== false) {
 	$message_to_reply = 'พิมพ์ชื่อ อำเภอ/เขต ที่ลูกค้าต้องการสอบถามได้เลยค่ะ เช่น บางกอกใหญ่, บางนา เป็นต้น';
 	$message_to_type = 'text';
-	 	$myfile = fopen($sender_file, "w") or die("Unable to open file!");
-		$txt = "1 \n";
-		fwrite($myfile, $txt);
-		fclose($myfile);
+	 	//$myfile = fopen($sender_file, "w") or die("Unable to open file!");
+		//$txt = "1 \n";
+		//fwrite($myfile, $txt);
+		//fclose($myfile);
 } else if (strpos($message, 'MENU_1_') !== false) {
 	$message_to_reply = 'พิมพ์ชื่อ จังหวัด ที่ลูกค้าต้องการสอบถามได้เลยค่ะ';
 	$message_to_type = 'text';
-	        $myfile = fopen($sender_file, "w") or die("Unable to open file!");
-		$txt = substr($message, -1)." \n";
-		fwrite($myfile, $txt);
-		fclose($myfile);
+	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
+		//$txt = substr($message, -1)." \n";
+		//fwrite($myfile, $txt);
+		//fclose($myfile);
 } else if (strpos($message, 'บาง') !== false) {
 	$message_to_reply = 'อู่ยงค์การช่าง 70/1 ม.2 ถ.งามวงศ์วาน ต.บางเขน อ.เมือง จ.นนทบุรี 11000 0-2589-5190,0-2591-3237';
 	$message_to_type = 'text';
-	        $myfile = fopen($sender_file, "w") or die("Unable to open file!");
-		$txt = $message." \n";
-		fwrite($myfile, $txt);
-		fclose($myfile);
+	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
+		//$txt = $message." \n";
+		//fwrite($myfile, $txt);
+		//fclose($myfile);
 } else if (strpos($message, 'นคร') !== false) {
 	$message_to_reply = 'อู่'.$message.' อ.เมือง จ.'.$message;
 	$message_to_type = 'text';
-	        $myfile = fopen($sender_file, "w") or die("Unable to open file!");
-		$txt = $message." \n";
-		fwrite($myfile, $txt);
-		fclose($myfile);
+	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
+		//$txt = $message." \n";
+		//fwrite($myfile, $txt);
+		//fclose($myfile);
 } else if (strpos($message, 'บุรี') !== false) {
 	$message_to_reply = 'อู่'.$message.' อ.เมือง จ.'.$message;
 	$message_to_type = 'text';
-	        $myfile = fopen($sender_file, "w") or die("Unable to open file!");
-		$txt = $message." \n";
-		fwrite($myfile, $txt);
-		fclose($myfile);
+	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
+		//$txt = $message." \n";
+		//fwrite($myfile, $txt);
+		//fclose($myfile);
 } else if ($message == 'FILE_1') {
 	$message_to_reply = $host_url.'/asset/file1.pdf';
 	$message_to_type = 'text';
-	        $myfile = fopen($sender_file, "w") or die("Unable to open file!");
-		$txt = "1. เอกสารการตั้งเบิกอู่นอกเครือ \n";
-		fwrite($myfile, $txt);
-		fclose($myfile);
+	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
+		//$txt = "1. เอกสารการตั้งเบิกอู่นอกเครือ \n";
+		//fwrite($myfile, $txt);
+		//fclose($myfile);
 } else if (strpos($message, 'FILE_2') !== false) {
 	$message_to_reply = $host_url.'/asset/file2.pdf';
 	$message_to_type = 'text';
-	        $myfile = fopen($sender_file, "w") or die("Unable to open file!");
-		$txt = "2. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถคู่กรณี) \n";
-		fwrite($myfile, $txt);
-		fclose($myfile);
+	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
+		//$txt = "2. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถคู่กรณี) \n";
+		//fwrite($myfile, $txt);
+		//fclose($myfile);
 } else if (strpos($message, 'FILE_3') !== false) {
 	$message_to_reply = $host_url.'/asset/file3.pdf';
 	$message_to_type = 'text';
-	        $myfile = fopen($sender_file, "w") or die("Unable to open file!");
-		$txt = "3. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถประกัน) \n";
-		fwrite($myfile, $txt);
-		fclose($myfile);
+	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
+		//$txt = "3. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถประกัน) \n";
+		//fwrite($myfile, $txt);
+		//fclose($myfile);
 } 
  
  /*
@@ -303,24 +303,23 @@ if(!empty($message_to_type)){
     $result = curl_exec($ch);
 }
  if ($message == 'MENU_3') {
-    if(file_exists($sender_file)){
-	    $line = file($sender_file);
-		    $strUrl = "https://phpfacechatbot.herokuapp.com/Chat/lineToChat.php?userid=".$sender."&text=".$line[0]."&type=".$agentType;
-		    $ch = curl_init();
-		    curl_setopt($ch, CURLOPT_URL, $strUrl);
-		    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		    $result = curl_exec($ch);   
-	    
-	    unlink($sender_file);
-    } else {
+    //if(file_exists($sender_file)){
+	    //$line = file($sender_file);
+		//    $strUrl = "https://phpfacechatbot.herokuapp.com/Chat/lineToChat.php?userid=".$sender."&text=".$line[0]."&type=".$agentType;
+		//    $ch = curl_init();
+		//    curl_setopt($ch, CURLOPT_URL, $strUrl);
+		//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		//    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		//    $result = curl_exec($ch);  
+	   // unlink($sender_file);
+    //} else {
 	$strUrl = "https://phpfacechatbot.herokuapp.com/Chat/lineToChat.php?userid=".$sender."&text=ลูกค้าต้องการติดต่อพนักงาน&type=".$agentType;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $strUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         $result = curl_exec($ch);
-    }
+    //}
  }
 	
 } else {
