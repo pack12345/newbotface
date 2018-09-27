@@ -104,7 +104,7 @@
 						}
 					};
 					
-			                url = 'https://cxpmiddleware.herokuapp.com/Push_To_Line.php?text='+text+'&type='+agenttype;
+			                url = 'https://phpfacechatbot.herokuapp.com/Push_To_Face.php?text='+text+'&type='+agenttype;
 				        xhttp.open("GET", url, true);
 				        xhttp.send();
                                     }
