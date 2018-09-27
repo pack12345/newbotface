@@ -304,14 +304,14 @@ if(!empty($message_to_type)){
 }
  if ($message == 'MENU_3') {
     if(file_exists($sender_file)){
-	    foreach(file($sender_file) as $line) {
-		    $strUrl = "https://phpfacechatbot.herokuapp.com/Chat/lineToChat.php?userid=".$sender."&text=".$line."&type=".$agentType;
+	    $line = file($sender_file);
+		    $strUrl = "https://phpfacechatbot.herokuapp.com/Chat/lineToChat.php?userid=".$sender."&text=".$line[0]."&type=".$agentType;
 		    $ch = curl_init();
 		    curl_setopt($ch, CURLOPT_URL, $strUrl);
 		    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 		    $result = curl_exec($ch);   
-	    }
+	    
 	    unlink($sender_file);
     } else {
 	$strUrl = "https://phpfacechatbot.herokuapp.com/Chat/lineToChat.php?userid=".$sender."&text=ลูกค้าต้องการติดต่อพนักงาน&type=".$agentType;
