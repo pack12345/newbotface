@@ -34,6 +34,50 @@ if(file_exists($my_file)){
 /**
  * Some Basic rules to validate incoming messages
  */
+if (!empty($_GET["type"])) {
+$my_file = './Chat/'.$_GET["type"];
+     $agentid = "";
+    if(file_exists($my_file)){
+        $line = file($my_file);
+        $agentid = $line[0];
+    } else {
+        $agentid = $_GET["userid"];
+    }
+    # Message Pushback 
+    
+        if(strpos($_GET["text"], 'ขอบคุณ') !== false && file_exists($my_file)){
+            unlink($my_file);
+        }
+    
+        $message_to_reply = $_GET["text"];
+        $message_to_type = 'text';
+    if ($message_to_type == 'text') {
+        $jsonData = '{
+        "recipient":{
+        "id":"'.$agentid.'"
+        },
+        "message":{
+        "text":"'.$message_to_reply.'"
+        }
+        }';
+    }
+    //API Url
+    $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
+    //Initiate cURL.
+    $ch = curl_init($url);
+    //Encode the array into JSON.
+    $jsonDataEncoded = $jsonData;
+    //Tell cURL that we want to send a POST request.
+    curl_setopt($ch, CURLOPT_POST, 1);
+   //Attach our encoded JSON string to the POST fields.
+   curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
+   //Set the content type to application/json
+   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+   //Execute the request
+   $result = curl_exec($ch);
+// add
+} else {
+
 if ($agentHold != $sender) {
 	
  if (!empty($postback)) {
@@ -96,21 +140,21 @@ if ($agentHold != $sender) {
 		//fwrite($myfile, $txt);
 		//fclose($myfile);
 } else if ($message == 'FILE_1') {
-	$message_to_reply = "/asset/file1.pdf";
+	$message_to_reply = "https://www.dropbox.com/s/8g0tdtsxc1c2p3w/file1.pdf";
 	$message_to_type = 'text';
 	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
 		//$txt = "1. เอกสารการตั้งเบิกอู่นอกเครือ \n";
 		//fwrite($myfile, $txt);
 		//fclose($myfile);
 } else if (strpos($message, 'FILE_2') !== false) {
-	$message_to_reply = $host_url."/asset/file2.pdf";
+	$message_to_reply = "https://www.dropbox.com/s/4l1t79tbi1qd259/file2.pdf";
 	$message_to_type = 'text';
 	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
 		//$txt = "2. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถคู่กรณี) \n";
 		//fwrite($myfile, $txt);
 		//fclose($myfile);
 } else if (strpos($message, 'FILE_3') !== false) {
-	$message_to_reply = $host_url."/asset/file3.pdf";
+	$message_to_reply = "https://www.dropbox.com/s/akkvbzocqrs0ffh/file3.pdf";
 	$message_to_type = 'text';
 	        //$myfile = fopen($sender_file, "w") or die("Unable to open file!");
 		//$txt = "3. เอกสารประกอบการตั้งเบิกคืนลูกค้า (รถประกัน) \n";
@@ -333,6 +377,7 @@ if(!empty($message_to_type)){
         //curl_close ($ch);
 	}
     }
+}
 /*function replyMsg($access_token,$arrayPostData){
         $strUrl = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
         $ch = curl_init($strUrl);
