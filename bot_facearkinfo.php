@@ -20,7 +20,7 @@ $host_url = 'https://phpfacechatbot.herokuapp.com';
 // Agent chat
 $my_file = './Chat/Agent.txt';
 $agentHold = "";
-$agentType = "";
+$agentType = "Agent.txt";
 if(file_exists($my_file)){
     $line = file($my_file);
     if($line[0] == $sender){
