@@ -32,15 +32,7 @@
 	var lineuser = "";
 	var agenttype = 'Agent.txt';
 	var chattype = 'chat.txt';
-	    if (name.toUpperCase().includes("LOAN")) {
-		    chattype = 'chatLOAN.txt';
-		    agenttype = 'AgentLOAN.txt';
-		    
-	    } else if (name.toUpperCase().includes("CREDIT")) {
-		    chattype = 'chatCREDIT.txt';
-		    agenttype = 'AgentCREDIT.txt';
-		    
-	    } 
+	    
     	$(function() {
     	
     		 chat.getState(chattype); 
@@ -77,26 +69,7 @@
                      
     			        chat.send(text, name, chattype);	
     			        $(this).val("");
-    			        
-                    } else {
-                    
-    					$(this).val(text.substring(0, maxLength));
-    					
-    				}	
-    				
-    				
-    			  }
-             });
-    	});
-		
-		function SendChat(e){
-			if (e.keyCode == 13) { 
-				text =  document.getElementById("sendie").value;
-				var maxLength = document.getElementById("sendie").getAttribute("maxlength"); 
-				var length = text.length; 
- 				if (length <= maxLength + 1) { 
-				
-				    try{
+			        try{
 					var xhttp = new XMLHttpRequest();
 					
 					xhttp.onreadystatechange = function() {
@@ -111,11 +84,43 @@
 				    catch(err) {
 					 alert(err.message);
 				    }
-				
     			        
-                              } 	
-			}
-		}
+                    } else {
+                    
+    					$(this).val(text.substring(0, maxLength));
+    					
+    				}	
+    				
+    				
+    			  }
+             });
+    	});
+		
+//		function SendChat(e){
+//			if (e.keyCode == 13) { 
+//				text =  document.getElementById("sendie").value;
+//				var maxLength = document.getElementById("sendie").getAttribute("maxlength"); 
+//				var length = text.length; 
+ //				if (length <= maxLength + 1) { 
+//				
+//				    try{
+//					var xhttp = new XMLHttpRequest();
+//					
+//					xhttp.onreadystatechange = function() {
+//						if (this.readyState == 4 && this.status == 200) {
+//						}
+//					};
+//					
+//			                url = 'https://phpfacechatbot.herokuapp.com/Push_To_Face.php?text='+text+'&type='+agenttype;
+//				        xhttp.open("GET", url, true);
+//				        xhttp.send();
+  //                                  }
+//				    catch(err) {
+//					 alert(err.message);
+//				    }  			        
+//                              } 	
+//			}
+//		}
     </script>
 
 </head>
