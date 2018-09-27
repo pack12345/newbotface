@@ -257,6 +257,14 @@ $jsonDataEncoded = $jsonData;
 if(!empty($message_to_type)){
     $result = curl_exec($ch);
 }
+ if ($message == 'MENU_3') {
+	$strUrl = "https://phpfacechatbot.herokuapp.com/Chat/lineToChat.php?userid=".$sender."&text=ลูกค้าต้องการติดต่อพนักงาน&type=".$agentType;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $strUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        $result = curl_exec($ch);
+ }
 	
 } else {
         $strUrl = "https://phpfacechatbot.herokuapp.com/Chat/lineToChat.php?userid=".$sender."&text=".$message."&type=".$agentType;
